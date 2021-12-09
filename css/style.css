@@ -14,3 +14,16 @@ footer{
 footer img{
     width: 40px;
 }
+
+article img{
+    width: 100px;
+}
+
+article button{
+    background-color: #D9AF5D;
+    
+}
+
+article button a {
+    font-weight: bold;
+}
