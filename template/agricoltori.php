@@ -21,7 +21,7 @@
                     </div>
                 </td>
                 <td class="col-3 p-2">
-                    <img class="float-end" src="../icons/mario.jpg" alt="">
+                    <img class="float-end" src="./icons/mario.jpg" alt="">
                 </td>
                 </tr>
                     <?php endforeach;?>
