@@ -37,6 +37,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAziendaAgricolaInfo() {
+        $stmt = $this->db->prepare("SELECT a.nome_azienda, u.nome,u.cognome, a.descrizione
+         from utente u, azienda_agricola a, agricoltore agr where a.nome_azienda = agr.nome_azienda
+         and agr.username = u.username");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
    
 
 

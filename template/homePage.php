@@ -13,6 +13,11 @@
         require($templateParams["header"]);
     ?>
     </header>
+    <main>
+    <?php
+        require($templateParams["main"]);
+    ?>
+    </main>
         <!--copiare da qui (dentro al proprio body)-->
     
  <!--copiare fin qui-->
