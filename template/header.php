@@ -1,7 +1,7 @@
  <nav class="navbar">
             <div class="container">
                 <a class="navbar-brand text-black" href="#">
-                        <h1 class="text-dark"><?php echo $templateParams["nomeApp"][0]["nome_app"] ; ?></h1>
+                        <h1 class="text-dark"><?php echo $templateParams["nome"] ; ?></h1>
                 </a>
                 <div class="float-end">
                     <a class="text-decoration-none" href="#">

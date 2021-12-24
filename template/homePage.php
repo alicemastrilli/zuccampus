@@ -18,14 +18,9 @@
  <!--copiare fin qui-->
 
     <footer class=" rounded-top ">
-        <div class="text-white text-center">
-            <p>Zuccampus s.p.a <br> Via dell'Università 50 - 47521 <br> Cesena(FC) <br> <a 
-                class="text-white" href="#">zuccampusspa@gmail.com</a> <br>
-            </p>
-                <img src="./icons/instagram.png" alt="instagram logo"> 
-            <a class="text-white text-decoration-none" href="#">@zuccampus</a>
-        </div>
-
+    <?php
+        require($templateParams["footer"]);
+    ?>
     </footer>
 
 
