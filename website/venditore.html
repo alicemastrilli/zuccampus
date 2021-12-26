@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="../css/style.css" > 
+
+    </head>
+    <body>
+        <!--copiare da qui (dentro al proprio body)-->
+    <header class="text-dark">
+        <nav class="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="./homepage.html">
+                        <h1 class="text-black">ZUCCAMPUS</h1>
+                </a>
+                <div class="float-end">
+                    <a class="text-decoration-none" href="#">
+                        <img class="img-fluid ps-1 " src="../icons/carrello.png" alt="carrello" />
+                    </a>
+                    <a class="text-decoration-none" href="#">
+                        <img class="img-fluid ps-1 " src="../icons/user.png" alt="utente" />
+                    </a>
+                </div>
+            </div>
+         </nav>          
+    </header>
+ <!--copiare fin qui-->
+    <section>
+        <div class="text-center p-3">
+        <img src="../icons/mario.jpg" class="rounded-circle border border-2 border-dark" alt="mario">
+        </div>
+        <h3 class="text-center">Mario Rossi</h3>
+        <h5 class="text-center">mariorossi@gmail.com</h5>
+        <article class="rounded mx-2">
+            <h3 class="pt-2 px-2">Informazioni di base</h3>
+            <div class="mb-3 mt-3">
+                <label for="nome" class="form-label px-2">Nome:</label><br>
+                <div class="mx-2 pb-3">
+                   <input  type="text" class="form-control " id="nome" value="Mario" name="nome" readonly>
+                </div>
+                <label for="cognome" class="form-label px-2 ">Cognome:</label><br>
+                <div class="mx-2 pb-3">
+                   <input  type="text" class="form-control " id="cognome" value="Rossi" name="cognome" readonly>
+                </div>
+                <label for="azienda_agricola" class="form-label px-2">Azienda agricola:</label><br>
+                <div class="mx-2 pb-3">
+                   <input  type="text" class="form-control " id="azienda_agricola" value="La fattoria di Mario"
+                    name="azienda_agricola" readonly>
+                </div>
+                <label for=" descrizione_azienda_agricola" class="form-label px-2">Descrizione Azienda agricola:</label><br>
+                <div class="mx-2 pb-3">
+                   <textarea  type="text" class="form-control " id="descrizione_azienda_agricola" 
+                   name="descrizione_azienda_agricola" readonly>attiva dal 1954, la fattoria di Mario è sempre pronta  a consegnare" </textarea>
+                </div>
+              </div>
+        </article>
+        <article class="rounded mx-2">
+            <h3 class="pt-2 px-2">Informazioni di contatto</h3>
+            <div class="mb-3 mt-3">
+                <label for="email" class="form-label px-2">Email:</label><br>
+                <div class="mx-2 pb-3">
+                   <input  type="email" class="form-control " id="email" value="mariorossi@gmail.com" name="email" readonly>
+                </div>
+                <label for="num_telefono" class="form-label px-2">Numero telefonico:</label><br>
+                <div class="mx-2 pb-3">
+                   <input  type="number" class="form-control " id="num_telefono" value="3312345678" name="numero_telefono" readonly>
+                </div>
+                
+              </div>
+        </article>
+    </section>
+    <footer class=" rounded-top ">
+        <div class="text-white text-center">
+            <p>Zuccampus s.p.a <br> Via dell'Università 50 - 47521 <br> Cesena(FC) <br> <a 
+                class="text-white" href="#">zuccampusspa@gmail.com</a> <br>
+            </p>
+                <img src="../icons/instagram.png" alt="instagram logo"> 
+            <a class="text-white text-decoration-none" href="#">@zuccampus</a>
+        </div>
+
+    </footer>
+
+
+    </body>
+</html>
