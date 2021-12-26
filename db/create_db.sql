@@ -25,33 +25,33 @@ USE `zuccampus` ;
 
 create table AGRICOLTORE (
      username varchar(30) not null,
-     nome_azienda char(20) not null,
+     nome_azienda char(30) not null,
      constraint FKUTE_AGR_ID primary key (username),
      constraint FKpossedere_ID unique (nome_azienda));
 
 create table AZIENDA (
      nome_app char(15) not null,
-     nome_azienda char(20) not null,
+     nome_azienda char(30) not null,
      email char(30) not null,
      descrizione_azienda char(60),
      qualita char(20),
      constraint ID_AZIENDA_ID primary key (nome_app));
 
 create table AZIENDA_AGRICOLA (
-     nome_azienda char(20) not null,
+     nome_azienda char(30) not null,
      via char(20) not null,
      numero_civico numeric(3) not null,
-     cap date not null,
-     descrizione char(60),
+     cap numeric(5) not null,
+     descrizione char(150),
      constraint ID_AZIENDA_AGRICOLA_ID primary key (nome_azienda),
      constraint FKrisiede_ID unique (via, numero_civico, cap));
 
 create table CARTA_DI_CREDITO (
      cvv numeric(3) not null,
      nome char(10) not null,
-     numero_carta numeric(12) not null,
+     numero_carta numeric(16) not null,
      mese_scadenza numeric(2) not null,
-     anno_scadenza numeric(2) not null,
+     anno_scadenza numeric(4) not null,
      cognome char(20) not null,
      username varchar(30) not null,
      constraint ID_CARTA_DI_CREDITO_ID primary key (numero_carta));
@@ -65,7 +65,7 @@ create table comprende (
      username varchar(30) not null,
      data date not null,
      ora time(6) not null,
-     nome_azienda char(20) not null,
+     nome_azienda char(30) not null,
      nome_zucca char(20) not null,
      quantita char(1) not null,
      constraint ID_comprende_ID primary key (nome_azienda, nome_zucca, username, data, ora));
@@ -74,7 +74,7 @@ create table INDIRIZZO (
      via char(20) not null,
      numero_civico numeric(3) not null,
      citta char(20) not null,
-     cap date not null,
+     cap numeric(5) not null,
      nome_app char(15) not null,
      constraint ID_INDIRIZZO_ID primary key (via, numero_civico, cap),
      constraint FKsede__ID unique (nome_app));
@@ -82,6 +82,7 @@ create table INDIRIZZO (
 create table link (
      nome_app char(15) not null,
      link char(15) not null,
+     logo varchar(30),
      constraint ID_link_ID primary key (nome_app, link));
 
 create table MESSAGGIO (
@@ -94,36 +95,36 @@ create table MESSAGGIO (
 
 create table ORDINE (
      username varchar(30) not null,
-     data date not null,
+     data_ordine date not null,
      ora time(6) not null,
      via char(20) not null,
      numero_civico numeric(3) not null,
-     cap date not null,
-     constraint ID_ORDINE_ID primary key (username, data, ora));
+     cap numeric(5) not null,
+     constraint ID_ORDINE_ID primary key (username, data_ordine, ora));
 
 create table RECENSIONE (
-     idRecensione numeric(1) not null,
-     descrizione char(60),
+     idRecensione numeric(5) not null,
+     descrizione char(150),
      punteggio numeric(5) not null,
-     nome_azienda char(20) not null,
+     nome_azienda char(30) not null,
      nome_zucca char(20) not null,
      username varchar(30) not null,
      constraint ID_RECENSIONE_ID primary key (idRecensione));
 
 create table UTENTE (
      immagine varchar(30),
-     num_telefono numeric(10) not null,
+     num_telefono numeric(14) not null,
      email char(20) not null,
      username varchar(30) not null,
-     password varchar(10) not null,
-     nome char(10) not null,
+     password varchar(15) not null,
+     nome char(20) not null,
      cognome char(20) not null,
      CLIENTE varchar(30),
      AGRICOLTORE varchar(30),
      constraint ID_UTENTE_ID primary key (username));
 
 create table ZUCCA (
-     nome_azienda char(20) not null,
+     nome_azienda char(30) not null,
      nome_zucca char(20) not null,
      tipo char(25) not null,
      immagine varchar(30),
@@ -138,12 +139,16 @@ create table ZUCCA (
 -- ___________________ 
 
 alter table AGRICOLTORE add constraint FKUTE_AGR_FK
-     foreign key (username)
-     references UTENTE;
+     foreign key (`username`)
+     references `zuccampus`.`UTENTE` (`username`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table AGRICOLTORE add constraint FKpossedere_FK
-     foreign key (nome_azienda)
-     references AZIENDA_AGRICOLA;
+     foreign key (`nome_azienda`)
+     references `zuccampus`.`AZIENDA_AGRICOLA` (`nome_azienda`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table AZIENDA add constraint ID_AZIENDA_CHK
      check(exists(select * from INDIRIZZO
@@ -154,23 +159,23 @@ alter table AZIENDA_AGRICOLA add constraint ID_AZIENDA_AGRICOLA_CHK
                   where AGRICOLTORE.nome_azienda = nome_azienda)); 
 
 alter table AZIENDA_AGRICOLA add constraint FKrisiede_FK
-     foreign key (via, numero_civico, cap)
+     foreign key (`via`, `numero_civico`, `cap`)
      references INDIRIZZO;
 
 alter table CARTA_DI_CREDITO add constraint FKpossiede_FK
-     foreign key (username)
+     foreign key (`username`)
      references UTENTE;
 
 alter table CLIENTE add constraint FKUTE_CLI_FK
-     foreign key (username)
+     foreign key (`username`)
      references UTENTE;
 
 alter table comprende add constraint FKcom_ZUC
-     foreign key (nome_azienda, nome_zucca)
+     foreign key (`nome_azienda`, `nome_zucca`)
      references ZUCCA;
 
 alter table comprende add constraint FKcom_ORD_FK
-     foreign key (username, data, ora)
+     foreign key (`username`, `data_ordine`, `ora`)
      references ORDINE;
 
 alter table INDIRIZZO add constraint ID_INDIRIZZO_CHK
@@ -178,31 +183,31 @@ alter table INDIRIZZO add constraint ID_INDIRIZZO_CHK
                   where AZIENDA_AGRICOLA.via = via and AZIENDA_AGRICOLA.numero_civico = numero_civico and AZIENDA_AGRICOLA.cap = cap)); 
 
 alter table INDIRIZZO add constraint FKsede__FK
-     foreign key (nome_app)
+     foreign key (`nome_app`)
      references AZIENDA;
 
 alter table link add constraint FKAZI_lin
-     foreign key (nome_app)
+     foreign key (`nome_app`)
      references AZIENDA;
 
 alter table MESSAGGIO add constraint FKricevere
-     foreign key (username)
+     foreign key (`username`)
      references UTENTE;
 
 alter table ORDINE add constraint FKritiro_FK
-     foreign key (via, numero_civico, cap)
+     foreign key (`via`, `numero_civico`, `cap`)
      references INDIRIZZO;
 
 alter table ORDINE add constraint FKeffettua
-     foreign key (username)
+     foreign key (`username`)
      references CLIENTE;
 
 alter table RECENSIONE add constraint FKvalutazione_FK
-     foreign key (nome_azienda, nome_zucca)
+     foreign key (`nome_azienda`, `nome_zucca`)
      references ZUCCA;
 
 alter table RECENSIONE add constraint FKvaluta_FK
-     foreign key (username)
+     foreign key (`username`)
      references CLIENTE;
 
 alter table UTENTE add constraint EXTONE_UTENTE
@@ -210,7 +215,7 @@ alter table UTENTE add constraint EXTONE_UTENTE
            or (CLIENTE is null and AGRICOLTORE is not null)); 
 
 alter table ZUCCA add constraint FKvende
-     foreign key (nome_azienda)
+     foreign key (`nome_azienda`)
      references AZIENDA_AGRICOLA;
 
 
@@ -260,7 +265,7 @@ create unique index ID_MESSAGGIO_IND
      on MESSAGGIO (username, data, ora);
 
 create unique index ID_ORDINE_IND
-     on ORDINE (username, data, ora);
+     on ORDINE (username, data_ordine, ora);
 
 create index FKritiro_IND
      on ORDINE (via, numero_civico, cap);
