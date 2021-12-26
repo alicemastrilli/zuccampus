@@ -30,12 +30,16 @@ create table AGRICOLTORE (
      constraint FKpossedere_ID unique (nome_azienda));
 
 create table AZIENDA (
+     via char(20) not null,
+     numero_civico numeric(3) not null,
+     cap numeric(5) not null,
      nome_app char(15) not null,
      nome_azienda char(30) not null,
      email char(30) not null,
      descrizione_azienda char(60),
      qualita char(20),
-     constraint ID_AZIENDA_ID primary key (nome_app));
+     constraint ID_AZIENDA_ID primary key (nome_app),
+     constraint FKsede_ID unique (via, numero_civico, cap));
 
 create table AZIENDA_AGRICOLA (
      nome_azienda char(30) not null,
@@ -75,9 +79,7 @@ create table INDIRIZZO (
      numero_civico numeric(3) not null,
      citta char(20) not null,
      cap numeric(5) not null,
-     nome_app char(15) not null,
-     constraint ID_INDIRIZZO_ID primary key (via, numero_civico, cap),
-     constraint FKsede__ID unique (nome_app));
+     constraint ID_INDIRIZZO_ID primary key (via, numero_civico, cap));
 
 create table link (
      nome_app char(15) not null,
@@ -150,9 +152,9 @@ alter table AGRICOLTORE add constraint FKpossedere_FK
      ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
-alter table AZIENDA add constraint ID_AZIENDA_CHK
-     check(exists(select * from INDIRIZZO
-                  where INDIRIZZO.nome_app = nome_app)); 
+alter table AZIENDA add constraint FKsede_FK
+     foreign key (via, numero_civico, cap)
+     references INDIRIZZO; 
 
 alter table AZIENDA_AGRICOLA add constraint ID_AZIENDA_AGRICOLA_CHK
      check(exists(select * from AGRICOLTORE
@@ -182,9 +184,10 @@ alter table INDIRIZZO add constraint ID_INDIRIZZO_CHK
      check(exists(select * from AZIENDA_AGRICOLA
                   where AZIENDA_AGRICOLA.via = via and AZIENDA_AGRICOLA.numero_civico = numero_civico and AZIENDA_AGRICOLA.cap = cap)); 
 
-alter table INDIRIZZO add constraint FKsede__FK
-     foreign key (`nome_app`)
-     references AZIENDA;
+alter table INDIRIZZO add constraint ID_INDIRIZZO_CHK
+     check(exists(select * from AZIENDA
+                  where AZIENDA.via = via and AZIENDA.numero_civico = numero_civico and AZIENDA.cap = cap)); 
+
 
 alter table link add constraint FKAZI_lin
      foreign key (`nome_app`)
@@ -236,6 +239,8 @@ create unique index ID_AZIENDA_AGRICOLA_IND
 
 create unique index FKrisiede_IND
      on AZIENDA_AGRICOLA (via, numero_civico, cap);
+create unique index FKsede_IND
+     on AZIENDA (via, numero_civico, cap);
 
 create unique index ID_CARTA_DI_CREDITO_IND
      on CARTA_DI_CREDITO (numero_carta);
@@ -255,8 +260,6 @@ create index FKcom_ORD_IND
 create unique index ID_INDIRIZZO_IND
      on INDIRIZZO (via, numero_civico, cap);
 
-create unique index FKsede__IND
-     on INDIRIZZO (nome_app);
 
 create unique index ID_link_IND
      on link (nome_app, link);
