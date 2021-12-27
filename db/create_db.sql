@@ -153,8 +153,8 @@ alter table AGRICOLTORE add constraint FKpossedere_FK
     ON UPDATE NO ACTION;
 
 alter table AZIENDA add constraint FKsede_FK
-     foreign key (via, numero_civico, cap)
-     references INDIRIZZO; 
+     foreign key (`via`, `numero_civico`, `cap`)
+     references `zuccampus`.`INDIRIZZO` (`via`, `numero_civico`, `cap`); 
 
 alter table AZIENDA_AGRICOLA add constraint ID_AZIENDA_AGRICOLA_CHK
      check(exists(select * from AGRICOLTORE
@@ -162,23 +162,23 @@ alter table AZIENDA_AGRICOLA add constraint ID_AZIENDA_AGRICOLA_CHK
 
 alter table AZIENDA_AGRICOLA add constraint FKrisiede_FK
      foreign key (`via`, `numero_civico`, `cap`)
-     references INDIRIZZO;
+     references `zuccampus`.`INDIRIZZO` (`via`, `numero_civico`, `cap`);
 
 alter table CARTA_DI_CREDITO add constraint FKpossiede_FK
      foreign key (`username`)
-     references UTENTE;
+     references `zuccampus`.`UTENTE` (`username`);
 
 alter table CLIENTE add constraint FKUTE_CLI_FK
      foreign key (`username`)
-     references UTENTE;
+     references `zuccampus`.`UTENTE` (`username`);
 
 alter table comprende add constraint FKcom_ZUC
      foreign key (`nome_azienda`, `nome_zucca`)
-     references ZUCCA;
+     references `zuccampus`.`ZUCCA` (`nome_azienda`, `nome_zucca`);
 
 alter table comprende add constraint FKcom_ORD_FK
      foreign key (`username`, `data_ordine`, `ora`)
-     references ORDINE;
+     references `zuccampus`.`ORDINE` (`username`, `data_ordine`, `ora`);
 
 alter table INDIRIZZO add constraint ID_INDIRIZZO_CHK
      check(exists(select * from AZIENDA_AGRICOLA
@@ -191,27 +191,27 @@ alter table INDIRIZZO add constraint ID_INDIRIZZO_CHK
 
 alter table link add constraint FKAZI_lin
      foreign key (`nome_app`)
-     references AZIENDA;
+     references `zuccampus`.`AZIENDA` (`nome_app`);
 
 alter table MESSAGGIO add constraint FKricevere
      foreign key (`username`)
-     references UTENTE;
+     references `zuccampus`.`UTENTE` (`username`);
 
 alter table ORDINE add constraint FKritiro_FK
      foreign key (`via`, `numero_civico`, `cap`)
-     references INDIRIZZO;
+     references `zuccampus`.`INDIRIZZO` (`via`, `numero_civico`, `cap`);
 
 alter table ORDINE add constraint FKeffettua
      foreign key (`username`)
-     references CLIENTE;
+     references `zuccampus`.`CLIENTE` (`username`);
 
 alter table RECENSIONE add constraint FKvalutazione_FK
      foreign key (`nome_azienda`, `nome_zucca`)
-     references ZUCCA;
+     references `zuccampus`.`ZUCCA` (`nome_azienda`, `nome_zucca`);
 
 alter table RECENSIONE add constraint FKvaluta_FK
      foreign key (`username`)
-     references CLIENTE;
+     references `zuccampus`.`CLIENTE` (`username`);
 
 alter table UTENTE add constraint EXTONE_UTENTE
      check((CLIENTE is not null and AGRICOLTORE is null)
@@ -219,7 +219,7 @@ alter table UTENTE add constraint EXTONE_UTENTE
 
 alter table ZUCCA add constraint FKvende
      foreign key (`nome_azienda`)
-     references AZIENDA_AGRICOLA;
+     references `zuccampus`.`AZIENDA_AGRICOLA` (`nome_azienda`);
 
 
 -- Index Section
