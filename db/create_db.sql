@@ -36,8 +36,8 @@ create table AZIENDA (
      nome_app char(15) not null,
      nome_azienda char(30) not null,
      email char(30) not null,
-     descrizione_azienda char(60),
-     qualita char(20),
+     descrizione_azienda char(150),
+     qualita char(100),
      constraint ID_AZIENDA_ID primary key (nome_app),
      constraint FKsede_ID unique (via, numero_civico, cap));
 
@@ -154,7 +154,9 @@ alter table AGRICOLTORE add constraint FKpossedere_FK
 
 alter table AZIENDA add constraint FKsede_FK
      foreign key (`via`, `numero_civico`, `cap`)
-     references `zuccampus`.`INDIRIZZO` (`via`, `numero_civico`, `cap`); 
+     references `zuccampus`.`INDIRIZZO` (`via`, `numero_civico`, `cap`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;; 
 
 alter table AZIENDA_AGRICOLA add constraint ID_AZIENDA_AGRICOLA_CHK
      check(exists(select * from AGRICOLTORE
@@ -162,23 +164,33 @@ alter table AZIENDA_AGRICOLA add constraint ID_AZIENDA_AGRICOLA_CHK
 
 alter table AZIENDA_AGRICOLA add constraint FKrisiede_FK
      foreign key (`via`, `numero_civico`, `cap`)
-     references `zuccampus`.`INDIRIZZO` (`via`, `numero_civico`, `cap`);
+     references `zuccampus`.`INDIRIZZO` (`via`, `numero_civico`, `cap`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;;
 
 alter table CARTA_DI_CREDITO add constraint FKpossiede_FK
      foreign key (`username`)
-     references `zuccampus`.`UTENTE` (`username`);
+     references `zuccampus`.`UTENTE` (`username`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table CLIENTE add constraint FKUTE_CLI_FK
      foreign key (`username`)
-     references `zuccampus`.`UTENTE` (`username`);
+     references `zuccampus`.`UTENTE` (`username`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table comprende add constraint FKcom_ZUC
      foreign key (`nome_azienda`, `nome_zucca`)
-     references `zuccampus`.`ZUCCA` (`nome_azienda`, `nome_zucca`);
+     references `zuccampus`.`ZUCCA` (`nome_azienda`, `nome_zucca`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table comprende add constraint FKcom_ORD_FK
      foreign key (`username`, `data_ordine`, `ora`)
-     references `zuccampus`.`ORDINE` (`username`, `data_ordine`, `ora`);
+     references `zuccampus`.`ORDINE` (`username`, `data_ordine`, `ora`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table INDIRIZZO add constraint ID_INDIRIZZO_CHK
      check(exists(select * from AZIENDA_AGRICOLA
@@ -191,27 +203,39 @@ alter table INDIRIZZO add constraint ID_INDIRIZZO_CHK
 
 alter table link add constraint FKAZI_lin
      foreign key (`nome_app`)
-     references `zuccampus`.`AZIENDA` (`nome_app`);
+     references `zuccampus`.`AZIENDA` (`nome_app`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table MESSAGGIO add constraint FKricevere
      foreign key (`username`)
-     references `zuccampus`.`UTENTE` (`username`);
+     references `zuccampus`.`UTENTE` (`username`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table ORDINE add constraint FKritiro_FK
      foreign key (`via`, `numero_civico`, `cap`)
-     references `zuccampus`.`INDIRIZZO` (`via`, `numero_civico`, `cap`);
+     references `zuccampus`.`INDIRIZZO` (`via`, `numero_civico`, `cap`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table ORDINE add constraint FKeffettua
      foreign key (`username`)
-     references `zuccampus`.`CLIENTE` (`username`);
+     references `zuccampus`.`CLIENTE` (`username`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table RECENSIONE add constraint FKvalutazione_FK
      foreign key (`nome_azienda`, `nome_zucca`)
-     references `zuccampus`.`ZUCCA` (`nome_azienda`, `nome_zucca`);
+     references `zuccampus`.`ZUCCA` (`nome_azienda`, `nome_zucca`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table RECENSIONE add constraint FKvaluta_FK
      foreign key (`username`)
-     references `zuccampus`.`CLIENTE` (`username`);
+     references `zuccampus`.`CLIENTE` (`username`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 alter table UTENTE add constraint EXTONE_UTENTE
      check((CLIENTE is not null and AGRICOLTORE is null)
@@ -219,7 +243,9 @@ alter table UTENTE add constraint EXTONE_UTENTE
 
 alter table ZUCCA add constraint FKvende
      foreign key (`nome_azienda`)
-     references `zuccampus`.`AZIENDA_AGRICOLA` (`nome_azienda`);
+     references `zuccampus`.`AZIENDA_AGRICOLA` (`nome_azienda`)
+     ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 
 -- Index Section
