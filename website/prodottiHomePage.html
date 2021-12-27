@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/style.css" > 
+<title>provaScroll</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<body>
+    <header class="text-dark">
+        <nav class="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="./homepage.html">
+                        <h1 class="text-black">ZUCCAMPUS</h1>
+                </a>
+                <div class="float-end">
+                    <a class="text-decoration-none" href="#">
+                        <img class="img-fluid ps-1 " src="../icons/carrello.png" alt="carrello" />
+                    </a>
+                    <a class="text-decoration-none" href="#">
+                        <img class="img-fluid ps-1 " src="../icons/user.png" alt="utente" />
+                    </a>
+                </div>
+            </div>
+         </nav>          
+    </header>
+    <article>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="col-9">
+                        <h1 class="text-center">I più venduti</h1>
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <h3 class="text-center">Zucca Delica</h3>
+                                    <p class="text-center">Categoria</p>
+                                    <img class="d-block w-100" src="../icons/zuccaDelica.png" alt="First slide">
+                                    <h3 class="text-center">Prezzo</h3>
+                                </div>
+                                <div class="carousel-item">
+                                    <h3 class="text-center">Zucca Vanity</h3>
+                                    <p class="text-center">Categoria</p>
+                                    <img class="d-block w-100" src="../icons/vanity.png" alt="Second slide">
+                                    <h3 class="text-center">Prezzo</h3>
+                                </div>
+                                <div class="carousel-item">
+                                    <h3 class="text-center">Zucca Lunage</h3>
+                                    <p class="text-center">Categoria</p>
+                                    <img class="d-block w-100" src="../icons/zucca_ornamentale.jpg" alt="Third slide">
+                                    <h3 class="text-center">Prezzo</h3>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-9">
+                        <div class="text-center">
+                            <button class="rounded " type="button">
+                            <a class=" text-decoration-none text-black" href="prodotti.html">Visualizza tutti i prodotti</a>
+                            </button>
+                        </div>
+                        <h2 class="text-center">
+                            Qualità a km0
+                        </h2>
+                        <p class="text-center">
+                            Le aziende venditrici sono aziende locali che da anni producono zucche di alta qualità.
+                            Prodotti a km 0 a costi ridotti, mangiare sano economicamente non è mai stato così facile
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+    <footer class=" rounded-top ">
+        <div class="text-white text-center">
+            <p>Zuccampus s.p.a <br> Via dell'Università 50 - 47521 <br> Cesena(FC) <br> <a 
+                class="text-white" href="#">zuccampusspa@gmail.com</a> <br>
+            </p>
+                <img src="../icons/instagram.png" alt="instagram logo"> 
+            <a class="text-white text-decoration-none" href="#">@zuccampus</a>
+        </div>
+
+    </footer>
+
+</body>
