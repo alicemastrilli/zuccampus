@@ -83,13 +83,13 @@ create table INDIRIZZO (
 
 create table link (
      nome_app char(15) not null,
-     link char(15) not null,
+     link char(30) not null,
      logo varchar(30),
      constraint ID_link_ID primary key (nome_app, link));
 
 create table MESSAGGIO (
      username varchar(30) not null,
-     testo char(60) not null,
+     testo char(250) not null,
      data date not null,
      ora time(6) not null,
      tag_letto char,
@@ -106,7 +106,7 @@ create table ORDINE (
 
 create table RECENSIONE (
      idRecensione numeric(5) not null,
-     descrizione char(150),
+     descrizione char(250),
      punteggio numeric(5) not null,
      nome_azienda char(30) not null,
      nome_zucca char(20) not null,
@@ -116,7 +116,7 @@ create table RECENSIONE (
 create table UTENTE (
      immagine varchar(30),
      num_telefono numeric(14) not null,
-     email char(20) not null,
+     email char(30) not null,
      username varchar(30) not null,
      password varchar(15) not null,
      nome char(20) not null,
@@ -133,7 +133,7 @@ create table ZUCCA (
      prezzo numeric(3) not null,
      peso numeric(4) not null,
      disponibilita numeric(3) not null,
-     descrizione_zucca char(60),
+     descrizione_zucca char(250),
      constraint ID_ZUCCA_ID primary key (nome_azienda, nome_zucca));
 
 
@@ -187,7 +187,7 @@ alter table comprende add constraint FKcom_ZUC
     ON UPDATE NO ACTION;
 
 alter table comprende add constraint FKcom_ORD_FK
-     foreign key (`username`, `data_ordine`, `ora`)
+     foreign key (`username`, `data`, `ora`)
      references `zuccampus`.`ORDINE` (`username`, `data_ordine`, `ora`)
      ON DELETE NO ACTION
     ON UPDATE NO ACTION;
