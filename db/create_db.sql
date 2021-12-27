@@ -71,7 +71,7 @@ create table comprende (
      ora time(6) not null,
      nome_azienda char(30) not null,
      nome_zucca char(20) not null,
-     quantita char(1) not null,
+     quantita numeric(3) not null,
      constraint ID_comprende_ID primary key (nome_azienda, nome_zucca, username, data, ora));
 
 create table INDIRIZZO (
