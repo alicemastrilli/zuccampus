@@ -39,7 +39,7 @@ class DatabaseHelper{
     }
 
     public function getAziendaAgricolaInfo() {
-        $stmt = $this->db->prepare("SELECT a.nome_azienda, u.nome,u.cognome, a.descrizione
+        $stmt = $this->db->prepare("SELECT a.nome_azienda, u.nome,u.cognome,u.immagine, a.descrizione
          from utente u, azienda_agricola a, agricoltore agr where a.nome_azienda = agr.nome_azienda
          and agr.username = u.username");
         $stmt->execute();

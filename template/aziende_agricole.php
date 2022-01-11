@@ -20,14 +20,14 @@
                             </form>
                         </div>  
                         <div class="col-6 text-center">
-                        <form  action="#" method="get">
+                        <form  action="venditore.php?id=<?php echo $azienda["nome_azienda"]?>" method="post">
                             <button class="rounded">Scopri il venditore</button>
                             </form>
                         </div>
                     
                 </td>
-                <td class="col-3 p-2">
-                    <img class="float-end" src="./icons/mario.jpg" alt="">
+                <td class="col-1 p-2">
+                    <img class="float-end" src="<?php echo UPLOAD_DIR.$azienda["immagine"]?>" alt="">
                 </td>
                 </tr>
                     <?php endforeach;?>

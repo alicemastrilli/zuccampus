@@ -1,6 +1,7 @@
     <section>
         <div class="text-center p-3">
-        <img src="../icons/mario.jpg" class="rounded-circle border border-2 border-dark" alt="mario">
+        <img src="<?php echo UPLOAD_DIR.$templateParams["agricoltore"]["immagine"]?>" class="rounded-circle border border-2 border-dark" 
+        alt="<?php echo $templateParams["agricoltore"]["nome"]?>"/>
         </div>
         <h3 class="text-center"><?php echo $templateParams["agricoltore"]["nome"]; ?> <?php echo $templateParams["agricoltore"]["cognome"]; ?></h3>
         <h5 class="text-center"><?php echo $templateParams["agricoltore"]["email"]; ?></h5>
@@ -22,7 +23,7 @@
                 </div>
                 <label for="descrizione_azienda_agricola" class="form-label px-2">Descrizione Azienda agricola:</label><br>
                 <div class="mx-2 pb-3">
-                   <textarea class="form-control " id="descrizione_azienda_agricola" 
+                   <textarea class="form-control" rows="5" id="descrizione_azienda_agricola" 
                    name="descrizione_azienda_agricola" readonly><?php echo $templateParams["azienda_info"]["descrizione"]; ?> </textarea>
                 </div>
               </div>
