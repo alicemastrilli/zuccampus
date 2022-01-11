@@ -15,7 +15,7 @@
     </header>
     <main>
     <?php
-        require($templateParams["main"]);
+       require($templateParams["main"]);
     ?>
     </main>
         <!--copiare da qui (dentro al proprio body)-->
