@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <link rel="stylesheet" type="text/css" href="./css/agricoltori.css" /> 
+
+    </head>
 <article>
         <table class="table table-striped">
             <tbody>
@@ -9,16 +15,16 @@
                     <p><?php echo $azienda["descrizione"]; ?></p>
                     <div class="row">
                         <div class="col-6 text-center"> 
-                            <button class="rounded" type="button">
-                            <a class=" text-decoration-none text-dark" href="#">Scopri i prodotti</a>
-                            </button>
-                        </div>
+                            <form  action="#" method="get">
+                            <button class="rounded">Scopri i prodotti</button>
+                            </form>
+                        </div>  
                         <div class="col-6 text-center">
-                            <button class="rounded " type="button">
-                            <a class=" text-decoration-none text-dark" href="#">Scopri il venditore</a>
-                            </button>
-                            </div>
-                    </div>
+                        <form  action="#" method="get">
+                            <button class="rounded">Scopri il venditore</button>
+                            </form>
+                        </div>
+                    
                 </td>
                 <td class="col-3 p-2">
                     <img class="float-end" src="./icons/mario.jpg" alt="">

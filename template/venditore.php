@@ -20,9 +20,9 @@
                    <input  type="text" class="form-control " id="azienda_agricola" value="<?php echo $templateParams["azienda_info"]["nome_azienda"]; ?>"
                     name="azienda_agricola" readonly>
                 </div>
-                <label for=" descrizione_azienda_agricola" class="form-label px-2">Descrizione Azienda agricola:</label><br>
+                <label for="descrizione_azienda_agricola" class="form-label px-2">Descrizione Azienda agricola:</label><br>
                 <div class="mx-2 pb-3">
-                   <textarea  type="text" class="form-control " id="descrizione_azienda_agricola" 
+                   <textarea class="form-control " id="descrizione_azienda_agricola" 
                    name="descrizione_azienda_agricola" readonly><?php echo $templateParams["azienda_info"]["descrizione"]; ?> </textarea>
                 </div>
               </div>
@@ -34,7 +34,7 @@
                 <div class="mx-2 pb-3">
                    <input  type="text" class="form-control " id="indirizzo" value="<?php echo $templateParams["azienda_info"]["via"]; ?> <?php echo $templateParams["azienda_info"]["numero_civico"]; ?>" name="indirizzo" readonly>
                 </div>
-                <label for="citta" class="form-label px-2">Città:</label><br>
+                <label for="città" class="form-label px-2">Città:</label><br>
                 <div class="mx-2 pb-3">
                    <input  type="text" class="form-control " id="città" value="<?php echo $templateParams["azienda_info"]["citta"]; ?>" name="città" readonly>
                 </div>
