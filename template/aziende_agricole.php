@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/agricoltori.css" /> 
+        <link rel="stylesheet" type="text/css" href="./css/aziende_agricole.css" /> 
 
     </head>
 <article>
@@ -27,7 +27,7 @@
                     
                 </td>
                 <td class="col-1 p-2">
-                    <img class="float-end" src="<?php echo UPLOAD_DIR.$azienda["immagine"]?>" alt="">
+                    <img class="float-end" src="<?php echo UPLOAD_DIR.getImageOfUser($azienda["immagine"])?>" alt="">
                 </td>
                 </tr>
                     <?php endforeach;?>

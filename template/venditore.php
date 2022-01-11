@@ -1,7 +1,18 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
+
+    </head>
     <section>
-        <div class="text-center p-3">
-        <img src="<?php echo UPLOAD_DIR.$templateParams["agricoltore"]["immagine"]?>" class="rounded-circle border border-2 border-dark" 
+       <div class="row">
+       <a class="col-3" href="aziende_agricole.php">
+         <img src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">
+       </a>
+        <div class="col-6 p-3 text-center ">
+        <img src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["agricoltore"]["immagine"]);?>" class=" rounded-circle border border-2 border-dark" 
         alt="<?php echo $templateParams["agricoltore"]["nome"]?>"/>
+        </div>
         </div>
         <h3 class="text-center"><?php echo $templateParams["agricoltore"]["nome"]; ?> <?php echo $templateParams["agricoltore"]["cognome"]; ?></h3>
         <h5 class="text-center"><?php echo $templateParams["agricoltore"]["email"]; ?></h5>
