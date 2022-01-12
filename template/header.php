@@ -4,12 +4,12 @@
                         <h1 class="text-dark"><?php echo $templateParams["nome"] ; ?></h1>
                 </a>
                 <div class="float-end">
-                    <a class="text-decoration-none" href="#">
-                        <img class="img-fluid ps-1 " src="./icons/carrello.png" alt="carrello" />
+                    <?php foreach(getFootersIcons() as $icon):?>
+                    <a class="text-decoration-none col-2" href="#">
+                        <img class=" img-fluid ps-1 " src="<?php echo $icon?>" alt="<?php echo $icon?>" />
                     </a>
-                    <a class="text-decoration-none" href="#">
-                        <img class="img-fluid ps-1 " src="./icons/user.png" alt="utente" />
-                    </a>
+                    <?php endforeach;?>
                 </div>
+                
             </div>
          </nav>          

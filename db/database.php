@@ -67,7 +67,25 @@ class DatabaseHelper{
     return $result->fetch_all(MYSQLI_ASSOC);
 
    }
+   public function checkLogin($username, $password){
+    $query = "SELECT immagine, username FROM utente WHERE username = ? AND password = ?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('ss',$username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+    public function checkAgricoltore($username) {
+        $query = "SELECT  username FROM agricoltore WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
 }
 ?>
