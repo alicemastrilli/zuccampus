@@ -1,0 +1,76 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    background-color: #F5982B;
+}
+
+header img {
+    width: 60px;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.69);
+    font-size: 20px;
+    bottom: 0;
+}
+
+footer img {
+    width: 40px;
+}
+
+section img {
+    width: 150px;
+    height: 150px;
+}
+
+section>h3 {
+    font-weight: bold;
+}
+
+section>article {
+    background-color: rgb(196, 196, 196);
+}
+
+article img {
+    width: 100px;
+}
+
+article button {
+    background-color: #D9AF5D;
+}
+
+article textarea {
+    resize: none;
+}
+
+article button a {
+    font-weight: bold;
+}
+
+body>main>div>div>div>p {
+    text-align: center;
+    font-size: 18px;
+    font-family: serif;
+}
+
+body>main>div>div>div>div>div>div>p {
+    text-align: center;
+    font-size: 15px;
+    font-family: serif;
+}
+
+body>main>div>div>div {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+body>main>div>div>div>button {
+    background-color: #D9AF5D;
+    color: black;
+    text-align: center;
+}
