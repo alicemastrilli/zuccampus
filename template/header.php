@@ -1,5 +1,5 @@
  <nav class="navbar">
-            <div class="container">
+            <div class="container ">
                 <a class="navbar-brand text-black" href="#">
                         <h1 class="text-dark"><?php echo $templateParams["nome"] ; ?></h1>
                 </a>

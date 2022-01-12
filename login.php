@@ -31,7 +31,9 @@ else{
     $templateParams["nome"] = "login-form.php";
     $templateParams["main"] = "login-form.php";
 }
-$templateParams["nome"] = "Zuccampus";
+$templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
+
+
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
