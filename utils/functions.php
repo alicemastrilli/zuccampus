@@ -14,14 +14,14 @@ function getFootersIcons(){
     $icons=array();
     if(isUserLoggedIn()){
         if($_SESSION["agricoltore"] == 0){
-            array_push($icons, UPLOAD_DIR."carrello.png");   
+            array_push($icons, array("img"=>UPLOAD_DIR."carrello.png", "a"=>"login.php"));   
         } 
-        array_push($icons, UPLOAD_DIR."posta.jpg");
-        array_push($icons, UPLOAD_DIR.$_SESSION["img_user"]);
+        array_push($icons, array("img"=>UPLOAD_DIR."posta.jpg","a"=>"login.php" ));
+        array_push($icons, array("img"=> UPLOAD_DIR.$_SESSION["img_user"],"a"=>"login.php"));
     }
     else {
-        array_push($icons, UPLOAD_DIR."carrello.png");
-        array_push($icons, UPLOAD_DIR."user.png");
+        array_push($icons, array("img"=> UPLOAD_DIR."carrello.png","a"=>"login.php"));
+        array_push($icons, array("img"=> UPLOAD_DIR."user.png","a"=>"login.php"));
     }
     return $icons;
 }
