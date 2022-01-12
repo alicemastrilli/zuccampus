@@ -24,7 +24,7 @@ INSERT INTO `utente` (`immagine`, `num_telefono`, `email`, `username`, `password
 
 INSERT INTO `cliente` (`username`, `matricola`) VALUES 
 ('GentiAle', '910004625'),
-('Verdi', '890005787');
+('Verdi', '890005787'),
 ('ProfCarletti', NULL);
 
 INSERT INTO `carta_di_credito` (`cvv`, `nome`, `numero_carta`, `mese_scadenza`, `anno_scadenza`, `cognome`, `username`) VALUES 
