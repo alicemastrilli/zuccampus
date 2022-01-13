@@ -9,6 +9,11 @@ function getImageOfUser($img){
 function isUserLoggedIn(){
     return !empty($_SESSION['username']);
 }
+function isActive($pagename){
+    if(basename($_SERVER['PHP_SELF'])==$pagename){
+        echo " class='active' ";
+    }
+}
 
 function getFootersIcons(){
     $icons=array();

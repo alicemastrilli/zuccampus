@@ -1,6 +1,11 @@
 <?php
 require_once 'bootstrap.php';
 
+$templateParams["header"] = "header.php";
+$templateParams["footer"] = "footer.php";
+$templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
+$templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
+$templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 if(isset($_POST["username"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
     if(count($login_result)==0){
@@ -23,7 +28,8 @@ if(isUserLoggedIn()){
     else{
         $templateParams["titolo"] = "Zuccampus - Agricoltore";
         $_SESSION["agricoltore"] = 1;
-        $templateParams["main"] = "agricoltore_logged.php";
+        $templateParams["main"] = "agricoltore_vendite.php";
+        
     }
 }
 else{
@@ -34,10 +40,6 @@ else{
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 
 
-$templateParams["header"] = "header.php";
-$templateParams["footer"] = "footer.php";
-$templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
-$templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 
 require 'template/homePage.php';
 ?>
