@@ -97,5 +97,52 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getZuccaByName($nome_zucca){
+        $query="SELECT * from zucca z where z.nome_zucca=? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s",$nome_zucca);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+
+    }
+
+    public function getPopularPumpkins(){
+        $query="SELECT * FROM comprende,zucca WHERE comprende.nome_zucca=zucca.nome_zucca ORDER BY quantita ASC LIMIT 2";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFirstPumpkin(){
+        $query = "SELECT * FROM comprende,zucca WHERE  comprende.nome_zucca=zucca.nome_zucca ORDER BY quantita DESC LIMIT 1";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllPumpkins(){
+        $query = "SELECT * FROM zucca";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllFarmers(){
+        $query = "SELECT * FROM agricoltore";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 ?>
