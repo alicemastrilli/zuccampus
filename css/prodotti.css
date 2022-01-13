@@ -56,14 +56,6 @@ body>main>div>div>div>img:nth-child(1) {
     right: 0;
 }
 
-
-/*da qui in poi nuove cose*/
-
-body>main>div>div>div>div:nth-child(1) {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
 body>main>div>div>div>div>button.btn {
     background-color: #D9AF5D;
     border-color: #D9AF5D;
@@ -86,4 +78,11 @@ body>main>div>div>div>div>h2 {
 body>main>div>div>div>div>button {
     background-color: #D9AF5D;
     border-color: #D9AF5D;
+}
+
+body>main>div>div>div>button.btn {
+    background-color: #D9AF5D;
+    border-color: #D9AF5D;
+    margin-top: 5px;
+    border-radius: 2px;
 }
