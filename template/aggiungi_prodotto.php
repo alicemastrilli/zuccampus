@@ -10,6 +10,7 @@
         </div>
         <article class="rounded mx-2">
             <div class="col-12 p-3 text-center ">
+                <!--correggere la tondita' della foto profilo di default-->
                 <img src="./icons/utente_generico.jpg" alt="foto profilo default"/>
                 <div class="pb-1 text-center">
                     <form  action="#" method="get">

@@ -1,7 +1,7 @@
 <?php
 require_once("bootstrap.php");
 
-$templateParams["titolo"] = "Zuccampus - Registrazione";
+$templateParams["titolo"] = "Zuccampus - Aggiungi Prodotto";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
 $templateParams["main"] = "aggiungi_prodotto.php";

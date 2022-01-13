@@ -8,8 +8,14 @@
        <div class="row">
        
         <div class="col-12 p-3 text-center ">
+         <!--correggere la tondita' della foto profilo di default--> 
         <img src="./icons/utente_generico.jpg" class="round-circle max" 
         alt="foto profilo default"/>
+        <div class="pb-1 text-center">
+        <form  action="#" method="get">
+            <button class="rounded p-1" type="button" name="Inserisci foto profilo" >Inserisci foto profilo</button>
+        </form>
+        </div>
         </div>
         </div>
         <article class="rounded mx-2">

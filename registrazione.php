@@ -1,7 +1,7 @@
 <?php
 require_once("bootstrap.php");
 
-$templateParams["titolo"] = "Zuccampus- Aziende Agricole";
+$templateParams["titolo"] = "Zuccampus - Registrazione";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
 $templateParams["main"] = "registrazione.php";
