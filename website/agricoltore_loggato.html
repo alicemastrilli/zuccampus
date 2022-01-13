@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="../css/style.css" > 
+                
+        <link rel="stylesheet" href="../css/agricoltore_loggato.css" > 
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+    </head>
+    
+    <body>
+        <!--copiare da qui (dentro al proprio body)-->
+    <header class="text-dark">
+        <nav class="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="./homepage.html">
+                        <h1 class="text-black">ZUCCAMPUS</h1>
+                </a>
+                <div class="float-end">
+                    <a class="text-decoration-none" href="#">
+                        <img class="img-fluid ps-1 " src="../icons/carrello.png" alt="carrello" />
+                    </a>
+                    <a class="text-decoration-none" href="#">
+                        <img class="img-fluid ps-1 " src="../icons/user.png" alt="utente" />
+                    </a>
+                </div>
+            </div>
+         </nav>          
+    </header>
+ <!--copiare fin qui-->
+ <ul class="nav nav-tabs nav-justified">
+    <li class="nav-item col-6">
+      <a class="nav-link active" href="#"><h3>Vendite</h3></a>
+    </li>
+    <li class="nav-item col-6">
+      <a class="nav-link" href="#"><h3>Prodotti</h3></a>
+    </li>
+  </ul>
+  <div class="p-3 text-center" > <h4>Guadagno: <span class="text-success">+26,50€</span></h4>  </div> </div>
+  <canvas class="align-items-center" id="myChart" style="width:100%;max-width:700px"></canvas>
+  <script>
+    var xValues = ["gen 20","feb 20",70,80,90,100,110,120,130,140,150];
+    var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+    
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{
+          fill: false,
+          lineTension: 0,
+          backgroundColor: "rgba(0,0,255,1.0)",
+          borderColor: "rgba(0,0,255,0.1)",
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+          yAxes: [{ticks: {min: 6, max:16}}],
+        }
+      }
+    });
+    </script>
+  <div class="mx-4 p-3"> <h5>Ultime transazioni:</h5></div>
+  <ul class="list-group mx-3">
+    <li class="list-group-item"> <div>Alice Conti <br>2 x zucca piccola<div class="float-end text-success"> +25,00€</div></div> </li>
+    <li class="list-group-item"><div>Elisa Barbeini <br>2 x zucca piccola<div class="float-end text-success"> +25,00€</div></div></li>
+
+  </ul>
+
+</div>
+    <footer class=" rounded-top ">
+        <div class="text-white text-center">
+            <p>Zuccampus s.p.a <br> Via dell'Università 50 - 47521 <br> Cesena(FC) <br> <a 
+                class="text-white" href="#">zuccampusspa@gmail.com</a> <br>
+            </p>
+                <img src="../icons/instagram.png" alt="instagram logo"> 
+            <a class="text-white text-decoration-none" href="#">@zuccampus</a>
+        </div>
+
+    </footer>
+
+
+    </body>
+</html>
