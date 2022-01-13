@@ -1,12 +1,3 @@
-
-  <ul class="nav nav-tabs nav-justified">
-    <li class="nav-item col-6">
-      <a class="nav-link active" href="agricoltore_vendite.php"><h3>Vendite</h3></a>
-    </li>
-    <li class="nav-item col-6">
-      <a <?php isActive("agricoltore_prodotti.php");?> class="nav-link" href="agricoltore_prodotti.php"><h3>Prodotti</h3></a>
-    </li>
-  </ul>
    <div class="p-3 text-center" > <h4>Guadagno: <span class="text-success">+26,50€</span></h4>  </div> </div>
   <canvas class="align-items-center" id="myChart" style="width:100%;max-width:700px"></canvas>
   <script>

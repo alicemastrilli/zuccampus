@@ -28,8 +28,8 @@ if(isUserLoggedIn()){
     else{
         $templateParams["titolo"] = "Zuccampus - Agricoltore";
         $_SESSION["agricoltore"] = 1;
-        $templateParams["main"] = "agricoltore_vendite.php";
-        
+        $templateParams["main"] = "agricoltore_base.php";
+        $templateParams["main_agr"] = "agricoltore_vendite.php";
     }
 }
 else{
