@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php 
-$utente = $templateParams["utente"];
+$utente = $templateParams["utente"] ;
 ?>
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
     <head>
@@ -24,6 +24,7 @@ $utente = $templateParams["utente"];
             <h3 class="pt-2 px-2">Informazioni di base</h3>
             <div class="mb-3 mt-3">
                 <!--gestire per ogni input l'inserimento di una nuova riga nel database-->
+                <!--inserire anche matricola facoltativa -->
                 <label for="nome" class="form-label px-2">Nome:</label><br>
                   <div class="mx-2 pb-3">
                      <input class="form-control" type="text" id="nome" name="nome" value="<?php echo $utente["nome"]; ?>" />
@@ -40,6 +41,20 @@ $utente = $templateParams["utente"];
                 <div class="mx-2 pb-3">
                   <input type="text" id="password" name="password" value="<?php echo $utente["password"]; ?>" />
                 </div>
+                <div class="mx-2 pb-3">
+                  <input type="checkbox" id="studente" name="studente" value=true/><label for="studente">Studente</label>
+                </div>
+                <div class="mx-2 pb-3">
+                  <input type="checkbox" id="Professore" name="Professore" value=true/><label for="Professore">Professore</label>
+                </div>
+                <div class="mx-2 pb-3">
+                  <input type="checkbox" id="altro" name="altro " value=true/><label for="altro">Altro</label>
+                </div>
+                <label for="matricola" class="form-label px-2 ">Matricola:</label><br>
+                <div class="mx-2 pb-3">
+                  <input type="text" id="matricola" name="matricola" value="" />
+                </div>
+
                 
               </div>
         </article>
