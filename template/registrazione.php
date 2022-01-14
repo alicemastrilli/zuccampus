@@ -4,12 +4,12 @@
 $utente = $templateParams["utente"] ;
 ?>
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
-    <head>
+  <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
-    </head>
-    <section>
-       <div class="row">
-        <div class="col-12 p-3 text-center ">
+  </head>
+  <section>
+    <div class="row">
+      <div class="col-12 p-3 text-center ">
          <!--correggere la tondita' della foto profilo di default--> 
         <img src="./icons/utente_generico.jpg" class="round-circle max" 
         alt="foto profilo default"/>
@@ -18,11 +18,11 @@ $utente = $templateParams["utente"] ;
             <button class="rounded p-1" type="button" name="Inserisci foto profilo" >Inserisci foto profilo</button>
         </form>
         </div>
-        </div>
-        </div>
-        <article class="rounded mx-2">
+      </div>
+    </div>
+    <article class="rounded mx-2">
             <h3 class="pt-2 px-2">Informazioni di base</h3>
-            <div class="mb-3 mt-3">
+              <div class="mb-3 mt-3">
                 <!--gestire per ogni input l'inserimento di una nuova riga nel database-->
                 <!--inserire anche matricola facoltativa -->
                 <label for="nome" class="form-label px-2">Nome:</label><br>
@@ -50,12 +50,11 @@ $utente = $templateParams["utente"] ;
                 <div class="mx-2 pb-3">
                   <input type="checkbox" id="altro" name="altro " value=true/><label for="altro">Altro</label>
                 </div>
+                <!--gestire la matricola solo se se studente e' checkatore  -->
                 <label for="matricola" class="form-label px-2 ">Matricola:</label><br>
                 <div class="mx-2 pb-3">
                   <input type="text" id="matricola" name="matricola" value="" />
                 </div>
-
-                
               </div>
         </article>
         <article class="rounded mx-2">
@@ -69,18 +68,21 @@ $utente = $templateParams["utente"] ;
             <div class="mb-3 mt-3">
                 <label for="email" class="form-label px-2">Email:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="email" class="form-control " id="email"  name="email"  placeholder="Inserisci email">
-                </div>
+                  <input type="text" id="email" name="email" value="<?php echo $utente["email"]; ?>" />
+                  </div>
                 <label for="num_telefono" class="form-label px-2">Numero telefonico:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="number" class="form-control " id="num_telefono" name="numero_telefono"  placeholder="Inserisci numero di telefono">
-                </div>
+                     <input type="text" id="num_telefono" name="num_telefono" value="<?php echo $utente["num_telefono"]; ?>" />
+                  </div>
                 
               </div>
         </article>
         <div class="pb-3 text-center">
-        <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
-            <button class="rounded p-2" type="button" name="Submit" >Registrati</button>
-        </form>
+        
+          <input type="submit" name="submit" value="registrati" />
+  
         </div>
-    </section>
+       
+  </section>
+
+</form>

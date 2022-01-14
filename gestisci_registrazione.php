@@ -10,6 +10,7 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 
     $templateParams["utente"] = getEmptyUser();
     $templateParams["main"] = "registrazione.php";
+    $templateParams["registrazione_agricoltore"] = "registrazione_agricoltore.php";
 
 require("template/homePage.php");
 ?>

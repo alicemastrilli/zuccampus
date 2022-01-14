@@ -1,5 +1,6 @@
+        <!--gestisco l'azienda agricola solo se e' un agricoltore-->
         <h3 class="pt-2 px-2">Azienda agricola</h3>
-        <!--gestire l'azienda agricola solo se e' un agricoltore-->
+        
         <label for="azienda_agricola" class="form-label px-2">Azienda agricola:</label><br>
                 <div class="mx-2 pb-3">
                    <input class="form-control" type="text" class="form-control " id="azienda_agricola" 
