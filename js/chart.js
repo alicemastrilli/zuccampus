@@ -1,6 +1,4 @@
-var xValues = ["gen 20","feb 20",70,80,90,100,110,120,130,140,150];
-    var yValues = [7,8,8,9,9,9,10,11,14,14,15];
-    
+function prova(xValues, yValues){
     new Chart("myChart", {
       type: "line",
       data: {
@@ -16,7 +14,7 @@ var xValues = ["gen 20","feb 20",70,80,90,100,110,120,130,140,150];
       options: {
         legend: {display: false},
         scales: {
-          yAxes: [{ticks: {min: 6, max:16}}],
+          yAxes: [{ticks: {min: 0, max:20}}],
         }
       }
-    });
+    });}
