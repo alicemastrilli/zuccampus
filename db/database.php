@@ -144,6 +144,25 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getVendite($nome_azienda){
+        $query = "SELECT data, sum(quantita) as quantita FROM comprende WHERE nome_azienda = ? GROUP BY data ORDER BY data ASC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $nome_azienda);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAziendaByUsername($username){
+        $query = "SELECT nome_azienda  FROM agricoltore WHERE username = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     public function insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome){
         $query = "INSERT INTO `utente` (`immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
@@ -153,6 +172,18 @@ class DatabaseHelper{
         
         return $stmt->insert_id;
 
+    }
+
+    public function getAllOrders($nome_azienda){
+        $query = "SELECT c.nome_zucca, c.quantita,c.data,z.prezzo,u.nome,u.cognome   FROM comprende c,zucca z,utente u
+         WHERE c.nome_azienda =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca and u.username = c.username
+         order by c.data desc";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $nome_azienda);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 }
