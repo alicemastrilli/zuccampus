@@ -9,9 +9,10 @@
         <div class="row m-2">
             <div class="col-sm-0 text-center">
                 <img class="img-fluid my-4" src="./icons/icona_login.png" alt="login cliente"/>
-                <form action="registrazione.php?action=1" method="post">
+                <!--<form action="gestisci_registrazione.php?action=1" method="post">
                     <button class="rounded p-4"  name="cliente">Sono un cliente</button>
-                </form>
+                </form>-->
+                <a href="gestisci_registrazione.php?action=1">Sono un cliente</a>
             </div>
         </div>
         <div class="row m-2">

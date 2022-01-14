@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
+<?php 
+$utente = $templateParams["utente"];
+?>
+<form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
     <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
     </head>
@@ -21,20 +25,20 @@
             <div class="mb-3 mt-3">
                 <!--gestire per ogni input l'inserimento di una nuova riga nel database-->
                 <label for="nome" class="form-label px-2">Nome:</label><br>
-                <div class="mx-2 pb-3">
-                   <input class="form-control" type="text" id="nome" name="nome" placeholder="Inserisci nome">
-                </div>
+                  <div class="mx-2 pb-3">
+                     <input class="form-control" type="text" id="nome" name="nome" value="<?php echo $utente["nome"]; ?>" />
+                  </div>
                 <label for="cognome" class="form-label px-2 ">Cognome:</label><br>
-                <div class="mx-2 pb-3">
-                   <input class="form-control" type="text" id="cognome" name="cognome" placeholder="Inserisci cognome">
-                </div>
+                  <div class="mx-2 pb-3">
+                     <input type="text" id="cognome" name="cognome" value="<?php echo $utente["cognome"]; ?>" />
+                  </div>
                 <label for="username" class="form-label px-2 ">Username:</label><br>
-                <div class="mx-2 pb-3">
-                   <input class="form-control" type="text" id="username" name="username" placeholder="Inserisci username">
-                </div>
+                  <div class="mx-2 pb-3">
+                     <input type="text" id="username" name="username" value="<?php echo $utente["username"]; ?>" />
+                  </div>
                 <label for="password" class="form-label px-2 ">Password:</label><br>
                 <div class="mx-2 pb-3">
-                   <input class="form-control" type="text" id="password" name="password" placeholder="Inserisci password">
+                  <input type="text" id="password" name="password" value="<?php echo $utente["password"]; ?>" />
                 </div>
                 
               </div>
@@ -60,7 +64,7 @@
               </div>
         </article>
         <div class="pb-3 text-center">
-        <form  action="#" method="get">
+        <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
             <button class="rounded p-2" type="button" name="Submit" >Registrati</button>
         </form>
         </div>
