@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
+        
     </head>
     <section>
         <div class="row text-center">
-        <h3 class=" px-2">Aggiungi un nuovo prodotto al tuo negozio</h3>
-            
+            <h3 class=" px-2">Aggiungi un nuovo prodotto al tuo negozio</h3>
         </div>
+        <div class="row text-center">
         <article class="rounded mx-2">
             <div class="col-12 p-3 text-center ">
                 <!--correggere la tondita' della foto profilo di default-->
@@ -26,8 +26,14 @@
                 </div>
                 <!--Categoria far scegliere da una tendina-->
                 <label for="categoria" class="form-label px-2 ">Categoria:</label><br>
-                <div class="mx-2 pb-3">
-                   <input class="form-control" type="text" id="Categoria" name="Categoria" placeholder="Inserisci categoria">
+                <div class="col-sm-0">
+                    <form action="/action_page.php">
+                    <select name="Tipo zucca" id="Tipo Zucca">
+                     <option value="volvo">Zucca commestibile</option>
+                     <option value="saab">Zucca ornamentale</option>
+                    </select>
+                    </form>
+                </div>
                 </div>
                 <label for="descrizione_zucca" class="form-label px-2">Descrizione:</label><br>
                 <div class="mx-2 pb-3">
@@ -37,6 +43,7 @@
                 </div>
               </div>
         </article>
+        </div>
         
         <div class="pb-3 text-center">
         <form  action="#" method="get">
