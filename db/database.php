@@ -174,5 +174,17 @@ class DatabaseHelper{
 
     }
 
+    public function getAllOrders($nome_azienda){
+        $query = "SELECT c.nome_zucca, c.quantita,c.data,z.prezzo,u.nome,u.cognome   FROM comprende c,zucca z,utente u
+         WHERE c.nome_azienda =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca and u.username = c.username
+         order by c.data desc";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $nome_azienda);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 ?>
