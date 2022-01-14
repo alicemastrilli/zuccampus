@@ -35,4 +35,8 @@ function registerLoggedUser($user){
     $_SESSION["img_user"] = getImageOfUser($user["immagine"]);
     $_SESSION["username"] = $user["username"];
 }
+
+function getEmptyUser(){
+    return array("immagine" => "", "num_telefono" => "", "email" => "", "username" => "", "password" => "", "nome" => "", "cognome" => "");
+}
 ?>

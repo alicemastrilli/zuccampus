@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
+<?php 
+$utente = $templateParams["utente"];
+?>
+<form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
     <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
-
     </head>
     <section>
        <div class="row">
-       
         <div class="col-12 p-3 text-center ">
          <!--correggere la tondita' della foto profilo di default--> 
         <img src="./icons/utente_generico.jpg" class="round-circle max" 
@@ -23,42 +25,29 @@
             <div class="mb-3 mt-3">
                 <!--gestire per ogni input l'inserimento di una nuova riga nel database-->
                 <label for="nome" class="form-label px-2">Nome:</label><br>
-                <div class="mx-2 pb-3">
-                   <input class="form-control" type="text" id="nome" name="nome" placeholder="Inserisci nome">
-                </div>
+                  <div class="mx-2 pb-3">
+                     <input class="form-control" type="text" id="nome" name="nome" value="<?php echo $utente["nome"]; ?>" />
+                  </div>
                 <label for="cognome" class="form-label px-2 ">Cognome:</label><br>
+                  <div class="mx-2 pb-3">
+                     <input type="text" id="cognome" name="cognome" value="<?php echo $utente["cognome"]; ?>" />
+                  </div>
+                <label for="username" class="form-label px-2 ">Username:</label><br>
+                  <div class="mx-2 pb-3">
+                     <input type="text" id="username" name="username" value="<?php echo $utente["username"]; ?>" />
+                  </div>
+                <label for="password" class="form-label px-2 ">Password:</label><br>
                 <div class="mx-2 pb-3">
-                   <input class="form-control" type="text" id="cognome" name="cognome" placeholder="Inserisci cognome">
+                  <input type="text" id="password" name="password" value="<?php echo $utente["password"]; ?>" />
                 </div>
-                <!--gestire l'azienda agricola solo se e' un agricoltore-->
-                <label for="azienda_agricola" class="form-label px-2">Azienda agricola:</label><br>
-                <div class="mx-2 pb-3">
-                   <input class="form-control" type="text" class="form-control " id="azienda_agricola" 
-                    name="azienda_agricola" placeholder="Inserisci il nome della tua azienda agricola">
-                </div>
-                <label for="descrizione_azienda_agricola" class="form-label px-2">Descrizione Azienda agricola:</label><br>
-                <div class="mx-2 pb-3">
-                   <textarea class="form-control" rows="5" id="descrizione_azienda_agricola" 
-                   name="descrizione_azienda_agricola" placeholder="Inserisci descrizione azienda agricola"> </textarea>
-                </div>
+                
               </div>
         </article>
         <article class="rounded mx-2">
-            <h3 class="pt-2 px-2">Indirizzo dell'azienda agricola</h3>
-            <div class="mb-3 mt-3">
-                <label for="indirizzo" class="form-label px-2">Indirizzo:</label><br>
-                <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="indirizzo"  name="indirizzo" placeholder="Inserisci indirizzo">
-                </div>
-                <label for="città" class="form-label px-2">Città:</label><br>
-                <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="città" name="città" placeholder="Inserisci citta'">
-                </div>
-                <label for="cap" class="form-label px-2">Cap:</label><br>
-                <div class="mx-2 pb-3">
-                   <input  type="number" class="form-control " id="cap"  name="cap"  placeholder="Inserisci cap'">
-                </div>
-              </div>
+            <?php if($_GET["action"]==2){
+                  require($templateParams["registrazione_agricoltore"]);
+               }
+            ?>
         </article>
         <article class="rounded mx-2">
             <h3 class="pt-2 px-2">Informazioni di contatto</h3>
@@ -75,7 +64,7 @@
               </div>
         </article>
         <div class="pb-3 text-center">
-        <form  action="#" method="get">
+        <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
             <button class="rounded p-2" type="button" name="Submit" >Registrati</button>
         </form>
         </div>

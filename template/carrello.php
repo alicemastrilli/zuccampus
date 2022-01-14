@@ -32,8 +32,16 @@
         </div> 
         <div class="row m-2">
             <div class = "col-sm-0">
-            <p class="m-3">Ritiro presso Campus di Cesena - Via dell'Universita' 50<br>Arrivo previsto entro 24h</p>
+            <p class="m-2">Ritiro presso Campus di Cesena - Via dell'Universita' 50<br>Arrivo previsto entro 24h</p>
             </div>   
         </div>
+        <div class="row text-center">
+            <div class="mb-3">
+                <button type="button">Acquista</button>
+            </div>
+
+
+        </div>
+    </div>
          
   
