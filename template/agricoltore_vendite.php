@@ -16,7 +16,6 @@
 <script src="<?php echo $templateParams["js"]?>"></script> 
   <?php if(isset($templateParams["js"])):?>
     <?php
-    
     $valx = json_encode($templateParams["xV"]);
     $valy = json_encode($templateParams["yV"]);
     echo "<script>prova($valx, $valy)</script>";

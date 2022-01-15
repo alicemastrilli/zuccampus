@@ -30,6 +30,19 @@ function getFootersIcons(){
     }
     return $icons;
 }
+function computeDeliveryTime($ordine, $campus_info){
+    $date = date_create($ordine["data"]);
+    if($ordine["cap"] == $campus_info["cap"]){
+        if($ordine["via"] == $campus_info["via"] && $ordine["numero_civico"] == $campus_info["numero_civico"]){
+            date_add($date,date_interval_create_from_date_string("2 days"));
+        } else{
+             date_add($date,date_interval_create_from_date_string("3 days"));
+        }
+    } else{
+       date_add($date,date_interval_create_from_date_string("5 days"));  
+    }
+    return  date_format($date,"Y-m-d");
+}
 
 function registerLoggedUser($user){
     $_SESSION["img_user"] = getImageOfUser($user["immagine"]);
