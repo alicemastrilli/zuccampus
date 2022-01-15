@@ -41,7 +41,6 @@ function computeDeliveryTime($ordine, $campus_info){
     } else{
        date_add($date,date_interval_create_from_date_string("5 days"));  
     }
-    //date_format($date,"Y-m-d");
     return  $date;
 }
 
