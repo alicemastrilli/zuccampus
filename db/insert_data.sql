@@ -40,10 +40,10 @@ INSERT INTO `recensione` (`idRecensione`, `descrizione`, `punteggio`, `nome_azie
 ('12345', 'Buonissima!', '5', 'Gigi e le sue zucche', 'Zucca Delica', 'GentiAle'),
 ('98765', 'Meglio mangiarla cotta!', '4', 'La fattoria di Mario', 'Zucca di Chioggia', 'Verdi');
 
-INSERT INTO `ordine` (`username`, `data_ordine`, `ora`, `via`, `numero_civico`, `cap`) VALUES 
-('GentiAle', '2021-12-01', '11:53:05.000000', 'via dell''Università', '50', '40013'),
-('Verdi', '2021-12-12', '12:37:28.000000', 'via dell''Università', '50', '40013'),
-('ProfCarletti', '2021-11-30', '17:28:32.000000', 'via dell''Università', '50', '40013');
+INSERT INTO `ordine` (`id_ordine`,`username`, `data_ordine`, `ora`, `via`, `numero_civico`, `cap`) VALUES 
+(1,'GentiAle', '2021-12-01', '11:53:05.000000', 'via dell''Università', '50', '40013'),
+(2,'Verdi', '2021-12-12', '12:37:28.000000', 'via dell''Università', '50', '40013'),
+(3,'ProfCarletti', '2021-11-30', '17:28:32.000000', 'via dell''Università', '50', '40013');
 
 INSERT INTO `link` (`nome_app`, `link`, `logo`) VALUES 
 ('ZUCCAMPUS', 'www.facebook.com/zuccampus', 'logofacebook.png'),
@@ -53,10 +53,10 @@ INSERT INTO `messaggio` (`username`, `testo`, `data`, `ora`, `tag_letto`) VALUES
 ('GentiAle', 'Zucca consegnata', '2021-12-05', '11:10:30.000000', NULL),
 ('Verdi', 'Zucca in arrivo', '2021-12-15', '11:10:30.000000', NULL);
 
-INSERT INTO `comprende` (`username`, `data`, `ora`, `nome_azienda`, `nome_zucca`, `quantita`) VALUES 
-('GentiAle', '2021-12-01', '11:53:05.000000', 'Gigi e le sue zucche', 'Zucca Delica', '2'),
-('Verdi', '2021-12-12', '12:37:28.000000', 'La fattoria di Mario', 'Zucca di Chioggia', '1'),
-('ProfCarletti', '2021-11-30', '17:28:32.000000', 'La gioia di Marta', 'Zucca Tonda Padana', '3');
+INSERT INTO `comprende` (`id_ordine`,`username`, `data`, `ora`, `nome_azienda`, `nome_zucca`, `quantita`) VALUES 
+(1,'GentiAle', '2021-12-01', '11:53:05.000000', 'Gigi e le sue zucche', 'Zucca Delica', '2'),
+(2,'Verdi', '2021-12-12', '12:37:28.000000', 'La fattoria di Mario', 'Zucca di Chioggia', '1'),
+(3,'ProfCarletti', '2021-11-30', '17:28:32.000000', 'La gioia di Marta', 'Zucca Tonda Padana', '3');
 
 INSERT INTO `agricoltore` (`username`, `nome_azienda`) VALUES 
 ('MarioRossi', 'La fattoria di Mario'),
