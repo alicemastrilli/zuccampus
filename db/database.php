@@ -163,11 +163,10 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    public function insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome){
+    public function insertNewUser($immagine = null, $num_telefono = null, $email = null,  $username = null, $password = null, $nome = null, $cognome = null){
         $query = "INSERT INTO `utente` (`immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssssi',$immagine, $num_telefono, $email,  $username, $password, $nome, $cognome);
-        $stmt->execute();
+        $stmt->bind_param($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome);
         $stmt->execute();
         
         return $stmt->insert_id;

@@ -10,21 +10,20 @@ $utente = $templateParams["utente"] ;
   <section>
     <div class="row">
       <div class="col-12 p-3 text-center ">
-         <!--correggere la tondita' della foto profilo di default--> 
-        <img src="./icons/utente_generico.jpg" class="round-circle max" 
+         <!--TO DO: correggere la tondita' della foto profilo di default--> 
+         <img src="./icons/utente_generico.jpg" class="round-circle max" 
         alt="foto profilo default"/>
+        <!--TO DO: gestire il caricamento dell'immagine-->
         <div class="pb-1 text-center">
-        <form  action="#" method="get">
-            <button class="rounded p-1" type="button" name="Inserisci foto profilo" >Inserisci foto profilo</button>
-        </form>
+          <input type="file" name="immagine" id="immagine" />
         </div>
       </div>
     </div>
     <article class="rounded mx-2">
             <h3 class="pt-2 px-2">Informazioni di base</h3>
               <div class="mb-3 mt-3">
-                <!--gestire per ogni input l'inserimento di una nuova riga nel database-->
-                <!--inserire anche matricola facoltativa -->
+                <!--TO CHECK:gestire per ogni input l'inserimento di una nuova riga nel database-->
+                <!--TO DO: inserire anche matricola facoltativa -->
                 <label for="nome" class="form-label px-2">Nome:</label><br>
                   <div class="mx-2 pb-3">
                      <input class="form-control" type="text" id="nome" name="nome" value="<?php echo $utente["nome"]; ?>" />
@@ -50,7 +49,7 @@ $utente = $templateParams["utente"] ;
                 <div class="mx-2 pb-3">
                   <input type="checkbox" id="altro" name="altro " value=true/><label for="altro">Altro</label>
                 </div>
-                <!--gestire la matricola solo se se studente e' checkatore  -->
+                <!--gestire la matricola solo se se studente e' checkato  -->
                 <label for="matricola" class="form-label px-2 ">Matricola:</label><br>
                 <div class="mx-2 pb-3">
                   <input type="text" id="matricola" name="matricola" value="" />
@@ -84,5 +83,6 @@ $utente = $templateParams["utente"] ;
         </div>
        
   </section>
-
+  <input type="hidden" name="action" value="registrati" />
+  <!--<input type="hidden" name="defaultimg" value="<?php //echo UPLOAD_DIR.utente_generico.jpg; ?>" />-->
 </form>

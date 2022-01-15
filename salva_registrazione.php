@@ -12,15 +12,18 @@ require_once 'bootstrap.php';
     $nome = htmlspecialchars($_POST["nome"]);
     $cognome = htmlspecialchars($_POST["cognome"]);
 
-    $iduser = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome);
+    list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
+    if($result != 0){
+        $immagine = $msg;
+        $iduser = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome);
 
-    if($iduser!=false){
-        $msg = "Inserimento completato correttamente!";
+        if($iduser!=false){
+            $msg = "Inserimento completato correttamente!";
+        }
+        else{
+            $msg = "Errore in inserimento!";
+        }
     }
-    else{
-        $msg = "Errore in inserimento!";
-    }
-    
     if($_GET["action"]==2){
         //salvo anche i dati dell'agricoltore
 
