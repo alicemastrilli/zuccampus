@@ -145,9 +145,6 @@ create table if not exists `zuccampus`.`zucca` (
     
 create table if not exists `zuccampus`.`comprende` (
      `id_ordine`INT NOT NULL AUTO_INCREMENT,
-     `username` varchar(30) not null,
-     `data` date not null,
-     `ora` time(6) not null,
      `nome_azienda` char(30) not null,
      `nome_zucca` char(20) not null,
      `quantita` numeric(3) not null,

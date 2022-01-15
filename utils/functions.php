@@ -31,7 +31,7 @@ function getFootersIcons(){
     return $icons;
 }
 function computeDeliveryTime($ordine, $campus_info){
-    $date = date_create($ordine["data"]);
+    $date = date_create($ordine["data_ordine"]);
     if($ordine["cap"] == $campus_info["cap"]){
         if($ordine["via"] == $campus_info["via"] && $ordine["numero_civico"] == $campus_info["numero_civico"]){
             date_add($date,date_interval_create_from_date_string("2 days"));
