@@ -41,9 +41,15 @@ function computeDeliveryTime($ordine, $campus_info){
     } else{
        date_add($date,date_interval_create_from_date_string("5 days"));  
     }
-    return  date_format($date,"Y-m-d");
+    //date_format($date,"Y-m-d");
+    return  $date;
 }
 
+function isInCorso($ordine, $campus_info){
+    $consegna = computeDeliveryTime($ordine, $campus_info);
+    $today = date_create();
+    return $consegna>=$today;
+}
 function registerLoggedUser($user){
     $_SESSION["img_user"] = getImageOfUser($user["immagine"]);
     $_SESSION["username"] = $user["username"];

@@ -13,10 +13,6 @@ $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username
 $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
 
 $templateParams["ordini"] = $dbh->getAllOrders($nome_azienda);
-var_dump($templateParams["ordini"]);
-foreach($templateParams["ordini"] as $ordine) {
-    echo $ordine["data"];
-    echo computeDeliveryTime($ordine, $templateParams["info"]);
-}
+
 require("template/homePage.php");
 ?>
