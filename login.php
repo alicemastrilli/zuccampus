@@ -26,20 +26,18 @@ if(isUserLoggedIn()){
         $templateParams["main"] = "user_logged.php";
     }
     else{
-        $templateParams["titolo"] = "Zuccampus - Agricoltore";
         $_SESSION["agricoltore"] = 1;
-        $templateParams["main"] = "agricoltore_base.php";
-        $templateParams["main_agr"] = "agricoltore_vendite.php";
+        require "agricoltore_vendite.php";
     }
 }
 else{
     $templateParams["titolo"] = "Zuccampus - Login";
     $templateParams["nome"] = "login-form.php";
     $templateParams["main"] = "login-form.php";
+    require 'template/homePage.php';
 }
-$templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 
 
 
-require 'template/homePage.php';
+
 ?>

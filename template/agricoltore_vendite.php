@@ -3,7 +3,14 @@
     <head>
         <link rel="stylesheet" href="<?php echo CSS_DIR?>agricoltore_loggato.css" > 
     </head>
-  
+    <ul class="nav nav-tabs nav-justified">
+    <li class="nav-item col-6">
+      <a class="active  nav-link" href="agricoltore_vendite.php"><h3>Vendite</h3></a>
+    </li>
+    <li class="nav-item col-6">
+      <a class=" <?php isActive("agricoltore_prodotti.php");?> nav-link" href="agricoltore_prodotti.php"><h3>Prodotti</h3></a>
+    </li>
+  </ul>
   <div class="p-3 text-center" > <h4>Guadagno: <span class="text-success">+<?php echo $templateParams["guadagno"]?>€</span></h4>  </div> </div>
   <canvas class="align-items-center" id="myChart" style="width:100%;max-width:700px"></canvas>
 <script src="<?php echo $templateParams["js"]?>"></script> 
