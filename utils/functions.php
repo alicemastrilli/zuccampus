@@ -31,38 +31,56 @@ function getFootersIcons(){
     return $icons;
 }
 
-function fillOrders($ordine){
-    $costo_sped = 3;
+function fillOrders($ordine, $campus_info){
+    $costo_sped = computeDeliveryTime($ordine, $campus_info)[1];
     $costo_ordine  = $ordine["quantita"] * $ordine["prezzo"];
     $costo_tot = $costo_ordine + $costo_sped;
     $info=array("Tipo prodotto" => $ordine["tipo"],"Quantità: " => $ordine["quantita"],
     "Data dell'ordine: "=> $ordine["data_ordine"],
     "Indirizzo di spedizione: "=> $ordine["via"].$ordine["numero_civico"],
     "Costo ordine: " => $costo_ordine,
-    "Costi di spedizione: " => "3€", "Costo totale: " => $costo_tot,
-    "Stato: "=> "In consegna");
+    "Costi di spedizione: " => $costo_sped, "Costo totale: " => $costo_tot,
+    "Stato: "=> computeDeliveryStatus($ordine, $campus_info));
     return $info;
     
 }
 function computeDeliveryTime($ordine, $campus_info){
     $date = date_create($ordine["data_ordine"]);
+    $costo_sped=0;
     if($ordine["cap"] == $campus_info["cap"]){
         if($ordine["via"] == $campus_info["via"] && $ordine["numero_civico"] == $campus_info["numero_civico"]){
             date_add($date,date_interval_create_from_date_string("2 days"));
+            $costo_sped = 0;
         } else{
              date_add($date,date_interval_create_from_date_string("3 days"));
+             $costo_sped = 2;
         }
     } else{
        date_add($date,date_interval_create_from_date_string("5 days"));  
+       $costo_sped = 5;
     }
-    return  $date;
+    return  array($date, $costo_sped);
 }
 
 function isInCorso($ordine, $campus_info){
-    $consegna = computeDeliveryTime($ordine, $campus_info);
+    $consegna = computeDeliveryTime($ordine, $campus_info)[0];
     $today = date_create();
     return $consegna>=$today;
 }
+
+function computeDeliveryStatus($ordine, $campus_info){
+    $consegna = computeDeliveryTime($ordine, $campus_info)[0];
+    $today = date_create();
+    if($ordine["data_ordine"] == $today){
+        return "in preparazione";
+    } elseif($consegna > $today) {
+        return "in arrivo , arriverà il ". $consegna->format('d-m-yy');
+    } elseif($consegna == $today) {
+        return "arriverà oggi";
+    }
+    return "completato";
+}
+
 function registerLoggedUser($user){
     $_SESSION["img_user"] = getImageOfUser($user["immagine"]);
     $_SESSION["username"] = $user["username"];

@@ -5,7 +5,7 @@
     </head>
     <section>
     <div class="row">
-    <a class="col-3" href="aziende_agricole.php">
+    <a class="col-3" href="lista_ordini.php">
       <img src="./icons/freccia.png" alt="freccia indietro">
     </a>
     <div class="col-6 p-3 text-center ">
@@ -16,10 +16,9 @@
     </div>
 
     <div class="text-center">
-      <?php foreach(fillOrders($templateParams["ordine"]) as $x => $x_value ):?>
+      <?php foreach(fillOrders($templateParams["ordine"], $templateParams["info"]) as $x => $x_value ):?>
         <span > <?php echo $x?> </span> <span class="text-secondary"> <?php echo $x_value?></span><br>
         <?php endforeach;?>
-        <span> Stato: </span>
         <div class="col-10 pb-2">
             
           <div id ="animate"  style="width: 1px;
