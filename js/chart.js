@@ -19,16 +19,19 @@ function prova(xValues, yValues){
       }
     });}
 
-    function deliveryAnimation(){
-
-        
+    function deliveryAnimation( stop){
+          const arrivo =parseInt( window.innerWidth * stop /100);
+          const start = parseInt( window.innerWidth * 9 /100);
+          console.log(arrivo);
+          console.log(start);
+          console.log(arrivo - 2* start);
           let id = null;
           const elem = document.getElementById("animate");   
-          let pos = 50;
+          let pos = start;
           clearInterval(id);
           id = setInterval(frame, 1);
           function frame() {
-            if (pos == 350) {
+            if (pos == arrivo-3*start) {
               clearInterval(id);
             } else {
               pos++; 
@@ -37,3 +40,5 @@ function prova(xValues, yValues){
           }
 
     }
+
+    

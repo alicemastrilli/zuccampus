@@ -40,7 +40,7 @@ function fillOrders($ordine, $campus_info){
     "Indirizzo di spedizione: "=> $ordine["via"].$ordine["numero_civico"],
     "Costo ordine: " => $costo_ordine,
     "Costi di spedizione: " => $costo_sped, "Costo totale: " => $costo_tot,
-    "Stato: "=> computeDeliveryStatus($ordine, $campus_info));
+    "Stato: "=> computeDeliveryStatus($ordine, $campus_info)[0]);
     return $info;
     
 }
@@ -72,13 +72,22 @@ function computeDeliveryStatus($ordine, $campus_info){
     $consegna = computeDeliveryTime($ordine, $campus_info)[0];
     $today = date_create();
     if($ordine["data_ordine"] == $today){
-        return "in preparazione";
+        return array("in preparazione","10" );
     } elseif($consegna > $today) {
-        return "in arrivo , arriverà il ". $consegna->format('d-m-yy');
+        $diff = date_diff($consegna, $today);
+        $pro =$diff->format('%a');
+        $percent = $pro *10 + 20;
+        return array("in arrivo , arriverà il ". $consegna->format('d-m-yy'), $percent);
     } elseif($consegna == $today) {
-        return "arriverà oggi";
+        return array("arriverà oggi", "90");
     }
-    return "completato";
+    return array("completato", "100");
+}
+
+function percentToPixel($percent) {
+    $min = 2;
+    $max = 40;
+    return (($percent / 100) * ($max - $min)) + $min;
 }
 
 function registerLoggedUser($user){

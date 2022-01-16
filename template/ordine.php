@@ -19,34 +19,34 @@
       <?php foreach(fillOrders($templateParams["ordine"], $templateParams["info"]) as $x => $x_value ):?>
         <span > <?php echo $x?> </span> <span class="text-secondary"> <?php echo $x_value?></span><br>
         <?php endforeach;?>
-        <div class="col-10 pb-2">
+        <div class="col-10 pb-1">
             
           <div id ="animate"  style="width: 1px;
           height: 1px;
           position: relative;
-          background-color: red;">
+          background-color: white;">
               <img src="./icons/fattorino.png" alt="">
           </div>
         </div>
+        <?php $width = computeDeliveryStatus($templateParams["ordine"], $templateParams["info"])[1];?>
         
-        <script src="<?php echo $templateParams["js"]?>"></script> 
+        <script 
+        src="<?php echo $templateParams["js"]?>"></script> 
   <?php if(isset($templateParams["js"])):?>
     <?php
     //$valx = json_encode($templateParams["xV"]);
     //$valy = json_encode($templateParams["yV"]);
-    echo "<script>deliveryAnimation()</script>";
+    echo "<script>deliveryAnimation($width)</script>";
 
 ?>
 <?php 
 endif;?>
     </div>
     </div>
-    
-      
-      <div class="text-center pt-5 mt-5">      
+      <div class="text-center pt-5 mt-4">      
         <div class="progress mx-5  ">
          
-            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%"></div>
+            <div id ="bar" class="progress-bar progress-bar-striped progress-bar-animated" style="width:<?php echo $width."%"?>"></div>
           </div>
     </div>
     <div class="m-5 text-center">
