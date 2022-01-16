@@ -1,4 +1,4 @@
-section img{
+section> img{
     width: 180px;
     height: 180px;
     
@@ -6,9 +6,10 @@ section img{
 section a img{
     width: 60px;
     height: 60px;
+
 }
 
-#animate>img{
-    width: 150px;
-    height: 120px;
+#animate img{
+    width: 100px;
+    height: 100px;
 }
