@@ -26,7 +26,7 @@ require_once 'bootstrap.php';
     }
     if($_GET["action"]==2){
         //salvo anche i dati dell'agricoltore
-
+        $nome_azienda = htmlspecialchars($_POST["nome_azienda"]);
     }
 
 ?>

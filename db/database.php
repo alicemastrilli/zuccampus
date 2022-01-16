@@ -171,7 +171,24 @@ class DatabaseHelper{
         $stmt->execute();
         
         return $stmt->insert_id;
+    }
 
+    public function insertNewAgricoltore($username = null, $nome_azienda = null){
+        $query = "INSERT INTO `agricoltore` (`username`, `nome_azienda`) VALUES  (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param($username, $nome_azienda);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
+    public function insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione){
+        $query = "INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `descrizione`) VALUES  (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param($nome_azienda, $via, $numero_civico, $cap, $descrizione);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
     }
 
     public function getAllOrders($nome_azienda, $n=-1){

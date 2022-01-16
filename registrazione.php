@@ -12,5 +12,15 @@ $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 //$templateParams["utente"];
 
+
+if(isset($_POST['studente'])){ 
+    echo "funziona";
+    print '
+    <label for="matricola" class="form-label px-2 ">Matricola:</label> <br>
+    <div class="mx-2 pb-3">
+      <input type="text" id="matricola" name="matricola" value="" />
+    </div>';
+ }
+
 require("template/homePage.php");
 ?>

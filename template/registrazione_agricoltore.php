@@ -1,27 +1,26 @@
         <!--gestisco l'azienda agricola solo se e' un agricoltore-->
         <h3 class="pt-2 px-2">Azienda agricola</h3>
-        
-        <label for="azienda_agricola" class="form-label px-2">Azienda agricola:</label><br>
-                <div class="mx-2 pb-3">
-                   <input class="form-control" type="text" class="form-control " id="azienda_agricola" 
-                    name="azienda_agricola" placeholder="Inserisci il nome della tua azienda agricola">
-                </div>
-                <label for="descrizione_azienda_agricola" class="form-label px-2">Descrizione Azienda agricola:</label><br>
-                <div class="mx-2 pb-3">
-                   <textarea class="form-control" rows="5" id="descrizione_azienda_agricola" 
-                   name="descrizione_azienda_agricola" placeholder="Inserisci descrizione azienda agricola"> </textarea>
-                </div>
-            <div class="mb-3 mt-3">
-                <label for="indirizzo" class="form-label px-2">Indirizzo:</label><br>
-                <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="indirizzo"  name="indirizzo" placeholder="Inserisci indirizzo">
-                </div>
-                <label for="città" class="form-label px-2">Città:</label><br>
-                <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="città" name="città" placeholder="Inserisci citta'">
-                </div>
-                <label for="cap" class="form-label px-2">Cap:</label><br>
-                <div class="mx-2 pb-3">
-                   <input  type="number" class="form-control " id="cap"  name="cap"  placeholder="Inserisci cap'">
-                </div>
-              </div>
+        <label for="nome" class="form-label px-2">Nome azienda agricola</label><br>
+            <div class="mx-2 pb-3">
+                  <input class="form-control" type="text" id="nome_azienda" name="nome_azienda" value="" />
+            </div>
+         <label for="descrizione_azienda" class="form-label px-2">Descrizione</label><br>
+            <div class="mx-2 pb-3">
+                  <input class="form-control" type="text" id="descrzione_azienda" name="descrizione_azienda" value="" />
+            </div>
+         <label for="via" class="form-label px-2">Via</label><br>
+            <div class="mx-2 pb-3">
+                  <input class="form-control" type="text" id="via" name="via" value="" />
+            </div>
+         <label for="numero_civico" class="form-label px-2">Numero Civico</label><br>
+            <div class="mx-2 pb-3">
+                  <input class="form-control" type="number" id="numero_civico" name="numero_civico" value="" />
+            </div>
+         <label for="citta" class="form-label px-2">Citta</label><br>
+            <div class="mx-2 pb-3">
+                  <input class="form-control" type="text" id="citta" name="citta" value="" />
+            </div>
+         <label for="cap" class="form-label px-2">CAP</label><br>
+            <div class="mx-2 pb-3">
+                  <input class="form-control" type="number" id="cap" name="cap" value="" />
+            </div>
