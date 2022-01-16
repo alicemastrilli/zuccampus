@@ -145,7 +145,8 @@ class DatabaseHelper{
     }
 
     public function getVendite($nome_azienda){
-        $query = "SELECT data, sum(quantita) as quantita FROM comprende WHERE nome_azienda = ? GROUP BY data ORDER BY data ASC";
+        $query = "SELECT o.data_ordine, sum(c.quantita) as quantita FROM comprende c, ordine o
+         WHERE c.nome_azienda = ? and c.id_ordine = o.id_ordine GROUP BY o.data_ordine ORDER BY o.data_ordine ASC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $nome_azienda);
         $stmt->execute();
@@ -173,20 +174,40 @@ class DatabaseHelper{
 
     }
 
-    public function getAllOrders($nome_azienda){
-        $query = "SELECT c.nome_zucca, c.quantita,o.data_ordine,z.prezzo,u.nome,u.cognome,o.via, o.numero_civico,
+    public function getAllOrders($nome_azienda, $n=-1){
+        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,z.prezzo,u.nome,u.cognome,o.via, o.numero_civico,
         o.cap   FROM ordine o, comprende c,zucca z,utente u
          WHERE c.nome_azienda =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
           and o.id_ordine = c.id_ordine and o.username = u.username
          order by o.data_ordine desc";
+         if($n >0){
+            $query .= " LIMIT ?";
+         }
         $stmt = $this->db->prepare($query);
+        if($n > 0){
+            $stmt->bind_param('si', $nome_azienda,$n);
+        } 
+        else{
         $stmt->bind_param('s', $nome_azienda);
+        }
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getOrderById($id){
+        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
+        o.cap   FROM ordine o, comprende c,zucca z,utente u
+         WHERE c.id_ordine =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
+          and o.id_ordine = c.id_ordine and o.username = u.username
+         order by o.data_ordine desc";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
  
 
 }

@@ -16,7 +16,7 @@ $vendite = $dbh->getVendite($nome_azienda);
 $templateParams["xV"] = array();
 $templateParams["yV"] = array();
 foreach($vendite as $vendita){
-    array_push($templateParams["xV"], $vendita["data"]);
+    array_push($templateParams["xV"], $vendita["data_ordine"]);
     array_push($templateParams["yV"], $vendita["quantita"]);
 }
 $templateParams["ordini"] = $dbh->getAllOrders($nome_azienda);

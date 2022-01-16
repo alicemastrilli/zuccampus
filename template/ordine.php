@@ -9,14 +9,16 @@
       <img src="./icons/freccia.png" alt="freccia indietro">
     </a>
     <div class="col-6 p-3 text-center ">
-        <h5>Zucca Piccola</h5>
-        <h6>Zucca Commestibile</h6>
+        <h5><?php echo $templateParams["ordine"]["nome_zucca"];?></h5>
+        <h6><?php echo $templateParams["ordine"]["tipo"];?></h6>
         <img src="./icons/zucca_ornamentale.jpg"  
         alt="zucca"/>
     </div>
 
     <div class="text-center">
-        <span > Tipo prodotto: </span> <span class="text-secondary"> Zucca delica</span><br>
+      <?php foreach(fillOrders($templateParams["ordine"]) as $x => $x_value ):?>
+        <span > <?php echo $x?> </span> <span class="text-secondary"> <?php echo $x_value?></span><br>
+        <?php endforeach;?>
         <span> Stato: </span>
         <div class="col-10 pb-2">
             
@@ -28,23 +30,16 @@
           </div>
         </div>
         
-        <script>
-        
-          let id = null;
-          const elem = document.getElementById("animate");   
-          let pos = 50;
-          clearInterval(id);
-          id = setInterval(frame, 1);
-          function frame() {
-            if (pos == 350) {
-              clearInterval(id);
-            } else {
-              pos++; 
-              elem.style.left = pos + "px"; 
-            }
-          }
-        
-        </script>
+        <script src="<?php echo $templateParams["js"]?>"></script> 
+  <?php if(isset($templateParams["js"])):?>
+    <?php
+    //$valx = json_encode($templateParams["xV"]);
+    //$valy = json_encode($templateParams["yV"]);
+    echo "<script>deliveryAnimation()</script>";
+
+?>
+<?php 
+endif;?>
     </div>
     </div>
     

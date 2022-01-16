@@ -30,6 +30,20 @@ function getFootersIcons(){
     }
     return $icons;
 }
+
+function fillOrders($ordine){
+    $costo_sped = 3;
+    $costo_ordine  = $ordine["quantita"] * $ordine["prezzo"];
+    $costo_tot = $costo_ordine + $costo_sped;
+    $info=array("Tipo prodotto" => $ordine["tipo"],"Quantità: " => $ordine["quantita"],
+    "Data dell'ordine: "=> $ordine["data_ordine"],
+    "Indirizzo di spedizione: "=> $ordine["via"].$ordine["numero_civico"],
+    "Costo ordine: " => $costo_ordine,
+    "Costi di spedizione: " => "3€", "Costo totale: " => $costo_tot,
+    "Stato: "=> "In consegna");
+    return $info;
+    
+}
 function computeDeliveryTime($ordine, $campus_info){
     $date = date_create($ordine["data_ordine"]);
     if($ordine["cap"] == $campus_info["cap"]){

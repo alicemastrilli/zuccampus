@@ -18,3 +18,22 @@ function prova(xValues, yValues){
         }
       }
     });}
+
+    function deliveryAnimation(){
+
+        
+          let id = null;
+          const elem = document.getElementById("animate");   
+          let pos = 50;
+          clearInterval(id);
+          id = setInterval(frame, 1);
+          function frame() {
+            if (pos == 350) {
+              clearInterval(id);
+            } else {
+              pos++; 
+              elem.style.left = pos + "px"; 
+            }
+          }
+
+    }
