@@ -14,12 +14,14 @@
             </div>
          <label for="numero_civico" class="form-label px-2">Numero Civico</label><br>
             <div class="mx-2 pb-3">
-                  <input class="form-control" type="number" id="numero_civico" name="numero_civico" value="" />
+                  <!--controllare che type sia davvero text e non altro-->
+                  <input class="form-control" type="text" id="numero_civico" name="numero_civico" value="" />
             </div>
          <label for="citta" class="form-label px-2">Citta</label><br>
             <div class="mx-2 pb-3">
                   <input class="form-control" type="text" id="citta" name="citta" value="" />
             </div>
+            <!--controllare che type sia davvero text e non altro-->
          <label for="cap" class="form-label px-2">CAP</label><br>
             <div class="mx-2 pb-3">
                   <input class="form-control" type="number" id="cap" name="cap" value="" />

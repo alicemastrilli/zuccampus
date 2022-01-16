@@ -1,5 +1,6 @@
 
-<script src="<?php echo JS_DIR?>prova.js"></script>
+
+
 <?php 
 //a cosa mi serve questo?
 $utente = $templateParams["utente"] ;
@@ -8,7 +9,15 @@ $utente = $templateParams["utente"] ;
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
   <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
-
+        <?php
+        if($_GET["action"]==2){
+          $_SESSION["utente"] = "agricoltore";
+        }
+        else{
+          $_SESSION["utente"] = "cliente";
+        }
+        
+        ?>
   </head>
   <section>
     <div class="row">
