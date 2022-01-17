@@ -16,6 +16,8 @@
             </div>
             <div class="mb-3 mt-3">
                 <!--gestire per ogni input l'inserimento di una nuova riga nel database-->
+                <!--Aggiungere il prezzo, il peso e la disponibilita' 
+                    Caricare il nome dell'azienda da session-->
                 <label for="nome_zucca">Nome zucca:</label>
                 <input type="text" id="nome_zucca" name="nome_zucca" value="" />               
                 <div class="col-sm-0">
@@ -39,9 +41,7 @@
         </div>
         
         <div class="pb-3 text-center">
-        <form  action="#" method="get">
-            <button class="rounded p-2" type="button" name="Salva" >Salva prodotto</button>
-        </form>
+            <input type="submit" name="submit" value="Salva prodotto" />
         </div>
     </section>
 </form>
