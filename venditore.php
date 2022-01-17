@@ -13,7 +13,9 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 if(isset($_GET["id"])){
     $nome_azienda = $_GET["id"];
 }
-
+if(isUserLoggedIn()){
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+}
 $templateParams["aziende_agricole"] = $dbh->getAziendaAgricolaInfo();
 $templateParams["agricoltore"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0];
 $templateParams["azienda_info"] = $dbh -> getAziendaAgrByName($nome_azienda)[0];

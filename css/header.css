@@ -1,0 +1,11 @@
+#offcanvas{
+    width: 70%;
+    height: 40%;
+}
+#offcanvas img{
+    border-radius: 100px;
+}
+
+#offcanvas>div>ul>li:last-of-type{
+    background: rgb(221, 74, 74);
+}

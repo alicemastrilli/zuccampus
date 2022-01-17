@@ -15,6 +15,9 @@ $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
 $vendite = $dbh->getVendite($nome_azienda);
 $templateParams["xV"] = array();
 $templateParams["yV"] = array();
+if(isUserLoggedIn()){
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+}
 foreach($vendite as $vendita){
     array_push($templateParams["xV"], $vendita["data_ordine"]);
     array_push($templateParams["yV"], $vendita["quantita"]);
