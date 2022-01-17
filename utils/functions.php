@@ -22,13 +22,21 @@ function getFootersIcons(){
             array_push($icons, array("img"=>UPLOAD_DIR."carrello.png", "a"=>"login.php"));
         } 
         array_push($icons, array("img"=>UPLOAD_DIR."posta.jpg","a"=>"casella_messaggi.php" ));
-        array_push($icons, array("img"=> UPLOAD_DIR.$_SESSION["img_user"],"a"=>"login.php"));
     }
     else {
         array_push($icons, array("img"=> UPLOAD_DIR."carrello.png","a"=>"login.php"));
         array_push($icons, array("img"=> UPLOAD_DIR."user.png","a"=>"login.php"));
     }
     return $icons;
+}
+
+function UserWindowFields(){
+    $field = array();
+    array_push($field, array("text" => "Il mio profilo", "href" => ""));
+    array_push($field, array("text" => "Ordini", "href" => ""));
+    array_push($field, array("text" => "Metodo di pagamento", "href" => ""));
+    array_push($field, array("text" => "Esci", "href" => ""));
+    return $field;
 }
 
 function fillOrders($ordine, $campus_info){
@@ -84,14 +92,9 @@ function computeDeliveryStatus($ordine, $campus_info){
     return array("completato", "100");
 }
 
-function percentToPixel($percent) {
-    $min = 2;
-    $max = 40;
-    return (($percent / 100) * ($max - $min)) + $min;
-}
+
 
 function registerLoggedUser($user){
-    $_SESSION["img_user"] = getImageOfUser($user["immagine"]);
     $_SESSION["username"] = $user["username"];
 }
 

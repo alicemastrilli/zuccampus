@@ -18,6 +18,9 @@ if(isset($_GET["id"])){
     $templateParams["ordine"] = $dbh->getOrderById($_GET["id"])[0];
 
 }
+if(isUserLoggedIn()){
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+}
 $templateParams["js"] = "js/chart.js";
 
 

@@ -8,7 +8,9 @@ $templateParams["main"] = "aziende_agricole.php";
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
-
+if(isUserLoggedIn()){
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+}
 $templateParams["aziende_agricole"] = $dbh->getAziendaAgricolaInfo();
 
 

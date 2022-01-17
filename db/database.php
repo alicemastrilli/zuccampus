@@ -57,6 +57,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    
+    public function getUserByUsername($username){
+        $stmt = $this->db->prepare("SELECT nome,cognome,immagine from utente where username =?");
+        $stmt->bind_param("s",$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
    public function getAgricoltoreOfAzienda($nomeAzienda) {
     $stmt = $this->db->prepare("SELECT u.immagine, u.num_telefono, u.email, u.nome, u.cognome from utente u, agricoltore a
      where a.nome_azienda = ? and a.username = u.username");
