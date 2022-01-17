@@ -32,10 +32,11 @@ function getFootersIcons(){
 
 function UserWindowFields(){
     $field = array();
-    array_push($field, array("text" => "Il mio profilo", "href" => ""));
-    array_push($field, array("text" => "Ordini", "href" => ""));
+    array_push($field, array("text" => "Home", "href" => "agricoltore_vendite.php"));
+    array_push($field, array("text" => "Il mio profilo", "href" => "venditore.php"));
+    array_push($field, array("text" => "Ordini", "href" => "lista_ordini.php"));
     array_push($field, array("text" => "Metodo di pagamento", "href" => ""));
-    array_push($field, array("text" => "Esci", "href" => ""));
+    array_push($field, array("text" => "Esci", "href" => "login.php"));
     return $field;
 }
 
@@ -85,7 +86,7 @@ function computeDeliveryStatus($ordine, $campus_info){
         $diff = date_diff($consegna, $today);
         $pro =$diff->format('%a');
         $percent = $pro *10 + 20;
-        return array("in arrivo , arriverà il ". $consegna->format('d-m-yy'), $percent);
+        return array("in arrivo , arriverà il ". $consegna->format('d-m-yy'), 100-$percent);
     } elseif($consegna == $today) {
         return array("arriverà oggi", "90");
     }

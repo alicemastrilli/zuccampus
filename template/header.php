@@ -27,7 +27,7 @@
                 <ul class="list-group">
                 <?php foreach(UserWindowFields() as $field):?>
                     <li class="list-group-item text-center">
-                        <a class="text-decoration-none text-dark"href="<?php echo $field["text"];?>"><?php echo $field["text"];?></a>
+                        <a class="text-decoration-none text-dark"href="<?php echo $field["href"];?>"><?php echo $field["text"];?></a>
                     </li>
                 <?php endforeach; ?>
                 </ul>

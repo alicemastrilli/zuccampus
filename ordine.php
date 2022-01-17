@@ -14,9 +14,7 @@ $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
 $templateParams["ordini"] = $dbh->getAllOrders($nome_azienda);
 
 if(isset($_GET["id"])){
-
     $templateParams["ordine"] = $dbh->getOrderById($_GET["id"])[0];
-
 }
 if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
