@@ -29,8 +29,8 @@
                 <div class="col-sm-0">
                     <form action="/action_page.php">
                     <select name="Tipo zucca" id="Tipo Zucca">
-                     <option value="volvo">Zucca commestibile</option>
-                     <option value="saab">Zucca ornamentale</option>
+                     <option value="zucca_commestibile">Zucca commestibile</option>
+                     <option value="zucca_ornamentale">Zucca ornamentale</option>
                     </select>
                     </form>
                 </div>

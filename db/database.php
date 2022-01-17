@@ -174,14 +174,41 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    public function insertNewUser($immagine = null, $num_telefono = null, $email = null,  $username = null, $password = null, $nome = null, $cognome = null){
-        $query = "INSERT INTO `utente` (`immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    //TO DO: da gestire  le var cliente e agricoltore, non dovrebbero essere NULL
+    public function insertNewUser($immagine = null, $num_telefono = null, $email = null,  $username = null, $password = null, $nome = null, $cognome = null, $cliente = null, $agricoltore = null){
+        $query = "INSERT INTO `utente` ( `immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome);
+        $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+        $stmt->execute();
+        
+        if($stmt->execute()){
+            $msg = "Insert succeded";
+        }
+        else {
+            $msg = $stmt->error;
+        }
+        return $msg;
+    }
+
+    public function insertNewAgricoltore($username = null, $nome_azienda = null){
+        $query = "INSERT INTO agricoltore (username, nome_azienda) VALUES  (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $username, $nome_azienda);
+        $stmt->execute();
+        
+
+
+        return $stmt->insert_id;
+    }
+
+    public function insertNewAzienda($nome_azienda = NULL, $via = NULL, $numero_civico = NULL, $cap = NULL, $descrizione = NULL){
+        $query = "INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `descrizione`) VALUES  (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param($nome_azienda, $via, $numero_civico, $cap, $descrizione);
         $stmt->execute();
         
         return $stmt->insert_id;
-
     }
 
     public function getAllOrders($nome_azienda, $n=-1){
