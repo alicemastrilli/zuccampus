@@ -36,8 +36,6 @@
     </button>
     </form>
     </li>
-
-  
   <?php endforeach;?>  </ul>
 </div>
 </html>
