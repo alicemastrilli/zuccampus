@@ -245,7 +245,21 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
- 
+
+    public function insertNewZucca($nome_azienda = null, $nome_zucca = null, $tipo = null,  $immagine = null, $prezzo = null, $peso = null, $disponibilita = null, $descrizione_zucca = null){
+        $query = "INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione);
+        $stmt->execute();
+        
+        if($stmt->execute()){
+            $msg = True;
+        }
+        else {
+            $msg = $stmt->error;
+        }
+        return $msg;
+    }
 
 }
 ?>
