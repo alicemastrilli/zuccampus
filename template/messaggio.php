@@ -2,7 +2,13 @@
 <html>
     <head>
         <link rel="stylesheet" href="./css/messaggio.css" > 
+        <script type="text/javascript" src="./js/window_functions.js"></script> 
     </head>
+    <div class="row">
+    <a class="col-3"  onclick="goBack()">
+      <img src="./icons/freccia.png" alt="freccia indietro">
+    </a>
+    </div>
     <?php if (count($templateParams["messaggi"])==0):?>
         <p >La casella di posta è vuota</p>
     <?php else :?>

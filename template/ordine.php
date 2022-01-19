@@ -2,14 +2,11 @@
 <html>
     <head>
         <link rel="stylesheet" href="./css/ordine.css" > 
-        <script type="text/javascript" src="./js/window_functions.js"></script>
-
-
- 
+        <script type="text/javascript" src="./js/window_functions.js"></script> 
     </head>
     <section>
     <div class="row">
-    <a class="col-3" href="lista_ordini.php" onclick="goBack()">
+    <a class="col-3"  onclick="goBack()">
       <img src="./icons/freccia.png" alt="freccia indietro">
     </a>
     <div class="col-6 p-3 text-center ">
