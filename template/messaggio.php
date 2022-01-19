@@ -10,12 +10,6 @@
     </a>
     </div>
     <?php if (count($templateParams["messaggi"])==0):?>
-        <?php $_POST['testo'] ='ciao';
-    $_POST['data']='2021-02-05';
-    $_POST['ora']='21:12';
-
-    require $templateParams["aggiungi"];
-    ?>
         <p >La casella di posta è vuota</p>
     <?php else :?>
         <?php foreach($templateParams["messaggi"] as $messaggio):?>

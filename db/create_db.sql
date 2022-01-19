@@ -181,6 +181,7 @@ create table if not exists `zuccampus`.`messaggio` (
      `testo` char(250) not null,
      `data` date not null,
      `ora` time(6) not null,
+     `link` char(250) not null,
      `tag_letto` int(1),
      constraint ID_MESSAGGIO_ID primary key (`id_messaggio`),
      constraint `FKricevere`

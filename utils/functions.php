@@ -85,12 +85,7 @@ function isInCorso($ordine, $campus_info){
 }
 
 function sendMessage(){
-    var_dump("proc");
-    $_POST['testo'] ='ciao';
-    $_POST['data']='2021-02-05';
-    $_POST['ora']='21:12';
-  
-    require ('processa-messaggio.php');
+    
 }
 function computeDeliveryStatus($ordine, $campus_info){
     $consegna = computeDeliveryTime($ordine, $campus_info)[0];

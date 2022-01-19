@@ -107,10 +107,10 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertMessage($username, $testo, $data, $ora, $tag_letto){
-        $query = "INSERT INTO messaggio (username, testo, data, ora, tag_letto) VALUES (?, ?, ?, ?, ?)";
+    public function insertMessage($username, $testo, $data, $ora, $link, $tag_letto){
+        $query = "INSERT INTO messaggio (username, testo, data, ora, link, tag_letto) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssi',$username, $testo, $data, $ora, $tag_letto);
+        $stmt->bind_param('sssssi',$username, $testo, $data, $ora, $link, $tag_letto);
         $stmt->execute();
         
         return $stmt->insert_id;
@@ -230,7 +230,7 @@ class DatabaseHelper{
     }
 
     public function getAllOrders($nome_azienda, $n=-1){
-        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,z.prezzo,u.nome,u.cognome,o.via, o.numero_civico,
+        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,o.ora, z.prezzo,u.nome,u.cognome,o.via, o.numero_civico,
         o.cap   FROM ordine o, comprende c,zucca z,utente u
          WHERE c.nome_azienda =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
           and o.id_ordine = c.id_ordine and o.username = u.username
@@ -252,7 +252,7 @@ class DatabaseHelper{
     }
 
     public function getOrderById($id){
-        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
+        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,o.ora, z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
         o.cap   FROM ordine o, comprende c,zucca z,utente u
          WHERE c.id_ordine =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
           and o.id_ordine = c.id_ordine and o.username = u.username
