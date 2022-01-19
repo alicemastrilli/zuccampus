@@ -74,6 +74,9 @@ function computeDeliveryTime($ordine, $campus_info){
 function isInCorso($ordine, $campus_info){
     $consegna = computeDeliveryTime($ordine, $campus_info)[0];
     $today = date_create();
+    if($consegna == $today){
+        sendMessage();
+    }
     return $consegna>=$today;
 }
 

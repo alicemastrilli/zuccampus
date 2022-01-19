@@ -107,6 +107,15 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function insertMessage($username, $testo, $data, $ora, $tag_letto){
+        $query = "INSERT INTO messaggio (username, testo, data, ora, tag_letto) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssi',$username, $testo, $data, $ora, $tag_letto);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
     public function getZuccaByName($nome_zucca){
         $query="SELECT * from zucca z where z.nome_zucca=? ";
         $stmt = $this->db->prepare($query);
