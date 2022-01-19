@@ -2,7 +2,7 @@ header{
     background-color: #F5982B;
 }
 
-header img{
+header>img{
     width: 60px;
 }
 
@@ -11,10 +11,10 @@ footer{
     font-size: 20px;
 }
 
-footer img{
+footer>img{
     width: 40px;
 }
-section img{
+section>img{
     width: 150px;
     height: 150px;
 }
@@ -25,7 +25,7 @@ section>h3{
 section>article{
     background-color: rgb(196, 196, 196);
 }
-article img{
+article>img{
     width: 100px;
   
 }

@@ -176,12 +176,13 @@ create table if not exists `zuccampus`.`link` (
     ENGINE = InnoDB;
 
 create table if not exists `zuccampus`.`messaggio` (
+     `id_messaggio` INT NOT NULL AUTO_INCREMENT,
      `username` varchar(30) not null,
      `testo` char(250) not null,
      `data` date not null,
      `ora` time(6) not null,
      `tag_letto` char,
-     constraint ID_MESSAGGIO_ID primary key (username, data, ora),
+     constraint ID_MESSAGGIO_ID primary key (`id_messaggio`),
      constraint `FKricevere`
      foreign key (`username`)
      references `zuccampus`.`utente` (`username`)
@@ -269,7 +270,7 @@ create unique index ID_link_IND
      on link (nome_app, link);
 
 create unique index ID_MESSAGGIO_IND
-     on MESSAGGIO (username, data, ora);
+     on MESSAGGIO (id_messaggio);
 
 create unique index ID_ORDINE_IND
      on ORDINE (id_ordine);
