@@ -116,6 +116,15 @@ class DatabaseHelper{
         return $stmt->insert_id;
     }
 
+    public function checkMessage($username, $data, $ora){
+        $query = "SELECT username, data, ora FROM messaggio WHERE username = ? AND data = ? and ora= ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sss',$username, $data, $ora);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     public function getZuccaByName($nome_zucca){
         $query="SELECT * from zucca z where z.nome_zucca=? ";
         $stmt = $this->db->prepare($query);

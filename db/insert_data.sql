@@ -45,7 +45,10 @@ INSERT INTO `ordine` (`id_ordine`,`username`, `data_ordine`, `ora`, `via`, `nume
 (2,'Verdi', '2021-12-12', '12:37:28.000000', 'via dell''Università', '50', '40013'),
 (3,'ProfCarletti', '2021-11-30', '17:28:32.000000', 'via dell''Università', '50', '40013'),
 (4, 'GentiAle', '2022-01-11', '17:45:00', 'via dell''Università', '50', '40013'),
-(5, 'ProfCarletti', '2022-01-16', '14:07', 'via Canale', '9', '40023');
+(5, 'ProfCarletti', '2022-01-16', '14:07', 'via Canale', '9', '40023'),
+(6, 'GentiAle', '2022-01-19', '17:45:00', 'via dell''Università', '50', '40013'),
+(7, 'GentiAle', '2022-01-17', '17:45:00', 'via dell''Università', '50', '40013');
+
 
 INSERT INTO `link` (`nome_app`, `link`, `logo`) VALUES 
 ('ZUCCAMPUS', 'www.facebook.com/zuccampus', 'logofacebook.png'),
@@ -60,7 +63,10 @@ INSERT INTO `comprende` (`id_ordine`, `nome_azienda`, `nome_zucca`, `quantita`) 
 (2, 'La fattoria di Mario', 'Zucca di Chioggia', '1'),
 (3, 'La gioia di Marta', 'Zucca Tonda Padana', '3'),
 (4, 'La fattoria di Mario', 'Zucca di Chioggia', '5'),
-(5, 'La fattoria di Mario', 'Zucca di Chioggia', '2');
+(5, 'La fattoria di Mario', 'Zucca di Chioggia', '2'),
+(6, 'La fattoria di Mario', 'Zucca di Chioggia', '5'),
+(7, 'La fattoria di Mario', 'Zucca di Chioggia', '5');
+
 
 INSERT INTO `agricoltore` (`username`, `nome_azienda`) VALUES 
 ('MarioRossi', 'La fattoria di Mario'),

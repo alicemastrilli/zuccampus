@@ -14,6 +14,6 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
 }
-
+$templateParams["aggiungi"] = "processa-messaggio.php";
 require("template/homePage.php");
 ?>
