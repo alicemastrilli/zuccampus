@@ -1,6 +1,5 @@
 <?php
 require_once("bootstrap.php");
-
 $templateParams["titolo"] = "Zuccampus- Riepilogo Ordine";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";

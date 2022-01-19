@@ -6,12 +6,10 @@
 
 if($_POST["messaggio_action"]==1){
     $ordine = $_POST["ordine"];
-    $_POST["testo"] = "Gentile ". $_SESSION["username"] . "la sua azienda agricola ha ricevuto un nuovo ordine: ";
-    //$testo = $testo."Clicchi qui per visualizzare il nuovo ordine.";
-    //var_dump($ordine["data"]->format('d-m-Y'));
+    $_POST["testo"] = "Gentile ". $_SESSION["username"] . " la sua azienda agricola ha ricevuto un nuovo ordine: ";
     $_POST["data"] = $ordine["data_ordine"]; 
     $_POST["ora"] = $ordine["ora"];
-    $_POST["link"] = "ordine.php?". $ordine["id_ordine"];
+    $_POST["link"] = "ordine.php?id=". $ordine["id_ordine"];
     require_once "processa-messaggio.php";
 }
 ?>

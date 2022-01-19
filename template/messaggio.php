@@ -16,8 +16,9 @@
 <p class="text-center"><?php echo $messaggio["data"]?></p>
     <div class="text-center mx-3">
     <article class=" text-center mb-2 ">
-        <span class="p-2">Gentile Mario, la sua azienda agricola ha ricevuto un  nuovo ordine: 2 x zucca piccola. <a href="#">Clicchi qui</a>  <span > per visualizzare l’ordine.
-           <br> <span class="px-3 d-flex flex-row-reverse "><small>16:30</small> </span>
+        <?php $hour=date_create($messaggio["ora"]); ?>
+        <span class="p-2"> <?php echo $messaggio["testo"];?> <a href="<?php echo $messaggio["link"]; ?>">Clicchi qui</a>  <span > per ulteriori dettagli.
+           <br> <span class="px-3 d-flex flex-row-reverse "><small><?php echo date_format($hour,"H:i"); ?></small> </span>
     </article> 
     </div>  
   <hr/>
