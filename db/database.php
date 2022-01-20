@@ -213,9 +213,9 @@ class DatabaseHelper{
         $query = "INSERT INTO agricoltore (username, nome_azienda) VALUES  (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $nome_azienda);
-        $stmt->execute();
+        $ris = $stmt->execute();
         
-        if($stmt->execute()){
+        if($ris){
             $msg = 1;
         }
         else {
@@ -228,9 +228,9 @@ class DatabaseHelper{
         $query = "INSERT INTO `indirizzo` (`via`, `numero_civico`, `citta`,`cap`) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sisi', $via, $numero_civico, $citta, $cap);
-        $stmt->execute();
+        $ris = $stmt->execute();
         
-        if($stmt->execute()){
+        if($ris){
             $msg = 1;
         }
         else {

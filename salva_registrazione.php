@@ -41,6 +41,7 @@ require_once 'bootstrap.php';
         //if user is agricoltore require user_logged.php
         if($msg && $msg_azienda){  
             $_SESSION["agricoltore"] = 1;
+            $msg = "Registrazione avvenuta con successo";
             header("location:login_form.php?formmsg=".$msg);
         }
         else{
@@ -53,6 +54,7 @@ require_once 'bootstrap.php';
         $error = checkFormFilledCorrectly($fields);
         if($msg){
             $_SESSION["agricoltore"]= 0;
+            $msg = "Registrazione avvenuta con successo";
             header("location:login.php?formmsg=".$msg);
         }else{
             var_dump($msg);
