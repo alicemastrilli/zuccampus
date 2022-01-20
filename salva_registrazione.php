@@ -1,8 +1,6 @@
 <?php
 require_once 'bootstrap.php';
     //controllare che i campi siano pieni
-
-    //$immagine = ;
     $num_telefono = htmlspecialchars($_POST["num_telefono"]);
     $email = htmlspecialchars($_POST["email"]);
     $username = htmlspecialchars($_POST["username"]);
@@ -12,41 +10,47 @@ require_once 'bootstrap.php';
     $cliente = 1;
     $agricoltore = 0;
 
-  
+    list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
+    if($result != 0){
+        $immagine = $msg;
+        //TO DO: controllare che i campi siano pieni
 
-    if($_SESSION["utente"]=="agricoltore"){
-       // $username = htmlspecialchars($_POST["username"]);
+        if($_SESSION["agricoltore"] == 1){
+            $cliente = 0;
+            $agricoltore = 1;
+        }
+       $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+
+        //var_dump($msg);
+    }
+
+    if($_SESSION["agricoltore"] == 1){
+        $cliente = 0;
+        $agricoltore = 1;
         $nome_azienda = htmlspecialchars($_POST["nome_azienda"]);
         $via = htmlspecialchars($_POST["via"]);
         $numero_civico = htmlspecialchars($_POST["numero_civico"]);
         $cap = htmlspecialchars($_POST["cap"]);
         $descrizione = htmlspecialchars($_POST["descrizione_azienda"]);
 
-        $idagricoltore = $dbh->insertNewAgricoltore($username, $nome_azienda);
-        $idazienda = $dbh->insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione);
+        $msg = $dbh->insertNewAgricoltore($username, $nome_azienda);
+        $msg_azienda = $dbh->insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione);
 
-        if($idagricoltore!=false && $idazienda!=false){
-            $msg = "Inserimento completato correttamente!";
+        //if user is agricoltore require user_logged.php
+        if($msg && $msg_azienda){  
+            $_SESSION["agricoltore"] = 1;
+            header("location:login_form.php?formmsg=".$msg);
         }
         else{
-            $msg = "Errore in inserimento!";
-    
+            var_dump($msg);
+        }
+    }
+    else{
+        if($msg){
+            $_SESSION["agricoltore"]= 0;
+            header("location:login.php?formmsg=".$msg);
         }
     }
 
-    list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
-    if($result != 0){
-        $immagine = $msg;
-        $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, NULL, NULL);
-
-        var_dump($msg);
-    }
-
-    if($_SESSION["utente"]=="cliente"){
-        //TO DO: manca un controllo per verificare che gli id non siano falsi
-            header("location: login.php?formmsg=".$msg);
-        
-        
-    }
 
 ?>

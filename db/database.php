@@ -201,7 +201,7 @@ class DatabaseHelper{
         $stmt->execute();
         
         if($stmt->execute()){
-            $msg = "Insert succeded";
+            $msg = 1;
         }
         else {
             $msg = $stmt->error;
