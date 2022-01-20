@@ -53,6 +53,17 @@ function fillOrders($ordine, $campus_info){
     return $info;
     
 }
+
+function canBeAdded($messaggio){
+    $messaggio =strtotime($messaggio["data"]);
+    $today = strtotime(date_format(date_create(), "Y-m-d"));
+    if($messaggio <=$today){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function computeDeliveryTime($ordine, $campus_info){
     $date = date_create($ordine["data_ordine"]);
     $costo_sped=0;
@@ -74,19 +85,9 @@ function computeDeliveryTime($ordine, $campus_info){
 function isInCorso($ordine, $campus_info){
     $consegna = computeDeliveryTime($ordine, $campus_info)[0];
     $today = date_create();
-    
-    if(date_format($consegna,"Y/m/d") == date_format($today,"Y/m/d")){
-        var_dump(date_format($consegna,"Y/m/d"));
-
-        var_dump("consegnaogg9");
-        sendMessage();
-    }
     return $consegna>=$today;
 }
 
-function sendMessage(){
-    
-}
 function computeDeliveryStatus($ordine, $campus_info){
     $consegna = computeDeliveryTime($ordine, $campus_info)[0];
     $today = date_create();

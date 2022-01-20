@@ -252,7 +252,7 @@ class DatabaseHelper{
     }
 
     public function getOrderById($id){
-        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
+        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
         o.cap   FROM ordine o, comprende c,zucca z,utente u
          WHERE c.id_ordine =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
           and o.id_ordine = c.id_ordine and o.username = u.username

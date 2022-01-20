@@ -13,6 +13,7 @@
         <p >La casella di posta è vuota</p>
     <?php else :?>
         <?php foreach($templateParams["messaggi"] as $messaggio):?>
+            <?php if (canBeAdded($messaggio)):?>
 <p class="text-center"><?php echo $messaggio["data"]?></p>
     <div class="text-center mx-3">
     <article class=" text-center mb-2 ">
@@ -22,7 +23,7 @@
     </article> 
     </div>  
   <hr/>
-
+  <?php endif;?>
   <?php endforeach;?>
   <?php endif;?>
   </html>
