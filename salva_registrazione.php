@@ -9,6 +9,8 @@ require_once 'bootstrap.php';
     $password = htmlspecialchars($_POST["password"]);
     $nome = htmlspecialchars($_POST["nome"]);
     $cognome = htmlspecialchars($_POST["cognome"]);
+    $cliente = 1;
+    $agricoltore = 0;
 
   
 
@@ -28,6 +30,7 @@ require_once 'bootstrap.php';
         }
         else{
             $msg = "Errore in inserimento!";
+    
         }
     }
 
@@ -36,7 +39,7 @@ require_once 'bootstrap.php';
         $immagine = $msg;
         $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, NULL, NULL);
 
-        console.log($msg);
+        var_dump($msg);
     }
 
     if($_SESSION["utente"]=="cliente"){

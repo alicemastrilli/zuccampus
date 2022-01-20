@@ -194,8 +194,8 @@ class DatabaseHelper{
     }
 
     //TO DO: da gestire  le var cliente e agricoltore, non dovrebbero essere NULL
-    public function insertNewUser($immagine = null, $num_telefono = null, $email = null,  $username = null, $password = null, $nome = null, $cognome = null, $cliente = null, $agricoltore = null){
-        $query = "INSERT INTO `utente` ( `immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public function insertNewUser($immagine = null, $num_telefono = null, $email = null,  $username = null, $password = null, $nome = null, $cognome = null, $cliente, $agricoltore){
+        $query = "INSERT INTO `utente` ( `immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`, `cliente`, `agricoltore`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
         $stmt->execute();

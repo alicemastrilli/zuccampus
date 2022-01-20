@@ -72,8 +72,8 @@ create table if not exists `zuccampus`.`utente` (
      `password` varchar(15) not null,
      `nome` char(20) not null,
      `cognome` char(20) not null,
-     `CLIENTE` varchar(30),
-     `AGRICOLTORE` varchar(30),
+     `CLIENTE` int(1),
+     `AGRICOLTORE` int(1),
        constraint ID_UTENTE_ID primary key (username))
      ENGINE = InnoDB;
 
