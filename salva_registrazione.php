@@ -20,7 +20,7 @@ require_once 'bootstrap.php';
             $agricoltore = 1;
         }
        $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
-        $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore)
+        $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
         //var_dump($msg);
     }
 
@@ -37,9 +37,9 @@ require_once 'bootstrap.php';
         $msg_azienda = $dbh->insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione);
 
         $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore, $nome_azienda, $via, $numero_civico, $cap, $descrizione);
-        $error = checkFormFilledCorrectly($fields)
+        $error = checkFormFilledCorrectly($fields);
         //if user is agricoltore require user_logged.php
-        if($msg && $msg_azienda && $error == False){  
+        if($msg && $msg_azienda){  
             $_SESSION["agricoltore"] = 1;
             header("location:login_form.php?formmsg=".$msg);
         }
@@ -50,8 +50,8 @@ require_once 'bootstrap.php';
     }
     else{
 
-        $error = checkFormFilledCorrectly($fields)
-        if($msg && $error == False){
+        $error = checkFormFilledCorrectly($fields);
+        if($msg){
             $_SESSION["agricoltore"]= 0;
             header("location:login.php?formmsg=".$msg);
         }else{
