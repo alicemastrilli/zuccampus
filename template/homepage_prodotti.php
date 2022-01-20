@@ -7,60 +7,67 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     </head>
-    <body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="float-start">
+                <a class="text-decoration-none" href="./homepage.php">
+                    <img class="rounded" src="./icons/freccia.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </nav>
     <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm">
-                    <p>PRODOTTI PIÙ VENDUTI</p>
-                </div>
+        <div class="row">
+            <div class="col-sm">
+                <p>PRODOTTI PIÙ VENDUTI</p>
             </div>
-            <div class="row">
-                <div class="col-sm">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <?php foreach($templateParams["primaZucca"] as $zucca): ?>
-                            <div class="carousel-item active">
-                                <p><?php echo $zucca["nome_zucca"]; ?></p>
-                                <p><?php echo $zucca["tipo"]; ?></p>
-                                <img class="d-block w-100" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" alt="First slide">
-                                <p>€<?php echo $zucca["prezzo"]; ?></p>
-                            </div>
-                            <?php endforeach; ?>
-                            <?php foreach($templateParams["zucchePopolari"] as $zuccaPopolare): ?>
-                            <div class="carousel-item">
-                                <p><?php echo $zuccaPopolare["nome_zucca"]; ?></p>
-                                <p><?php echo $zuccaPopolare["tipo"]; ?></p>
-                                <img class="d-block w-100" src="<?php echo UPLOAD_DIR.$zuccaPopolare["immagine"]; ?>" alt="First slide">
-                                <p>€<?php echo $zuccaPopolare["prezzo"]; ?></p>
-                            </div>
-                        <?php endforeach; ?>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner text-center">
+                    <?php foreach($templateParams["primaZucca"] as $zucca): ?>
+                        <div class="carousel-item active">
+                            <p><?php echo $zucca["nome_zucca"]; ?></p>
+                            <p><?php echo $zucca["tipo"]; ?></p>
+                            <img class="mx-auto d-block" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" alt="First slide">
+                            <p>€<?php echo $zucca["prezzo"]; ?></p>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                    <?php endforeach; ?>
+                    <?php foreach($templateParams["zucchePopolari"] as $zuccaPopolare): ?>
+                        <div class="carousel-item">
+                            <p><?php echo $zuccaPopolare["nome_zucca"]; ?></p>
+                            <p><?php echo $zuccaPopolare["tipo"]; ?></p>
+                            <img class="mx-auto d-block" src="<?php echo UPLOAD_DIR.$zuccaPopolare["immagine"]; ?>" alt="First slide">
+                            <p>€<?php echo $zuccaPopolare["prezzo"]; ?></p>
+                        </div>
+                    <?php endforeach; ?>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm">
-                    <button class="rounded" type="button" id="visualizeButton"> Visualizza tutti i prodotti</button>
-                    <script type="text/javascript">
-                        document.getElementById("visualizeButton").onclick = function () {
-                        location.href = "./prodotti.php";
-                        };
-                    </script>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
         </div>
-    </body>
+        <div class="row">
+            <div class="col-sm text-center">
+                <button class="btn btn-primary" type="button" id="visualizeButton"> Visualizza tutti i prodotti</button>
+                <script type="text/javascript">
+                    document.getElementById("visualizeButton").onclick = function () {
+                    location.href = "./prodotti.php";
+                    };
+                </script>
+            </div>
+        </div>
+    </div>
 </html>
