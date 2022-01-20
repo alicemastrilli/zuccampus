@@ -40,6 +40,11 @@
     echo "<script>deliveryAnimation($width)</script>";
 
 ?>
+
+<?php 
+//$_POST["ordine"] = $templateParams["ordine"];
+//$_POST["messaggio_action"]=1;
+//require "invia_messaggio.php" ?>
 <?php 
 endif;?>
     </div>
