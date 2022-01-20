@@ -20,7 +20,7 @@ require_once 'bootstrap.php';
             $agricoltore = 1;
         }
        $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
-
+        $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore)
         //var_dump($msg);
     }
 
@@ -36,19 +36,27 @@ require_once 'bootstrap.php';
         $msg = $dbh->insertNewAgricoltore($username, $nome_azienda);
         $msg_azienda = $dbh->insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione);
 
+        $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore, $nome_azienda, $via, $numero_civico, $cap, $descrizione);
+        $error = checkFormFilledCorrectly($fields)
         //if user is agricoltore require user_logged.php
-        if($msg && $msg_azienda){  
+        if($msg && $msg_azienda && $error == False){  
             $_SESSION["agricoltore"] = 1;
             header("location:login_form.php?formmsg=".$msg);
         }
         else{
             var_dump($msg);
+            var_dump($msg_error);
         }
     }
     else{
-        if($msg){
+
+        $error = checkFormFilledCorrectly($fields)
+        if($msg && $error == False){
             $_SESSION["agricoltore"]= 0;
             header("location:login.php?formmsg=".$msg);
+        }else{
+            var_dump($msg);
+            var_dump($msg_error);
         }
     }
 
