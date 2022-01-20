@@ -10,6 +10,7 @@ $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
 }
 $templateParams["aziende_agricole"] = $dbh->getAziendaAgricolaInfo();
 
