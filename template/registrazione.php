@@ -89,9 +89,8 @@ $utente = $templateParams["utente"] ;
         </article>
         <div class="pb-3 text-center">
         
-          <input type="submit" name="submit" value="Registrati" />
-  
-        </div>
+        <input type="submit" name="submit" value="Registrati" onClick="this.disabled=true; this.value='Processing…'";>
+        
        
   </section>
   <!--<input type="hidden" name="action" value="registrati" /> -->

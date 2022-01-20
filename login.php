@@ -24,10 +24,8 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 if(isUserLoggedIn()){
     $login_result = $dbh->checkAgricoltore($_POST["username"], $_POST["password"]);
     if(count($login_result)==0){
-        $templateParams["titolo"] = "Zuccampus - Utente";
         $_SESSION["agricoltore"]= 0;
-        $templateParams["nome"] = "utente_loggato.php";
-        $templateParams["main"] = "user_logged.php";
+        require "user_logged.php";
     }
     else{
         $_SESSION["agricoltore"] = 1;
