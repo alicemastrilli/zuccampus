@@ -57,6 +57,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    
+    public function getUserByUsername($username){
+        $stmt = $this->db->prepare("SELECT nome,cognome,immagine from utente where username =?");
+        $stmt->bind_param("s",$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
    public function getAgricoltoreOfAzienda($nomeAzienda) {
     $stmt = $this->db->prepare("SELECT u.immagine, u.num_telefono, u.email, u.nome, u.cognome from utente u, agricoltore a
      where a.nome_azienda = ? and a.username = u.username");
@@ -88,7 +98,7 @@ class DatabaseHelper{
     }
 
     public function getMessaggi($username) {
-        $query = "SELECT  testo,data,ora, tag_letto FROM messaggio WHERE username = ?";
+        $query = "SELECT  * FROM messaggio WHERE username = ? order by data asc";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$username);
         $stmt->execute();
@@ -97,6 +107,24 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function insertMessage($username, $testo, $data, $ora, $link, $tag_letto){
+        $query = "INSERT INTO messaggio (username, testo, data, ora, link, tag_letto) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssssi',$username, $testo, $data, $ora, $link, $tag_letto);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
+    public function checkMessage($username, $data, $ora){
+        $query = "SELECT username, data, ora FROM messaggio WHERE username = ? AND data = ? and ora= ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sss',$username, $data, $ora);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     public function getZuccaByName($nome_zucca){
         $query="SELECT * from zucca z where z.nome_zucca=? LIMIT 1 ";
         $stmt = $this->db->prepare($query);
@@ -144,17 +172,130 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome){
-        $query = "INSERT INTO `utente` (`immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public function getVendite($nome_azienda){
+        $query = "SELECT o.data_ordine, sum(c.quantita) as quantita FROM comprende c, ordine o
+         WHERE c.nome_azienda = ? and c.id_ordine = o.id_ordine GROUP BY o.data_ordine ORDER BY o.data_ordine ASC";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssssi',$immagine, $num_telefono, $email,  $username, $password, $nome, $cognome);
+        $stmt->bind_param('s', $nome_azienda);
         $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAziendaByUsername($username){
+        $query = "SELECT nome_azienda  FROM agricoltore WHERE username = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    //TO DO: da gestire  le var cliente e agricoltore, non dovrebbero essere NULL
+    public function insertNewUser($immagine = null, $num_telefono = null, $email = null,  $username = null, $password = null, $nome = null, $cognome = null, $cliente, $agricoltore){
+        $query = "INSERT INTO `utente` ( `immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`, `cliente`, `agricoltore`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+        $stmt->execute();
+        
+        if($stmt->execute()){
+            $msg = 1;
+        }
+        else {
+            $msg = $stmt->error;
+        }
+        return $msg;
+    }
+
+    public function insertNewAgricoltore($username = null, $nome_azienda = null){
+        $query = "INSERT INTO agricoltore (username, nome_azienda) VALUES  (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $username, $nome_azienda);
+        $stmt->execute();
+        
+
+
+        return $stmt->insert_id;
+    }
+
+    public function insertNewAzienda($nome_azienda = NULL, $via = NULL, $numero_civico = NULL, $cap = NULL, $descrizione = NULL){
+        $query = "INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `descrizione`) VALUES  (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param($nome_azienda, $via, $numero_civico, $cap, $descrizione);
         $stmt->execute();
         
         return $stmt->insert_id;
-
     }
 
+    public function getAllOrders($nome_azienda, $n=-1){
+        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,o.ora, z.prezzo,u.nome,u.cognome,o.via, o.numero_civico,
+        o.cap   FROM ordine o, comprende c,zucca z,utente u
+         WHERE c.nome_azienda =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
+          and o.id_ordine = c.id_ordine and o.username = u.username
+         order by o.data_ordine desc";
+         if($n >0){
+            $query .= " LIMIT ?";
+         }
+        $stmt = $this->db->prepare($query);
+        if($n > 0){
+            $stmt->bind_param('si', $nome_azienda,$n);
+        } 
+        else{
+        $stmt->bind_param('s', $nome_azienda);
+        }
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOrderById($id){
+        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
+        o.cap   FROM ordine o, comprende c,zucca z,utente u
+         WHERE c.id_ordine =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
+          and o.id_ordine = c.id_ordine and o.username = u.username
+         order by o.data_ordine desc";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertNewZucca($nome_azienda = null, $nome_zucca = null, $tipo = null,  $immagine = null, $prezzo = null, $peso = null, $disponibilita = null, $descrizione_zucca = null){
+        $query = "INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione);
+        $stmt->execute();
+        
+        if($stmt->execute()){
+            $msg = True;
+        }
+        else {
+            $msg = $stmt->error;
+        }
+        return $msg;
+    }
+<<<<<<< HEAD
+    /*
+    public function getOrderById($id){
+        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
+        o.cap   FROM ordine o, comprende c,zucca z,utente u
+         WHERE c.id_ordine =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
+          and o.id_ordine = c.id_ordine and o.username = u.username
+         order by o.data_ordine desc";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    */
+=======
+
+<<<<<<< HEAD
     public function orderByPriceUp(){
         $query = "SELECT * FROM zucca GROUP BY nome_zucca ORDER BY prezzo ASC";
         $stmt = $this->db->prepare($query);
@@ -212,5 +353,8 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+=======
+>>>>>>> b5969b228d54f07c2e681170448f35b166f9db35
+>>>>>>> 4ee23053d4a4738ac31bcbfe8b1e9c9cb9b7b2ed
 }
 ?>

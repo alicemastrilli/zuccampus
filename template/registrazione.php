@@ -1,29 +1,36 @@
-<!DOCTYPE html>
-<html lang="it">
 <?php 
-$utente = $templateParams["utente"];
+//a cosa mi serve questo?
+$utente = $templateParams["utente"] ;
+
 ?>
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
-    <head>
+  <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
-    </head>
-    <section>
-       <div class="row">
-        <div class="col-12 p-3 text-center ">
-         <!--correggere la tondita' della foto profilo di default--> 
-        <img src="./icons/utente_generico.jpg" class="round-circle max" 
+        <?php
+        if($_GET["action"]==2){
+          $_SESSION["agricoltore"] = 1;
+        }
+        else{
+          $_SESSION["agricoltore"] = 0;
+        }
+        
+        ?>
+  </head>
+  <section>
+    <div class="row">
+      <div class="col-12 p-3 text-center ">
+         <!--TO DO: correggere la tondita' della foto profilo di default--> 
+         <img src="./icons/utente_generico.jpg" class="round-circle max" 
         alt="foto profilo default"/>
+        <!--TO DO: gestire il caricamento dell'immagine-->
         <div class="pb-1 text-center">
-        <form  action="#" method="get">
-            <button class="rounded p-1" type="button" name="Inserisci foto profilo" >Inserisci foto profilo</button>
-        </form>
+          <input type="file" name="immagine" id="immagine" />
         </div>
-        </div>
-        </div>
-        <article class="rounded mx-2">
+      </div>
+    </div>
+    <article class="rounded mx-2">
             <h3 class="pt-2 px-2">Informazioni di base</h3>
-            <div class="mb-3 mt-3">
-                <!--gestire per ogni input l'inserimento di una nuova riga nel database-->
+              <div class="mb-3 mt-3">
                 <label for="nome" class="form-label px-2">Nome:</label><br>
                   <div class="mx-2 pb-3">
                      <input class="form-control" type="text" id="nome" name="nome" value="<?php echo $utente["nome"]; ?>" />
@@ -40,11 +47,28 @@ $utente = $templateParams["utente"];
                 <div class="mx-2 pb-3">
                   <input type="text" id="password" name="password" value="<?php echo $utente["password"]; ?>" />
                 </div>
+                <div class="mx-2 pb-3">
+                  <!--TO DO: fare in modo che sia checkato uno solo alla volta -->
+<!--
+                  <form action="registrazione.php" method="post" >
+                  
+                  <input type="checkbox" id="studente" name="studente" value=true/><label for="studente">Studente</label>
+                </div>
+                <div class="mx-2 pb-3">
+                  <input type="checkbox" id="Professore" name="Professore" value=true/><label for="Professore">Professore</label>
+                </div>
+                <div class="mx-2 pb-3">
+                  <input type="checkbox" id="altro" name="altro " value=true/><label for="altro">Altro</label>
+                </div>
+                
+                </form>
+                TO DO: visualizzare la matricola solo se studente e' checkato  -->
+           
                 
               </div>
         </article>
         <article class="rounded mx-2">
-            <?php if($_GET["action"]==2){
+            <?php if($_SESSION["agricoltore"] == 1){
                   require($templateParams["registrazione_agricoltore"]);
                }
             ?>
@@ -54,18 +78,21 @@ $utente = $templateParams["utente"];
             <div class="mb-3 mt-3">
                 <label for="email" class="form-label px-2">Email:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="email" class="form-control " id="email"  name="email"  placeholder="Inserisci email">
-                </div>
+                  <input type="text" id="email" name="email" value="<?php echo $utente["email"]; ?>" />
+                  </div>
                 <label for="num_telefono" class="form-label px-2">Numero telefonico:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="number" class="form-control " id="num_telefono" name="numero_telefono"  placeholder="Inserisci numero di telefono">
-                </div>
+                     <input type="text" id="num_telefono" name="num_telefono" value="<?php echo $utente["num_telefono"]; ?>" />
+                  </div>
                 
-              </div>
+            </div>
         </article>
         <div class="pb-3 text-center">
-        <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
-            <button class="rounded p-2" type="button" name="Submit" >Registrati</button>
-        </form>
-        </div>
-    </section>
+        
+        <input type="submit" name="submit" value="Registrati">
+        
+       
+  </section>
+  <!--<input type="hidden" name="action" value="registrati" /> -->
+  <!--<input type="hidden" name="defaultimg" value="<?php //echo UPLOAD_DIR.utente_generico.jpg; ?>" />-->
+</form>

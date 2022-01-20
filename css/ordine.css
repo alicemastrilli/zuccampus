@@ -1,0 +1,15 @@
+section> img{
+    width: 180px;
+    height: 180px;
+    
+}
+section a img{
+    width: 60px;
+    height: 60px;
+
+}
+
+#animate img{
+    width: 100px;
+    height: 100px;
+}

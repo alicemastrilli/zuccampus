@@ -27,14 +27,14 @@ USE `zuccampus` ;
 -- _____________ 
 
 
-create table `zuccampus`.`indirizzo` (
+create table if not exists `zuccampus`.`indirizzo` (
      `via` char(20) not null,
      `numero_civico` numeric(3) not null,
      `citta` char(20) not null,
      `cap` numeric(5) not null,
      constraint ID_INDIRIZZO_ID primary key (via, numero_civico, cap));
 
-create table `zuccampus`.`azienda` (
+create table if not exists `zuccampus`.`azienda` (
      `via` char(20) not null,
      `numero_civico` numeric(3) not null,
      `cap` numeric(5) not null,
@@ -50,7 +50,7 @@ create table `zuccampus`.`azienda` (
      ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-create table `zuccampus`.`azienda_agricola` (
+create table if not exists `zuccampus`.`azienda_agricola` (
      `nome_azienda` char(30) not null,
      `via` char(20) not null,
      `numero_civico` numeric(3) not null,
@@ -64,7 +64,7 @@ create table `zuccampus`.`azienda_agricola` (
     ON UPDATE NO ACTION)
      ENGINE = InnoDB;
 
-create table `zuccampus`.`utente` (
+create table if not exists `zuccampus`.`utente` (
      `immagine` varchar(30),
      `num_telefono` numeric(14) not null,
      `email` char(40) not null,
@@ -72,12 +72,12 @@ create table `zuccampus`.`utente` (
      `password` varchar(15) not null,
      `nome` char(20) not null,
      `cognome` char(20) not null,
-     `CLIENTE` varchar(30),
-     `AGRICOLTORE` varchar(30),
+     `CLIENTE` int(1),
+     `AGRICOLTORE` int(1),
        constraint ID_UTENTE_ID primary key (username))
      ENGINE = InnoDB;
 
-create table `zuccampus`.`carta_di_credito` (
+create table if not exists `zuccampus`.`carta_di_credito` (
      `cvv` numeric(3) not null,
      `nome` char(10) not null,
      `numero_carta` numeric(16) not null,
@@ -94,7 +94,7 @@ create table `zuccampus`.`carta_di_credito` (
 
      ENGINE = InnoDB;
 
-create table `zuccampus`.`cliente` (
+create table if not exists `zuccampus`.`cliente` (
      `username` varchar(30) not null,
      `matricola` numeric(10),
       constraint FKUTE_CLI_ID primary key (username),
@@ -105,14 +105,15 @@ create table `zuccampus`.`cliente` (
     ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
-create table `zuccampus`.`ordine` (
+create table if not exists `zuccampus`.`ordine` (
+     `id_ordine` INT NOT NULL AUTO_INCREMENT,
      `username` varchar(30) not null,
      `data_ordine` date not null,
      `ora` time(6) not null,
      `via` char(20) not null,
      `numero_civico` numeric(3) not null,
      `cap` numeric(5) not null,
-constraint ID_ORDINE_ID primary key (username, data_ordine, ora),
+     primary key (`id_ordine`),
      constraint `FKritiro_FK`
      foreign key (`via`, `numero_civico`, `cap`)
      references `zuccampus`.`indirizzo` (`via`, `numero_civico`, `cap`)
@@ -125,7 +126,7 @@ constraint ID_ORDINE_ID primary key (username, data_ordine, ora),
     ON UPDATE NO ACTION)
      ENGINE = InnoDB;
 
-create table `zuccampus`.`zucca` (
+create table if not exists `zuccampus`.`zucca` (
      `nome_azienda` char(30) not null,
      `nome_zucca` char(20) not null,
      `tipo` char(25) not null,
@@ -142,28 +143,27 @@ create table `zuccampus`.`zucca` (
     ON UPDATE NO ACTION)
     ENGINE = InnoDB;
     
-create table `zuccampus`.`comprende` (
-     `username` varchar(30) not null,
-     `data` date not null,
-     `ora` time(6) not null,
+create table if not exists `zuccampus`.`comprende` (
+     `id_ordine`INT NOT NULL AUTO_INCREMENT,
      `nome_azienda` char(30) not null,
      `nome_zucca` char(20) not null,
      `quantita` numeric(3) not null,
-    constraint ID_comprende_ID primary key (nome_azienda, nome_zucca, username, data, ora),
+      constraint ID_COMPRENDE_ID primary key (`id_ordine`),
+      
      constraint `FKcom_ZUC`
      foreign key (`nome_azienda`, `nome_zucca`)
      references `zuccampus`.`zucca` (`nome_azienda`, `nome_zucca`)
      ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    constraint `FKcom_ORD_FK`
-    foreign key (`username`, `data`, `ora`)
-     references `zuccampus`.`ordine` (`username`, `data_ordine`, `ora`)
+    constraint ID_COMPRENDE_ID 
+    foreign key (`id_ordine`)
+     references `zuccampus`.`ordine`(`id_ordine`)
      ON DELETE NO ACTION
     ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
 
-create table `zuccampus`.`link` (
+create table if not exists `zuccampus`.`link` (
      `nome_app` char(15) not null,
      `link` char(30) not null,
      `logo` varchar(30),
@@ -175,13 +175,15 @@ create table `zuccampus`.`link` (
     ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
-create table `zuccampus`.`messaggio` (
+create table if not exists `zuccampus`.`messaggio` (
+     `id_messaggio` INT NOT NULL AUTO_INCREMENT,
      `username` varchar(30) not null,
      `testo` char(250) not null,
      `data` date not null,
      `ora` time(6) not null,
-     `tag_letto` char,
-     constraint ID_MESSAGGIO_ID primary key (username, data, ora),
+     `link` char(250) not null,
+     `tag_letto` int(1),
+     constraint ID_MESSAGGIO_ID primary key (`id_messaggio`),
      constraint `FKricevere`
      foreign key (`username`)
      references `zuccampus`.`utente` (`username`)
@@ -190,13 +192,14 @@ create table `zuccampus`.`messaggio` (
      ENGINE = InnoDB;
      
 
-create table `zuccampus`.`recensione` (
-     `idRecensione` numeric(5) not null,
+create table if not exists `zuccampus`.`recensione` (
+     `idRecensione` INT NOT NULL AUTO_INCREMENT,
      `descrizione` char(250),
      `punteggio` numeric(5) not null,
      `nome_azienda` char(30) not null,
      `nome_zucca` char(20) not null,
      `username` varchar(30) not null,
+     `data` date not null,
   constraint ID_RECENSIONE_ID primary key (idRecensione),
       constraint `FKvalutazione_FK`
      foreign key (`nome_azienda`, `nome_zucca`)
@@ -211,7 +214,7 @@ create table `zuccampus`.`recensione` (
      ENGINE = InnoDB;
 
 
-create table `zuccampus`.`agricoltore` (
+create table if not exists `zuccampus`.`agricoltore` (
      `username` varchar(30) not null,
      `nome_azienda` char(30) not null,
       constraint `FKUTE_AGR_ID` primary key (`username`),
@@ -255,11 +258,11 @@ create index FKpossiede_IND
 create unique index FKUTE_CLI_IND
      on CLIENTE (username);
 
-create unique index ID_comprende_IND
-     on comprende (nome_azienda, nome_zucca, username, data, ora);
+create unique index ID_COMPRENDE_ID
+     on comprende (id_ordine);
 
 create index FKcom_ORD_IND
-     on comprende (username, data, ora);
+     on comprende (id_ordine);
 
 create unique index ID_INDIRIZZO_IND
      on INDIRIZZO (via, numero_civico, cap);
@@ -269,10 +272,10 @@ create unique index ID_link_IND
      on link (nome_app, link);
 
 create unique index ID_MESSAGGIO_IND
-     on MESSAGGIO (username, data, ora);
+     on MESSAGGIO (id_messaggio);
 
 create unique index ID_ORDINE_IND
-     on ORDINE (username, data_ordine, ora);
+     on ORDINE (id_ordine);
 
 create index FKritiro_IND
      on ORDINE (via, numero_civico, cap);

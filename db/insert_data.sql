@@ -36,27 +36,37 @@ INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`,
 ('La fattoria di Mario', 'Zucca di Chioggia', 'commestibile', 'zuccadichioggia.jpeg', '5.50', '3', '8', 'Inconfondibile per la sua scorza bitorzoluta, dal verde scuro al verde ramato e per la forma particolarmente schiacchiata. Ha una polpa molto saporita e adatta alla preparazione di gnocchi, ripieni e risotti'),
 ('La gioia di Marta', 'Zucca Tonda Padana', 'commestibile', 'zuccatondapadana.png', '6.60', '4', '9', 'La si riconosce per le striature pronunciate, la forma tondeggiante ed il robusto peduncolo legnoso. La polpa è arancione e soda, adatta a ripieni e mostarde');
 
-INSERT INTO `recensione` (`idRecensione`, `descrizione`, `punteggio`, `nome_azienda`, `nome_zucca`, `username`) VALUES 
-('12345', 'Buonissima!', '5', 'Gigi e le sue zucche', 'Zucca Delica', 'GentiAle'),
-('98765', 'Meglio mangiarla cotta!', '4', 'La fattoria di Mario', 'Zucca di Chioggia', 'Verdi');
+INSERT INTO `recensione` (`idRecensione`, `descrizione`, `punteggio`, `nome_azienda`, `nome_zucca`, `username`,`data`) VALUES 
+(1, 'Buonissima!', '5', 'Gigi e le sue zucche', 'Zucca Delica', 'GentiAle', '2021-12-12'),
+(2, 'Meglio mangiarla cotta!', '4', 'La fattoria di Mario', 'Zucca di Chioggia', 'Verdi','2022-01-14');
 
-INSERT INTO `ordine` (`username`, `data_ordine`, `ora`, `via`, `numero_civico`, `cap`) VALUES 
-('GentiAle', '2021-12-01', '11:53:05.000000', 'via dell''Università', '50', '40013'),
-('Verdi', '2021-12-12', '12:37:28.000000', 'via dell''Università', '50', '40013'),
-('ProfCarletti', '2021-11-30', '17:28:32.000000', 'via dell''Università', '50', '40013');
+INSERT INTO `ordine` (`id_ordine`,`username`, `data_ordine`, `ora`, `via`, `numero_civico`, `cap`) VALUES 
+(1,'GentiAle', '2021-12-01', '11:53:05.000000', 'via dell''Università', '50', '40013'),
+(2,'Verdi', '2021-12-12', '12:37:28.000000', 'via dell''Università', '50', '40013'),
+(3,'ProfCarletti', '2021-11-30', '17:28:32.000000', 'via dell''Università', '50', '40013'),
+(4, 'GentiAle', '2022-01-11', '17:45:00', 'via dell''Università', '50', '40013'),
+(5, 'ProfCarletti', '2022-01-16', '14:07', 'via Canale', '9', '40023'),
+(6, 'GentiAle', '2022-01-19', '17:45:00', 'via dell''Università', '50', '40013'),
+(7, 'GentiAle', '2022-01-17', '17:45:00', 'via dell''Università', '50', '40013');
+
 
 INSERT INTO `link` (`nome_app`, `link`, `logo`) VALUES 
 ('ZUCCAMPUS', 'www.facebook.com/zuccampus', 'logofacebook.png'),
 ('ZUCCAMPUS', 'www.instagram.com/zuccampus', 'logoinstagram.png');
 
-INSERT INTO `messaggio` (`username`, `testo`, `data`, `ora`, `tag_letto`) VALUES 
-('GentiAle', 'Zucca consegnata', '2021-12-05', '11:10:30.000000', NULL),
-('Verdi', 'Zucca in arrivo', '2021-12-15', '11:10:30.000000', NULL);
+INSERT INTO `messaggio` (`id_messaggio`,`username`, `testo`, `data`, `ora`, `tag_letto`) VALUES 
+(1,'GentiAle', 'Zucca consegnata', '2021-12-05', '11:10:30.000000', NULL),
+(2,'Verdi', 'Zucca in arrivo', '2021-12-15', '11:10:30.000000', NULL);
 
-INSERT INTO `comprende` (`username`, `data`, `ora`, `nome_azienda`, `nome_zucca`, `quantita`) VALUES 
-('GentiAle', '2021-12-01', '11:53:05.000000', 'Gigi e le sue zucche', 'Zucca Delica', '2'),
-('Verdi', '2021-12-12', '12:37:28.000000', 'La fattoria di Mario', 'Zucca di Chioggia', '1'),
-('ProfCarletti', '2021-11-30', '17:28:32.000000', 'La gioia di Marta', 'Zucca Tonda Padana', '3');
+INSERT INTO `comprende` (`id_ordine`, `nome_azienda`, `nome_zucca`, `quantita`) VALUES 
+(1, 'Gigi e le sue zucche', 'Zucca Delica', '2'),
+(2, 'La fattoria di Mario', 'Zucca di Chioggia', '1'),
+(3, 'La gioia di Marta', 'Zucca Tonda Padana', '3'),
+(4, 'La fattoria di Mario', 'Zucca di Chioggia', '5'),
+(5, 'La fattoria di Mario', 'Zucca di Chioggia', '2'),
+(6, 'La fattoria di Mario', 'Zucca di Chioggia', '5'),
+(7, 'La fattoria di Mario', 'Zucca di Chioggia', '5');
+
 
 INSERT INTO `agricoltore` (`username`, `nome_azienda`) VALUES 
 ('MarioRossi', 'La fattoria di Mario'),

@@ -6,6 +6,10 @@ $templateParams["footer"] = "footer.php";
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
+if(isUserLoggedIn()){
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    
+}
 if(isset($_POST["username"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
     if(count($login_result)==0){
@@ -20,26 +24,22 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 if(isUserLoggedIn()){
     $login_result = $dbh->checkAgricoltore($_POST["username"], $_POST["password"]);
     if(count($login_result)==0){
-        $templateParams["titolo"] = "Zuccampus - Utente";
         $_SESSION["agricoltore"]= 0;
-        $templateParams["nome"] = "utente_loggato.php";
-        $templateParams["main"] = "user_logged.php";
+        require "user_logged.php";
     }
     else{
-        $templateParams["titolo"] = "Zuccampus - Agricoltore";
         $_SESSION["agricoltore"] = 1;
-        $templateParams["main"] = "agricoltore_base.php";
-        $templateParams["main_agr"] = "agricoltore_vendite.php";
+        require "agricoltore_vendite.php";
     }
 }
 else{
     $templateParams["titolo"] = "Zuccampus - Login";
     $templateParams["nome"] = "login-form.php";
     $templateParams["main"] = "login-form.php";
+    require 'template/homePage.php';
 }
-$templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 
 
 
-require 'template/homePage.php';
+
 ?>
