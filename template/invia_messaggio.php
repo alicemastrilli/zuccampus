@@ -12,6 +12,8 @@ if($_POST["messaggio_action"]==0){
 require 'composer/vendor/autoload.php';
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
+$testo = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
+            username: ".$_POST["username"] . " password: ".$_POST["password"];
 try {
     $mail->isSMTP();
     //$mail->SMTPDebug = 2;    
@@ -25,13 +27,13 @@ try {
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     //Recipients
     $mail->setFrom('zuccampusspa@gmail.com', 'Zuccampus');
-    $mail->addAddress('alicemastrilli27@gmail.com', 'Alice Mastrilli');     //Add a recipient
+    $mail->addAddress($_POST["mail"], $_POST["username"]);     //Add a recipient
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->Subject = 'Benvenuto in Zuccampus!';
+    $mail->Body    = $testo;
     $mail->send();
-    echo 'Message has been sent';
+    echo 'Benvenuto in Zuccampus! Controlla la tua casella di posta per visualizzare le credenziali.';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
