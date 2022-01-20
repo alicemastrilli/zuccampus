@@ -310,7 +310,6 @@ class DatabaseHelper{
         }
         return $msg;
     }
-<<<<<<< HEAD
 
     public function getOrderById($id){
         $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
@@ -324,11 +323,6 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 07d633de600995703aa5fff714318bc43be92baa
 
     public function orderByPriceUp(){
         $query = "SELECT * FROM zucca GROUP BY nome_zucca ORDER BY prezzo ASC";
@@ -387,7 +381,6 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-<<<<<<< HEAD
 
     public function deleteFarmerElement($nome_azienda, $nome_zucca){
         $query = "DELETE FROM zucca z WHERE z.nome_azienda = ? AND z.nome_zucca = ? ";
@@ -398,8 +391,5 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-=======
->>>>>>> 346bd36dee1a4c690a1c73583e2bc7c9da1d49dd
->>>>>>> 07d633de600995703aa5fff714318bc43be92baa
 }
 ?>
