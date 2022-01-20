@@ -9,3 +9,19 @@
 #offcanvas>div>ul>li:last-of-type{
     background: rgb(221, 74, 74);
 }
+.item {
+    position:relative;
+    padding-top:20px;
+    display:inline-block;
+}
+.notify-badge{
+    position: absolute;
+    right:-5px;
+    top:10px;
+    background:rgb(179, 57, 57);
+    text-align: center;
+    border-radius: 10px;
+    color:white;
+    padding:5px 10px;
+    font-size:10px;
+}

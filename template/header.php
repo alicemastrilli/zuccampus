@@ -34,7 +34,13 @@
             </div>
         </div>
         <?php if(isUserLoggedIn()): ?>
-        <img data-bs-toggle="offcanvas" data-bs-target="#offcanvas"  src="<?php echo UPLOAD_DIR.$templateParams["user"]["immagine"] ?>" alt="">
+            <div class="item pe-1">
+  		<a href="#">
+			<span class="notify-badge">4</span>
+      		<img src="<?php echo UPLOAD_DIR.'posta.jpg'?>"  alt="" />
+		</a>
+	</div>
+        <img class="ps-2"data-bs-toggle="offcanvas" data-bs-target="#offcanvas"  src="<?php echo UPLOAD_DIR.$templateParams["user"]["immagine"] ?>" alt="">
         <?php endif; ?>
     </div>
 </nav>          
