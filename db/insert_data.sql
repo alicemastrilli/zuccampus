@@ -36,9 +36,9 @@ INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`,
 ('La fattoria di Mario', 'Zucca di Chioggia', 'commestibile', 'zuccadichioggia.jpeg', '5.50', '3', '8', 'Inconfondibile per la sua scorza bitorzoluta, dal verde scuro al verde ramato e per la forma particolarmente schiacchiata. Ha una polpa molto saporita e adatta alla preparazione di gnocchi, ripieni e risotti'),
 ('La gioia di Marta', 'Zucca Tonda Padana', 'commestibile', 'zuccatondapadana.png', '6.60', '4', '9', 'La si riconosce per le striature pronunciate, la forma tondeggiante ed il robusto peduncolo legnoso. La polpa è arancione e soda, adatta a ripieni e mostarde');
 
-INSERT INTO `recensione` (`idRecensione`, `descrizione`, `punteggio`, `nome_azienda`, `nome_zucca`, `username`) VALUES 
-('12345', 'Buonissima!', '5', 'Gigi e le sue zucche', 'Zucca Delica', 'GentiAle'),
-('98765', 'Meglio mangiarla cotta!', '4', 'La fattoria di Mario', 'Zucca di Chioggia', 'Verdi');
+INSERT INTO `recensione` (`idRecensione`, `descrizione`, `punteggio`, `nome_azienda`, `nome_zucca`, `username`,`data`) VALUES 
+(1, 'Buonissima!', '5', 'Gigi e le sue zucche', 'Zucca Delica', 'GentiAle', '2021-12-12'),
+(2, 'Meglio mangiarla cotta!', '4', 'La fattoria di Mario', 'Zucca di Chioggia', 'Verdi','2022-01-14');
 
 INSERT INTO `ordine` (`id_ordine`,`username`, `data_ordine`, `ora`, `via`, `numero_civico`, `cap`) VALUES 
 (1,'GentiAle', '2021-12-01', '11:53:05.000000', 'via dell''Università', '50', '40013'),

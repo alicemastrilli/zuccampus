@@ -193,12 +193,13 @@ create table if not exists `zuccampus`.`messaggio` (
      
 
 create table if not exists `zuccampus`.`recensione` (
-     `idRecensione` numeric(5) not null,
+     `idRecensione` INT NOT NULL AUTO_INCREMENT,
      `descrizione` char(250),
      `punteggio` numeric(5) not null,
      `nome_azienda` char(30) not null,
      `nome_zucca` char(20) not null,
      `username` varchar(30) not null,
+     `data` date not null,
   constraint ID_RECENSIONE_ID primary key (idRecensione),
       constraint `FKvalutazione_FK`
      foreign key (`nome_azienda`, `nome_zucca`)
