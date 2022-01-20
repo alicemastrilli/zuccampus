@@ -278,6 +278,7 @@ class DatabaseHelper{
         }
         return $msg;
     }
+<<<<<<< HEAD
     /*
     public function getOrderById($id){
         $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
@@ -292,5 +293,8 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     */
+=======
+
+>>>>>>> b5969b228d54f07c2e681170448f35b166f9db35
 }
 ?>

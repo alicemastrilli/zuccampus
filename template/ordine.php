@@ -44,8 +44,8 @@
 <?php 
 //$_POST["ordine"] = $templateParams["ordine"];
 //$_POST["campus_info"] = $templateParams["info"];
-//$_POST["messaggio_action"]=2;
-//require "invia_messaggio.php" ?>
+$_POST["messaggio_action"]=0;
+require "invia_messaggio.php" ?>
 <?php 
 endif;?>
     </div>
