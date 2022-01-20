@@ -278,8 +278,7 @@ class DatabaseHelper{
         }
         return $msg;
     }
-<<<<<<< HEAD
-    /*
+    
     public function getOrderById($id){
         $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
         o.cap   FROM ordine o, comprende c,zucca z,utente u
@@ -292,10 +291,7 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    */
-=======
 
-<<<<<<< HEAD
     public function orderByPriceUp(){
         $query = "SELECT * FROM zucca GROUP BY nome_zucca ORDER BY prezzo ASC";
         $stmt = $this->db->prepare($query);
@@ -353,8 +349,5 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-=======
->>>>>>> b5969b228d54f07c2e681170448f35b166f9db35
->>>>>>> 4ee23053d4a4738ac31bcbfe8b1e9c9cb9b7b2ed
 }
 ?>
