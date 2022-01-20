@@ -283,19 +283,6 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getOrderById($id){
-        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
-        o.cap   FROM ordine o, comprende c,zucca z,utente u
-         WHERE c.id_ordine =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
-          and o.id_ordine = c.id_ordine and o.username = u.username
-         order by o.data_ordine desc";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function insertNewZucca($nome_azienda = null, $nome_zucca = null, $tipo = null,  $immagine = null, $prezzo = null, $peso = null, $disponibilita = null, $descrizione_zucca = null){
         $query = "INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
@@ -383,9 +370,8 @@ class DatabaseHelper{
     }
 
     public function deleteFarmerElement($nome_azienda, $nome_zucca){
-        $query = "DELETE FROM zucca z WHERE z.nome_azienda = ? AND z.nome_zucca = ? ";
+        $query = "DELETE FROM zucca z WHERE z.nome_azienda = ? AND z.nome_zucca = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$nome_azienda,$nome_zucca);
         $stmt->execute();
         $result = $stmt->get_result();
 

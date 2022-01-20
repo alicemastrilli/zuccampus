@@ -20,9 +20,9 @@
                             <p>Quantità disponibile:<?php echo $prodotto["disponibilita"]; ?></p>
                             <div class="row">
                                 <div class="col-6 text-center">
-                                    <button class="rounded" type="button">
-                                        <a class=" text-decoration-none text-black" href="#">Visualizza prodotto</a>
-                                    </button>
+                                    <form  action="info_prodotto_venditore.php?id=<?php echo $prodotto["nome_zucca"]?>" method="post">
+                                        <button class="rounded">Visualizza Prodotto</button>
+                                    </form>
                                 </div>
                                 <div class="col-6 text-center">
                                     <button class="rounded " type="button" onclick="deleteElement('<?php echo $prodotto["nome_azienda"]; ?>','<?php echo $prodotto["nome_zucca"]; ?>')">Elimina il Prodotto</button>                   
