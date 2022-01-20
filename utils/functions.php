@@ -21,7 +21,6 @@ function getFootersIcons(){
         if($_SESSION["agricoltore"] == 0){
             array_push($icons, array("img"=>UPLOAD_DIR."carrello.png", "a"=>"login.php"));
         } 
-        //array_push($icons, array("img"=>UPLOAD_DIR."posta.jpg","a"=>"casella_messaggi.php" ));
     }
     else {
         array_push($icons, array("img"=> UPLOAD_DIR."carrello.png","a"=>"login.php"));
@@ -30,6 +29,15 @@ function getFootersIcons(){
     return $icons;
 }
 
+function countMessagesUnread($messaggi){
+    $i=0;
+    foreach($messaggi as $messaggio){
+        if($messaggio["tag_letto"] == 0){
+            $i= $i+1;
+        }
+    }
+    return $i;
+}
 function UserWindowFields(){
     $field = array();
     array_push($field, array("text" => "Home", "href" => "agricoltore_vendite.php"));

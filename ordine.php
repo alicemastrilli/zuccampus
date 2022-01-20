@@ -17,6 +17,7 @@ if(isset($_GET["id"])){
 }
 if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
 }
 $templateParams["js"] = "js/chart.js";
 

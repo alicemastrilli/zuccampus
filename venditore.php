@@ -12,6 +12,7 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 
 if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
     $nome_azienda = $dbh->getAziendaByUsername($_SESSION["username"])[0]["nome_azienda"];
 }
 if(isset($_GET["id"])){
