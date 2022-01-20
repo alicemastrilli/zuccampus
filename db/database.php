@@ -215,18 +215,50 @@ class DatabaseHelper{
         $stmt->bind_param('ss', $username, $nome_azienda);
         $stmt->execute();
         
-
-
-        return $stmt->insert_id;
+        if($stmt->execute()){
+            $msg = 1;
+        }
+        else {
+            $msg = $stmt->error;
+        }
+        return $msg;
     }
 
-    public function insertNewAzienda($nome_azienda = NULL, $via = NULL, $numero_civico = NULL, $cap = NULL, $descrizione = NULL){
-        $query = "INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `descrizione`) VALUES  (?, ?, ?, ?, ?)";
+    public function insertNewIndirizzo($via = null, $numero_civico = null, $citta = null, $cap = null){
+        $query = "INSERT INTO `indirizzo` (`via`, `numero_civico`, `citta`,`cap`) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param($nome_azienda, $via, $numero_civico, $cap, $descrizione);
+        $stmt->bind_param('sisi', $via, $numero_civico, $citta, $cap);
         $stmt->execute();
         
-        return $stmt->insert_id;
+        if($stmt->execute()){
+            $msg = 1;
+        }
+        else {
+            $msg = 0;
+        }
+        return $msg;
+    }
+
+    public function insertNewAzienda($nome_azienda = NULL, $via = NULL, $numero_civico = NULL, $cap = NULL, $descrizione = NULL, $citta){   
+        $flag = $this->insertNewIndirizzo($via, $numero_civico, $citta, $cap);
+        if ($flag){
+            $query = "INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `descrizione`) VALUES  (?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ssiis', $nome_azienda, $via, $numero_civico, $cap, $descrizione);
+            $stmt->execute();
+
+            if($stmt->execute()){
+                $msg = 1;
+            }
+            else {
+                $msg = 0;
+            }
+        }
+        else{
+            $msg = 0;
+        }
+        return $msg;
+
     }
 
     public function getAllOrders($nome_azienda, $n=-1){
@@ -278,23 +310,5 @@ class DatabaseHelper{
         }
         return $msg;
     }
-<<<<<<< HEAD
-    /*
-    public function getOrderById($id){
-        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
-        o.cap   FROM ordine o, comprende c,zucca z,utente u
-         WHERE c.id_ordine =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
-          and o.id_ordine = c.id_ordine and o.username = u.username
-         order by o.data_ordine desc";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-    */
-=======
-
->>>>>>> b5969b228d54f07c2e681170448f35b166f9db35
 }
 ?>
