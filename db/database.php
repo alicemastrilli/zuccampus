@@ -198,9 +198,9 @@ class DatabaseHelper{
         $query = "INSERT INTO `utente` ( `immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`, `cliente`, `agricoltore`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
-        $stmt->execute();
+        $ris=$stmt->execute();
         
-        if($stmt->execute()){
+        if($ris){
             $msg = 1;
         }
         else {
