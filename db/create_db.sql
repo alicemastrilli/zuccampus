@@ -199,6 +199,7 @@ create table if not exists `zuccampus`.`recensione` (
      `nome_azienda` char(30) not null,
      `nome_zucca` char(20) not null,
      `username` varchar(30) not null,
+     `data` date not null,
   constraint ID_RECENSIONE_ID primary key (idRecensione),
       constraint `FKvalutazione_FK`
      foreign key (`nome_azienda`, `nome_zucca`)
