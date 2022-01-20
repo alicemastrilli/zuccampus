@@ -104,3 +104,17 @@ function seleziona_fornitore(nome_azienda, nome_zucca) {
         }
     });
 }
+
+function deleteElement(nome_azienda, nome_zucca) {
+    $.ajax({
+        url: "elimina_prodotto.php",
+        data: 'nome_azienda=' + nome_azienda + '&nome_zucca=' + nome_zucca,
+        type: "get",
+        success: function(response) {
+            let zucche = AggiornaProdottiVenditore(response);
+            $("div#div1").html("");
+            const main = $("main");
+            main.append(zucche);
+        }
+    });
+}

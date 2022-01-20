@@ -25,9 +25,7 @@
                                     </button>
                                 </div>
                                 <div class="col-6 text-center">
-                                    <form  action="info_prodotti.php?id=<?php echo $zucca["nome_zucca"]?>" method="post">
-                                        <button class="rounded " type="button">Elimina il Prodotto</button> 
-                                    </form>                            
+                                    <button class="rounded " type="button" onclick="deleteElement('<?php echo $prodotto["nome_azienda"]; ?>','<?php echo $prodotto["nome_zucca"]; ?>')">Elimina il Prodotto</button>                   
                                 </div>
                             </div>
                         </td>
@@ -40,4 +38,9 @@
             </table>
         </article>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="./js/elisa.js"></script>
 </html>
