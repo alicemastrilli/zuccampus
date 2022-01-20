@@ -1,4 +1,9 @@
+
+
 <?php
+//TO DO: controllare se effettivamente questo file serve
+//in registrati viene chiamata gestisci_registrazione.php
+
 require_once("bootstrap.php");
 
 $templateParams["titolo"] = "Zuccampus - Registrazione";

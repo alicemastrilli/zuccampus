@@ -161,4 +161,20 @@ function uploadImage($path, $image){
     }
     return array($result, $msg);
 }
+
+
+function checkFormFilledCorrectly($fields){
+/*funzione per verificare i tutti i campi di un form siano pieni (TO DO: e validi )
+input: array tipo $nome $cognome $num_telefono $
+*/
+    $error = False;
+    $msg = "";
+    foreach($fields as $field) {
+        if (empty($field) || !strcmp($field, "")) {
+            $error = True;
+            $msg = "Inserisci tutti i dati";
+        }
+    }
+    return $error;
+}
 ?>
