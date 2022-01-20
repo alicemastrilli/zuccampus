@@ -85,7 +85,7 @@ class DatabaseHelper{
     $result = $stmt->get_result();
 
     return $result->fetch_all(MYSQLI_ASSOC);
-}
+    }
 
     public function checkAgricoltore($username) {
         $query = "SELECT  username FROM agricoltore WHERE username = ?";
