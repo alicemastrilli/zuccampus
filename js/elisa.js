@@ -1,3 +1,34 @@
+function AggiornaProdottiVenditore(zucche) {
+    let result = "";
+
+    for (let i = 0; i < zucche.length; i++) {
+        let articolo = `
+        <tr>                   
+            <td class="col-9">
+                <h3>${zucche[i]["nome_zucca"]}</h3>
+                <h5>${zucche[i]["tipo"]}</h5>
+                <p>Quantità disponibile:${zucche[i]["disponibilita"]}</p>
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <form  action="info_prodotto_venditore.php?id=${zucche[i]["nome_zucca"]}" method="post">
+                            <button class="rounded">Visualizza Prodotto</button>
+                        </form>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="rounded " type="button" onclick="deleteElement('<?php echo $prodotto["nome_azienda"]; ?>','<?php echo $prodotto["nome_zucca"]; ?>')">Elimina il Prodotto</button>                   
+                    </div>
+                </div>
+            </td>
+            <td class="col-3 p-2">
+                <img class="float-end" src="./icons/${zucche[i]["immagine"]}" alt="" />
+            </td>
+        </tr>
+        `;
+        result += articolo;
+    }
+    return result;
+}
+
 function generaZucche(zucche) {
     let result = "";
 

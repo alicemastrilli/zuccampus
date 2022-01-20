@@ -8,7 +8,7 @@ $templateParams["main"] = "lista_prodotti_venditore.php";
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
-$nome_utente = $_SESSION["username"];
+//$nome_utente = $_SESSION["username"];
 $templateParams["prodottiVenditore"] = $dbh->getProductsByFarmer('Gigi e le sue zucche');
 require("template/homePage.php");
 ?>

@@ -198,9 +198,9 @@ class DatabaseHelper{
         $query = "INSERT INTO `utente` ( `immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`, `cliente`, `agricoltore`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
-        $stmt->execute();
+        $ris=$stmt->execute();
         
-        if($stmt->execute()){
+        if($ris){
             $msg = 1;
         }
         else {
@@ -283,19 +283,6 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getOrderById($id){
-        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
-        o.cap   FROM ordine o, comprende c,zucca z,utente u
-         WHERE c.id_ordine =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
-          and o.id_ordine = c.id_ordine and o.username = u.username
-         order by o.data_ordine desc";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function insertNewZucca($nome_azienda = null, $nome_zucca = null, $tipo = null,  $immagine = null, $prezzo = null, $peso = null, $disponibilita = null, $descrizione_zucca = null){
         $query = "INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
@@ -309,6 +296,86 @@ class DatabaseHelper{
             $msg = $stmt->error;
         }
         return $msg;
+    }
+
+    public function getOrderById($id){
+        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
+        o.cap   FROM ordine o, comprende c,zucca z,utente u
+        WHERE c.id_ordine =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
+        and o.id_ordine = c.id_ordine and o.username = u.username
+        order by o.data_ordine desc";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function orderByPriceUp(){
+        $query = "SELECT * FROM zucca GROUP BY nome_zucca ORDER BY prezzo ASC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function orderByPriceDown(){
+        $query = "SELECT * FROM zucca GROUP BY nome_zucca ORDER BY prezzo DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProductsByFarmer($nome_azienda){
+        $query="SELECT * FROM zucca WHERE nome_azienda = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s",$nome_azienda);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProduttoriByZuccaName($nome_zucca){
+        $query = "SELECT * FROM zucca z WHERE z.nome_zucca = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s",$nome_zucca);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProductsByCategory($tipo){
+        $query = "SELECT * FROM zucca z WHERE z.tipo = ? GROUP BY z.nome_zucca ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s",$tipo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProductByFarmerAndName($nome_azienda, $nome_zucca){
+        $query = "SELECT * FROM zucca z WHERE z.nome_azienda = ? AND z.nome_zucca = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$nome_azienda,$nome_zucca);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteFarmerElement($nome_azienda, $nome_zucca){
+        $query = "DELETE FROM zucca z WHERE z.nome_azienda = ? AND z.nome_zucca = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 ?>
