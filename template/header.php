@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" type="text/css" href="./css/header.css" /> 
 </head>
 <body>
@@ -33,14 +35,18 @@
                 </ul>
             </div>
         </div>
+        
         <?php if(isUserLoggedIn()): ?>
             <div class="item pe-1">
-  		<a href="#">
-			<span class="notify-badge">4</span>
+  		<a href="casella_messaggi.php">
+			<span class="notify-badge"><?php echo countMessagesUnread($templateParams["messaggi"]) ?></span>
       		<img src="<?php echo UPLOAD_DIR.'posta.jpg'?>"  alt="" />
 		</a>
 	</div>
         <img class="ps-2"data-bs-toggle="offcanvas" data-bs-target="#offcanvas"  src="<?php echo UPLOAD_DIR.$templateParams["user"]["immagine"] ?>" alt="">
         <?php endif; ?>
     </div>
-</nav>          
+</nav>
+        
+
+

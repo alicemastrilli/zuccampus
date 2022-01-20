@@ -52,7 +52,7 @@ article button a {
     font-weight: bold;
 }
 
-body>main>div>div>div>p {
+div>div>div>p {
     text-align: center;
     font-size: 18px;
     font-family: serif;
@@ -69,8 +69,21 @@ body>main>div>div>div {
     margin-bottom: 10px;
 }
 
-body>main>div>div>div>button {
+body>main>div>div>div>button.btn {
     background-color: #D9AF5D;
-    color: black;
+    border-color: #D9AF5D;
     text-align: center;
+}
+
+body>main>div>div>div>button.btn:hover {
+    background-color: #D9AF5D;
+    border-color: #D9AF5D;
+}
+
+body>main>nav>div>div>a>img {
+    width: 10%;
+}
+
+body>main>div>div>div>div>div>div>img {
+    width: 50%;
 }

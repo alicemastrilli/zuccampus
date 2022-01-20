@@ -11,6 +11,7 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"]);
 if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
 }
 $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
 
