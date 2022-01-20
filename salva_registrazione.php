@@ -13,7 +13,6 @@ require_once 'bootstrap.php';
     list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
     if($result != 0){
         $immagine = $msg;
-        //TO DO: controllare che i campi siano pieni
 
         if($_SESSION["agricoltore"] == 1){
             $cliente = 0;
@@ -32,9 +31,10 @@ require_once 'bootstrap.php';
         $numero_civico = htmlspecialchars($_POST["numero_civico"]);
         $cap = htmlspecialchars($_POST["cap"]);
         $descrizione = htmlspecialchars($_POST["descrizione_azienda"]);
+        $citta = htmlspecialchars($_POST["citta"]);
 
         $msg = $dbh->insertNewAgricoltore($username, $nome_azienda);
-        $msg_azienda = $dbh->insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione);
+        $msg_azienda = $dbh->insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione, $citta);
 
         $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore, $nome_azienda, $via, $numero_civico, $cap, $descrizione);
         $error = checkFormFilledCorrectly($fields);
