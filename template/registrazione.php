@@ -1,6 +1,3 @@
-
-
-
 <?php 
 //a cosa mi serve questo?
 $utente = $templateParams["utente"] ;
@@ -11,10 +8,10 @@ $utente = $templateParams["utente"] ;
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
         <?php
         if($_GET["action"]==2){
-          $_SESSION["utente"] = "agricoltore";
+          $_SESSION["agricoltore"] = 1;
         }
         else{
-          $_SESSION["utente"] = "cliente";
+          $_SESSION["agricoltore"] = 0;
         }
         
         ?>
@@ -34,8 +31,6 @@ $utente = $templateParams["utente"] ;
     <article class="rounded mx-2">
             <h3 class="pt-2 px-2">Informazioni di base</h3>
               <div class="mb-3 mt-3">
-                <!--TO CHECK:gestire per ogni input l'inserimento di una nuova riga nel database-->
-                
                 <label for="nome" class="form-label px-2">Nome:</label><br>
                   <div class="mx-2 pb-3">
                      <input class="form-control" type="text" id="nome" name="nome" value="<?php echo $utente["nome"]; ?>" />
@@ -73,7 +68,7 @@ $utente = $templateParams["utente"] ;
               </div>
         </article>
         <article class="rounded mx-2">
-            <?php if($_GET["action"]==2){
+            <?php if($_SESSION["agricoltore"] == 1){
                   require($templateParams["registrazione_agricoltore"]);
                }
             ?>
@@ -94,11 +89,10 @@ $utente = $templateParams["utente"] ;
         </article>
         <div class="pb-3 text-center">
         
-          <input type="submit" name="submit" value="registrati" />
-  
-        </div>
+        <input type="submit" name="submit" value="Registrati" onClick="this.disabled=true; this.value='Processing…'";>
+        
        
   </section>
-  <input type="hidden" name="action" value="registrati" />
+  <!--<input type="hidden" name="action" value="registrati" /> -->
   <!--<input type="hidden" name="defaultimg" value="<?php //echo UPLOAD_DIR.utente_generico.jpg; ?>" />-->
 </form>
