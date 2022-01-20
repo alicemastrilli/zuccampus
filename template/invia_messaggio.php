@@ -14,8 +14,15 @@ if($_POST["messaggio_action"]==1){
 } elseif ($_POST["messaggio_action"] ==2) {
     $ordine = $_POST["ordine"];
     $campus_info = $_POST["campus_info"];
-    $_POST["testo"] = "Gentile ". $_SESSION["username"] . " l'ordine di ".$ordine["username"]. "arriverà in giornata! ";    $_POST["data"] = date_format(computeDeliveryTime($ordine, $campus_info)[0], "Y-m-d");     $_POST["ora"] = $ordine["ora"];
+    $_POST["testo"] = "Gentile ". $_SESSION["username"] . " l'ordine di ".$ordine["username"]. "arriverà in giornata! ";    
+    $_POST["data"] = date_format(computeDeliveryTime($ordine, $campus_info)[0], "Y-m-d");     
+    $_POST["ora"] = $ordine["ora"];
     $_POST["link"] = "ordine.php?id=". $ordine["id_ordine"];
+    require_once "processa-messaggio.php";
+} elseif ($_POST["messaggio_action"] == 3) {
+    $recensione = $_POST["recensione"];
+    $_POST["testo"] = "Gentile ". $_SESSION["username"] . ", il cliente ".$recensione["username"]. "ha lasciato una recensione! ";   
+    $_POST["link"] = "recensione.php?id=". $recensione["id"];
     require_once "processa-messaggio.php";
 }
 ?>
