@@ -33,8 +33,9 @@ require_once 'bootstrap.php';
         $descrizione = htmlspecialchars($_POST["descrizione_azienda"]);
         $citta = htmlspecialchars($_POST["citta"]);
 
-        $msg = $dbh->insertNewAgricoltore($username, $nome_azienda);
         $msg_azienda = $dbh->insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione, $citta);
+        $msg = $dbh->insertNewAgricoltore($username, $nome_azienda);
+        
 
         $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore, $nome_azienda, $via, $numero_civico, $cap, $descrizione);
         $error = checkFormFilledCorrectly($fields);
@@ -42,17 +43,19 @@ require_once 'bootstrap.php';
         if($msg && $msg_azienda){  
             $_SESSION["agricoltore"] = 1;
             $msg = "Registrazione avvenuta con successo";
-            registerLoggedUser($username);
-            header("location:login_form.php?formmsg=".$msg);
+            //registerLoggedUser($username);
+            $_SESSION["username"] = $username;
+            header("location:login.php?formmsg=".$msg);
         }
         else{
             var_dump($msg);
-            var_dump($msg_error);
         }
     }
+    //Completare registrazione per cliente
     else{
 
         $error = checkFormFilledCorrectly($fields);
+        //Registrazione avvenuta con successo, accede al profilo personale
         if($msg){
             $_SESSION["agricoltore"]= 0;
             $msg = "Registrazione avvenuta con successo";
@@ -60,7 +63,6 @@ require_once 'bootstrap.php';
             header("location:login.php?formmsg=".$msg);
         }else{
             var_dump($msg);
-            var_dump($msg_error);
         }
     }
 

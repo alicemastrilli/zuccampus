@@ -49,9 +49,7 @@ $utente = $templateParams["utente"] ;
                 </div>
                 <div class="mx-2 pb-3">
                   <!--TO DO: fare in modo che sia checkato uno solo alla volta -->
-<!--
-                  <form action="registrazione.php" method="post" >
-                  
+<!--    
                   <input type="checkbox" id="studente" name="studente" value=true/><label for="studente">Studente</label>
                 </div>
                 <div class="mx-2 pb-3">
@@ -60,11 +58,7 @@ $utente = $templateParams["utente"] ;
                 <div class="mx-2 pb-3">
                   <input type="checkbox" id="altro" name="altro " value=true/><label for="altro">Altro</label>
                 </div>
-                
-                </form>
                 TO DO: visualizzare la matricola solo se studente e' checkato  -->
-           
-                
               </div>
         </article>
         <article class="rounded mx-2">

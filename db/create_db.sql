@@ -226,8 +226,8 @@ create table if not exists `zuccampus`.`agricoltore` (
     constraint `FKUTE_AGR_FK`
     foreign key (`nome_azienda`)
      references `zuccampus`.`azienda_agricola` (`nome_azienda`)
-     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+     ON DELETE CASCADE
+    ON UPDATE CASCADE);
    
 
 

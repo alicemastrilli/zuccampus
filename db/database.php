@@ -241,13 +241,14 @@ class DatabaseHelper{
 
     public function insertNewAzienda($nome_azienda = NULL, $via = NULL, $numero_civico = NULL, $cap = NULL, $descrizione = NULL, $citta){   
         $flag = $this->insertNewIndirizzo($via, $numero_civico, $citta, $cap);
+       // $flag_agricoltore = $this->insertNewAgricoltore($username, $nome_azienda);
         if ($flag){
             $query = "INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `descrizione`) VALUES  (?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ssiis', $nome_azienda, $via, $numero_civico, $cap, $descrizione);
-            $stmt->execute();
+            $ris = $stmt->execute();
 
-            if($stmt->execute()){
+            if($ris){
                 $msg = 1;
             }
             else {
