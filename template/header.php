@@ -42,7 +42,15 @@
       		<img src="<?php echo UPLOAD_DIR.'posta.jpg'?>"  alt="casella di posta" />
 		    </a>
 	        </div>
-            <img class="ps-2"data-bs-toggle="offcanvas" data-bs-target="#offcanvas"  src="<?php echo UPLOAD_DIR.$templateParams["user"]["immagine"] ?>" alt="">
+            <?php
+            if ($templateParams["user"]["immagine"] == ""){
+                $img_profile = "utente_generico.jpg";
+            } else{
+                $img_profile = $templateParams["user"]["immagine"];
+            }
+
+            ?>
+            <img class="ps-2"data-bs-toggle="offcanvas" data-bs-target="#offcanvas"  src="<?php echo UPLOAD_DIR.$img_profile ?>" alt="">
         <?php endif; ?>
     </div>
 </nav>
