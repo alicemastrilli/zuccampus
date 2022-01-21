@@ -59,7 +59,7 @@ class DatabaseHelper{
 
     
     public function getUserByUsername($username){
-        $stmt = $this->db->prepare("SELECT nome,cognome,immagine from utente where username =?");
+        $stmt = $this->db->prepare("SELECT nome,cognome,immagine,email,password from utente where username =?");
         $stmt->bind_param("s",$username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -88,7 +88,7 @@ class DatabaseHelper{
     }
 
     public function checkAgricoltore($username) {
-        $query = "SELECT  username FROM agricoltore WHERE username = ?";
+        $query = "SELECT  AGRICOLTORE FROM utente WHERE username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$username);
         $stmt->execute();
@@ -198,9 +198,9 @@ class DatabaseHelper{
         $query = "INSERT INTO `utente` ( `immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`, `cliente`, `agricoltore`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
-        $stmt->execute();
+        $ris=$stmt->execute();
         
-        if($stmt->execute()){
+        if($ris){
             $msg = 1;
         }
         else {
@@ -213,9 +213,9 @@ class DatabaseHelper{
         $query = "INSERT INTO agricoltore (username, nome_azienda) VALUES  (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $nome_azienda);
-        $stmt->execute();
+        $ris = $stmt->execute();
         
-        if($stmt->execute()){
+        if($ris){
             $msg = 1;
         }
         else {
@@ -228,9 +228,9 @@ class DatabaseHelper{
         $query = "INSERT INTO `indirizzo` (`via`, `numero_civico`, `citta`,`cap`) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sisi', $via, $numero_civico, $citta, $cap);
-        $stmt->execute();
+        $ris = $stmt->execute();
         
-        if($stmt->execute()){
+        if($ris){
             $msg = 1;
         }
         else {
@@ -241,13 +241,14 @@ class DatabaseHelper{
 
     public function insertNewAzienda($nome_azienda = NULL, $via = NULL, $numero_civico = NULL, $cap = NULL, $descrizione = NULL, $citta){   
         $flag = $this->insertNewIndirizzo($via, $numero_civico, $citta, $cap);
+       // $flag_agricoltore = $this->insertNewAgricoltore($username, $nome_azienda);
         if ($flag){
             $query = "INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `descrizione`) VALUES  (?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ssiis', $nome_azienda, $via, $numero_civico, $cap, $descrizione);
-            $stmt->execute();
+            $ris = $stmt->execute();
 
-            if($stmt->execute()){
+            if($ris){
                 $msg = 1;
             }
             else {
@@ -287,9 +288,9 @@ class DatabaseHelper{
         $query = "INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione);
-        $stmt->execute();
+        $ris = $stmt->execute();
         
-        if($stmt->execute()){
+        if($ris){
             $msg = True;
         }
         else {

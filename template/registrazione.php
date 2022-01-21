@@ -6,15 +6,7 @@ $utente = $templateParams["utente"] ;
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
   <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
-        <?php
-        if($_GET["action"]==2){
-          $_SESSION["agricoltore"] = 1;
-        }
-        else{
-          $_SESSION["agricoltore"] = 0;
-        }
-        
-        ?>
+     
   </head>
   <section>
     <div class="row">
@@ -22,7 +14,6 @@ $utente = $templateParams["utente"] ;
          <!--TO DO: correggere la tondita' della foto profilo di default--> 
          <img src="./icons/utente_generico.jpg" class="round-circle max" 
         alt="foto profilo default"/>
-        <!--TO DO: gestire il caricamento dell'immagine-->
         <div class="pb-1 text-center">
           <input type="file" name="immagine" id="immagine" />
         </div>
@@ -49,9 +40,7 @@ $utente = $templateParams["utente"] ;
                 </div>
                 <div class="mx-2 pb-3">
                   <!--TO DO: fare in modo che sia checkato uno solo alla volta -->
-<!--
-                  <form action="registrazione.php" method="post" >
-                  
+<!--    
                   <input type="checkbox" id="studente" name="studente" value=true/><label for="studente">Studente</label>
                 </div>
                 <div class="mx-2 pb-3">
@@ -60,11 +49,7 @@ $utente = $templateParams["utente"] ;
                 <div class="mx-2 pb-3">
                   <input type="checkbox" id="altro" name="altro " value=true/><label for="altro">Altro</label>
                 </div>
-                
-                </form>
                 TO DO: visualizzare la matricola solo se studente e' checkato  -->
-           
-                
               </div>
         </article>
         <article class="rounded mx-2">

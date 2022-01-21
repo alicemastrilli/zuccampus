@@ -4,11 +4,12 @@ require_once("bootstrap.php");
 $templateParams["titolo"] = "Zuccampus-Prodotti Agricoltore";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
-$templateParams["main_agr"] = "agricoltore_prodotti.php";
+$templateParams["main_agr"] = "lista_prodotti_venditore.php";
 $templateParams["main"] = "agricoltore_base.php";
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
+$templateParams["prodottiVenditore"] = $dbh->getProductsByFarmer('Gigi e le sue zucche');
 if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);

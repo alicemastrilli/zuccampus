@@ -13,7 +13,7 @@ require_once 'bootstrap.php';
     list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
     if($result != 0){
         $immagine = $msg;
-
+        
         if($_SESSION["agricoltore"] == 1){
             $cliente = 0;
             $agricoltore = 1;
@@ -33,30 +33,36 @@ require_once 'bootstrap.php';
         $descrizione = htmlspecialchars($_POST["descrizione_azienda"]);
         $citta = htmlspecialchars($_POST["citta"]);
 
-        $msg = $dbh->insertNewAgricoltore($username, $nome_azienda);
         $msg_azienda = $dbh->insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione, $citta);
+        $msg = $dbh->insertNewAgricoltore($username, $nome_azienda);
+        
 
         $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore, $nome_azienda, $via, $numero_civico, $cap, $descrizione);
         $error = checkFormFilledCorrectly($fields);
-        //if user is agricoltore require user_logged.php
+        //TODO: if user is agricoltore require user_logged.php
         if($msg && $msg_azienda){  
             $_SESSION["agricoltore"] = 1;
-            header("location:login_form.php?formmsg=".$msg);
+            $msg = "Registrazione avvenuta con successo";
+            //registerLoggedUser($username);
+            $_SESSION["username"] = $username;
+            header("location:login.php?formmsg=".$msg);
         }
         else{
             var_dump($msg);
-            var_dump($msg_error);
         }
     }
+    //Completare registrazione per cliente
     else{
 
         $error = checkFormFilledCorrectly($fields);
+        //Registrazione avvenuta con successo, accede al profilo personale
         if($msg){
-            $_SESSION["agricoltore"]= 0;
+            $_SESSION["agricoltore"] = 0;
+            $msg = "Registrazione avvenuta con successo";
+            $_SESSION["username"] = $username;
             header("location:login.php?formmsg=".$msg);
         }else{
             var_dump($msg);
-            var_dump($msg_error);
         }
     }
 

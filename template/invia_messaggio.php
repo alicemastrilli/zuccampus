@@ -1,19 +1,51 @@
+<!DOCTYPE html>
+<head>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/invia_messaggio.css" /> 
+
+</head>
+
+
 <?php 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
     //3 casi
 //caso 0: nuova registrazione-> invio credenziali per mail
 //caso 1: viene mandato un messaggio per informare che un ordine è stato inviato/ricevuto
 //caso 2: ordine è arrivato
 //caso 3: è stata fatta una recensione
-if($_POST["messaggio_action"]==0){
+?>
+<?php if($_POST["messaggio_action"]==0) {
+$_POST["testo"] = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
+username: ".$_SESSION["username"] . " password: ".$_POST["password"];
+}
+  ?>
+<div class="row ">
+  
+<div class="toast show  col-12 ">
+  <div class="toast-header  col-12 text-white text-center">
+    Nuovo messaggio
+    <div class="col-6">
+      </div>
+    <button type="button" class="btn-close float-end text-white" data-bs-dismiss="toast"></button>
+    
+  </div>
+  <div class="toast-body col-12 text-white">
+  <?php echo $_POST["testo"];?>
+  </div>
+</div>
+</div>
+<div class="col-3"></div>
+<?php
+if($_POST["messaggio_action"]==0) {
 //Load Composer's autoloader
 require 'composer/vendor/autoload.php';
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
-$testo = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
-            username: ".$_POST["username"] . " password: ".$_POST["password"];
+
 try {
     $mail->isSMTP();
     //$mail->SMTPDebug = 2;    
@@ -27,18 +59,17 @@ try {
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     //Recipients
     $mail->setFrom('zuccampusspa@gmail.com', 'Zuccampus');
-    $mail->addAddress($_POST["mail"], $_POST["username"]);     //Add a recipient
+    $mail->addAddress($_POST["mail"], $_SESSION["username"]);     //Add a recipient
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Benvenuto in Zuccampus!';
-    $mail->Body    = $testo;
+    $mail->Body    = $_POST["testo"];
     $mail->send();
-    echo 'Benvenuto in Zuccampus! Controlla la tua casella di posta per visualizzare le credenziali.';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 
-} elseif ($_POST["messaggio_action"]==1){
+}elseif ($_POST["messaggio_action"]==1){
     $ordine = $_POST["ordine"];
     $_POST["testo"] = "Gentile ". $_SESSION["username"] . " la sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$ordine["username"];
     $_POST["data"] = $ordine["data_ordine"]; 

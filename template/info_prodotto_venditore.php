@@ -28,7 +28,9 @@
         <div class="row">
             <div class="col text-center">
                 <p>Costo: €<?php echo $zucca["prezzo"]; ?></p>
-                <button class="btn">Modifica Prodotto</button>
+                <form action="gestisci_prodotto.php?action=2" method="post">
+                    <button class="rounded p-2"  name="modifica">Modifica prodotto</button>
+                </form>
             </div>
         </div>
     <?php endforeach;?>
