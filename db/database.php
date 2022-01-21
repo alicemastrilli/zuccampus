@@ -97,6 +97,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function checkStudente($username) {
+        $query = "SELECT  matricola FROM cliente WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getMessaggi($username) {
         $query = "SELECT  * FROM messaggio WHERE username = ? order by data asc";
         $stmt = $this->db->prepare($query);

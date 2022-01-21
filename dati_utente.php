@@ -20,6 +20,7 @@ if(isset($_GET["id"])){
 elseif (isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
+    $templateParams["matricola"] =$dbh->checkStudente($_SESSION["username"])[0]["matricola"];
 }
 
 

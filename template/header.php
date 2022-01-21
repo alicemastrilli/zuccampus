@@ -8,7 +8,7 @@
 <body>
 <nav class="navbar">
     <div class="container ">
-        <a class="navbar-brand text-black" href="#">
+        <a class="navbar-brand text-black" href="homepage.php">
             <h1 class="text-dark"><?php echo $templateParams["nome"] ; ?></h1>
         </a>
         <div class="float-end">
