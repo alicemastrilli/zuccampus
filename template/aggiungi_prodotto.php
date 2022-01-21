@@ -15,9 +15,6 @@
                 </div>
             </div>
             <div class="mb-3 mt-3">
-                <!--gestire per ogni input l'inserimento di una nuova riga nel database-->
-                <!--Aggiungere il prezzo, il peso e la disponibilita' 
-                    Caricare il nome dell'azienda da session-->
                 <label for="nome_zucca">Nome zucca:</label>
                 <input type="text" id="nome_zucca" name="nome_zucca" value="" />               
                 <div class="col-sm-0">
@@ -31,12 +28,24 @@
                 </div>
             </div>
             <label for="descrizione_zucca" class="form-label px-2">Descrizione:</label><br>
-                <div class="mx-2 pb-3">
-                    <!--controllare il placeholder della textarea-->
-                   <textarea class="form-control" rows="5" id="descrizione_zucca" 
-                   name="descrizione_zucca"> </textarea>
-                </div>
-              </div>
+            <div class="mx-2 pb-3">
+                <!--controllare il placeholder della textarea-->
+                <textarea class="form-control" rows="5" id="descrizione_zucca" 
+                name="descrizione_zucca"> </textarea>
+            </div>
+            <div  class="mb-3 mt-3">
+            <label for="peso">Peso:</label>
+                <input type="text" id="peso" name="peso" value="" />
+            </div>
+            <div  class="mb-3 mt-3">
+            <label for="prezzo">Prezzo al chilo:</label>
+                <input type="text" id="prezzo" name="prezzo" value="" />
+            </div>
+            <div  class="mb-3 mt-3">
+            <label for="disponibilita">Disponibilità:</label>
+                <input type="text" id="disponibilita" name="disponibilita" value="" />
+            </div>    
+        </div>
         </article>
         </div>
         

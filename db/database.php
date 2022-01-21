@@ -288,9 +288,9 @@ class DatabaseHelper{
         $query = "INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione);
-        $stmt->execute();
+        $ris = $stmt->execute();
         
-        if($stmt->execute()){
+        if($ris){
             $msg = True;
         }
         else {
