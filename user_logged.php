@@ -15,7 +15,7 @@ if(isUserLoggedIn()){
 }
 
 $templateParams["main"] = "user_logged.php";
-
+$templateParams["js"] =array("js/jquery-3.4.1.min.js","js/user_logged.js");
 require("template/homePage.php");
 
 ?>
