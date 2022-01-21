@@ -18,24 +18,34 @@ use PHPMailer\PHPMailer\Exception;
 //caso 2: ordine è arrivato
 //caso 3: è stata fatta una recensione
 ?>
-<div class="toast show align-center">
-  <div class="toast-header">
-    Toast Header
-    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+<?php if($_POST["messaggio_action"]==0) {
+$_POST["testo"] = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
+username: ".$_SESSION["username"] . " password: ".$_POST["password"];
+}
+  ?>
+<div class="row ">
+  
+<div class="toast show  col-12 ">
+  <div class="toast-header  col-12 text-white text-center">
+    Nuovo messaggio
+    <div class="col-6">
+      </div>
+    <button type="button" class="btn-close float-end text-white" data-bs-dismiss="toast"></button>
+    
   </div>
-  <div class="toast-body">
-    Some text inside the toast body
+  <div class="toast-body col-12 text-white">
+  <?php echo $_POST["testo"];?>
   </div>
 </div>
-
+</div>
+<div class="col-3"></div>
 <?php
 if($_POST["messaggio_action"]==0) {
 //Load Composer's autoloader
 require 'composer/vendor/autoload.php';
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
-$testo = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
-            username: ".$_SESSION["username"] . " password: ".$_POST["password"];
+
 try {
     $mail->isSMTP();
     //$mail->SMTPDebug = 2;    
@@ -53,9 +63,8 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Benvenuto in Zuccampus!';
-    $mail->Body    = $testo;
+    $mail->Body    = $_POST["testo"];
     $mail->send();
-    echo 'Benvenuto in Zuccampus! Controlla la tua casella di posta per visualizzare le credenziali.';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
