@@ -40,8 +40,10 @@ function countMessagesUnread($messaggi){
 }
 function UserWindowFields(){
     $field = array();
-    array_push($field, array("text" => "Home", "href" => "agricoltore_vendite.php"));
-    array_push($field, array("text" => "Il mio profilo", "href" => "venditore.php"));
+    if($_SESSION["agricoltore"]==1){
+        array_push($field, array("text" => "Home", "href" => "agricoltore_vendite.php"));
+    }
+    array_push($field, array("text" => "Il mio profilo", "href" => "dati_utente.php"));
     array_push($field, array("text" => "Ordini", "href" => "lista_ordini.php"));
     array_push($field, array("text" => "Metodo di pagamento", "href" => ""));
     array_push($field, array("text" => "Esci", "href" => "login.php"));

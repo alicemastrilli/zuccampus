@@ -59,7 +59,7 @@ class DatabaseHelper{
 
     
     public function getUserByUsername($username){
-        $stmt = $this->db->prepare("SELECT nome,cognome,immagine,email,password from utente where username =?");
+        $stmt = $this->db->prepare("SELECT nome,cognome,immagine,email,num_telefono, password from utente where username =?");
         $stmt->bind_param("s",$username);
         $stmt->execute();
         $result = $stmt->get_result();
