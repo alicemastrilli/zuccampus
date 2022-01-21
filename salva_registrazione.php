@@ -13,7 +13,7 @@ require_once 'bootstrap.php';
     list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
     if($result != 0){
         $immagine = $msg;
-
+        
         if($_SESSION["agricoltore"] == 1){
             $cliente = 0;
             $agricoltore = 1;
@@ -57,7 +57,7 @@ require_once 'bootstrap.php';
         $error = checkFormFilledCorrectly($fields);
         //Registrazione avvenuta con successo, accede al profilo personale
         if($msg){
-            $_SESSION["agricoltore"]= 0;
+            $_SESSION["agricoltore"] = 0;
             $msg = "Registrazione avvenuta con successo";
             $_SESSION["username"] = $username;
             header("location:login.php?formmsg=".$msg);

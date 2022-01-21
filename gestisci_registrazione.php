@@ -12,5 +12,12 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
     $templateParams["main"] = "registrazione.php";
     $templateParams["registrazione_agricoltore"] = "registrazione_agricoltore.php";
 
+    if (isset($_POST['cliente'])) {
+        $_SESSION["agricoltore"] = 0;
+    }
+    if (isset($_POST['agricoltore'])) {
+        $_SESSION["agricoltore"] = 1;
+    }
+
 require("template/homePage.php");
 ?>

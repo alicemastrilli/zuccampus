@@ -70,4 +70,8 @@
                 
               </div>
         </article>
+        <!--gestisci registrazione passando action 2-->
+        <form action="gestisci_registrazione.php?action=1" method="post">
+            <button class="rounded p-4"  name="modifica">Modifica profilo</button>
+         </form>
     </section>

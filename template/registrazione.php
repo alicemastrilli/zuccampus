@@ -6,15 +6,7 @@ $utente = $templateParams["utente"] ;
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
   <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
-        <?php
-        if($_GET["action"]==2){
-          $_SESSION["agricoltore"] = 1;
-        }
-        else{
-          $_SESSION["agricoltore"] = 0;
-        }
-        
-        ?>
+     
   </head>
   <section>
     <div class="row">
