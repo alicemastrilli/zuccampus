@@ -22,7 +22,6 @@ $utente = $templateParams["utente"] ;
          <!--TO DO: correggere la tondita' della foto profilo di default--> 
          <img src="./icons/utente_generico.jpg" class="round-circle max" 
         alt="foto profilo default"/>
-        <!--TO DO: gestire il caricamento dell'immagine-->
         <div class="pb-1 text-center">
           <input type="file" name="immagine" id="immagine" />
         </div>

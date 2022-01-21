@@ -6,7 +6,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col sm-0 text-center">
-                <button class="btn">Aggiungi Prodotto</button>
+                <form action="gestisci_prodotto.php?action=1" method="post">
+                    <button class="rounded p-2"  name="inserisci">Inserisci nuovo prodotto</button>
+                </form>
             </div>
         </div>
         <article>

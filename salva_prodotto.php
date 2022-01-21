@@ -18,12 +18,18 @@ if(isUserLoggedIn()){
     if( $login_result[0]["AGRICOLTORE"]==0){
         $templateParams["aziende_agricole"] = $dbh->getAziendaAgricolaInfo();
         $nome_azienda = $templateParams["aziende_agricole"]["nome_azienda"];
-        $msg = $dbh->insertNewZucca($nome_azienda, $nome_zucca, $tipo, $immagine, $prezzo, $peso, $disponibilita, $descrizione);
 
-        if($msg){
-            $msg = "Registrazione avvenuta con successo";
-            header("location: info_prodotto_venditore.php?formmsg=".$msg);    
+        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
+        //se l'inserimento e' avvenuto correttamento inserisco la zucca nel database
+        if($result != 0){
+            $msg = $dbh->insertNewZucca($nome_azienda, $nome_zucca, $tipo, $immagine, $prezzo, $peso, $disponibilita, $descrizione);
+        
+            if($msg){
+                $msg = "Registrazione avvenuta con successo";
+                header("location: info_prodotto_venditore.php?formmsg=".$msg);    
+            }
         }
+        //altrimenti TODO: gestisco l'errore con un messaggio a video
         else{
             var_dump($msg);
         }

@@ -9,9 +9,7 @@
                 <!--correggere la tondita' della foto profilo di default-->
                 <img src="./icons/utente_generico.jpg" alt="foto profilo default"/>
                 <div class="pb-1 text-center">
-                    <form  action="#" method="get">
-                        <button class="rounded p-1" type="button" name="Inserisci immgine prodotto" >Inserisci immagine prodotto</button>
-                    </form>
+                    <input type="file" name="immagine" id="immagine" />
                 </div>
             </div>
             <div class="mb-3 mt-3">
