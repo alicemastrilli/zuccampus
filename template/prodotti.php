@@ -7,31 +7,31 @@
         <div class="container">
             <div class="float-start">
                 <a class="text-decoration-none" href="./prodottiHomePage.php">
-                    <img class="img-fluid ps-1 " src="./icons/freccia.png" alt="" />
+                    <img class="rounded" src="./icons/freccia.png" width="10%" alt="" />
                 </a>
             </div>
         </div>
     </nav>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row mt-2">
             <div class="col-sm-0">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Ordina per</button>
+                    <button type="button" class="acquista" data-toggle="dropdown">Ordina per</button>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-item" onclick="ordina('ASC');">Prezzo:crescente</li>
-                        <li class="dropdown-item" onclick="ordina('DECS');">Prezzo:decrescente</li>
+                        <li class="dropdown-item" onclick="ordinaPerPrezzo('ASC');">Prezzo:crescente</li>
+                        <li class="dropdown-item" onclick="ordinaPerPrezzo('DECS');">Prezzo:decrescente</li>
                     </ul>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Produttori</button>
+                <div class="btn-group m-lg-2">
+                    <button type="button" class="acquista" data-toggle="dropdown">Produttori</button>
                     <ul class="dropdown-menu">
                     <?php foreach($templateParams["agricoltori"] as $agricoltore): ?>
-                        <li class="dropdown-item" onclick="ordina_prodotti('<?php echo $agricoltore["nome_azienda"]; ?>');"><?php echo $agricoltore["nome_azienda"]; ?></li>
+                        <li class="dropdown-item" onclick="filtra_prodotti_agricoltore('<?php echo $agricoltore["nome_azienda"]; ?>');"><?php echo $agricoltore["nome_azienda"]; ?></li>
                     <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Categoria</button>
+                    <button type="button" class="acquista" data-toggle="dropdown"> Categoria</button>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item" onclick="ordina_categoria('ornamentale');">ornamentale</li>
                         <li class="dropdown-item" onclick="ordina_categoria('commestibile');">commestibile</li>
@@ -39,18 +39,19 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="div1">
+        <div class="row da-sostituire">
             <div class="col-sm-0">
             <?php foreach($templateParams["zucche"] as $zucca): ?>
                 <div class="text-center">
                     <h2><?php echo $zucca["nome_zucca"]; ?></h2>
                     <p><?php echo $zucca["tipo"]; ?></p>
-                    <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" alt="zucca_delica">
+                    <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="50%" alt="zucca_delica">
                     <p>€<?php echo $zucca["prezzo"]; ?></p>
                     <form  action="info_prodotti.php?id=<?php echo $zucca["nome_zucca"]?>" method="post">
-                        <button class="rounded">Acquista</button>
+                        <button class="acquista mt-2 mb-2">Acquista</button>
                     </form>
                 </div>
+                <hr>
             <?php endforeach; ?>
             </div>
         </div>

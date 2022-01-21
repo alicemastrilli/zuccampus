@@ -59,79 +59,12 @@ body>main>div>div>div>img:nth-child(1) {
 
 /*da qui in poi aggiungo*/
 
-img {
-    width: 200px;
-    heigth: 200px;
-}
-
-body>main>div>div>div>div>h2 {
-    margin-bottom: 0px;
-}
-
-body>main>div>div>div>div>p {
-    margin-bottom: 0px;
-    margin-top: 0px;
-    font-size: 15px;
-    font-family: serif;
-    font-weight: bold;
-}
-
-body>main>div>div>div>p {
-    font-size: 15px;
-    font-family: serif;
-    font-weight: bold;
-}
-
-body>main>div>div>div>div>a {
-    font-size: 17px;
-    font-family: serif;
-}
-
-body>main>div>div>div>div>button.btn {
+.aggiungi-al-carrello {
     background-color: #D9AF5D;
     border-color: #D9AF5D;
 }
 
-body>main>div>div>div>div>button.btn:hover {
+.aggiungi-al-carrello:hover {
     background-color: #D9AF5D;
     border-color: #D9AF5D;
-}
-
-body>main>div>div>div>div {
-    margin-bottom: 5px;
-}
-
-body>main>div>div>div>div.container {
-    width: 68%;
-}
-
-form {
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-form #input-wrap {
-    margin: 0px;
-    padding: 0px;
-}
-
-input#number {
-    text-align: center;
-    border: none;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    margin: 0px;
-    width: 40px;
-    height: 40px;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-body>main>nav>div>div>a>img {
-    width: 10%;
 }

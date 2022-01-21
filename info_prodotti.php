@@ -14,5 +14,8 @@ if(isset($_GET["id"])){
 }
 $templateParams["zucca_info"] = $dbh -> getZuccaByName($nome_zucca);
 $templateParams["produttori"] = $dbh -> getProduttoriByZuccaName($nome_zucca);
+$templateParams["produttore"] = $dbh -> getZuccaByName($nome_zucca)[0]["nome_azienda"];
+$templateParams["recensioni"] = $dbh -> getAllReviews($nome_zucca, $templateParams["produttore"]);
+
 require("template/homePage.php");
 ?>

@@ -25,7 +25,7 @@
                                     </form>
                                 </div>
                                 <div class="col-6 text-center">
-                                    <button class="rounded " type="button" onclick="deleteElement('<?php echo $prodotto["nome_azienda"]; ?>','<?php echo $prodotto["nome_zucca"]; ?>')">Elimina il Prodotto</button>                   
+                                    <button class="rounded " type="button">Elimina il Prodotto</button>                   
                                 </div>
                             </div>
                         </td>

@@ -29,12 +29,34 @@ function AggiornaProdottiVenditore(zucche) {
     return result;
 }
 
+function generaRecensioni(recensioni) {
+    let result = "";
+    for (let i = 0; i < recensioni.length; i++) {
+        let articolo = `
+        <div class="row recensioni-da-eliminare">
+            <div class="col sm-0">
+                <div class="star-rating text-center" id="div-star">
+                    for(let k=0; k < parseInt(${recensioni[i]["punteggio"]}); k++){
+                        <img class="rounded" src="./icons/star.png" alt="" />
+                    }
+                </div>
+                <p>${recensioni[i]["descrizione"]}</p>
+                <p>${recensioni[i]["username"]}</p>
+            </div>
+        </div>
+        <hr>
+        `;
+        result += articolo;
+    }
+    return result;
+}
+
 function generaZucche(zucche) {
     let result = "";
 
     for (let i = 0; i < zucche.length; i++) {
         let articolo = `
-        <div class="row" id="div1">
+        <div class="row da-sostituire">
             <div class="col-sm-0">
                 <div class="text-center">
                     <h2>${zucche[i]["nome_zucca"]}</h2>
@@ -42,7 +64,7 @@ function generaZucche(zucche) {
                     <img src="./icons/${zucche[i]["immagine"]}" alt="" style="width: 200px;" />
                     <p>€ ${zucche[i]["prezzo"]}</p>
                     <form  action="info_prodotti.php?id=${zucche[i]["nome_zucca"]}" method="post">
-                        <button class="rounded">Acquista</button>
+                        <button class="acquista">Acquista</button>
                     </form>
                 </div>
             </div>
@@ -80,14 +102,14 @@ function generaZuccheProduttoreSelezionato(zucche) {
     return result;
 }
 
-function ordina(tipo_ordine) {
+function ordinaPerPrezzo(tipo_ordine) {
     $.ajax({
         url: "ordina_elementi.php",
         data: "tipo_ordine=" + tipo_ordine,
         type: "get",
         success: function(response) {
             let zucche = generaZucche(response);
-            $("div#div1").html("");
+            $(".da-sostituire").html("");
             const main = $("main");
             main.append(zucche);
         }
@@ -101,21 +123,21 @@ function ordina_categoria(tipo) {
         type: "get",
         success: function(response) {
             let zucche = generaZucche(response);
-            $("div#div1").html("");
+            $(".da-sostituire").html("");
             const main = $("main");
             main.append(zucche);
         }
     });
 }
 
-function ordina_prodotti(nome_azienda) {
+function filtra_prodotti_agricoltore(nome_azienda) {
     $.ajax({
         url: "ordina_prodotti_produttori.php",
         data: "nome_azienda=" + nome_azienda,
         type: "get",
         success: function(response) {
             let zucche = generaZucche(response);
-            $("div#div1").html("");
+            $(".da-sostituire").html("");
             const main = $("main");
             main.append(zucche);
         }
@@ -136,16 +158,16 @@ function seleziona_fornitore(nome_azienda, nome_zucca) {
     });
 }
 
-function deleteElement(nome_azienda, nome_zucca) {
+function aggiorna_recensioni(nome_azienda, nome_zucca) {
     $.ajax({
-        url: "elimina_prodotto.php",
+        url: "seleziona_recensioni_prodotto.php",
         data: 'nome_azienda=' + nome_azienda + '&nome_zucca=' + nome_zucca,
         type: "get",
         success: function(response) {
-            let zucche = AggiornaProdottiVenditore(response);
-            $("div#div1").html("");
+            let recensioni = generaRecensioni(response);
+            $(".recensioni-da-eliminare").html("");
             const main = $("main");
-            main.append(zucche);
+            main.append(recensioni);
         }
     });
 }

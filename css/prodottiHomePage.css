@@ -52,38 +52,16 @@ article button a {
     font-weight: bold;
 }
 
-div>div>div>p {
-    text-align: center;
-    font-size: 18px;
+p {
     font-family: serif;
 }
 
-body>main>div>div>div>div>div>div>p {
-    text-align: center;
-    font-size: 15px;
-    font-family: serif;
-}
-
-body>main>div>div>div {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-body>main>div>div>div>button.btn {
-    background-color: #D9AF5D;
-    border-color: #D9AF5D;
-    text-align: center;
-}
-
-body>main>div>div>div>button.btn:hover {
+.visualize {
     background-color: #D9AF5D;
     border-color: #D9AF5D;
 }
 
-body>main>nav>div>div>a>img {
-    width: 10%;
-}
-
-body>main>div>div>div>div>div>div>img {
-    width: 50%;
+.visualize {
+    background-color: #D9AF5D;
+    border-color: #D9AF5D;
 }

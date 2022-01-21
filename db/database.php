@@ -377,5 +377,25 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getAllReviews($nome_zucca, $nome_azienda){
+        $query = "SELECT * FROM recensione r WHERE r.nome_zucca = ? AND r.nome_azienda = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$nome_zucca,$nome_azienda);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProduttore($nome_zucca){
+        $query="SELECT nome_azienda from zucca z where z.nome_zucca=? LIMIT 1 ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$nome_zucca);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
