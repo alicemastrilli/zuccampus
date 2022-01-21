@@ -8,8 +8,7 @@ $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 
 if(isUserLoggedIn()){
-    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
-    
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];  
 }
 if(isset($_POST["username"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
@@ -21,6 +20,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
         registerLoggedUser($login_result[0]);
     }
 }
+
 if(isset($_GET["formmsg"])){
     $_POST["mail"] = $templateParams["user"]["email"];
     $_POST["messaggio_action"]=0;

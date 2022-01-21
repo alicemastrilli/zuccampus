@@ -38,10 +38,11 @@ require_once 'bootstrap.php';
 
         $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore, $nome_azienda, $via, $numero_civico, $cap, $descrizione);
         $error = checkFormFilledCorrectly($fields);
-        //if user is agricoltore require user_logged.php
+        //TODO: if user is agricoltore require user_logged.php
         if($msg && $msg_azienda){  
             $_SESSION["agricoltore"] = 1;
             $msg = "Registrazione avvenuta con successo";
+            registerLoggedUser($username);
             header("location:login_form.php?formmsg=".$msg);
         }
         else{
@@ -55,6 +56,7 @@ require_once 'bootstrap.php';
         if($msg){
             $_SESSION["agricoltore"]= 0;
             $msg = "Registrazione avvenuta con successo";
+            $_SESSION["username"] = $username;
             header("location:login.php?formmsg=".$msg);
         }else{
             var_dump($msg);
