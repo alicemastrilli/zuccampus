@@ -39,8 +39,7 @@ if(isUserLoggedIn()){
     }
 }
 else{
-    $templateParams["titolo"] = "Zuccampus - Login";
-    $templateParams["nome"] = "login-form.php";
+    $templateParams["titolo"] = $templateParams["nome"]." - Login";
     $templateParams["main"] = "login-form.php";
     require 'template/homePage.php';
 }
