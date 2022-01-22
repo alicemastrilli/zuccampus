@@ -398,5 +398,20 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function insertNewRecensione($idReview,$descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca){
+        $query = "INSERT INTO `recensione` (`idReview`, `descrizione_zucca`, `punteggio`, `nome_azienda`, `nome_zucca`) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssiiis', $idReview, $descrizione_zucca, $punteggio,  $nome_azienda, $nome_zucca);
+        $ris = $stmt->execute();
+        
+        if($ris){
+            $msg = True;
+        }
+        else {
+            $msg = $stmt->error;
+        }
+        return $msg;
+    }
 }
 ?>

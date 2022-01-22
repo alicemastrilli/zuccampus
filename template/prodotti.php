@@ -6,7 +6,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="float-start">
-                <a class="text-decoration-none" href="./prodottiHomePage.php">
+                <a class="text-decoration-none" onclick="goBack()" >
                     <img class="rounded" src="./icons/freccia.png" width="10%" alt="" />
                 </a>
             </div>
@@ -48,6 +48,7 @@
                     <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="50%" alt="zucca_delica">
                     <p>€<?php echo $zucca["prezzo"]; ?></p>
                     <form  action="info_prodotti.php?id=<?php echo $zucca["nome_zucca"]?>" method="post">
+                        <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
                         <button class="acquista mt-2 mb-2">Acquista</button>
                     </form>
                 </div>
@@ -61,4 +62,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="./js/elisa.js"></script>
+    <script src="./js/window_functions.js"></script>
 </html>

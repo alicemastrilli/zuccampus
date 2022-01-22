@@ -1,6 +1,10 @@
 <?php
 require_once("bootstrap.php");
 
+if(isUserLoggedIn()){
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
+}
 $templateParams["titolo"] = "Zuccampus- HomePage Prodotti";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
