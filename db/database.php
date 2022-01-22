@@ -135,6 +135,17 @@ class DatabaseHelper{
     
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getPaymentInfo($username){
+        $query = "SELECT * FROM carta_di_credito WHERE username = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getZuccaByName($nome_zucca){
         $query="SELECT * from zucca z where z.nome_zucca=? LIMIT 1 ";
         $stmt = $this->db->prepare($query);
