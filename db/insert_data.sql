@@ -32,8 +32,9 @@ INSERT INTO `carta_di_credito` (`cvv`, `nome`, `numero_carta`, `mese_scadenza`, 
 ('345', 'Francesco', '987665432175663', '03', '23', 'Verdi', 'Verdi');
 
 INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES 
-('Gigi e le sue zucche', 'Zucca Delica', 'commestibile', 'zuccadelica.jpeg', '4.50', '1.5', '4', 'Zucca tondeggiante, con la buccia vedere scuro e la polpa arancione. Si caratterizza per un sapore dolciastro e la consistenza di una castagna cotta'),
-('La fattoria di Mario', 'Zucca di Chioggia', 'commestibile', 'zuccadichioggia.jpeg', '5.50', '3', '8', 'Inconfondibile per la sua scorza bitorzoluta, dal verde scuro al verde ramato e per la forma particolarmente schiacchiata. Ha una polpa molto saporita e adatta alla preparazione di gnocchi, ripieni e risotti'),
+('Gigi e le sue zucche', 'Zucca Delica', 'commestibile', 'zuccaDelica.png', '4.50', '1.5', '4', 'Zucca tondeggiante, con la buccia vedere scuro e la polpa arancione. Si caratterizza per un sapore dolciastro e la consistenza di una castagna cotta'),
+('La fattoria di Mario', 'Zucca di Chioggia', 'commestibile', 'zuccaDiChioggia.png', '5.50', '3', '8', 'Inconfondibile per la sua scorza bitorzoluta, dal verde scuro al verde ramato e per la forma particolarmente schiacchiata. Ha una polpa molto saporita e adatta alla preparazione di gnocchi, ripieni e risotti'),
+('La gioia di Marta', 'Zucca Delica', 'commestibile', 'zuccaDelica.png', '9.99', '1.5', '6', 'Zucca tondeggiante, con la buccia vedere scuro e la polpa arancione. Si caratterizza per un sapore dolciastro e la consistenza di una castagna cotta'),
 ('La gioia di Marta', 'Zucca Tonda Padana', 'commestibile', 'zuccatondapadana.png', '6.60', '4', '9', 'La si riconosce per le striature pronunciate, la forma tondeggiante ed il robusto peduncolo legnoso. La polpa è arancione e soda, adatta a ripieni e mostarde');
 
 INSERT INTO `recensione` (`idRecensione`, `descrizione`, `punteggio`, `nome_azienda`, `nome_zucca`, `username`,`data`) VALUES 
