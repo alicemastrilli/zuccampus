@@ -20,7 +20,7 @@
                             </form>
                         </div>  
                         <div class="col-6 text-center">
-                        <form  action="venditore.php?id=<?php echo $azienda["nome_azienda"]?>" method="post">
+                        <form  action="dati_utente.php?id=<?php echo $azienda["nome_azienda"]?>" method="post">
                             <button class="rounded">Scopri il venditore</button>
                             </form>
                         </div>

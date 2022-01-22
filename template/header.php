@@ -8,7 +8,7 @@
 <body>
 <nav class="navbar">
     <div class="container ">
-        <a class="navbar-brand text-black" href="#">
+        <a class="navbar-brand text-black" href="homepage.php">
             <h1 class="text-dark"><?php echo $templateParams["nome"] ; ?></h1>
         </a>
         <div class="float-end">
@@ -19,7 +19,7 @@
             <?php endforeach;?>
             <div class="offcanvas offcanvas-end" id="offcanvas">
                 <div class="offcanvas-header ">
-                    <img src="<?php echo UPLOAD_DIR.$templateParams["user"]["immagine"] ?>" alt="">
+                    <img src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="foto profilo utente">
                     <h2 class="offcanvas-title p-2"><?php echo $templateParams["user"]["nome"]?> <?php echo $templateParams["user"]["cognome"]?></h2>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
                 </div>
@@ -42,7 +42,8 @@
       		<img src="<?php echo UPLOAD_DIR.'posta.jpg'?>"  alt="casella di posta" />
 		    </a>
 	        </div>
-            <img class="ps-2"data-bs-toggle="offcanvas" data-bs-target="#offcanvas"  src="<?php echo UPLOAD_DIR.$templateParams["user"]["immagine"] ?>" alt="">
+            <img class="ps-2"data-bs-toggle="offcanvas" data-bs-target="#offcanvas" 
+             src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="">
         <?php endif; ?>
     </div>
 </nav>

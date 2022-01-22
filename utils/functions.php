@@ -40,10 +40,12 @@ function countMessagesUnread($messaggi){
 }
 function UserWindowFields(){
     $field = array();
-    array_push($field, array("text" => "Home", "href" => "agricoltore_vendite.php"));
-    array_push($field, array("text" => "Il mio profilo", "href" => "venditore.php"));
+    if($_SESSION["agricoltore"]==1){
+        array_push($field, array("text" => "Home", "href" => "agricoltore_vendite.php"));
+    }
+    array_push($field, array("text" => "Il mio profilo", "href" => "dati_utente.php"));
     array_push($field, array("text" => "Ordini", "href" => "lista_ordini.php"));
-    array_push($field, array("text" => "Metodo di pagamento", "href" => ""));
+    array_push($field, array("text" => "Metodo di pagamento", "href" => "form_pagamento.php"));
     array_push($field, array("text" => "Esci", "href" => "login.php"));
     return $field;
 }
@@ -52,7 +54,7 @@ function fillOrders($ordine, $campus_info){
     $costo_sped = computeDeliveryTime($ordine, $campus_info)[1];
     $costo_ordine  = $ordine["quantita"] * $ordine["prezzo"];
     $costo_tot = $costo_ordine + $costo_sped;
-    $info=array("Tipo prodotto" => $ordine["tipo"],"Quantità: " => $ordine["quantita"],
+    $info=array("Produttore: "=>$ordine["nome_azienda"],"Tipo prodotto" => $ordine["tipo"],"Quantità: " => $ordine["quantita"],
     "Data dell'ordine: "=> $ordine["data_ordine"],
     "Indirizzo di spedizione: "=> $ordine["via"].$ordine["numero_civico"],
     "Costo ordine: " => $costo_ordine,

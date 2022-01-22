@@ -15,7 +15,8 @@
     background-color:#2f2e2e
 }
 
-
-.btn-close{
-    color: white;
+.toast-header>.btn-close {
+    color: #fff;
+    background-color:#ffffff;  
+    opacity: 1;
 }

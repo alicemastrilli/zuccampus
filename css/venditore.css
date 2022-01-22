@@ -2,3 +2,8 @@ section a img{
     width: 80%;
     height: 60px;
 }
+
+button {
+    font-weight: bold;
+    background-color: #D9AF5D;
+}
