@@ -46,7 +46,7 @@ function UserWindowFields(){
     array_push($field, array("text" => "Il mio profilo", "href" => "dati_utente.php"));
     array_push($field, array("text" => "Ordini", "href" => "lista_ordini.php"));
     array_push($field, array("text" => "Metodo di pagamento", "href" => "form_pagamento.php"));
-    array_push($field, array("text" => "Esci", "href" => "login.php"));
+    array_push($field, array("text" => "Esci", "href" => "logout.php"));
     return $field;
 }
 
