@@ -14,11 +14,5 @@ if(isUserLoggedIn()){
 }
 
 $templateParams["pagamento"] = $dbh->getPaymentInfo($_SESSION["username"]);
-if(count($templateParams["pagamento"]) != 0){
-    $templateParams["pagamento"] = $dbh->getPaymentInfo($_SESSION["username"])[0];
-} else {
-    $templateParams["pagamento"]="";
-}
-
 require("template/homePage.php");
 ?>
