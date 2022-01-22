@@ -1,7 +1,6 @@
 <?php 
-//a cosa mi serve questo?
-$utente = $templateParams["utente"] ;
-
+  $azione = $templateParams["azione"];
+  $utente = $templateParams["utente"] ;
 ?>
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
   <head>
@@ -74,7 +73,7 @@ $utente = $templateParams["utente"] ;
         </article>
         <div class="pb-3 text-center">
         
-        <input type="submit" name="submit" value="Registrati">
+        <input type="submit" name="submit" value="Salva">
         
        
   </section>

@@ -1,5 +1,10 @@
 <?php
 require_once 'bootstrap.php';
+
+//se inserisco riempo i campi con vuoto
+if($_GET["action"]==1){
+    $templateParams["utente"] = getEmptyUser();
+}
 $templateParams["titolo"] = "Zuccampus- Registrati";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
@@ -19,5 +24,7 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
         $_SESSION["agricoltore"] = 1;
     }
 
+
+    $templateParams["azione"] = getAction($_GET["action"]);
 require("template/homePage.php");
 ?>

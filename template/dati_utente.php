@@ -80,7 +80,7 @@
         </article>
         <!--gestisci registrazione passando action 2-->
         <?php if( isUserLoggedIn()): ?>
-        <form action="gestisci_registrazione.php?action=1" class="text-center pb-2" method="post">
+        <form action="gestisci_registrazione.php?action=2" class="text-center pb-2" method="post">
             <button class="rounded p-4"  name="modifica">Modifica profilo</button>
          </form>
          <?php endif;?>
