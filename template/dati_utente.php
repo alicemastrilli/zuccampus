@@ -27,7 +27,7 @@
                 <div class="mx-2 pb-3">
                    <input  type="text" class="form-control " id="cognome" value="<?php echo $templateParams["user"]["cognome"]; ?>" name="cognome" readonly>
                 </div>
-              <?php if ($templateParams["matricola"]!= ""): ?>
+              <?php if (isset($templateParams["matricola"]) && $templateParams["matricola"]!= ""): ?>
               <label for="matricola" class="form-label px-2 ">Matricola:</label><br>
                 <div class="mx-2 pb-3">
                    <input  type="text" class="form-control " id="cognome" value="<?php echo $templateParams["matricola"]; ?>" name="matricola" readonly>
