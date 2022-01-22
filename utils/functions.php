@@ -54,7 +54,7 @@ function fillOrders($ordine, $campus_info){
     $costo_sped = computeDeliveryTime($ordine, $campus_info)[1];
     $costo_ordine  = $ordine["quantita"] * $ordine["prezzo"];
     $costo_tot = $costo_ordine + $costo_sped;
-    $info=array("Tipo prodotto" => $ordine["tipo"],"Quantità: " => $ordine["quantita"],
+    $info=array("Produttore: "=>$ordine["nome_azienda"],"Tipo prodotto" => $ordine["tipo"],"Quantità: " => $ordine["quantita"],
     "Data dell'ordine: "=> $ordine["data_ordine"],
     "Indirizzo di spedizione: "=> $ordine["via"].$ordine["numero_civico"],
     "Costo ordine: " => $costo_ordine,

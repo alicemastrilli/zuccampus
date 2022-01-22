@@ -12,7 +12,8 @@ if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
 }
-if($_SESSION["agricoltore"] == 1){
+var_dump($_SESSION["agricoltore"]);
+if($_SESSION["agricoltore"]==1){
     $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"]);
     $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
     $templateParams["ordini"] = $dbh->getAllOrders($nome_azienda);
