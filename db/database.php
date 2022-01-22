@@ -305,6 +305,18 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getUserOrders($username){
+        $query = "SELECT o.username ,c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,o.ora, z.prezzo,u.nome,u.cognome,o.via, o.numero_civico,
+        o.cap   FROM ordine o, comprende c,zucca z,utente u
+         WHERE o.username =? and u.username = o.username and o.id_ordine = c.id_ordine and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
+          order by o.data_ordine desc";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     public function insertNewZucca($nome_azienda = null, $nome_zucca = null, $tipo = null,  $immagine = null, $prezzo = null, $peso = null, $disponibilita = null, $descrizione_zucca = null){
         $query = "INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
