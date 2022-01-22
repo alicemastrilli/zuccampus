@@ -1,6 +1,9 @@
 <?php
 require_once("bootstrap.php");
-
+if(isUserLoggedIn()){
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
+}
 $templateParams["titolo"] = "Zuccampus- Informazioni Prodotto";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
@@ -12,10 +15,14 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 if(isset($_GET["id"])){
     $nome_zucca = $_GET["id"];
 }
-$templateParams["zucca_info"] = $dbh -> getZuccaByName($nome_zucca);
+
+if(isset($_POST["nome_azienda"])){
+    $nome_azienda = $_POST["nome_azienda"];
+}
+
+$templateParams["zucca_info"] = $dbh -> getProductByFarmerAndName($nome_azienda, $nome_zucca);
 $templateParams["produttori"] = $dbh -> getProduttoriByZuccaName($nome_zucca);
-$templateParams["produttore"] = $dbh -> getZuccaByName($nome_zucca)[0]["nome_azienda"];
-$templateParams["recensioni"] = $dbh -> getAllReviews($nome_zucca, $templateParams["produttore"]);
+$templateParams["recensioni"] = $dbh -> getAllReviews($nome_zucca, $nome_azienda);
 
 require("template/homePage.php");
 ?>

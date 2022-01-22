@@ -52,6 +52,10 @@ article button a {
     font-weight: bold;
 }
 
+body>main>div>div>div>img:nth-child(1) {
+    right: 0;
+}
+
 p {
     font-family: serif;
 }
@@ -61,7 +65,7 @@ p {
     border-color: #D9AF5D;
 }
 
-.visualize {
+.visualize:hover {
     background-color: #D9AF5D;
     border-color: #D9AF5D;
 }

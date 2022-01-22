@@ -29,20 +29,16 @@ function AggiornaProdottiVenditore(zucche) {
     return result;
 }
 
-function generaRecensioni(recensioni) {
+function aggiorna_recensioni(recensioni) {
     let result = "";
     for (let i = 0; i < recensioni.length; i++) {
         let articolo = `
         <div class="row recensioni-da-eliminare">
             <div class="col sm-0">
-                <div class="star-rating text-center" id="div-star">
-                    for(let k=0; k < parseInt(${recensioni[i]["punteggio"]}); k++){
-                        <img class="rounded" src="./icons/star.png" alt="" />
-                    }
-                </div>
                 <p>${recensioni[i]["descrizione"]}</p>
                 <p>${recensioni[i]["username"]}</p>
             </div>
+            <p>Non ci sono recensioni</p>
         </div>
         <hr>
         `;
@@ -79,9 +75,9 @@ function generaZuccheProduttoreSelezionato(zucche) {
     let result = "";
     for (let i = 0; i < zucche.length; i++) {
         let articolo = `
-        <div class="row" id="div1">
+        <div class="row da-sostituire" >
             <div class="col sm-0 text-center">
-                <div class="text-center">
+                <div class="text-center m-2">
                     <a>${zucche[i]["descrizione_zucca"]}</a>
                 </div>
                 <p> €${zucche[i]["prezzo"]}</p>
@@ -91,8 +87,8 @@ function generaZuccheProduttoreSelezionato(zucche) {
                     <input type="number" id="quantity" name="quantity" min="1" max="${zucche[i]["disponibilita"]}"><br><br>
                 </form>
                 <p>${zucche[i]["disponibilita"]} pezzi </p>
-                <div class="text-center">
-                    <button class="btn btn-primary">Aggiungi al carrello</button>
+                <div class="text-center m-2">
+                    <button class="aggiungi-al-carrello">Aggiungi al carrello</button>
                 </div>
             </div>
         </div> 
@@ -151,8 +147,9 @@ function seleziona_fornitore(nome_azienda, nome_zucca) {
         type: "get",
         success: function(response) {
             let zucche = generaZuccheProduttoreSelezionato(response);
-            $("div#div1").html("");
-            const main = $("main");
+            $(".da-sostituire").html("");
+            $(".recensioni-da-eliminare").html("");
+            const main = $(".per-appendere");
             main.append(zucche);
         }
     });
@@ -164,9 +161,9 @@ function aggiorna_recensioni(nome_azienda, nome_zucca) {
         data: 'nome_azienda=' + nome_azienda + '&nome_zucca=' + nome_zucca,
         type: "get",
         success: function(response) {
-            let recensioni = generaRecensioni(response);
+            let recensioni = aggiorna_recensioni(response);
             $(".recensioni-da-eliminare").html("");
-            const main = $("main");
+            const main = $(".appendino");
             main.append(recensioni);
         }
     });
