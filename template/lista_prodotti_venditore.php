@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/lista_prodotti_venditore.css" />
+        <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />
     </head>
     <div class="container-fluid">
         <div class="row">
             <div class="col sm-0 text-center">
                 <form action="gestisci_prodotto.php?action=1" method="post">
-                    <button class="rounded p-2"  name="inserisci">Inserisci nuovo prodotto</button>
+                    <button class="visualize mb-2 mt-2"  name="inserisci">Inserisci nuovo prodotto</button>
                 </form>
             </div>
         </div>
@@ -23,16 +23,16 @@
                             <div class="row">
                                 <div class="col-6 text-center">
                                     <form  action="info_prodotto_venditore.php?id=<?php echo $prodotto["nome_zucca"]?>" method="post">
-                                        <button class="rounded">Visualizza Prodotto</button>
+                                        <button class="visualize mb-2">Visualizza Prodotto</button>
                                     </form>
                                 </div>
                                 <div class="col-6 text-center">
-                                    <button class="rounded " type="button">Elimina il Prodotto</button>                   
+                                    <button class="visualize mb-2" type="button">Elimina il Prodotto</button>                   
                                 </div>
                             </div>
                         </td>
                         <td class="col-3 p-2">
-                            <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" alt="" />
+                            <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="30%" alt="" />
                         </td>
                     </tr>
                 <?php endforeach;?>
@@ -45,4 +45,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="./js/elisa.js"></script>
+    <script src="./js/window_functions.js"></script>
 </html>

@@ -6,43 +6,42 @@
     <nav class="navbar">
         <div class="container">
             <div class="float-start">
-                <a class="text-decoration-none" href="./prodottiHomePage.php">
+                <a class="text-decoration-none" onclick="goBack()" >
                     <img class="img-fluid ps-1 " src="./icons/freccia.png" width="10%" alt="" />
                 </a>
             </div>
         </div>
     </nav>
     <div class="container-fluid"> 
-    <?php foreach($templateParams["zucca_info"] as $zucca):?>
-        <div class="row"> 
-            <div class="col-sm-0 text-center">
-                <h2><?php echo $zucca["nome_zucca"]; ?></h2>
-                <p><?php echo $zucca["tipo"]; ?></p>
-                <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="60%" alt="">
-                <div class="container mb-2" width="68%">
-                    <label for="browser" class="form-label">Produttori:</label>
-                    <select class="form-select" onchange="seleziona_fornitore(this.value,'<?php echo $zucca["nome_zucca"]; ?>'); aggiorna_recensioni(this.value,'<?php echo $zucca["nome_zucca"]; ?>');">
-                    <?php foreach($templateParams["produttori"] as $produttori):?>
-                        <option value="<?php echo $produttori["nome_azienda"]; ?>"><?php echo $produttori["nome_azienda"]; ?></option>
-                    <?php endforeach;?>
-                    </select>
+        <div class="container per-appendere">
+        <?php foreach($templateParams["zucca_info"] as $zucca):?>
+            <div class="row"> 
+                <div class="col-sm-0 text-center">
+                    <h2><?php echo $zucca["nome_zucca"]; ?></h2>
+                    <p><?php echo $zucca["tipo"]; ?></p>
+                    <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="60%" alt="">
+                    <div class="container mb-2" width="68%">
+                        <label for="browser" class="form-label">Produttori:</label>
+                        <select class="form-select" onchange="seleziona_fornitore(this.value,'<?php echo $zucca["nome_zucca"]; ?>');" >
+                        <?php foreach($templateParams["produttori"] as $produttori):?>
+                            <option value="<?php echo $produttori["nome_azienda"]; ?>"><?php echo $produttori["nome_azienda"]; ?></option>
+                        <?php endforeach;?>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row" id="div1">
+        <div class="row da-sostituire">
             <div class="col sm-0 text-center">
                 <div class="text-center mb-2">
                     <a><?php echo $zucca["descrizione_zucca"]; ?></a>
                 </div>
                 <p> €<?php echo $zucca["prezzo"]; ?></p>
                 <p><?php echo $zucca["peso"]; ?> kg </p>
-                <p>Quantità:</p>
-                <form width="300px">
-                    <label for="quantity">Quantità:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
-                </form>
+                <label for="quantity">Quantità:</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
                 <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
-                <div class="text-center">
+                <div class="text-center mb-2">
                     <button class="aggiungi-al-carrello">Aggiungi al carrello</button>
                 </div>
             </div>
@@ -50,10 +49,11 @@
         <hr>
         <div class="container text-center appendino">
             <p>Recensioni clienti:</p>
-            <a>Scrivi recensioni</a>
-            <?php if(empty($templateParams["recensioni"])): ?>
-            <p>Non c'è alcuna recensione per questo prodotto.</p>
-            <?php endif;?>
+            <form action="aggiungi_recensione.php" method="post">
+                <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
+                <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
+                <input type="hidden" name="produttore" value="<?php echo $zucca["nome_azienda"]; ?>">
+            </form>
             <?php foreach($templateParams["recensioni"] as $recensione):?>
             <div class="row recensioni-da-eliminare">
                 <div class="col sm-0">
@@ -76,4 +76,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="./js/elisa.js"></script>
+    <script src="./js/window_functions.js"></script>
 </html>
