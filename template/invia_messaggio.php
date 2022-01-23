@@ -22,7 +22,7 @@ use PHPMailer\PHPMailer\Exception;
 $_POST["testo"] = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
 username: ".$_SESSION["username"] . " password: ".$_POST["password"];
 }elseif ($_POST["messaggio_action"]==1){
-  $_POST["testo"] = "Gentile ". $_SESSION["username"] . " la sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$ordine["username"];
+  $_POST["testo"] = "Gentile ". $_SESSION["username"] . " la sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$_POST["ordine"]["username"];
 }elseif ($_POST["messaggio_action"]==2){
   $_POST["testo"] = "Gentile ". $_SESSION["username"] . " l'ordine di ".$ordine["username"]. "arriverà in giornata! ";    
 } 

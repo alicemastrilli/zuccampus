@@ -6,7 +6,7 @@
     </head>
     <div class="row">
     <a class="col-3"  onclick="goBack()">
-      <img src="./icons/freccia.png" alt="freccia indietro">
+      <img id = "freccia"src="./icons/freccia.png" alt="freccia indietro">
     </a>
     </div>
     <?php if (count($templateParams["messaggi"])==0):?>
