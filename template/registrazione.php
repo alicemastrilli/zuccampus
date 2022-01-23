@@ -1,6 +1,7 @@
 <?php 
   $azione = $templateParams["azione"];
-  $utente = $templateParams["utente"] ;
+  $utente = $templateParams["utente"];
+  echo var_dump($nome_azienda);
 ?>
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
   <head>

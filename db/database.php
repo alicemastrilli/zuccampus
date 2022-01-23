@@ -56,8 +56,7 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
-    
+   
     public function getUserByUsername($username){
         $stmt = $this->db->prepare("SELECT nome,cognome,immagine,email,num_telefono, password from utente where username =?");
         $stmt->bind_param("s",$username);

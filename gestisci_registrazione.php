@@ -1,25 +1,6 @@
 <?php
 require_once 'bootstrap.php';
 
-//se inserisco riempo i campi con vuoto
-if($_GET["action"]==1){
-    $templateParams["utente"] = getEmptyUser();
-    //TODO: getEmptyAzienda
-}
-//altrimenti riempo i campi prendendo da database
-if($_GET["action"]==2){    
-    if (isUserLoggedIn()){
-        $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"]);
-        $templateParams["utente"]["username"] = $_SESSION["username"];
-        //se è un agricoltore
-        if($_SESSION["agricoltore"]==1){
-            $nome_azienda = $_GET["id"];
-            $templateParams["azienda"] = $dbh -> getAziendaAgrByName($nome_azienda);
-        }
-    }
-   
-
-}
 
 $templateParams["titolo"] = "Zuccampus- Registrati";
 $templateParams["header"] = "header.php";
@@ -40,7 +21,34 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
         $_SESSION["agricoltore"] = 1;
     }
 
-
+    if (isUserLoggedIn()){
+        //due righe che mi servono per l'header
+        $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+        $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
+    }
     $templateParams["azione"] = getAction($_GET["action"]);
+
+    //se action = inserisci riempo i campi con vuoto
+    //TODO: correggere dentro l'if, renderlo coerente con tutto
+    if($_GET["action"]==1){
+        $templateParams["utente"] = getEmptyUser();
+        //TODO: getEmptyAzienda
+    }
+    //altrimenti riempo i campi prendendo da database
+    if($templateParams["azione"] == 'Modifica') {    
+        $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+        
+        if (isUserLoggedIn()){
+            //due righe che mi servono per l'header
+            $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+            $templateParams["utente"]["username"] = $_SESSION["username"];
+            //se è un agricoltore
+            if($_SESSION["agricoltore"]==1){
+                $nome_azienda = $_POST['nome_azienda'];
+                $templateParams["azienda"] = $dbh -> getAziendaAgrByName($nome_azienda)[0];
+        }
+    }
+}
+
 require("template/homePage.php");
 ?>
