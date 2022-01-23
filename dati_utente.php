@@ -17,7 +17,6 @@ if(isset($_GET["id"])){
     $nome_azienda = $_GET["id"];
     $templateParams["user"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0];
     $templateParams["azienda_info"] = $dbh -> getAziendaAgrByName($nome_azienda)[0];
-
 }
 elseif (isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
