@@ -78,9 +78,9 @@
                 
               </div>
         </article>
-        <!--gestisci registrazione passando action 2-->
-        <?php if( isUserLoggedIn()): ?>
-        <form action="gestisci_registrazione.php?action=2" class="text-center pb-2" method="post">
+        <!--TODO: controllare che modifico solo il mio profilo  -->
+        <?php if( isUserLoggedIn() && $_SESSION["username"] ==$templateParams["user"]): ?>
+        <form action="gestisci_registrazione.php?action=2?id=<?php echo $_SESSION["username"]?>" class="text-center pb-2" method="post">
             <button class="rounded p-4"  name="modifica">Modifica profilo</button>
          </form>
          <?php endif;?>

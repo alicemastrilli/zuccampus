@@ -121,7 +121,7 @@ function registerLoggedUser($user){
 }
 
 function getEmptyUser(){
-    return array("immagine" => "", "num_telefono" => "", "email" => "", "username" => "", "password" => "", "nome" => "", "cognome" => "");
+    return array("immagine" => "", "num_telefono" => "", "email" => "", "username" => "", "password" => "", "nome" => "", "cognome" => "", "cliente" => "", "agricoltore" => "");
 }
 
 function uploadImage($path, $image){

@@ -11,6 +11,8 @@ $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 $templateParams["aziende_agricole"] = $dbh->getAziendaAgricolaInfo();
 
+
+//non e' detto che se e' settato l'id l'utente non sia loggato e viceversa
 if(isset($_GET["id"])){
     $nome_azienda = $_GET["id"];
     $templateParams["user"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0];
