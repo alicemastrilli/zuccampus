@@ -49,7 +49,7 @@
                 <div class="mx-2 pb-3">
                   <input type="checkbox" id="altro" name="altro " value=true/><label for="altro">Altro</label>
                 </div>
-                TO DO: visualizzare la matricola solo se studente e' checkato  -->
+                TODO: visualizzare la matricola solo se studente e' checkato  -->
               </div>
         </article>
         <article class="rounded mx-2">
