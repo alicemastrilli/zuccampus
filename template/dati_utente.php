@@ -2,11 +2,11 @@
 <html lang="it">
     <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
-
+   
     </head>
     <section>
        <div class="row">
-       <a class="col-3" href="aziende_agricole.php">
+       <a class="col-3" onclick="goBack()">
          <img src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">
        </a>
         <div class="col-6 p-3 text-center ">

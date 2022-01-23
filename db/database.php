@@ -125,7 +125,13 @@ class DatabaseHelper{
         
         return $stmt->insert_id;
     }
-
+    public function updateMessageAsRead($id_messaggio){
+        $query = "UPDATE messaggio SET tag_letto = 1 WHERE id_messaggio = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$id_messaggio);
+        
+        return $stmt->execute();
+    }
     public function checkMessage($username, $data, $ora){
         $query = "SELECT username, data, ora FROM messaggio WHERE username = ? AND data = ? and ora= ?";
         $stmt = $this->db->prepare($query);

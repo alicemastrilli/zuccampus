@@ -74,6 +74,17 @@ function canBeAdded($messaggio){
     }
 }
 
+function marksAsRead($messaggi){
+    $id = array();
+    foreach($messaggi as $messaggio){
+        if(canBeAdded($messaggio)){
+            array_push($id, $messaggio["id_messaggio"]);
+        }
+    }
+    return $id;
+}
+
+
 function computeDeliveryTime($ordine, $campus_info){
     $date = date_create($ordine["data_ordine"]);
     $costo_sped=0;
