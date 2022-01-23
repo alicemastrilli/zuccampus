@@ -82,7 +82,7 @@
               </div>
         </article>
         <!--TODO: controllare che modifico solo il mio profilo  -->
-        <?php if( isUserLoggedIn() && $_SESSION["username"] ==$templateParams["user"]["username"]): ?>
+        <?php if(isUserLoggedIn() && $_SESSION["username"] ==$templateParams["user"]["username"]): ?>
          <!--passare come post lo username dell'utente -->
         <form action="gestisci_registrazione.php?action=2?id=<?php echo $_SESSION["username"]?>" class="text-center pb-2" method="post">
         <input class="rounded p-4" type="Submit" name="<?php $_SESSION["username"]?>" value="Modifica profilo" />
