@@ -17,8 +17,11 @@ elseif($_SESSION["agricoltore"]==1){
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
     //ricevo l'id nome azienda
     $nome_azienda = $_GET["id"];
+    //info utente del profilo che sto visitando
     $templateParams["user"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]; //immagine, num_telefono, email, nome, cognome
     $templateParams["azienda"] = $dbh -> getAziendaAgrByName($nome_azienda)[0]; //nome_azienda, descrizione, via, citta, numero_civico, cap
+    //info dell'utente loggato
+    $templateParams["user_loggato"] = $dbh-> getUserByUsername($templateParams["username"])[0];
 
 
 }
