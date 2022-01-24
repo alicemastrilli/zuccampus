@@ -1,7 +1,6 @@
 <?php 
-  $azione = $templateParams["azione"];
+  $azione = getAction($templateParams["azione"]);
   $utente = $templateParams["utente"];
-  echo var_dump($nome_azienda);
 ?>
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
   <head>
@@ -11,7 +10,7 @@
   <section>
     <div class="row">
       <div class="col-12 p-3 text-center ">
-         <!--TO DO: correggere la tondita' della foto profilo di default--> 
+        <!--sistemare l'immagine-->
          <img src="./icons/utente_generico.jpg" class="round-circle max" 
         alt="foto profilo default"/>
         <div class="pb-1 text-center">
@@ -75,6 +74,8 @@
         <div class="pb-3 text-center">
         
         <input type="submit" name="submit" value="Salva">
+
+        <input type="hidden" name="action" value="1" />
         
        
   </section>

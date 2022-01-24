@@ -32,7 +32,7 @@ $templateParams["azione"] = getAction($_GET["action"]);
 //TODO: correggere dentro l'if, renderlo coerente con tutto
 if($_GET["action"]==1){
     $templateParams["utente"] = getEmptyUser();
-    //TODO: getEmptyAzienda
+    $templateParams["azienda"] = getEmptyAzienda();
 }
 //altrimenti riempo i campi prendendo da database
 if($templateParams["azione"] == 'Modifica') {    
