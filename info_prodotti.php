@@ -16,13 +16,11 @@ if(isset($_GET["id"])){
     $nome_zucca = $_GET["id"];
 }
 
-if(isset($_POST["nome_azienda"])){
-    $nome_azienda = $_POST["nome_azienda"];
-}
+$nome_azienda = $_POST["nome_azienda"];
 
 $templateParams["zucca_info"] = $dbh -> getProductByFarmerAndName($nome_azienda, $nome_zucca);
 $templateParams["produttori"] = $dbh -> getProduttoriByZuccaName($nome_zucca);
-$templateParams["recensioni"] = $dbh -> getAllReviews($nome_zucca, $nome_azienda);
+$templateParams["recensioni"] = $dbh -> getAllReviews($nome_zucca);
 
 require("template/homePage.php");
 ?>

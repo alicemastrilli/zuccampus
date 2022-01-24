@@ -17,9 +17,7 @@ if(isset($_POST["zucca"])){
     $nome_zucca = $_POST["zucca"];
 }
 
-if(isset($_POST["produttore"])){
-    $produttore = $_POST["produttore"];
-}
-
+$templateParams["produttori"] = $dbh->getProduttoriByZuccaName($nome_zucca);
+ 
 require("template/homePage.php");
 ?>

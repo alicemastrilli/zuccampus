@@ -55,6 +55,9 @@
                 </div>
             </div>
         </div>
+        <div class="row text-center">
+            <p>Zuccampus nasce per offrire prodotti a kilometro 0 ai suoi utenti con un ottimo rapporto qualità prezzo. </p>
+        </div>
         <div class="row">
             <div class="col-sm text-center mb-2">
                 <button class="visualize" type="button" width="50%" id="visualizeButton"> Visualizza tutti i prodotti</button>

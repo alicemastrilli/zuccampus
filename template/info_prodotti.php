@@ -52,22 +52,23 @@
             <form action="aggiungi_recensione.php" method="post">
                 <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
                 <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
-                <input type="hidden" name="produttore" value="<?php echo $zucca["nome_azienda"]; ?>">
             </form>
+            <hr>
             <?php foreach($templateParams["recensioni"] as $recensione):?>
-            <div class="row recensioni-da-eliminare">
+            <div class="row">
                 <div class="col sm-0">
 				    <div class="star-rating text-center" id="div-star">
                     <?php for($k=0;$k<intval($recensione["punteggio"]);$k++):?>
                         <img class="rounded" src="./icons/star.png" width="6%" alt="" />
                     <?php endfor;?>
                     </div>
+                    <p class="font-weight-bold" ><?php echo $recensione["nome_azienda"]; ?></p>
                     <p><?php echo $recensione["descrizione"]; ?></p>
                     <p>-<?php echo $recensione["username"]; ?></p>
                 </div>
             </div>
-            <?php endforeach;?>
             <hr>
+            <?php endforeach;?>
         </div>
     <?php endforeach;?>
     </div>

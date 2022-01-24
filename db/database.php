@@ -412,10 +412,10 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getAllReviews($nome_zucca, $nome_azienda){
-        $query = "SELECT * FROM recensione r WHERE r.nome_zucca = ? AND r.nome_azienda = ? ";
+    public function getAllReviews($nome_zucca){
+        $query = "SELECT * FROM recensione r WHERE r.nome_zucca = ? ";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$nome_zucca,$nome_azienda);
+        $stmt->bind_param('s',$nome_zucca);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -445,6 +445,16 @@ class DatabaseHelper{
             $msg = $stmt->error;
         }
         return $msg;
+    }
+
+    public function getOrdersOfUser($nome_zucca,$nome_azienda,$username){
+        $query="SELECT * FROM comprende c WHERE c.nome_zucca = ? AND c.nome_azienda = ? AND c.username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sss',$nome_zucca,$nome_azienda,$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 ?>

@@ -22,7 +22,7 @@
                         <li class="dropdown-item" onclick="ordinaPerPrezzo('DECS');">Prezzo:decrescente</li>
                     </ul>
                 </div>
-                <div class="btn-group m-lg-2">
+                <div class="btn-group">
                     <button type="button" class="acquista" data-toggle="dropdown">Produttori</button>
                     <ul class="dropdown-menu">
                     <?php foreach($templateParams["agricoltori"] as $agricoltore): ?>
@@ -48,8 +48,8 @@
                     <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="50%" alt="zucca_delica">
                     <p>€<?php echo $zucca["prezzo"]; ?></p>
                     <form  action="info_prodotti.php?id=<?php echo $zucca["nome_zucca"]?>" method="post">
-                        <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
                         <button class="acquista mt-2 mb-2">Acquista</button>
+                        <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
                     </form>
                 </div>
                 <hr>
