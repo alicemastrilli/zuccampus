@@ -1,0 +1,7 @@
+.row>img{
+    width:70px;
+}
+li>input:nth-child(1){
+    font-weight: bold;
+    background-color: #D9AF5D;  
+}

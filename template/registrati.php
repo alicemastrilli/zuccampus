@@ -11,6 +11,7 @@
                 <img class="img-fluid my-4" src="./icons/icona_login.png" alt="login cliente"/>
                 <form action="gestisci_registrazione.php?action=1" method="post">
                     <button class="rounded p-4"  name="cliente">Sono un cliente</button>
+                    <input type="hidden" name="cliente" value="cliente" />
                 </form>
                
             </div>
@@ -20,7 +21,8 @@
                 <img class="img-fluid my-4" src="./icons/icona_login_agricoltore.png" alt="login agricoltore"/>
                 <form action="gestisci_registrazione.php?action=1" method="post">
                 <button class="rounded p-4" name="agricoltore">Sono un agricoltore</button>
-                </form>
+                <input type="hidden" name="agricoltore" value="agricoltore" />    
+            </form>
             </div>
         </div>
     </div>

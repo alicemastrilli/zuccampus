@@ -5,6 +5,7 @@ require_once 'bootstrap.php';
 if($_GET["action"]==1){
     $templateParams["zucca"] = getEmptyZucca();
 }
+//altrimenti riempo i campi prendendo da database
 if($_GET["action"]==2){
     /*
     if(isset($_GET["id"])){
@@ -17,9 +18,6 @@ if($_GET["action"]==2){
 }
 
 //altrimenti riempo i campi prendendo da database
-
-
-
 $templateParams["titolo"] = "Zuccampus- Registrati";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";

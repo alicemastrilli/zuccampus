@@ -46,7 +46,7 @@ function UserWindowFields(){
     array_push($field, array("text" => "Il mio profilo", "href" => "dati_utente.php"));
     array_push($field, array("text" => "Ordini", "href" => "lista_ordini.php"));
     array_push($field, array("text" => "Metodo di pagamento", "href" => "form_pagamento.php"));
-    array_push($field, array("text" => "Esci", "href" => "login.php"));
+    array_push($field, array("text" => "Esci", "href" => "logout.php"));
     return $field;
 }
 
@@ -73,6 +73,17 @@ function canBeAdded($messaggio){
         return false;
     }
 }
+
+function marksAsRead($messaggi){
+    $id = array();
+    foreach($messaggi as $messaggio){
+        if(canBeAdded($messaggio)){
+            array_push($id, $messaggio["id_messaggio"]);
+        }
+    }
+    return $id;
+}
+
 
 function computeDeliveryTime($ordine, $campus_info){
     $date = date_create($ordine["data_ordine"]);
@@ -121,7 +132,10 @@ function registerLoggedUser($user){
 }
 
 function getEmptyUser(){
-    return array("immagine" => "", "num_telefono" => "", "email" => "", "username" => "", "password" => "", "nome" => "", "cognome" => "");
+    return array("immagine" => "", "num_telefono" => "", "email" => "", "username" => "", "password" => "", "nome" => "", "cognome" => "", "cliente" => "", "agricoltore" => "");
+}
+function getEmptyAzienda(){
+    return array("nome_azienda" => "", "descrizione_azienda" => "", "via" => "", "numero_civico" => "", "citta" => "", "cap" => "");
 }
 
 function uploadImage($path, $image){

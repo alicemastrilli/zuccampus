@@ -3,9 +3,13 @@
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/header.css" /> 
+
 </head>
+
 <body>
+
 <nav class="navbar">
     <div class="container ">
         <a class="navbar-brand text-black" href="homepage.php">
@@ -37,7 +41,11 @@
         <?php if(isUserLoggedIn()): ?>
             
             <div class="item pe-1">
-  		    <a href="casella_messaggi.php">
+            <?php
+            $_POST["id"] = marksAsRead($templateParams["messaggi"]);
+            //json_encode($_POST["id"]);
+                ?>
+  		    <a id="posta" href="casella_messaggi.php">
 			<span class="notify-badge"><?php echo countMessagesUnread($templateParams["messaggi"]) ?></span>
       		<img src="<?php echo UPLOAD_DIR.'posta.jpg'?>"  alt="casella di posta" />
 		    </a>
@@ -45,8 +53,26 @@
             <img class="ps-2"data-bs-toggle="offcanvas" data-bs-target="#offcanvas" 
              src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="">
         <?php endif; ?>
+  
     </div>
+    <script>
+        
+            $(document).ready(function(){
+                var update = "1";
+                var id = <?php echo json_encode($_POST["id"], JSON_HEX_TAG); ?>;
+                $("#posta").click(function(){
+                    $.ajax({
+            type: "POST",
+            url: "casella_messaggi.php",
+        data: { 'update': update, 'id':id }
+    });
+                });
+            });
+        </script>
+        
+     
 </nav>
         
-
+   </body>
+   </html>
 

@@ -56,8 +56,7 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
-    
+   
     public function getUserByUsername($username){
         $stmt = $this->db->prepare("SELECT nome,cognome,immagine,email,num_telefono, password from utente where username =?");
         $stmt->bind_param("s",$username);
@@ -125,7 +124,13 @@ class DatabaseHelper{
         
         return $stmt->insert_id;
     }
-
+    public function updateMessageAsRead($id_messaggio){
+        $query = "UPDATE messaggio SET tag_letto = 1 WHERE id_messaggio = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$id_messaggio);
+        
+        return $stmt->execute();
+    }
     public function checkMessage($username, $data, $ora){
         $query = "SELECT username, data, ora FROM messaggio WHERE username = ? AND data = ? and ora= ?";
         $stmt = $this->db->prepare($query);

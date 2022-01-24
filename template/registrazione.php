@@ -1,7 +1,6 @@
 <?php 
-//a cosa mi serve questo?
-$utente = $templateParams["utente"] ;
-
+  $azione = getAction($templateParams["azione"]);
+  $utente = $templateParams["utente"];
 ?>
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
   <head>
@@ -11,7 +10,7 @@ $utente = $templateParams["utente"] ;
   <section>
     <div class="row">
       <div class="col-12 p-3 text-center ">
-         <!--TO DO: correggere la tondita' della foto profilo di default--> 
+        <!--sistemare l'immagine-->
          <img src="./icons/utente_generico.jpg" class="round-circle max" 
         alt="foto profilo default"/>
         <div class="pb-1 text-center">
@@ -49,7 +48,7 @@ $utente = $templateParams["utente"] ;
                 <div class="mx-2 pb-3">
                   <input type="checkbox" id="altro" name="altro " value=true/><label for="altro">Altro</label>
                 </div>
-                TO DO: visualizzare la matricola solo se studente e' checkato  -->
+                TODO: visualizzare la matricola solo se studente e' checkato  -->
               </div>
         </article>
         <article class="rounded mx-2">
@@ -74,7 +73,9 @@ $utente = $templateParams["utente"] ;
         </article>
         <div class="pb-3 text-center">
         
-        <input type="submit" name="submit" value="Registrati">
+        <input type="submit" name="submit" value="Salva">
+
+        <input type="hidden" name="action" value="1" />
         
        
   </section>
