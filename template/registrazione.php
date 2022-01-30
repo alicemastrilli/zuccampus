@@ -1,5 +1,5 @@
 <?php 
-  $azione = getAction($templateParams["azione"]);
+  $azione = $templateParams["azione"];
   $utente = $templateParams["utente"];
   $immagine = $templateParams["immagine"];
 ?>
@@ -74,12 +74,11 @@
         </article>
         <div class="pb-3 text-center">
         
-        <input type="submit" name="submit" value="Salva">
+        <input type="submit" name="submit" value="<?php echo $azione?>">
 
-        <input type="hidden" name="action" value="1" />
+        <input type="hidden" name="action" value="<?php echo $azione?>"/>
         
        
   </section>
-  <!--<input type="hidden" name="action" value="registrati" /> -->
-  <!--<input type="hidden" name="defaultimg" value="<?php //echo UPLOAD_DIR.utente_generico.jpg; ?>" />-->
+  <input type="hidden" name="oldimg" value="<?php echo $immagine?>" />
 </form>
