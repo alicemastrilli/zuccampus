@@ -1,15 +1,12 @@
 <?php
 require_once 'bootstrap.php';
 
-
 $templateParams["titolo"] = "Zuccampus- Registrati";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
-    
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
-
 
 $templateParams["main"] = "registrazione.php";
 $templateParams["registrazione_agricoltore"] = "registrazione_agricoltore.php";
@@ -30,14 +27,16 @@ $templateParams["azione"] = getAction($_GET["action"]);
 
 //se action = inserisci riempo i campi con vuoto
 //TODO: correggere dentro l'if, renderlo coerente con tutto
-if($_GET["action"]==1){
+if($templateParams["azione"] == 'Inserisci'){
     $templateParams["utente"] = getEmptyUser();
     $templateParams["azienda"] = getEmptyAzienda();
+    $templateParams["immagine"] = "utente_generico.jpg";
 }
 //altrimenti riempo i campi prendendo da database
 if($templateParams["azione"] == 'Modifica') {    
-    $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     
+    $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    $templateParams["immagine"] = $templateParams["utente"]["immagine"];
     if (isUserLoggedIn()){
         //due righe che mi servono per l'header
         $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];

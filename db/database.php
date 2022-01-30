@@ -235,19 +235,31 @@ class DatabaseHelper{
         return $msg;
     }
 
+    public function updateUser($immagine, $num_telefono, $email, $username, $password, $nome, $cognome, $cliente, $agricoltore){
+        $query = "UPDATE utente SET immagine = ?, num_telefono = ?, email = ?, username = ?, password = ?, nome = ?, cognome = ?, cliente = ?, agricoltore = ? WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+        
+        return $stmt->execute();
+    }
+
     public function insertNewAgricoltore($username = null, $nome_azienda = null){
         $query = "INSERT INTO agricoltore (username, nome_azienda) VALUES  (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $nome_azienda);
         $ris = $stmt->execute();
         
-        if($ris){
-            $msg = 1;
-        }
-        else {
-            $msg = $stmt->error;
-        }
+        if($ris) $msg = 1;
+        else $msg = $stmt->error;
+    
         return $msg;
+    }
+    public function updateAgricoltore($username, $nome_azienda){
+        $query = "UPDATE agricoltore SET username = ?, nome_azienda = ? WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $username, $nome_azienda);
+        
+        return $stmt->execute();
     }
 
     public function insertNewIndirizzo($via = null, $numero_civico = null, $citta = null, $cap = null){
@@ -256,13 +268,18 @@ class DatabaseHelper{
         $stmt->bind_param('sisi', $via, $numero_civico, $citta, $cap);
         $ris = $stmt->execute();
         
-        if($ris){
-            $msg = 1;
-        }
-        else {
-            $msg = 0;
-        }
+        if($ris) $msg = 1;
+        else $msg = $stmt->error;
+    
         return $msg;
+    }
+
+    public function updateIndirizzo($via, $numero_civico, $citta, $cap){
+        $query = "UPDATE indirizzo SET via = ?, numero_civico = ?, citta = ?, cap = ? WHERE via = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sisi', $via, $numero_civico, $citta, $cap);
+        
+        return $stmt->execute();
     }
 
     public function insertNewAzienda($nome_azienda = NULL, $via = NULL, $numero_civico = NULL, $cap = NULL, $descrizione = NULL, $citta){   
@@ -274,18 +291,22 @@ class DatabaseHelper{
             $stmt->bind_param('ssiis', $nome_azienda, $via, $numero_civico, $cap, $descrizione);
             $ris = $stmt->execute();
 
-            if($ris){
-                $msg = 1;
-            }
-            else {
-                $msg = 0;
-            }
+            if($ris) $msg = 1;
+            else $msg = 0;
+            
         }
-        else{
-            $msg = 0;
-        }
+        else $msg = 0;
+        
         return $msg;
+    }
 
+    public function updateAzienda($nome_azenda, $via, $numero_civico, $cap, $descrizione, $citta){
+        $flag = $this->updateIndirizzo($via, $numero_civico, $citta, $cap);
+        $query = "UPDATE azienda_agricola SET nome_azienda = ?, via = ?, numero_civico = ?,  cap = ?, descrizione = ? WHERE nome_azienda = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssiis', $nome_azienda, $via, $numero_civico, $cap, $descrizione);
+        
+        return $stmt->execute();
     }
 
     public function getAllOrders($nome_azienda, $n=-1){

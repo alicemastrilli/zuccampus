@@ -1,6 +1,7 @@
 <?php 
   $azione = getAction($templateParams["azione"]);
   $utente = $templateParams["utente"];
+  $immagine = $templateParams["immagine"];
 ?>
 <form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
   <head>
@@ -11,7 +12,7 @@
     <div class="row">
       <div class="col-12 p-3 text-center ">
         <!--sistemare l'immagine-->
-         <img src="./icons/utente_generico.jpg" class="round-circle max" 
+         <img src="<?php echo UPLOAD_DIR.$immagine?>" class="round-circle max" 
         alt="foto profilo default"/>
         <div class="pb-1 text-center">
           <input type="file" name="immagine" id="immagine" />

@@ -56,14 +56,26 @@ if($_POST["action"]==2){
     $password = htmlspecialchars($_POST["password"]);
     $nome = htmlspecialchars($_POST["nome"]);
     $cognome = htmlspecialchars($_POST["cognome"]);
-
+    $cliente = 1;
+    $agricoltore = 0;
+    
     if($_SESSION["agricoltore"]==1){
         $cliente = 0;
         $agricoltore = 1;
+        $nome_azienda = htmlspecialchars($_POST["nome_azienda"]);
+        $via = htmlspecialchars($_POST["via"]);
+        $numero_civico = htmlspecialchars($_POST["numero_civico"]);
+        $cap = htmlspecialchars($_POST["cap"]);
+        $descrizione = htmlspecialchars($_POST["descrizione_azienda"]);
+        $citta = htmlspecialchars($_POST["citta"]);
+
+        $msg_azienda = $dbh->updateAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione, $citta);
+        if($msg_azienda) $msg = $dbh->updateAgricoltore($username, $nome_azienda);
 
     }
-    $cliente = 1;
-    $agricoltore = 0;
+    
+
+    $msg = $dbh->updateUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
 
 }
 
