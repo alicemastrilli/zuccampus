@@ -29,7 +29,8 @@
             <div class="col text-center">
                 <p>Costo: €<?php echo $zucca["prezzo"]; ?></p>
                 <form action="gestisci_prodotto.php?action=2" method="post">
-                    <button class="visualize mt-2 mb-2"  name="modifica">Modifica prodotto</button>
+                    <input type="submit" name="modifica" value="Modifica">
+                    <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]?>"/>
                 </form>
             </div>
         </div>

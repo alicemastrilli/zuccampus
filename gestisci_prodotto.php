@@ -7,13 +7,8 @@ if($_GET["action"]==1){
 }
 //altrimenti riempo i campi prendendo da database
 if($_GET["action"]==2){
-    /*
-    if(isset($_GET["id"])){
-        $nome_zucca = $_GET["id"];
-    }
-    */
-    $nome_zucca = "Zucca Delica";
-    $templateParams["zucca"] = $dbh -> getZuccaByName($nome_zucca);
+    $nome_zucca = $_POST["nome_zucca"];
+    $templateParams["zucca"] = $dbh -> getZuccaByName($nome_zucca)[0];
 
 }
 

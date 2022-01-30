@@ -18,10 +18,10 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="nome_zucca">Nome zucca:</label>
-                <input type="text" id="nome_zucca" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]; ?>" />               
+                <input type="text" id="nome_zucca" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]; ?>" <?php if ($azione == 'Modifica') echo "disabled"?>/>               
                 <div class="col-sm-0">
                     <label for="tipo" class="form-label px-2 ">Tipo zucca:</label>
-                    <select name="tipo" id="tipo">
+                    <select name="tipo" id="tipo" <?php if ($azione == 'Modifica') echo "disabled"?>>
                      <option value="zucca_commestibile">Zucca commestibile</option>
                      <option value="zucca_ornamentale">Zucca ornamentale</option>
                     </select>
