@@ -27,6 +27,10 @@ if(isset($_GET["id"])){
 elseif (isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
+    $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"]);
+    $nome_azienda = $templateParams["nome_azienda"]["nome_azienda"];
+    $templateParams["azienda_info"] = $dbh -> getAziendaAgrByName($nome_azienda);
+    
     if($_SESSION["agricoltore"]==0){
         $templateParams["matricola"] =$dbh->checkStudente($_SESSION["username"])[0]["matricola"];
     }

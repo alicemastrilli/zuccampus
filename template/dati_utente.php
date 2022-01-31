@@ -1,5 +1,8 @@
-<!DOCTYPE html>
-<html lang="it">
+<?php 
+
+$azienda = $templateParams["azienda_info"];
+var_dump($azienda);
+?>
     <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
    
@@ -44,25 +47,25 @@
             <div class="mb-3 mt-3">
             <label for="azienda_agricola" class="form-label px-2">Azienda agricola:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="azienda_agricola" value="<?php echo $templateParams["azienda"]["nome_azienda"]; ?>"
+                   <input  type="text" class="form-control " id="azienda_agricola" value="<?php echo $azienda["nome_azienda"]; ?>"
                     name="azienda_agricola" readonly>
                 </div>
                 <label for="descrizione_azienda_agricola" class="form-label px-2">Descrizione Azienda agricola:</label><br>
                 <div class="mx-2 pb-3">
                    <textarea class="form-control" rows="5" id="descrizione_azienda_agricola" 
-                   name="descrizione_azienda_agricola" readonly><?php echo $templateParams["azienda"]["descrizione"]; ?> </textarea>
+                   name="descrizione_azienda_agricola" readonly><?php echo $azienda["descrizione"]; ?> </textarea>
                 </div>
                 <label for="indirizzo" class="form-label px-2">Indirizzo:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="indirizzo" value="<?php echo $templateParams["azienda"]["via"]; ?> <?php echo $templateParams["azienda"]["numero_civico"]; ?>" name="indirizzo" readonly>
+                   <input  type="text" class="form-control " id="indirizzo" value="<?php echo $azienda["via"]; ?> <?php echo $templateParams["azienda"]["numero_civico"]; ?>" name="indirizzo" readonly>
                 </div>
                 <label for="città" class="form-label px-2">Città:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="città" value="<?php echo $templateParams["azienda"]["citta"]; ?>" name="città" readonly>
+                   <input  type="text" class="form-control " id="città" value="<?php echo $azienda["citta"]; ?>" name="città" readonly>
                 </div>
                 <label for="cap" class="form-label px-2">Cap:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="number" class="form-control " id="cap" value="<?php echo $templateParams["azienda"]["cap"]; ?>" name="cap" readonly>
+                   <input  type="number" class="form-control " id="cap" value="<?php echo $azienda["cap"]; ?>" name="cap" readonly>
                 </div>
               </div>
         </article>
