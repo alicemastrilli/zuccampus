@@ -31,6 +31,7 @@
                 <form action="gestisci_prodotto.php?action=2" method="post">
                     <input type="submit" name="modifica" value="Modifica">
                     <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]?>"/>
+                    
                 </form>
             </div>
         </div>

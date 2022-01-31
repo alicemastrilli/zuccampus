@@ -5,10 +5,11 @@ $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
 $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
 $login_result = $dbh->checkAgricoltore($_SESSION["username"]);
 $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"])[0];
-$nome_azienda = $templateParams["nome_azienda"]["nome_azienda"];
+//$nome_azienda = $templateParams["nome_azienda"]["nome_azienda"];
 
 //inserisco
 if($_POST["action"] == 'Inserisci'){
+    $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
     $nome_zucca = htmlspecialchars($_POST["nome_zucca"]);
     $tipo = htmlspecialchars($_POST["tipo"]);
     $prezzo = htmlspecialchars($_POST["prezzo"]);
@@ -33,6 +34,7 @@ if($_POST["action"] == 'Inserisci'){
 }
 
 if($_POST["action"] == 'Modifica'){
+    $nome_azienda = htmlspecialchars($_POST["nome_azienda"]);
     $nome_zucca = htmlspecialchars($_POST["nome_zucca"]);
     $tipo = htmlspecialchars($_POST["tipo"]);
     $prezzo = htmlspecialchars($_POST["prezzo"]);
