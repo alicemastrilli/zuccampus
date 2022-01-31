@@ -361,7 +361,7 @@ class DatabaseHelper{
         $query = "UPDATE zucca SET immagine = ?, prezzo = ?,  peso = ?, disponibilita = ?, descrizione_zucca = ? WHERE nome_azienda = ? AND nome_zucca = ? AND tipo = ?";
         $stmt = $this->db->prepare($query);
         if($stmt){
-            $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo, $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
+            $stmt->bind_param('ssssiiis',$immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca, $tipo);
             return $stmt->execute();
         }
         else{
