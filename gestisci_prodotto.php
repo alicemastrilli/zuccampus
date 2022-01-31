@@ -20,6 +20,14 @@ if($templateParams["azione"] == 'Modifica'){
     $templateParams["immagine"] = $templateParams["zucca"]["immagine"];
 }
 
+if($templateParams["azione"] == 'Cancella'){
+    $nome_zucca = $_POST["nome_zucca"];
+    $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"]);
+    $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
+    $msg = $dbh->deleteFarmerElement($nome_azienda, $nome_zucca);
+    header("location: agricoltore_prodotti.php?formmsg=".$msg);
+}
+
 $templateParams["titolo"] = "Zuccampus- Registrati";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";

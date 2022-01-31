@@ -9,7 +9,7 @@ $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username
 
 //inserisco
 if($_POST["action"] == 'Inserisci'){
-    $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
+    $nome_azienda = htmlspecialchars($_POST["nome_azienda"]);
     $nome_zucca = htmlspecialchars($_POST["nome_zucca"]);
     $tipo = htmlspecialchars($_POST["tipo"]);
     $prezzo = htmlspecialchars($_POST["prezzo"]);
@@ -24,7 +24,7 @@ if($_POST["action"] == 'Inserisci'){
     
         if($msg){
             $msg = "Registrazione avvenuta con successo";
-            header("location: info_prodotto_venditore.php?formmsg=".$msg);    
+            header("location: info_prodotto_venditore.php?formmsg=".$msg."&id=".$nome_zucca);    
         }
     }
     //altrimenti TODO: gestisco l'errore con un messaggio a video

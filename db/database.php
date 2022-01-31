@@ -445,12 +445,16 @@ class DatabaseHelper{
     }
 
     public function deleteFarmerElement($nome_azienda, $nome_zucca){
-        $query = "DELETE FROM zucca z WHERE z.nome_azienda = ? AND z.nome_zucca = ?";
+        $query = "DELETE FROM zucca WHERE nome_azienda = ? AND nome_zucca = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->bind_param('ss',$nome_azienda, $nome_zucca);
+        $ris = $stmt->execute();
+        if($ris){
+            return true;
+        }
+        else{
+            return $stmt->error;
+        }
     }
 
     public function getAllReviews($nome_zucca){

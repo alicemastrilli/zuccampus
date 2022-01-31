@@ -58,9 +58,10 @@
         </div>
     </section>
     <input type="hidden" name="oldimg" value="<?php echo $immagine?>" />
+    <input type="hidden" name="nome_azienda" value="<?php echo $nome_azienda; ?>" />
     <?php  if($azione == 'Modifica'): ?>
         <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]; ?>" />
-        <input type="hidden" name="nome_azienda" value="<?php echo $nome_azienda; ?>" />
+        
         <input type="hidden" name="tipo" value="<?php echo $zucca["tipo"]; ?>" />
     <?php endif ?>
 </form>
