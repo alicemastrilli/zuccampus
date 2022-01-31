@@ -80,12 +80,12 @@ if($_POST["action"] == 'Modifica'){
         $descrizione = htmlspecialchars($_POST["descrizione_azienda"]);
         $citta = htmlspecialchars($_POST["citta"]);
 
-        $msg_azienda = $dbh->updateAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione, $citta);
-        if($msg_azienda) $msg = $dbh->updateAgricoltore($username, $nome_azienda);
+        $msg_azienda = $dbh->updateAzienda($via, $numero_civico, $cap, $descrizione, $citta, $nome_azienda);
+        if($msg_azienda) $msg = $dbh->updateAgricoltore($nome_azienda, $username,);
 
     }
     
-    $msg = $dbh->updateUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+    $msg = $dbh->updateUser($immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username);
     header("location:login.php?formmsg=".$msg);
 
 }

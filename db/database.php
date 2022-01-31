@@ -235,10 +235,10 @@ class DatabaseHelper{
         return $msg;
     }
 
-    public function updateUser($immagine, $num_telefono, $email, $username, $password, $nome, $cognome, $cliente, $agricoltore){
+    public function updateUser($immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username){
         $query = "UPDATE utente SET immagine = ?, num_telefono = ?, email = ?, password = ?, nome = ?, cognome = ?, cliente = ?, agricoltore = ? WHERE username = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+        $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username);
         
         return $stmt->execute();
     }
@@ -254,7 +254,7 @@ class DatabaseHelper{
     
         return $msg;
     }
-    public function updateAgricoltore($username, $nome_azienda){
+    public function updateAgricoltore($nome_azienda, $username,){
         $query = "UPDATE agricoltore SET nome_azienda = ? WHERE username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $nome_azienda);
@@ -274,7 +274,7 @@ class DatabaseHelper{
         return $msg;
     }
 
-    public function updateIndirizzo($via, $numero_civico, $citta, $cap){
+    public function updateIndirizzo($numero_civico, $citta, $cap, $via){
         $query = "UPDATE indirizzo SET numero_civico = ?, citta = ?, cap = ? WHERE via = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sisi', $via, $numero_civico, $citta, $cap);
@@ -299,8 +299,8 @@ class DatabaseHelper{
         return $msg;
     }
 
-    public function updateAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione, $citta){
-        $flag = $this->updateIndirizzo($via, $numero_civico, $citta, $cap);
+    public function updateAzienda($via, $numero_civico, $cap, $descrizione, $citta, $nome_azienda){
+        $flag = $this->updateIndirizzo($numero_civico, $citta, $cap, $via);
         $query = "UPDATE azienda_agricola SET  via = ?, numero_civico = ?,  cap = ?, descrizione = ? WHERE nome_azienda = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssiis', $nome_azienda, $via, $numero_civico, $cap, $descrizione);
