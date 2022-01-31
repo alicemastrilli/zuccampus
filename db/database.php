@@ -254,10 +254,10 @@ class DatabaseHelper{
     
         return $msg;
     }
-    public function updateAgricoltore($nome_azienda, $username,){
+    public function updateAgricoltore($nome_azienda, $username){
         $query = "UPDATE agricoltore SET nome_azienda = ? WHERE username = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $username, $nome_azienda);
+        $stmt->bind_param('ss',$nome_azienda, $username);
         
         return $stmt->execute();
     }
@@ -277,7 +277,7 @@ class DatabaseHelper{
     public function updateIndirizzo($numero_civico, $citta, $cap, $via){
         $query = "UPDATE indirizzo SET numero_civico = ?, citta = ?, cap = ? WHERE via = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sisi', $via, $numero_civico, $citta, $cap);
+        $stmt->bind_param('sisi', $numero_civico, $citta, $cap, $via);
         
         return $stmt->execute();
     }
@@ -303,7 +303,7 @@ class DatabaseHelper{
         $flag = $this->updateIndirizzo($numero_civico, $citta, $cap, $via);
         $query = "UPDATE azienda_agricola SET  via = ?, numero_civico = ?,  cap = ?, descrizione = ? WHERE nome_azienda = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssiis', $nome_azienda, $via, $numero_civico, $cap, $descrizione);
+        $stmt->bind_param('ssiis', $via, $numero_civico, $cap, $descrizione, $citta, $nome_azienda);
         
         return $stmt->execute();
     }
@@ -361,7 +361,7 @@ class DatabaseHelper{
         $query = "UPDATE zucca SET immagine = ?, prezzo = ?,  peso = ?, disponibilita = ?, descrizione_zucca = ? WHERE nome_azienda = ? AND nome_zucca = ? AND tipo = ?";
         $stmt = $this->db->prepare($query);
         if($stmt){
-            $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo, $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
+            $stmt->bind_param('siiissss',$immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca, $tipo);
             return $stmt->execute();
         }
         else{
@@ -445,12 +445,16 @@ class DatabaseHelper{
     }
 
     public function deleteFarmerElement($nome_azienda, $nome_zucca){
-        $query = "DELETE FROM zucca z WHERE z.nome_azienda = ? AND z.nome_zucca = ?";
+        $query = "DELETE FROM zucca WHERE nome_azienda = ? AND nome_zucca = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->bind_param('ss',$nome_azienda, $nome_zucca);
+        $ris = $stmt->execute();
+        if($ris){
+            return true;
+        }
+        else{
+            return $stmt->error;
+        }
     }
 
     public function getAllReviews($nome_zucca){

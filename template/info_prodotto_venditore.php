@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="it">
+
     <head>
         <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />
     </head>
@@ -31,6 +30,7 @@
                 <form action="gestisci_prodotto.php?action=2" method="post">
                     <input type="submit" name="modifica" value="Modifica">
                     <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]?>"/>
+                    
                 </form>
             </div>
         </div>

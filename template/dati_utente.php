@@ -1,7 +1,6 @@
 <?php 
 
 $azienda = $templateParams["azienda_info"];
-var_dump($azienda);
 ?>
     <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
@@ -57,7 +56,7 @@ var_dump($azienda);
                 </div>
                 <label for="indirizzo" class="form-label px-2">Indirizzo:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="indirizzo" value="<?php echo $azienda["via"]; ?> <?php echo $templateParams["azienda"]["numero_civico"]; ?>" name="indirizzo" readonly>
+                   <input  type="text" class="form-control " id="indirizzo" value="<?php echo $azienda["via"]; ?> <?php echo $azienda["numero_civico"]; ?>" name="indirizzo" readonly>
                 </div>
                 <label for="città" class="form-label px-2">Città:</label><br>
                 <div class="mx-2 pb-3">
@@ -87,7 +86,7 @@ var_dump($azienda);
         <?php if(isUserLoggedIn() && $templateParams["user_loggato"]["nome"]==$templateParams["user"]["nome"]): ?>
          <!--passare come post lo username dell'utente -->
          <form class="text-center pb-2" action="gestisci_registrazione.php?action=2" method="post">
-            <input type="hidden" name="nome_azienda" value="<?php echo $templateParams["azienda"]["nome_azienda"]; ?>" />
+            <input type="hidden" name="nome_azienda" value="<?php echo $azienda["nome_azienda"]; ?>" />
             <button class="rounded p-4" name="agricoltore">Modifica profilo</button>    
          </form>
          <?php endif;?>
