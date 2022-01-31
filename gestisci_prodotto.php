@@ -1,6 +1,13 @@
 <?php
 require_once 'bootstrap.php';
 
+if (isUserLoggedIn()){
+    //due righe che mi servono per l'header
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
+    $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"]);
+}
+
 //se inserisco riempo i campi con vuoto
 if($_GET["action"]==1){
     $templateParams["zucca"] = getEmptyZucca();

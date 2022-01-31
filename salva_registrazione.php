@@ -61,7 +61,7 @@ if($_POST["action"] == 'Modifica'){
     $agricoltore = 0;
 
     if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
-        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["imgarticolo"]);
+        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
         $immagine = $msg;
     }
     else{

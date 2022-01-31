@@ -345,7 +345,7 @@ class DatabaseHelper{
     public function insertNewZucca($nome_azienda = null, $nome_zucca = null, $tipo = null,  $immagine = null, $prezzo = null, $peso = null, $disponibilita = null, $descrizione_zucca = null){
         $query = "INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione);
+        $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
         $ris = $stmt->execute();
         
         if($ris){
@@ -356,6 +356,22 @@ class DatabaseHelper{
         }
         return $msg;
     }
+
+    public function updateZucca($nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca){
+        $query = "UPDATE zucca SET  immagine = ?, prezzo = ?,  peso = ?, disponibilita = ?, descrizione_zucca = ?,  WHERE nome_azienda = ? AND nome_zucca = ?";
+        $stmt = $this->db->prepare($query);
+        if($stmt){
+            $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
+            return $stmt->execute();
+        }
+        else{
+            $error = $this->db->errno.''.$this->db->error; 
+            echo $error;
+        }
+        
+        
+    }
+
 
     public function getOrderById($id){
         $query = "SELECT c.nome_zucca, c.nome_azienda, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,

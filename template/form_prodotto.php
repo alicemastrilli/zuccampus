@@ -2,6 +2,7 @@
     $azione = $templateParams["azione"];
     $zucca = $templateParams["zucca"];
     $immagine = $templateParams["immagine"];
+    var_dump($templateParams["nome_azienda"][0]);
 ?>
 <form action="salva_prodotto.php" method="POST" enctype="multipart/form-data">
     <section>
@@ -53,6 +54,12 @@
         
         <div class="pb-3 text-center">
             <input type="submit" name="submit" value="<?php echo $azione?> prodotto" />
+            <input type="hidden" name="action" value="<?php echo $azione?>"/>
         </div>
     </section>
+    <input type="hidden" name="oldimg" value="<?php echo $immagine?>" />
+    <?php  if($azione == 'Modifica'): ?>
+    <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]; ?>" />
+    <input type="hidden" name="tipo" value="<?php echo $zucca["tipo"]; ?>" />
+    <?php endif ?>
 </form>
