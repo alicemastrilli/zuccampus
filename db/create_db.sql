@@ -60,8 +60,8 @@ create table if not exists `zuccampus`.`azienda_agricola` (
      constraint `FKrisiede_FK`
      foreign key (`via`, `numero_civico`, `cap`)
      references `zuccampus`.`indirizzo` (`via`, `numero_civico`, `cap`)
-     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+     ON DELETE CASCADE
+    ON UPDATE CASCADE)
      ENGINE = InnoDB;
 
 create table if not exists `zuccampus`.`utente` (
@@ -101,8 +101,8 @@ create table if not exists `zuccampus`.`cliente` (
      constraint `FKUTE_CLI_ID`
      foreign key (`username`)
      references `zuccampus`.`utente` (`username`)
-     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+     ON DELETE CASCADE
+    ON UPDATE CASCADE)
     ENGINE = InnoDB;
 
 create table if not exists `zuccampus`.`ordine` (
