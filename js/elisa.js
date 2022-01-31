@@ -1,4 +1,4 @@
-function AggiornaProdottiVenditore(zucche) {
+function aggiornaProdottiVenditore(zucche) {
     let result = "";
 
     for (let i = 0; i < zucche.length; i++) {
@@ -57,10 +57,11 @@ function generaZucche(zucche) {
                 <div class="text-center">
                     <h2>${zucche[i]["nome_zucca"]}</h2>
                     <p>${zucche[i]["tipo"]}</p>
-                    <img src="./icons/${zucche[i]["immagine"]}" alt="" style="width: 200px;" />
+                    <img src="./icons/${zucche[i]["immagine"]}" width="50%" alt="" />
                     <p>€ ${zucche[i]["prezzo"]}</p>
                     <form  action="info_prodotti.php?id=${zucche[i]["nome_zucca"]}" method="post">
-                        <button class="acquista">Acquista</button>
+                        <button class="acquista mb-2">Acquista</button>
+                        <input type="hidden" name="nome_azienda" value="${zucche[i]["nome_azienda"]}">
                     </form>
                 </div>
             </div>

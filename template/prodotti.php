@@ -45,7 +45,7 @@
                 <div class="text-center">
                     <h2><?php echo $zucca["nome_zucca"]; ?></h2>
                     <p><?php echo $zucca["tipo"]; ?></p>
-                    <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="50%" alt="zucca_delica">
+                    <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="50%" alt="">
                     <p>€<?php echo $zucca["prezzo"]; ?></p>
                     <form  action="info_prodotti.php?id=<?php echo $zucca["nome_zucca"]?>" method="post">
                         <button class="acquista mt-2 mb-2">Acquista</button>

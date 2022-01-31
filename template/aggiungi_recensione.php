@@ -10,13 +10,23 @@ if(isset($_POST['submit'])){
         $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
         $templateParams["ordine"] = $dbh->getOrdersOfUser($nome_zucca,$nome_azienda,$_SESSION["username"][0]);
         if(!empty($templateParams["ordine"])){
-            $dbh->insertNewRecensione($idReview,$descrizione_zucca,$punteggio,$nome_azienda, $zucca,$_SESSION["username"]);
-            echo "la recensione è stata aggiunta con successo!";
+            $emptyFields=0;
+            foreach ($_POST as $val) {
+                if(empty($val)){
+                    echo "Devi riempire tutti i campi per aggiungere una recensione!";
+                    $emptyFields++;
+                }
+            }
+            if($emptyFields=0){
+                $dbh->insertNewRecensione($idReview,$descrizione_zucca,$punteggio,$nome_azienda, $zucca,$_SESSION["username"]);
+                echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
+
+            }
         }else{
-            echo "Attenzione! Per effettuare la recensione su questo prodotto bisogna aver effettuato un ordine";
+            echo '<div class="alert alert-dark">Attenzione! Per effettuare la recensione su questo prodotto bisogna aver effettuato un ordine.</div>';
         }
     }else{
-        echo "Attenzione! Per rilasciare una recensione bisogna prima effettuare il login!";
+        echo '<div class="alert alert-dark">Attenzione! Per rilasciare una recensione bisogna prima effettuare il login! </div>';
     }
 }
 ?>
