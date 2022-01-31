@@ -7,13 +7,14 @@ if (isUserLoggedIn()){
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
     $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"]);
 }
+$templateParams["azione"] = getAction($_GET["action"]);
 
 if($_GET["action"]==1){
     $templateParams["zucca"] = getEmptyZucca();
     $templateParams["immagine"] = "utente_generico.jpg";
 }
 
-if($_GET["action"]==2){
+if($templateParams["azione"] == 'Modifica'){
     $nome_zucca = $_POST["nome_zucca"];
     $templateParams["zucca"] = $dbh -> getZuccaByName($nome_zucca)[0];
     $templateParams["immagine"] = $templateParams["zucca"]["immagine"];

@@ -2,6 +2,7 @@
     $azione = $templateParams["azione"];
     $zucca = $templateParams["zucca"];
     $immagine = $templateParams["immagine"];
+    var_dump($azione);
 ?>
 <form action="salva_prodotto.php" method="POST" enctype="multipart/form-data">
     <section>

@@ -49,13 +49,12 @@ if($_POST["action"] == 'Modifica'){
         $msg = 1;
     }
 
-    //update i campi di zucca
-    $msg = $dbh->updateZucca($immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca);
+    $msg = $dbh->updateZucca($immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca, $tipo);
     if($msg){
         $msg = "Modifica avvenuta con successo";
         header("location: info_prodotto_venditore.php?formmsg=".$msg."&id=".$nome_zucca);    
     }
-    //altrimenti TODO: gestisco l'errore con un messaggio a video
+    //TODO: gestisco l'errore con un messaggio a video
     else{
         var_dump($msg);
     }
