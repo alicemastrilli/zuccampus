@@ -4,12 +4,13 @@ require_once 'bootstrap.php';
 //se inserisco riempo i campi con vuoto
 if($_GET["action"]==1){
     $templateParams["zucca"] = getEmptyZucca();
+    $templateParams["immagine"] = "utente_generico.jpg";
 }
 //altrimenti riempo i campi prendendo da database
 if($_GET["action"]==2){
     $nome_zucca = $_POST["nome_zucca"];
     $templateParams["zucca"] = $dbh -> getZuccaByName($nome_zucca)[0];
-
+    $templateParams["immagine"] = $templateParams["zucca"]["immagine"];
 }
 
 //altrimenti riempo i campi prendendo da database

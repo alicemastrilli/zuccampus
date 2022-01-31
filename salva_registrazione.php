@@ -59,8 +59,7 @@ if($_POST["action"] == 'Modifica'){
     $cognome = htmlspecialchars($_POST["cognome"]);
     $cliente = 1;
     $agricoltore = 0;
-    $msg = 1;
-    
+
     if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
         list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["imgarticolo"]);
         $immagine = $msg;
