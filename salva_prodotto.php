@@ -50,10 +50,10 @@ if($_POST["action"] == 'Modifica'){
     }
 
     //update i campi di zucca
-    $msg = $dbh->updateZucca($nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
+    $msg = $dbh->updateZucca($immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca);
     if($msg){
-        $msg = "Registrazione avvenuta con successo";
-        header("location: info_prodotto_venditore.php?formmsg=".$msg);    
+        $msg = "Modifica avvenuta con successo";
+        header("location: info_prodotto_venditore.php?formmsg=".$msg."&id=".$nome_zucca);    
     }
     //altrimenti TODO: gestisco l'errore con un messaggio a video
     else{

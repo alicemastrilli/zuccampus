@@ -357,11 +357,11 @@ class DatabaseHelper{
         return $msg;
     }
 
-    public function updateZucca($nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca){
-        $query = "UPDATE zucca SET  immagine = ?, prezzo = ?,  peso = ?, disponibilita = ?, descrizione_zucca = ?,  WHERE nome_azienda = ? AND nome_zucca = ?";
+    public function updateZucca($immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca){
+        $query = "UPDATE zucca SET immagine = ?, prezzo = ?,  peso = ?, disponibilita = ?, descrizione_zucca = ? WHERE nome_azienda = ? AND nome_zucca = ?";
         $stmt = $this->db->prepare($query);
         if($stmt){
-            $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
+            $stmt->bind_param('sssiiis', $nome_azienda, $nome_zucca, $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
             return $stmt->execute();
         }
         else{
