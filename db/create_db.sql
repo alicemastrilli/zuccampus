@@ -139,8 +139,8 @@ create table if not exists `zuccampus`.`zucca` (
      constraint `FKvende`
      foreign key (`nome_azienda`)
      references `zuccampus`.`AZIENDA_AGRICOLA` (`nome_azienda`)
-     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+     ON DELETE CASCADE
+    ON UPDATE CASCADE)
     ENGINE = InnoDB;
     
 create table if not exists `zuccampus`.`comprende` (

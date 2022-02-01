@@ -235,10 +235,10 @@ class DatabaseHelper{
         return $msg;
     }
 
-    public function updateUser($immagine, $num_telefono, $email, $username, $password, $nome, $cognome, $cliente, $agricoltore){
+    public function updateUser($immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username){
         $query = "UPDATE utente SET immagine = ?, num_telefono = ?, email = ?, password = ?, nome = ?, cognome = ?, cliente = ?, agricoltore = ? WHERE username = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+        $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username);
         
         return $stmt->execute();
     }
@@ -254,10 +254,10 @@ class DatabaseHelper{
     
         return $msg;
     }
-    public function updateAgricoltore($username, $nome_azienda){
+    public function updateAgricoltore($nome_azienda, $username){
         $query = "UPDATE agricoltore SET nome_azienda = ? WHERE username = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $username, $nome_azienda);
+        $stmt->bind_param('ss',$nome_azienda, $username);
         
         return $stmt->execute();
     }
@@ -274,10 +274,10 @@ class DatabaseHelper{
         return $msg;
     }
 
-    public function updateIndirizzo($via, $numero_civico, $citta, $cap){
+    public function updateIndirizzo($numero_civico, $citta, $cap, $via){
         $query = "UPDATE indirizzo SET numero_civico = ?, citta = ?, cap = ? WHERE via = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sisi', $via, $numero_civico, $citta, $cap);
+        $stmt->bind_param('sisi', $numero_civico, $citta, $cap, $via);
         
         return $stmt->execute();
     }
@@ -299,11 +299,11 @@ class DatabaseHelper{
         return $msg;
     }
 
-    public function updateAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione, $citta){
-        $flag = $this->updateIndirizzo($via, $numero_civico, $citta, $cap);
+    public function updateAzienda($via, $numero_civico, $cap, $descrizione, $citta, $nome_azienda){
+        $flag = $this->updateIndirizzo($numero_civico, $citta, $cap, $via);
         $query = "UPDATE azienda_agricola SET  via = ?, numero_civico = ?,  cap = ?, descrizione = ? WHERE nome_azienda = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssiis', $nome_azienda, $via, $numero_civico, $cap, $descrizione);
+        $stmt->bind_param('ssiis', $via, $numero_civico, $cap, $descrizione, $citta, $nome_azienda);
         
         return $stmt->execute();
     }
@@ -345,7 +345,7 @@ class DatabaseHelper{
     public function insertNewZucca($nome_azienda = null, $nome_zucca = null, $tipo = null,  $immagine = null, $prezzo = null, $peso = null, $disponibilita = null, $descrizione_zucca = null){
         $query = "INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione);
+        $stmt->bind_param('ssssiiis', $nome_azienda, $nome_zucca, $tipo,  $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
         $ris = $stmt->execute();
         
         if($ris){
@@ -356,6 +356,22 @@ class DatabaseHelper{
         }
         return $msg;
     }
+
+    public function updateZucca($immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca, $tipo){
+        $query = "UPDATE zucca SET immagine = ?, prezzo = ?,  peso = ?, disponibilita = ?, descrizione_zucca = ? WHERE nome_azienda = ? AND nome_zucca = ? AND tipo = ?";
+        $stmt = $this->db->prepare($query);
+        if($stmt){
+            $stmt->bind_param('siiissss',$immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca, $tipo);
+            return $stmt->execute();
+        }
+        else{
+            $error = $this->db->errno.''.$this->db->error; 
+            echo $error;
+        }
+        
+        
+    }
+
 
     public function getOrderById($id){
         $query = "SELECT c.nome_zucca, c.nome_azienda, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
@@ -429,18 +445,40 @@ class DatabaseHelper{
     }
 
     public function deleteFarmerElement($nome_azienda, $nome_zucca){
-        $query = "DELETE FROM zucca z WHERE z.nome_azienda = ? AND z.nome_zucca = ?";
+        $query = "DELETE FROM zucca WHERE nome_azienda = ? AND nome_zucca = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->bind_param('ss',$nome_azienda, $nome_zucca);
+        $ris = $stmt->execute();
+        if($ris){
+            return true;
+        }
+        else{
+            return $stmt->error;
+        }
     }
 
     public function getAllReviews($nome_zucca){
         $query = "SELECT * FROM recensione r WHERE r.nome_zucca = ? ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$nome_zucca);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getRecensioneFromAzienda($nome_azienda){
+        $query = "SELECT * FROM recensione r WHERE r.nome_azienda = ? order by data desc ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$nome_azienda);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getRecensioneFromCliente($username){
+        $query = "SELECT * FROM recensione r WHERE r.username = ? order by data desc ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
 

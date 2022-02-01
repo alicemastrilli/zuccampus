@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="it">
+
     <head>
         <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />
     </head>
@@ -27,7 +26,10 @@
                                     </form>
                                 </div>
                                 <div class="col-6 text-center">
-                                    <button class="visualize mb-2" type="button">Elimina il Prodotto</button>                   
+                                <form action="gestisci_prodotto.php?action=3" method="post">
+                                    <input class="visualize mb-2" type="submit" name="elimina" value="Elimina Prodotto">  
+                                    <input type="hidden" name="nome_zucca" value="<?php echo $prodotto["nome_zucca"]; ?>" />
+                                </form>                 
                                 </div>
                             </div>
                         </td>

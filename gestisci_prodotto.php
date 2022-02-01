@@ -1,23 +1,33 @@
 <?php
 require_once 'bootstrap.php';
 
-//se inserisco riempo i campi con vuoto
+if (isUserLoggedIn()){
+    //due righe che mi servono per l'header
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
+    $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"]);
+}
+$templateParams["azione"] = getAction($_GET["action"]);
+
 if($_GET["action"]==1){
     $templateParams["zucca"] = getEmptyZucca();
-}
-//altrimenti riempo i campi prendendo da database
-if($_GET["action"]==2){
-    /*
-    if(isset($_GET["id"])){
-        $nome_zucca = $_GET["id"];
-    }
-    */
-    $nome_zucca = "Zucca Delica";
-    $templateParams["zucca"] = $dbh -> getZuccaByName($nome_zucca);
-
+    $templateParams["immagine"] = "utente_generico.jpg";
 }
 
-//altrimenti riempo i campi prendendo da database
+if($templateParams["azione"] == 'Modifica'){
+    $nome_zucca = $_POST["nome_zucca"];
+    $templateParams["zucca"] = $dbh -> getZuccaByName($nome_zucca)[0];
+    $templateParams["immagine"] = $templateParams["zucca"]["immagine"];
+}
+
+if($templateParams["azione"] == 'Cancella'){
+    $nome_zucca = $_POST["nome_zucca"];
+    $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"]);
+    $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
+    $msg = $dbh->deleteFarmerElement($nome_azienda, $nome_zucca);
+    header("location: agricoltore_prodotti.php?formmsg=".$msg);
+}
+
 $templateParams["titolo"] = "Zuccampus- Registrati";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";

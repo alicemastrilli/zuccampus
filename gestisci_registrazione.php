@@ -25,7 +25,6 @@ if (isUserLoggedIn()){
 }
 $templateParams["azione"] = getAction($_GET["action"]);
 
-//se action = inserisci riempo i campi con vuoto
 //TODO: correggere dentro l'if, renderlo coerente con tutto
 if($templateParams["azione"] == 'Inserisci'){
     $templateParams["utente"] = getEmptyUser();
