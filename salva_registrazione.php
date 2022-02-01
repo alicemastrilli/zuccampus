@@ -77,9 +77,10 @@ if($_POST["action"] == 'Modifica'){
         $via = htmlspecialchars($_POST["via"]);
         $numero_civico = htmlspecialchars($_POST["numero_civico"]);
         $cap = htmlspecialchars($_POST["cap"]);
-        $descrizione = htmlspecialchars($_POST["descrizione_azienda"]);
+        $descrizione = htmlspecialchars($_POST["descrizione"]);
         $citta = htmlspecialchars($_POST["citta"]);
 
+        $msg_indirizzo = updateIndirizzo($numero_civico, $citta, $cap, $via);
         $msg_azienda = $dbh->updateAzienda($via, $numero_civico, $cap, $descrizione, $citta, $nome_azienda);
         if($msg_azienda) $msg = $dbh->updateAgricoltore($nome_azienda, $username,);
 

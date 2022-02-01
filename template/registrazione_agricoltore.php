@@ -9,7 +9,7 @@
             </div>
          <label for="descrizione_azienda" class="form-label px-2">Descrizione</label><br>
             <div class="mx-2 pb-3">
-                  <input class="form-control" type="text" id="descrzione_azienda" name="descrizione_azienda"  value="<?php echo $azienda["descrizione"]; ?>" />
+                  <input class="form-control" type="text" id="descrzione" name="descrizione"  value="<?php echo $azienda["descrizione"]; ?>" />
             </div>
          <label for="via" class="form-label px-2">Via</label><br>
             <div class="mx-2 pb-3">

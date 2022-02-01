@@ -56,7 +56,7 @@
             <button class="rounded p-4"  name="modifica">Modifica metodo di pagamento</button>
          </form>
          <form action="salva_pagamento.php" class="text-center pb-2" method="post">
-            <button class="rounded p-4"  name="modifica">Acquista</button>
+            <button class="rounded p-4"  name="acquista">Ac</button>
          </form>
 
          <?php endif;?>
