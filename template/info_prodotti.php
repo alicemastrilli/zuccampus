@@ -21,7 +21,8 @@ if(isset($_POST['submit'])){
     }
     if($value==0){
         array_push($_SESSION['product'], $newproduct);
-        var_dump($_SESSION['product']);
+    }else{
+        echo '<div class="alert alert-dark">Attenzione! Il prodotto selezionato è già nel carrello!</div>';
     }
 }
 ?>

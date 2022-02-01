@@ -1,26 +1,48 @@
 <?php
 require_once 'bootstrap.php'; 
-if (isset($_POST['submit'])) {
+if(isset($_POST['quantityUpdate'])) {
+    $newproduct=array(
+        'id' => $_POST["id"],
+        'nome_azienda' => $_POST["nome_azienda"]
+    );
+    $massimo=$dbh -> getProductByFarmerAndName($newproduct["nome_azienda"], $newproduct["id"])[0]["disponibilita"];
     $i=0;
-    $id=$_POST["id"];
-    $nome_azienda=$_POST["nome_azienda"];
     foreach($_SESSION['product'] as $key){
         $value=0;
-        if($key["id"]==$id){
-            if($key["nome_azienda"]==$nome_azienda){
+        if($key["id"]==$newproduct["id"]){
+            if($key["nome_azienda"]==$newproduct["nome_azienda"]){
                 $quantity=$_POST["quantity"];
-                var_dump($quantity);
                 $value=$value+1;
             }
         }
         if($value!=0){
-            $_SESSION['product'][$i]["quantita"]=$quantity;
+            if($quantity>intval($massimo)){
+                echo '<div class="alert alert-dark">Attenzione! Inserire una quantità valida!</div>';
+            }else{
+                $_SESSION['product'][$i]["quantita"]=$quantity;
+            }
         }
         $i++;
     }
 }else { 
     $quantity = 1;
 } 
+
+if(isset($_POST['delete'])){
+    $newproduct=array(
+        'id' => $_POST["id"],
+        'nome_azienda' => $_POST["nome_azienda"]
+    );
+    $i=0;
+    foreach($_SESSION['product'] as $key){
+        if($key["id"]==$newproduct["id"]){
+            if($key["nome_azienda"]==$newproduct["nome_azienda"]){
+                unset($_SESSION['product'][$i]);
+            }
+        }
+        $i++;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,18 +74,16 @@ if (isset($_POST['submit'])) {
                             <p><?php echo $prodotto["tipo"]; ?></p>
                             <p><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
+                            <div class="row">
+                                <div class="col-6 text-center ">
+                                    <input type="submit" name="delete" value="Elimina il Prodotto" class="acquista" />                  
+                                </div>
+                                <div class="col-6 text-center">
+                                    <input type="number" id="quantity" name="quantity" value="<?php echo $prodotto["quantita"]; ?>" min="1" max="" ><br><br>
+                                    <input type="submit" name="quantityUpdate" value="Salva le modifiche" class="acquista">
+                                </div>
+                            </div>
                         </form>
-                        <div class="row">
-                            <div class="col-6 text-center ">
-                                <button class="visualize mb-2" type="button">Elimina il Prodotto</button>                   
-                            </div>
-                            <div class="col-6 text-center">
-                                <form action="#" method="post">
-                                    <input type="number" id="quantity" name="quantity" value="<?php echo $prodotto["quantita"]; ?>" ><br><br>
-                                    <input type="submit" name="submit" class="btn btn-primary btn-sm">
-                                </form>
-                            </div>
-                        </div>
                     </td>
                     <td class="col-3 p-2">
                         <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="50%" alt="" />
