@@ -82,7 +82,11 @@ if (isset($_POST['submit'])) {
         <button type="button" class="acquista" onclick="goBackShopping()">Torna allo shopping</button>
     </div>
     <div class="btn-group text-center mb-2">
-        <button type="button" class="acquista">Procedi all'ordine</button>
+        <form  action="gestisci_ordine.php" method="post">
+            <button name="procediordine" class="acquista">Procedi all'ordine</button>
+        </form>
+
+        
     </div>
 </div>
 <?php endif; ?>
