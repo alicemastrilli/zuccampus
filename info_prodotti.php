@@ -12,6 +12,10 @@ $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 
+if(!isset($_SESSION['product'])){
+    $_SESSION['product'] = array();
+}
+
 if(isset($_GET["id"])){
     $nome_zucca = $_GET["id"];
 }

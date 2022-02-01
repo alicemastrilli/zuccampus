@@ -1,84 +1,90 @@
-    <head>
-        <link rel="stylesheet" type="text/css" href="./css/carrello.css" /> 
-    </head>
-    <div class="container-fluid">
-        <div class="row m-2">
-            <div class="col-sm-0 text-center">
-                <h3 class="px-2">Il mio carrello</h3>
-            </div> 
-        </div>
-
-        <!--se il carrello e' vuoto-->
-        <div class="row">
-            <div class="col-sm-0 mb-3 text-center">
-                <p>Il carrello è vuoto</p>
-                <a class="btn btn-primary" href="<?php echo $templateParams["prodotti"]?>" role="button">Continua con gli acquisti</a>
-            </div> 
-        </div>
-
-        <!--se il carrello ha almeno un elemento-->
-        <div class="row">
-            <div class="col">    
-                <h5>Zucca Delica</h5>
-                <p>Azienda agricola</p>
-                <div class="my-2 btn-group">
-                    <button type="button" class="btn btn-primary">-</button>
-                            <input class="text-center" type='text' size='1' name='item' value='0'/>
-                    <button type="button" class="btn btn-primary">+</button>
-                </div>
-            </div>
-            <div class="col">
-                <div class="container">
-                    <img class="img-fluid my-4" src="./icons/zuccaDelica.png" alt=""/>
-                </div>
-            </div> 
-        </div>
-        <div class="row">
-            <div class = "col-sm-0">
-                <p>Totale: </p>
-            </div>
-        </div> 
-        <div class="row m-2">
-            <div class = "col-sm-0">
-            <p class="m-2">Ritiro presso Campus di Cesena - Via dell'Universita' 50<br>Arrivo previsto entro 24h</p>
-            </div>   
-        </div>
-        <div class="row text-center">
-            <div class="mb-3">
-            <a class="btn btn-primary" href="<?php echo $templateParams["acquista"]?>" role="button">Acquista</a>
-            </div>
-
-
-        </div>
-
-        
-        <button class="open-button" onclick="openForm()">Open Form</button>
-
-    <div class="form-popup" id="myForm">
-    <form action="/action_page.php" class="form-container">
-        <h1>Login</h1>
-
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
-
-       <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-
-        <button type="submit" class="btn">Login</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-      </form>
+<?php
+require_once 'bootstrap.php'; 
+if (isset($_POST['submit'])) {
+    $i=0;
+    $id=$_POST["id"];
+    $nome_azienda=$_POST["nome_azienda"];
+    foreach($_SESSION['product'] as $key){
+        $value=0;
+        if($key["id"]==$id){
+            if($key["nome_azienda"]==$nome_azienda){
+                $quantity=$_POST["quantity"];
+                var_dump($quantity);
+                $value=$value+1;
+            }
+        }
+        if($value!=0){
+            $_SESSION['product'][$i]["quantita"]=$quantity;
+        }
+        $i++;
+    }
+}else { 
+    $quantity = 1;
+} 
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Simple Shopping Cart using Session in PHP</title>
+	<link rel="stylesheet" type="text/css" href="./css/prodotti.css">
+</head>
+<div class="container-fluid">
+    <h1>Il mio carrello:</h1>
+    <hr></hr>
+</div>
+<?php $total=0; ?>
+<?php if(empty($_SESSION['product'])): ?>
+<div class="container-fluid mt-1">
+    <p>Il carrello è vuoto<p>
+</div>
+<?php else: ?>
+<div class="container-fluid">
+    <article>
+        <table class="table table-striped">
+            <tbody>
+            <?php foreach($_SESSION['product'] as $prodotto): ?>
+                <tr>                   
+                    <td class="col-9">
+                        <form action="#" method="POST" enctype="multipart/form-data">
+                            <p><?php echo $prodotto["id"]; ?></p>
+                            <input type="hidden" name="id" value="<?php echo $prodotto["id"]; ?>">
+                            <p><?php echo $prodotto["tipo"]; ?></p>
+                            <p><?php echo $prodotto["nome_azienda"]; ?></p>
+                            <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
+                        </form>
+                        <div class="row">
+                            <div class="col-6 text-center ">
+                                <button class="visualize mb-2" type="button">Elimina il Prodotto</button>                   
+                            </div>
+                            <div class="col-6 text-center">
+                                <form action="#" method="post">
+                                    <input type="number" id="quantity" name="quantity" value="<?php echo $prodotto["quantita"]; ?>" ><br><br>
+                                    <input type="submit" name="submit" class="btn btn-primary btn-sm">
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="col-3 p-2">
+                        <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="50%" alt="" />
+                        <p>Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</p>
+                        <?php $total=$total+(floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]));?>
+                    </td>
+                </tr>
+            <?php endforeach;?>
+            </tbody>
+        </table>
+        <div class="container mt-2 mb-2 text-center">
+            <p>Sub-totale:<?php echo $total; ?>€</p>
+        </div>       
+    </article>
+    <div class="btn-group text-center mb-2">
+        <button type="button" class="acquista" onclick="goBackShopping()">Torna allo shopping</button>
     </div>
-
-<script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
-</script>
-
+    <div class="btn-group text-center mb-2">
+        <button type="button" class="acquista">Procedi all'ordine</button>
     </div>
-         
-  
+</div>
+<?php endif; ?>
+<script src="./js/window_functions.js"></script>
+</html>
