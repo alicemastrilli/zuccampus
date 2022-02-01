@@ -41,8 +41,8 @@ $costospedizione = 5;
             <tr>
                 <td >
                     <div class="btn-group text-center mb-2">
-                        <form  action="#" method="post">
-                            <button name="paga" class="acquista">Paga</button>           
+                        <form  action="form_pagamento.php" method="post">
+                            <button name="paga" class="acquista">Vai al pagamento</button>           
                         </form>  
                     </div>
                 </td>
@@ -50,5 +50,5 @@ $costospedizione = 5;
         </tbody>
     </table>
     <div class="container mt-2 mb-2 text-center">
-        <p>Sub-totale:<?php $total = $total + $costospedizione; echo $total; ?>€</p>
+        <p>Totale complessivo:<?php $total = $total + $costospedizione; echo $total; ?>€</p>
     </div> 
