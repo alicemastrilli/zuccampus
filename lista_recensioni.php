@@ -15,7 +15,8 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 if($_SESSION["agricoltore"]==1){
     $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"])[0]["nome_azienda"];
     $templateParams["recensioni"] = $dbh->getRecensioneFromAzienda($templateParams["nome_azienda"]);
-
+} else{
+    $templateParams["recensioni"] = $dbh->getRecensioneFromCliente($_SESSION["username"]);
 }
 require("template/homePage.php");
 ?>

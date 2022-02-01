@@ -13,6 +13,7 @@
     <div class="row">
         <div class="col sm-0">
 			<div class="star-rating text-center" id="div-star">
+                <p class="text-center fw-bold"><?php echo $recensione["data"]; ?></p>
                 <?php for($k=0;$k<intval($recensione["punteggio"]);$k++):?>
                     <img class="rounded" src="<?php echo UPLOAD_DIR?>stella_piena.png" width="6%" alt="" />
                 <?php endfor;?>
@@ -27,7 +28,6 @@
                 <p class="text-end fw-bold"> -<?php echo $recensione["username"]; ?> </p> 
             </div>
         </div>
-    <hr>
 </li>
 <?php endforeach;?>
 </ul>
