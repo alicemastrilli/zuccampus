@@ -531,6 +531,18 @@ class DatabaseHelper{
         return $msg;
     }
 
+    public function insertNewOrdine($username, $data_ordine, $ora, $via, $numero_civico, $cap){
+        $query = "INSERT INTO ordine (username, data_ordine, ora, via, numero_civico, cap) VALUES  (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('siisii', $username, $data_ordine, $ora, $via, $numero_civico, $cap);
+        $ris = $stmt->execute();
+        
+        if($ris) $msg = 1;
+        else $msg = $stmt->error;
+    
+        return $msg;
+    }
+
 
 }
 ?>
