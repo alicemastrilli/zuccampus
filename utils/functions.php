@@ -138,6 +138,9 @@ function getEmptyUser(){
 function getEmptyAzienda(){
     return array("nome_azienda" => "", "descrizione" => "", "via" => "", "numero_civico" => "", "citta" => "", "cap" => "");
 }
+function getEmptyPagamento(){
+    return array("cvv" => "", "nome" => "", "numero_carta" => "", "mese_scadenza" => "", "anno_scadenza" => "", "cognome" => "", "username" => "");
+}
 
 function uploadImage($path, $image){
     $imageName = basename($image["name"]);
