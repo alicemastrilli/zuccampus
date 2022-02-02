@@ -518,5 +518,31 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function insertNewCC($cvv, $nome, $numero_carta, $mese_scadenza, $anno_scadenza, $cognome, $username){
+        $query = "INSERT INTO carta_di_credito (cvv, nome, numero_carta, mese_scadenza, anno_scadenza, cognome, username) VALUES  (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('isiiiss', $cvv, $nome, $numero_carta, $mese_scadenza, $anno_scadenza, $cognome, $username);
+        $ris = $stmt->execute();
+        
+        if($ris) $msg = 1;
+        else $msg = $stmt->error;
+    
+        return $msg;
+    }
+
+    public function insertNewOrdine($username, $data_ordine, $ora, $via, $numero_civico, $cap){
+        $query = "INSERT INTO ordine (username, data_ordine, ora, via, numero_civico, cap) VALUES  (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssii', $username, $data_ordine, $ora, $via, $numero_civico, $cap);
+        $ris = $stmt->execute();
+        
+        if($ris) $msg = 1;
+        else $msg = $stmt->error;
+    
+        return $msg;
+    }
+
+
 }
 ?>

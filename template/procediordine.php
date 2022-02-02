@@ -41,7 +41,15 @@ $costospedizione = 5;
             <tr>
                 <td >
                     <div class="btn-group text-center mb-2">
+                        <form  action="carrello.php" method="post">
+                            <button name="paga" class="acquista">Modifica carrello</button>           
+                        </form>  
+                    </div>
+                    <div class="btn-group text-center mb-2">
                         <form  action="form_pagamento.php" method="post">
+                        <?php
+                        $_SESSION["acquista"] = 1;
+                        ?>
                             <button name="paga" class="acquista">Vai al pagamento</button>           
                         </form>  
                     </div>
