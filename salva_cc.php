@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
-if($_GET["action"] == 'Inserisci'){
+if($_GET["action"] == "Inserisci"){
     //Inserisco
     $nome = htmlspecialchars($_POST["nome"]);
     $cognome = htmlspecialchars($_POST["cognome"]);
@@ -10,13 +10,12 @@ if($_GET["action"] == 'Inserisci'){
     $anno_scadenza = htmlspecialchars($_POST["anno_scadenza"]);
     $mese_scadenza = htmlspecialchars($_POST["mese_scadenza"]);
     $username = $_SESSION["username"];
+
+    var_dump($cvv);
     $msg = $dbh -> insertNewCC($cvv, $nome, $numero_carta, $mese_scadenza, $anno_scadenza, $cognome, $username);
 }
 
-if(isset($_POST["azione"]) && $_POST["azione"] == "acquista"){
-    header("location:form_pagamento?action=acquista.php");
-}
-else{
-    header("location:form_pagamento.php");
-}
+
+header("location:form_pagamento.php");
+
 ?>

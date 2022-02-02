@@ -8,6 +8,9 @@ var_dump($azione);
             <img src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">
         </a>
     </div>
+    <?php if( isUserLoggedIn() && $azione == "Inserisci"): ?>
+  
+  <form action="salva_cc.php?action=<?php echo $azione?>" class="text-center pb-2"method="POST" enctype="multipart/form-data">
     <?php foreach($templateParams["pagamento"] as $pagamento):?>
         <article class="rounded mx-2">
             <h3 class="pt-2 px-2 text-center">Carta di credito</h3>
@@ -41,22 +44,21 @@ var_dump($azione);
             </div>
         </article>
     <?php endforeach;?>
-    <?php if( isUserLoggedIn() && $azione == "Inserisci"): ?>
-        <form action="salva_cc.php?action=<?php echo $azione?>" class="text-center pb-2" method="post">
-            <?php if(isset($_POST["azione"]) && $_POST["azione"] == "acquista"): ?>
-                <input type="hidden" name="acquista" value="acquista"/>
-            <?php endif;?>
+    
             <button class="rounded p-4"  name="<?php echo $azione?>">Salva metodo di pagamento</button>
         </form>
     <?php else: ?>
         <?php $azione = "Inserisci"; ?>
-        <form action="form_pagamento.php?action=<?php echo $azione?>" class="text-center pb-2" method="post">
-            <?php if(isset($_GET["action"]) && $_GET["action"] == "acquista"): ?>
-                <input type="hidden" name="acquista" value="acquista"/>
-            <?php endif;?>
+        <form action="form_pagamento.php" class="text-center pb-2" method="post">
             <button class="rounded p-4"  name="<?php echo $azione?>">Modifica metodo di pagamento</button>
+            <input type="hidden" name="Inserisci" value="Inserisci"/>
         </form>
     <?php endif;?>
+    <?php if(isset($_SESSION["acquista"]) && $_SESSION["acquista"] == 1 ): ?>
+        <form action="salva_pagamento.php" class="text-center pb-2" method="post">
+            <button class="rounded p-4"  name="paga">Paga ora</button>
+        </form>
+    <?php endif; ?>
 
 </section>
 
