@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="it">
+
     <head>
         <link rel="stylesheet" type="text/css" href="./css/registrati.css" /> 
 
@@ -20,7 +19,7 @@
             <div class="col-sm-0 text-center">
                 <img class="img-fluid my-4" src="./icons/icona_login_agricoltore.png" alt="login agricoltore"/>
                 <form action="gestisci_registrazione.php?action=1" method="post">
-                <button class="rounded p-4" name="agricoltore">Sono un agricoltore</button>
+                    <button class="rounded p-4" name="agricoltore">Sono un agricoltore</button>
                 <input type="hidden" name="agricoltore" value="agricoltore" />    
             </form>
             </div>

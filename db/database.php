@@ -299,11 +299,10 @@ class DatabaseHelper{
         return $msg;
     }
 
-    public function updateAzienda($via, $numero_civico, $cap, $descrizione, $citta, $nome_azienda){
-        $flag = $this->updateIndirizzo($numero_civico, $citta, $cap, $via);
+    public function updateAzienda($via, $numero_civico, $cap, $descrizione, $nome_azienda){
         $query = "UPDATE azienda_agricola SET  via = ?, numero_civico = ?,  cap = ?, descrizione = ? WHERE nome_azienda = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssiis', $via, $numero_civico, $cap, $descrizione, $citta, $nome_azienda);
+        $stmt->bind_param('siiss', $via, $numero_civico, $cap, $descrizione, $nome_azienda);
         
         return $stmt->execute();
     }

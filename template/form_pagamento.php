@@ -50,10 +50,14 @@
             <?php endif;?>
         
                 
-        <!--gestisci registrazione passando action 2-->
+        <!--TODO: gestisci registrazione chiamando il giusto form e inserendo una nuova carta di credito-->
         <?php if( isUserLoggedIn()): ?>
         <form action="gestisci_registrazione.php?action=1" class="text-center pb-2" method="post">
             <button class="rounded p-4"  name="modifica">Modifica metodo di pagamento</button>
          </form>
+         <form action="salva_pagamento.php" class="text-center pb-2" method="post">
+            <button class="rounded p-4"  name="acquista">Ac</button>
+         </form>
+
          <?php endif;?>
     </section>

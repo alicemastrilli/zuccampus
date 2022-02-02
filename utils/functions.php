@@ -147,7 +147,7 @@ function getEmptyUser(){
     return array("immagine" => "", "num_telefono" => "", "email" => "", "username" => "", "password" => "", "nome" => "", "cognome" => "", "cliente" => "", "agricoltore" => "");
 }
 function getEmptyAzienda(){
-    return array("nome_azienda" => "", "descrizione_azienda" => "", "via" => "", "numero_civico" => "", "citta" => "", "cap" => "");
+    return array("nome_azienda" => "", "descrizione" => "", "via" => "", "numero_civico" => "", "citta" => "", "cap" => "");
 }
 
 function uploadImage($path, $image){
