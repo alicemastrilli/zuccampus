@@ -1,10 +1,10 @@
 <?php
 require_once 'bootstrap.php';
-date_default_timezone_set('Europe/Rome');
-
+date_default_timezone_set('Europe/Berlin');
+$t = time();
 $username = $_SESSION["username"];
-$data_ordine = date('m-d-Y h:i:s a');
-$ora = time();
+$data_ordine = date("Y-m-d");;
+$ora = date("h:i:sa", $t);
 $via = "Via dell'Università";
 $numero_civico = "50";
 $cap = "40013";
