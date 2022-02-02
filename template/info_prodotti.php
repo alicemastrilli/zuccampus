@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
         'peso' => $_POST["peso"],
         'quantita' => $_POST["quantity"]
     );
-	//check if product is already in the cart
+
     $value=0;
     foreach($_SESSION['product'] as $key){
         if($key["id"]==$newproduct["id"]){
@@ -20,6 +20,7 @@ if(isset($_POST['submit'])){
         }
     }
     if($value==0){
+        countShoppingCartProducts($_SESSION['product']);
         array_push($_SESSION['product'], $newproduct);
     }else{
         echo '<div class="alert alert-dark">Attenzione! Il prodotto selezionato è già nel carrello!</div>';
@@ -73,7 +74,7 @@ if(isset($_POST['submit'])){
                     <p><?php echo $zucca["peso"]; ?> kg </p>
                     <input type="hidden" name="peso" value="<?php echo $zucca["peso"]; ?>">
                     <label for="quantity">Quantità:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
                     <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
                     <div class="text-center mb-2">
                         <input type="submit" name="submit" value="Aggiungi al Carrello" />                
@@ -110,7 +111,6 @@ if(isset($_POST['submit'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="./js/elisa.js"></script>
     <script src="./js/window_functions.js"></script>
 </html>
