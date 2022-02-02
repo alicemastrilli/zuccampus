@@ -46,7 +46,10 @@ $costospedizione = 5;
                         </form>  
                     </div>
                     <div class="btn-group text-center mb-2">
-                        <form  action="form_pagamento.php?action=acquista" method="post">
+                        <form  action="form_pagamento.php" method="post">
+                        <?php
+                        $_SESSION["acquista"] = 1;
+                        ?>
                             <button name="paga" class="acquista">Vai al pagamento</button>           
                         </form>  
                     </div>

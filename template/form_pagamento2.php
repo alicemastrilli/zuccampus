@@ -8,7 +8,7 @@ var_dump($azione);
             <img src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">
         </a>
     </div>
-    <?php if( isUserLoggedIn() && $azione == "Inserisci"): ?>
+    
   
   <form action="salva_cc.php?action=<?php echo $azione?>" class="text-center pb-2"method="POST" enctype="multipart/form-data">
     <?php foreach($templateParams["pagamento"] as $pagamento):?>
@@ -44,7 +44,7 @@ var_dump($azione);
             </div>
         </article>
     <?php endforeach;?>
-    
+    <?php if( isUserLoggedIn() && $azione == "Inserisci"): ?>
             <button class="rounded p-4"  name="<?php echo $azione?>">Salva metodo di pagamento</button>
         </form>
     <?php else: ?>
