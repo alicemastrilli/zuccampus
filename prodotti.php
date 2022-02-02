@@ -12,7 +12,12 @@ $templateParams["main"] = "prodotti.php";
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
-$templateParams["zucche"] = $dbh->getAllPumpkins();
+if(isset($_GET["id"])){
+    $nome_azienda=$_GET["id"];
+    $templateParams["zucche"] = $dbh->getProductsByFarmer($nome_azienda);
+}else{
+    $templateParams["zucche"] = $dbh->getAllPumpkins();
+}
 $templateParams["agricoltori"] = $dbh->getAllFarmers();
 
 require("template/homePage.php");

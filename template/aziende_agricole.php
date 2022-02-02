@@ -15,8 +15,8 @@
                     <p><?php echo $azienda["descrizione"]; ?></p>
                     <div class="row">
                         <div class="col-6 text-center"> 
-                            <form  action="#" method="get">
-                            <button class="rounded">Scopri i prodotti</button>
+                            <form  action="prodotti.php?id=<?php echo $azienda["nome_azienda"]?>" method="post">
+                                <button class="rounded" >Scopri i prodotti</button>
                             </form>
                         </div>  
                         <div class="col-6 text-center">
