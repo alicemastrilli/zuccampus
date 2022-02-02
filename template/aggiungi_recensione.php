@@ -9,6 +9,7 @@ if(isset($_POST['submit'])){
     if(isUserLoggedIn()){
         $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
         $templateParams["ordine"] = $dbh->getOrdersOfUser($nome_zucca,$nome_azienda,$_SESSION["username"][0]);
+        var_dump($templateParams["ordine"]);
         if(!empty($templateParams["ordine"])){
             $emptyFields=0;
             foreach ($_POST as $val) {
@@ -20,7 +21,6 @@ if(isset($_POST['submit'])){
             if($emptyFields=0){
                 $dbh->insertNewRecensione($idReview,$descrizione_zucca,$punteggio,$nome_azienda, $zucca,$_SESSION["username"]);
                 echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
-
             }
         }else{
             echo '<div class="alert alert-dark">Attenzione! Per effettuare la recensione su questo prodotto bisogna aver effettuato un ordine.</div>';

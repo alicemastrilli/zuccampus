@@ -2,16 +2,17 @@
 require_once 'bootstrap.php'; 
 if(isset($_POST['quantityUpdate'])) {
     $newproduct=array(
-        'id' => $_POST["id"],
+        'nome' => $_POST["nome"],
         'nome_azienda' => $_POST["nome_azienda"]
     );
-    $massimo=$dbh -> getProductByFarmerAndName($newproduct["nome_azienda"], $newproduct["id"])[0]["disponibilita"];
+    $massimo=$dbh -> getProductByFarmerAndName($newproduct["nome_azienda"], $newproduct["nome"])[0]["disponibilita"];
     $i=0;
     foreach($_SESSION['product'] as $key){
         $value=0;
-        if($key["id"]==$newproduct["id"]){
+        if($key["nome"]==$newproduct["nome"]){
             if($key["nome_azienda"]==$newproduct["nome_azienda"]){
                 $quantity=$_POST["quantity"];
+                var_dump($quantity);
                 $value=$value+1;
             }
         }
@@ -30,12 +31,12 @@ if(isset($_POST['quantityUpdate'])) {
 
 if(isset($_POST['delete'])){
     $newproduct=array(
-        'id' => $_POST["id"],
+        'nome' => $_POST["nome"],
         'nome_azienda' => $_POST["nome_azienda"]
     );
     $i=0;
     foreach($_SESSION['product'] as $key){
-        if($key["id"]==$newproduct["id"]){
+        if($key["nome"]==$newproduct["nome"]){
             if($key["nome_azienda"]==$newproduct["nome_azienda"]){
                 unset($_SESSION['product'][$i]);
             }
@@ -60,6 +61,9 @@ if(isset($_POST['delete'])){
 <div class="container-fluid mt-1">
     <p>Il carrello è vuoto<p>
 </div>
+<div class="btn-group text-center mb-2 mt-2 ml-2">
+    <button type="button" class="acquista" onclick="goBackShopping()">Torna allo shopping</button>
+</div>
 <?php else: ?>
 <div class="container-fluid">
     <article>
@@ -69,8 +73,8 @@ if(isset($_POST['delete'])){
                 <tr>                   
                     <td class="col-9">
                         <form action="#" method="POST" enctype="multipart/form-data">
-                            <p><?php echo $prodotto["id"]; ?></p>
-                            <input type="hidden" name="id" value="<?php echo $prodotto["id"]; ?>">
+                            <p><?php echo $prodotto["nome"]; ?></p>
+                            <input type="hidden" name="nome" value="<?php echo $prodotto["nome"]; ?>">
                             <p><?php echo $prodotto["tipo"]; ?></p>
                             <p><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">

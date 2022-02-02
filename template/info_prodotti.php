@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 if(isset($_POST['submit'])){
     $newproduct=array(
-        'id' => $_POST["id"],
+        'nome' => $_POST["nome"],
         'tipo' => $_POST["tipo"],
         'immagine' => $_POST["immagine"],
         'nome_azienda' => $_POST["nome_azienda"],
@@ -10,10 +10,11 @@ if(isset($_POST['submit'])){
         'peso' => $_POST["peso"],
         'quantita' => $_POST["quantity"]
     );
-
+    var_dump($newproduct);
+    var_dump($_POST["nome"]);
     $value=0;
     foreach($_SESSION['product'] as $key){
-        if($key["id"]==$newproduct["id"]){
+        if($key["nome"]==$newproduct["nome"]){
             if($key["nome_azienda"]==$newproduct["nome_azienda"]){
                 $value=$value + 1;
             }
@@ -48,7 +49,7 @@ if(isset($_POST['submit'])){
                 <div class="row"> 
                     <div class="col-sm-0 text-center">
                         <h2><?php echo $zucca["nome_zucca"]; ?></h2>
-                        <input type="hidden" name="id" value="<?php echo $zucca["nome_zucca"]; ?>">
+                        <input type="hidden" name="nome" value="<?php echo $zucca["nome_zucca"]; ?>">
                         <p><?php echo $zucca["tipo"]; ?></p>
                         <input type="hidden" name="tipo" value="<?php echo $zucca["tipo"]; ?>">
                         <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="60%" alt="">
