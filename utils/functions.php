@@ -38,6 +38,17 @@ function countMessagesUnread($messaggi){
     }
     return $i;
 }
+
+function countShoppingCartProducts($cart_products){
+    $i=0;
+    if(!empty($cart_products)){
+        foreach($cart_products as $product){
+            $i= $i+1;
+        }
+    }
+    return $i;
+}
+
 function UserWindowFields(){
     $field = array();
     if($_SESSION["agricoltore"]==1){

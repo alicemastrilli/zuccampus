@@ -8,6 +8,7 @@ $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 unset($_SESSION["username"]);
 unset($_SESSION["agricoltore"]);
+unset($_SESSION["product"]);
 $_POST["out"]=1;
 require "login.php";
 

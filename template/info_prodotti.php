@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
         'peso' => $_POST["peso"],
         'quantita' => $_POST["quantity"]
     );
-	//check if product is already in the cart
+
     $value=0;
     foreach($_SESSION['product'] as $key){
         if($key["id"]==$newproduct["id"]){
@@ -20,6 +20,7 @@ if(isset($_POST['submit'])){
         }
     }
     if($value==0){
+        countShoppingCartProducts($_SESSION['product']);
         array_push($_SESSION['product'], $newproduct);
     }else{
         echo '<div class="alert alert-dark">Attenzione! Il prodotto selezionato è già nel carrello!</div>';

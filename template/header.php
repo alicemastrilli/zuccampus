@@ -19,6 +19,10 @@
             <?php foreach(getFootersIcons() as $icon):?>
                 <a class="text-decoration-none col-2" href="<?php echo $icon["a"]?>">
                     <img class=" img-fluid ps-1 " src="<?php echo $icon["img"]?>" alt="<?php echo $icon["img"]?>" />
+                    <?php if(!isset($_SESSION['product'])){
+                        $_SESSION['product']=array();
+                    } ?>
+                    <span class="shop-cart-badge"><?php echo countShoppingCartProducts($_SESSION['product']) ?></span>
                 </a>
             <?php endforeach;?>
             <div class="offcanvas offcanvas-end" id="offcanvas">
