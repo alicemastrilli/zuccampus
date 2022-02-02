@@ -10,7 +10,7 @@ var_dump($azione);
     </div>
     <?php foreach($templateParams["pagamento"] as $pagamento):?>
         <article class="rounded mx-2">
-            <h3 class="pt-2 px-2 text-center">Carta di credito salvata</h3>
+            <h3 class="pt-2 px-2 text-center">Carta di credito</h3>
             <div class="mb-3 mt-3">
                 <label for="nome" class="form-label px-2">Nome:</label><br>
                 <div class="mx-2 pb-3">
@@ -43,11 +43,17 @@ var_dump($azione);
     <?php endforeach;?>
     <?php if( isUserLoggedIn() && $azione == "Inserisci"): ?>
         <form action="salva_cc.php?action=<?php echo $azione?>" class="text-center pb-2" method="post">
+            <?php if(isset($_POST["azione"]) && $_POST["azione"] == "acquista"): ?>
+                <input type="hidden" name="acquista" value="acquista"/>
+            <?php endif;?>
             <button class="rounded p-4"  name="<?php echo $azione?>">Salva metodo di pagamento</button>
         </form>
     <?php else: ?>
-        <?php $azione = "Inserisci"?>
+        <?php $azione = "Inserisci"; ?>
         <form action="form_pagamento.php?action=<?php echo $azione?>" class="text-center pb-2" method="post">
+            <?php if(isset($_GET["action"]) && $_GET["action"] == "acquista"): ?>
+                <input type="hidden" name="acquista" value="acquista"/>
+            <?php endif;?>
             <button class="rounded p-4"  name="<?php echo $azione?>">Modifica metodo di pagamento</button>
         </form>
     <?php endif;?>

@@ -13,18 +13,22 @@ if(isUserLoggedIn()){
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
 }
 
+if(isset($_GET["action"]) && $_GET["action"] == "Inserisci"){
+    $templateParams["azione"] = "Inserisci";
+    header("location:form_pagamento.php");
+}
+
 $templateParams["pagamento"] = $dbh->getPaymentInfo($_SESSION["username"]);
-$templateParams["azione"] = "Visualizza";
+
+if(!isset($_GET["action"]) || (isset($_GET["action"]) && $_GET["action"] != "Inserisci")){
+    $templateParams["azione"] = "Visualizza";
+}
 if(empty($templateParams["pagamento"])){
     $templateParams["pagamento"][0] = getEmptyPagamento();
     $templateParams["azione"] = "Inserisci";
 }
 
-if($_GET["action"] == "Modifica"){
-    $templateParams["azione"] = "Inserisci";
-    header("location:form_pagamento.php");
 
-}
 
 require("template/homePage.php");
 ?>
