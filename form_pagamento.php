@@ -19,8 +19,6 @@ if(isset($_POST['Inserisci'])){
     //header("location:form_pagamento2.php");
 }
 */
-
-
 $templateParams["pagamento"] = $dbh->getPaymentInfo($_SESSION["username"]);
 if(empty($templateParams["pagamento"]) || isset($_POST['Inserisci']) ){
     $templateParams["pagamento"][0] = getEmptyPagamento();
