@@ -21,20 +21,28 @@ $numero_civico = "50";
 $cap = "40013";
 
 //inserisco una nuova row con l'ordine
-$msg = $dbh-> insertNewOrdine($username, $data_ordine, $ora, $via, $numero_civico, $cap);
+$id_ordine = $dbh-> insertNewOrdine($username, $data_ordine, $ora, $via, $numero_civico, $cap);
 
 //decremento i valori delle quantita' delle zucche comprate
 //per ogni prodotto comprato recupero la zucca corrispondente
 //recupero la quantita 
 //decremento la quantita in zucca
-if($msg){
+//inserisco comprende
+if($id_ordine!=false){
     foreach($_SESSION['product'] as $prodotto){
         $nome_zucca = $prodotto["nome"];
         $quantity = $prodotto["quantita"][0];
         $templateParams["zucca"] = $dbh -> getZuccaByName($nome_zucca)[0];
         $zucca = $templateParams["zucca"];
-        $disponibilita = bcsub($zucca["disponibilita"], $quantity);
-        $msg = $dbh -> updateZucca($zucca["immagine"], $zucca["prezzo"], $zucca["peso"], $disponibilita, $zucca["descrizione_zucca"], $zucca["nome_azienda"], $zucca["nome_zucca"], $zucca["tipo"]);
+        if ($zucca["disponibilita"] >= $quantity){
+            $disponibilita = bcsub($zucca["disponibilita"], $quantity);
+            $msg = $dbh -> updateZucca($zucca["immagine"], $zucca["prezzo"], $zucca["peso"], $disponibilita, $zucca["descrizione_zucca"], $zucca["nome_azienda"], $zucca["nome_zucca"], $zucca["tipo"]);
+            if($msg){
+                $msg = $dbh->insertComprende($id_ordine, $zucca["nome_azienda"], $zucca["nome_zucca"], $quantity);
+            }
+        }else{
+            //TODO: messaggio di errore
+        }
     }
 }
 $_POST["messaggio_action"]=1;
@@ -45,5 +53,8 @@ var_dump($_POST["ordine"]);
 $templateParams["main"] = "ordine.php?id=".$_POST["ordine"]["id_ordine"];
 require("template/homePage.php");
 //header("location: casella_messaggi.php?formmsg=".$msg);
+
+
+header("location: casella_messaggi.php?formmsg=".$msg);
 
 ?>

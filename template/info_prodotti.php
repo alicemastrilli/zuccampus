@@ -10,8 +10,6 @@ if(isset($_POST['submit'])){
         'peso' => $_POST["peso"],
         'quantita' => $_POST["quantity"]
     );
-    var_dump($newproduct);
-    var_dump($_POST["nome"]);
     $value=0;
     foreach($_SESSION['product'] as $key){
         if($key["nome"]==$newproduct["nome"]){

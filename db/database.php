@@ -533,8 +533,21 @@ class DatabaseHelper{
         if($ris) $msg = 1;
         else $msg = $stmt->error;
     
+        return $stmt->insert_id;
+    }
+
+    public function insertComprende($id_ordine, $nome_azienda, $nome_zucca, $quantita){
+        $query = "INSERT INTO comprende (id_ordine, nome_azienda, nome_zucca, quantita) VALUES  (?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('issi', $id_ordine, $nome_azienda, $nome_zucca, $quantita);
+        $ris = $stmt->execute();
+        
+        if($ris) $msg = 1;
+        else $msg = $stmt->error;
+    
         return $msg;
     }
+    
 
     public function insertNewRecensione($idRecensione, $descrizione, $punteggio, $nome_azienda, $nome_zucca, $username, $data){
         $query = "INSERT INTO recensione (idRecensione, descrizione, punteggio, nome_azienda, nome_zucca, username, data) VALUES (?, ?, ?, ?, ?, ?, ?)";
