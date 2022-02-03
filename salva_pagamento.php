@@ -1,5 +1,16 @@
 <?php
 require_once 'bootstrap.php';
+$templateParams["titolo"] = "Zuccampus- Riepilogo Ordine";
+$templateParams["header"] = "header.php";
+$templateParams["footer"] = "footer.php";
+$templateParams["main"] = "ordine.php";
+$templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
+$templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
+$templateParams["links"] = $dbh->getLink($templateParams["nome"]);
+if(isUserLoggedIn()){
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
+}
 date_default_timezone_set('Europe/Berlin');
 $t = time();
 $username = $_SESSION["username"];
@@ -34,9 +45,18 @@ if($id_ordine!=false){
         }
     }
 }
+$_POST["messaggio_action"]=1;
+$_POST["ordine"] =  $dbh->getUserOrders($_SESSION["username"],1)[0];
+require("template/invia_messaggio.php");
+$ordine = $_POST["ordine"]["id_ordine"];
+
+//$templateParams["main"] = "lista_ordini.php";
+$_GET["id"] = $ordine;
+require("ordine.php");
+//header("location: casella_messaggi.php?formmsg=".$msg);
 
 
 
-header("location: casella_messaggi.php?formmsg=".$msg);
+//header("location: casella_messaggi.php?formmsg=".$msg);
 
 ?>
