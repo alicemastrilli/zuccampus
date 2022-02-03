@@ -1,33 +1,22 @@
 <?php
 require_once 'bootstrap.php';
 if(isset($_POST['submit'])){
-    $idReview = rand(1,1342);
+    $idReview = intval(rand(1,1342));
     $nome_zucca = htmlspecialchars($_POST["zucca"]);
     $nome_azienda = htmlspecialchars($_POST["produttori"]);
-    $punteggio = htmlspecialchars($_POST["punteggio"]);
+    $punteggio = intval(htmlspecialchars($_POST["punteggio"]));
     $descrizione_zucca = htmlspecialchars($_POST["descrizione_zucca"]); 
-    if(isUserLoggedIn()){
-        $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
-        $templateParams["ordine"] = $dbh->getOrdersOfUser($nome_zucca,$nome_azienda,$_SESSION["username"][0]);
-        var_dump($templateParams["ordine"]);
-        if(!empty($templateParams["ordine"])){
-            $emptyFields=0;
-            foreach ($_POST as $val) {
-                if(empty($val)){
-                    echo "Devi riempire tutti i campi per aggiungere una recensione!";
-                    $emptyFields++;
-                }
-            }
-            if($emptyFields=0){
-                $dbh->insertNewRecensione($idReview,$descrizione_zucca,$punteggio,$nome_azienda, $zucca,$_SESSION["username"]);
-                echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
-            }
-        }else{
-            echo '<div class="alert alert-dark">Attenzione! Per effettuare la recensione su questo prodotto bisogna aver effettuato un ordine.</div>';
-        }
-    }else{
-        echo '<div class="alert alert-dark">Attenzione! Per rilasciare una recensione bisogna prima effettuare il login! </div>';
-    }
+    $data=date('m/d/Y');
+    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+    var_dump($_SESSION["username"]);
+    var_dump($idReview);
+    var_dump($nome_zucca);
+    var_dump($nome_azienda);
+    var_dump($punteggio);
+    var_dump($descrizione_zucca);
+    var_dump($data);
+    $dbh->insertNewRecensione($idReview,$descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
+    echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
 }
 ?>
 <!DOCTYPE html>

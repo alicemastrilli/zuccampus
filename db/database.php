@@ -494,25 +494,10 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertNewRecensione($idReview,$descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca){
-        $query = "INSERT INTO `recensione` (`idReview`, `descrizione_zucca`, `punteggio`, `nome_azienda`, `nome_zucca`) VALUES (?, ?, ?, ?, ?)";
+    public function getOrdersOfUser($username,$nome_azienda,$nome_zucca){
+        $query="SELECT o.id_ordine, o.username, c.id_ordine, c.nome_zucca, c.nome_azienda  FROM ordine o, comprende c WHERE o.username = ? AND o.id_ordine = c.id_ordine AND c.nome_azienda = ? AND c.nome_zucca = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssiiis', $idReview, $descrizione_zucca, $punteggio,  $nome_azienda, $nome_zucca);
-        $ris = $stmt->execute();
-        
-        if($ris){
-            $msg = True;
-        }
-        else {
-            $msg = $stmt->error;
-        }
-        return $msg;
-    }
-
-    public function getOrdersOfUser($nome_zucca,$nome_azienda,$username){
-        $query="SELECT * FROM comprende c WHERE c.nome_zucca = ? AND c.nome_azienda = ? AND c.username = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sss',$nome_zucca,$nome_azienda,$username);
+        $stmt->bind_param('sss',$username,$nome_zucca,$nome_azienda);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -543,6 +528,30 @@ class DatabaseHelper{
         return $msg;
     }
 
+    public function insertNewRecensione($idRecensione, $descrizione, $punteggio, $nome_azienda, $nome_zucca, $username, $data){
+        $query = "INSERT INTO recensione (idRecensione, descrizione, punteggio, nome_azienda, nome_zucca, username, data) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssiii', $idRecensione, $descrizione, $punteggio,  $nome_azienda, $nome_zucca, $username, $data);
+        $ris = $stmt->execute();
+        
+        if($ris){
+            $msg = True;
+        }
+        else {
+            $msg = $stmt->error;
+        }
+        return $msg;
+    }
+
+    public function getOrderId($username){
+        $query = "SELECT id_ordine FROM ordine o WHERE o.username=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
 }
 ?>
