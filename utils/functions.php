@@ -38,7 +38,21 @@ function countMessagesUnread($messaggi){
     }
     return $i;
 }
-
+function setMessageText($n, $ordine){
+    if($n==1){
+        if( $_SESSION["agricoltore"]==1){
+        return "Gentile ". $_SESSION["username"] . " la sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$ordine["username"];
+        } else{
+            return "Gentile ".$_SESSION["username"] . " hai effettuato un nuovo ordine.";
+        }
+    } elseif($n==2){
+        if( $_SESSION["agricoltore"]==1){
+            return "Gentile ". $_SESSION["username"] . " l'ordine di ".$ordine["username"]. "arriverà in giornata! "; 
+        } else {
+            return "Gentile ". $_SESSION["username"] . " il tuo ordine arriverà in giornata";
+        }
+    }
+}
 function countShoppingCartProducts($cart_products){
     $i=0;
     if(!empty($cart_products)){
