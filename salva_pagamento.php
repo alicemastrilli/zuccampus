@@ -22,11 +22,11 @@ if($msg){
         $quantity = $prodotto["quantita"][0];
         $templateParams["zucca"] = $dbh -> getZuccaByName($nome_zucca)[0];
         $zucca = $templateParams["zucca"];
-        $disponibilita = bcsub($zucca["quantita"], $quantity);
-        $msg = $dbh -> updateZucca($zucca["immagine"], $zucca["prezzo"], $zucca["peso"], $disponibilita, $zucca["descrizione"], $zucca["nome_azienda"], $zucca["nome_zucca"], $zucca["tipo"]);
+        $disponibilita = bcsub($zucca["disponibilita"], $quantity);
+        $msg = $dbh -> updateZucca($zucca["immagine"], $zucca["prezzo"], $zucca["peso"], $disponibilita, $zucca["descrizione_zucca"], $zucca["nome_azienda"], $zucca["nome_zucca"], $zucca["tipo"]);
     }
 }
 
-header("location: casella_messaggi.php?formmsg=".$zucca["quantita"]);
+header("location: casella_messaggi.php?formmsg=".$msg);
 
 ?>
