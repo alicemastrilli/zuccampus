@@ -48,13 +48,15 @@ if($id_ordine!=false){
 $_POST["messaggio_action"]=1;
 $_POST["ordine"] =  $dbh->getUserOrders($_SESSION["username"],1)[0];
 require("template/invia_messaggio.php");
-var_dump($_POST["ordine"]);
+$ordine = $_POST["ordine"]["id_ordine"];
 
-$templateParams["main"] = "ordine.php?id=".$_POST["ordine"]["id_ordine"];
-require("template/homePage.php");
+//$templateParams["main"] = "lista_ordini.php";
+$_GET["id"] = $ordine;
+require("ordine.php");
 //header("location: casella_messaggi.php?formmsg=".$msg);
 
 
-header("location: casella_messaggi.php?formmsg=".$msg);
+
+//header("location: casella_messaggi.php?formmsg=".$msg);
 
 ?>

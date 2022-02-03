@@ -45,11 +45,12 @@
 
 //$_POST["password"] =  "SonoBello";
 //$_POST["email"] = "alicemastrilli27@gmail.com";
-
+/*
 $_POST["ordine"] = $templateParams["ordine"];
 $_POST["campus_info"] = $templateParams["info"];
 $_POST["messaggio_action"]=1;
-require "invia_messaggio.php" ?>
+require "invia_messaggio.php" */?>
+
 <?php 
 endif;?>
     </div>
