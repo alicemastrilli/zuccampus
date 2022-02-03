@@ -10,8 +10,9 @@ $costospedizione = 5;
             <?php foreach($_SESSION['product'] as $prodotto): ?>
                 <tr>                   
                     <td class="col-9">
-                            <p><?php $prodotto["id"]; ?></p>
-                            <input type="hidden" name="id" value="<?php echo $prodotto["id"]; ?>">
+                            <p><?php echo $prodotto["nome"]; ?></p>
+                            <!--che e' sta roba? a che serve la riga successiva?-->
+                            <input type="hidden" name="id" value="<?php echo $prodotto["nome"]; ?>">
                             <p><?php echo $prodotto["tipo"]; ?></p>
                             <p><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
