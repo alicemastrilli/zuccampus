@@ -12,12 +12,13 @@ if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
 }
-
+/*
 if(isset($_POST['Inserisci'])){
     var_dump($_POST['Inserisci']);
     $templateParams["azione"] = "Inserisci";
     //header("location:form_pagamento2.php");
 }
+*/
 
 
 $templateParams["pagamento"] = $dbh->getPaymentInfo($_SESSION["username"]);
