@@ -36,6 +36,9 @@ if($templateParams["azione"] == 'Modifica') {
     
     $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["immagine"] = $templateParams["utente"]["immagine"];
+    if(is_null($templateParams["immagine"]) ){
+        $templateParams["immagine"] = "utente_generico.jpg";
+    }
     if (isUserLoggedIn()){
         //due righe che mi servono per l'header
         $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];
