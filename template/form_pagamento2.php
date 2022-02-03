@@ -48,10 +48,13 @@ var_dump($azione);
             <button class="rounded p-4"  name="<?php echo $azione?>">Salva metodo di pagamento</button>
         </form>
     <?php else: ?>
-        <?php $azione = "Inserisci"; ?>
-        <form action="form_pagamento.php" class="text-center pb-2" method="post">
-            <button class="rounded p-4"  name="<?php echo $azione?>">Modifica metodo di pagamento</button>
-            <input type="hidden" name="Inserisci" value="Inserisci"/>
+        <form  action="./form_pagamento.php?azione=Inserisci" method="post">
+
+                            <button name="Inserisci" value="Inserisci" class="acquista">Modifica metodo di pagamento</button>           
+                        </form>  
+        <form action="./form_pagamento.php?azione=Inserisci" class="text-center pb-2" method="post">
+            <button   name="Inserisci" value="Inserisci" class="rounded p-4" >Modifica metodo di pagamento</button>
+           
         </form>
     <?php endif;?>
     <?php if(isset($_SESSION["acquista"]) && $_SESSION["acquista"] == 1 ): ?>
