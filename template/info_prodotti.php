@@ -10,8 +10,6 @@ if(isset($_POST['submit'])){
         'peso' => $_POST["peso"],
         'quantita' => $_POST["quantity"]
     );
-    var_dump($newproduct);
-    var_dump($_POST["nome"]);
     $value=0;
     foreach($_SESSION['product'] as $key){
         if($key["nome"]==$newproduct["nome"]){
@@ -86,11 +84,19 @@ if(isset($_POST['submit'])){
         <hr>
         <div class="container text-center appendino">
             <p>Recensioni clienti:</p>
-            <form action="aggiungi_recensione.php" method="post">
-                <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
-                <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
-            </form>
-            <hr>
+            <?php if(isUserLoggedIn()): ?>
+                <form action="aggiungi_recensione.php" method="post">
+                    <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
+                    <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
+                </form>
+                <hr>
+            <?php elseif(!isUserLoggedIn()): ?>
+                <form action="login.php" method="post">
+                    <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
+                    <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
+                </form>
+                <hr>
+            <?php endif; ?>
             <?php foreach($templateParams["recensioni"] as $recensione):?>
             <div class="row">
                 <div class="col sm-0">

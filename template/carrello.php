@@ -12,7 +12,6 @@ if(isset($_POST['quantityUpdate'])) {
         if($key["nome"]==$newproduct["nome"]){
             if($key["nome_azienda"]==$newproduct["nome_azienda"]){
                 $quantity=$_POST["quantity"];
-                var_dump($quantity);
                 $value=$value+1;
             }
         }
@@ -35,14 +34,21 @@ if(isset($_POST['delete'])){
         'nome_azienda' => $_POST["nome_azienda"]
     );
     $i=0;
+    $products=array();
     foreach($_SESSION['product'] as $key){
         if($key["nome"]==$newproduct["nome"]){
             if($key["nome_azienda"]==$newproduct["nome_azienda"]){
+                $_SESSION['product'][$i];
                 unset($_SESSION['product'][$i]);
             }
+        }else{
+            array_push($products,$_SESSION['product'][$i]);
         }
         $i++;
     }
+    unset($_SESSION['product']);
+    $_SESSION['product']=$products;
+    unset($products);
 }
 ?>
 <!DOCTYPE html>
