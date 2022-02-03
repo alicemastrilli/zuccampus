@@ -50,7 +50,7 @@ var_dump($azione);
     <?php else: ?>
         <?php $azione = "Inserisci"; ?>
         <form action="form_pagamento.php" class="text-center pb-2" method="post">
-            <button class="rounded p-4"  name="<?php echo $azione?>" value="Inserisci">Modifica metodo di pagamento</button>
+            <button class="rounded p-4"  name="<?php echo $azione?>">Modifica metodo di pagamento</button>
             <input type="hidden" name="Inserisci" value="Inserisci"/>
         </form>
     <?php endif;?>
