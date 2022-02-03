@@ -12,7 +12,7 @@ if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
 }
-
+var_dump($_POST);
 if(isset($_POST["Inserisci"]) && $_POST["Inserisci"] == "Inserisci"){
     $templateParams["azione"] = "Inserisci";
     //header("location:form_pagamento2.php");

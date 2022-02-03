@@ -22,8 +22,13 @@ if($msg){
         $quantity = $prodotto["quantita"][0];
         $templateParams["zucca"] = $dbh -> getZuccaByName($nome_zucca)[0];
         $zucca = $templateParams["zucca"];
-        $disponibilita = bcsub($zucca["disponibilita"], $quantity);
-        $msg = $dbh -> updateZucca($zucca["immagine"], $zucca["prezzo"], $zucca["peso"], $disponibilita, $zucca["descrizione_zucca"], $zucca["nome_azienda"], $zucca["nome_zucca"], $zucca["tipo"]);
+        if ($zucca["disponibilita"] >= $quantity){
+            $disponibilita = bcsub($zucca["disponibilita"], $quantity);
+            $msg = $dbh -> updateZucca($zucca["immagine"], $zucca["prezzo"], $zucca["peso"], $disponibilita, $zucca["descrizione_zucca"], $zucca["nome_azienda"], $zucca["nome_zucca"], $zucca["tipo"]);
+        }else{
+            //TODO: messaggio di errore
+        }
+       
     }
 }
 
