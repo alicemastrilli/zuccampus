@@ -17,10 +17,12 @@ if(isUserLoggedIn()){
 $templateParams["main"] = "user_logged.php";
 
 if(!isset($_POST["out"])){
+    var_dump("isset");
     $templateParams["js"] =array("js/jquery-3.4.1.min.js","js/user_logged.js");
 } else{
-    require("homepage.php");
+    require("template/homepage.php");
 }
+require("template/homepage.php");
 
 
 ?>

@@ -1,6 +1,7 @@
 <?php 
-
-$azienda = $templateParams["azienda_info"];
+if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
+   $azienda = $templateParams["azienda_info"];
+}
 ?>
     <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
@@ -86,8 +87,12 @@ $azienda = $templateParams["azienda_info"];
         <?php if(isUserLoggedIn() && $templateParams["user_loggato"]["nome"]==$templateParams["user"]["nome"]): ?>
          <!--passare come post lo username dell'utente -->
          <form class="text-center pb-2" action="gestisci_registrazione.php?action=2" method="post">
-            <input type="hidden" name="nome_azienda" value="<?php echo $azienda["nome_azienda"]; ?>" />
-            <button class="rounded p-4" name="agricoltore">Modifica profilo</button>    
+            <?php if($_SESSION["agricoltore"] == 1):?>
+               <input type="hidden" name="nome_azienda" value="<?php echo $azienda["nome_azienda"]; ?>" />
+               <button class="rounded p-4" name="agricoltore">Modifica profilo</button> 
+            <?php else: ?>
+               <button class="rounded p-4" name="cliente">Modifica profilo</button> 
+            <?php endif;?>
          </form>
          <?php endif;?>
     </section>
