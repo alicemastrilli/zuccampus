@@ -47,6 +47,7 @@ if($id_ordine!=false){
 }
 $_POST["messaggio_action"]=1;
 $_POST["ordine"] =  $dbh->getUserOrders($_SESSION["username"],1)[0];
+var_dump($_POST["ordine"]);
 require("template/invia_messaggio.php");
 $ordine = $_POST["ordine"]["id_ordine"];
 

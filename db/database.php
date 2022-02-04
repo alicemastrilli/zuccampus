@@ -67,7 +67,7 @@ class DatabaseHelper{
     }
 
    public function getAgricoltoreOfAzienda($nomeAzienda) {
-    $stmt = $this->db->prepare("SELECT u.immagine, u.num_telefono, u.email, u.nome, u.cognome from utente u, agricoltore a
+    $stmt = $this->db->prepare("SELECT u.username,u.immagine, u.num_telefono, u.email, u.nome, u.cognome from utente u, agricoltore a
      where a.nome_azienda = ? and a.username = u.username");
     $stmt->bind_param("s",$nomeAzienda);
     $stmt->execute();

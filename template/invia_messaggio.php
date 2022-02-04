@@ -3,10 +3,20 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/invia_messaggio.css" /> 
+  <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
-
+<script>
+  $(document).ready(function(){
+    $.get("template/header.php",function(){
+      $num = $(".notify-badge").text();
+      
+//        $(".notify-badge").text(++$num);
+    })
+  })
+</script>
 <?php 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -19,12 +29,12 @@ use PHPMailer\PHPMailer\Exception;
 //caso 3: è stata fatta una recensione
 ?>
 <?php if($_POST["messaggio_action"]==0) {
-$_POST["testo"] = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
+$testo = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
 username: ".$_SESSION["username"] . " password: ".$_POST["password"];
 }elseif ($_POST["messaggio_action"]==1){
-  $_POST["testo"] = setMessageText(1, $_POST["ordine"]);
+  $msg = setMessageText(1, $_POST["ordine"]);
 }elseif ($_POST["messaggio_action"]==2){
-  $_POST["testo"] = setMessageText(2, $_POST["ordine"]);
+  $testo = setMessageText(2, $_POST["ordine"]);
 } 
   ?>
 <div class="row ">
@@ -38,13 +48,14 @@ username: ".$_SESSION["username"] . " password: ".$_POST["password"];
     
   </div>
   <div class="toast-body col-12 text-white">
-  <?php echo $_POST["testo"];?>
+  <?php echo $msg[1]["testo"];?>
   </div>
 </div>
 </div>
 <div class="col-3"></div>
 <?php
 if($_POST["messaggio_action"]==0) {
+  $_POST["testo"] =$testo;
 //Load Composer's autoloader
 require 'composer/vendor/autoload.php';
 //Create an instance; passing `true` enables exceptions
@@ -74,11 +85,16 @@ try {
     }
 
 }elseif ($_POST["messaggio_action"]==1){
-    $ordine = $_POST["ordine"];
+  foreach($msg as $x){
+       $ordine = $_POST["ordine"];
     $_POST["data"] = $ordine["data_ordine"]; 
     $_POST["ora"] = $ordine["ora"];
     $_POST["link"] = "ordine.php?id=". $ordine["id_ordine"];
+    $_POST["testo"] = $x["testo"];
+    $_POST["agr"]=$x["agr"];
+    $_POST["ordine"] = $ordine;
     require_once "processa-messaggio.php";
+  }
 } elseif ($_POST["messaggio_action"] ==2) {
     $ordine = $_POST["ordine"];
     $campus_info = $_POST["campus_info"];

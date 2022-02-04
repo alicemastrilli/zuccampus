@@ -4,7 +4,13 @@ require_once("bootstrap.php");
 //caso 1: viene mandato un messaggio per informare che un ordine è stato inviato/ricevuto
 //caso 2: ordine è arrivato
 //caso 3: è stata fatta una recensione
-$username = htmlspecialchars($_SESSION["username"]);
+if($_POST["agr"] == 0){
+    $username = htmlspecialchars($_SESSION["username"]);
+} else{
+    $nome_azienda =$dbh->getOrderById($_POST["ordine"]["id_ordine"])[0]["nome_azienda"];
+    $username = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]["username"];
+}
+var_dump($username);
 $testo = htmlspecialchars($_POST["testo"]);
 $data = htmlspecialchars($_POST["data"]);
 $ora = htmlspecialchars($_POST["ora"]);

@@ -40,17 +40,15 @@ function countMessagesUnread($messaggi){
 }
 function setMessageText($n, $ordine){
     if($n==1){
-        if( $_SESSION["agricoltore"]==1){
-        return "Gentile ". $_SESSION["username"] . " la sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$ordine["username"];
-        } else{
-            return "Gentile ".$_SESSION["username"] . " hai effettuato un nuovo ordine.";
-        }
+        $arr = array();
+        array_push($arr,array("testo"=>"Gentile ". $_SESSION["username"] . " la sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$ordine["username"],"agr"=>1 ));
+        array_push($arr,array("testo"=>"Gentile ".$_SESSION["username"] . " hai effettuato un nuovo ordine.", "agr"=>0));
+        return $arr;
     } elseif($n==2){
-        if( $_SESSION["agricoltore"]==1){
-            return "Gentile ". $_SESSION["username"] . " l'ordine di ".$ordine["username"]. "arriverà in giornata! "; 
-        } else {
-            return "Gentile ". $_SESSION["username"] . " il tuo ordine arriverà in giornata";
-        }
+        $arr = array();
+        array_push($arr, "Gentile ". $_SESSION["username"] . " l'ordine di ".$ordine["username"]. "arriverà in giornata! ");
+        array_push($arr,"Gentile ". $_SESSION["username"] . " il tuo ordine arriverà in giornata");
+        return $arr;
     }
 }
 function countShoppingCartProducts($cart_products){
