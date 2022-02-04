@@ -1,7 +1,7 @@
 <?php
 require_once("bootstrap.php");
 
-if(isUserLoggedIn()&& $_SESSION["agricoltore"]==1){
+if(isUserLoggedIn() ){
     $templateParams["username"] = $_SESSION["username"];
     //info dell'utente loggato
     $templateParams["user_loggato"] = $dbh-> getUserByUsername($templateParams["username"])[0];
@@ -24,15 +24,16 @@ if(isset($_GET["id"])){
 // -> accedo tramite il mio profilo
 // -> accedo tramite scopri il venditore
 else{   
-    $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($templateParams["username"]);
-    $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
-    //info utente del profilo che sto visitando
-    $templateParams["user"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]; //immagine, num_telefono, email, nome, cognome
-    $templateParams["azienda_info"] = $dbh -> getAziendaAgrByName($nome_azienda)[0]; //nome_azienda, descrizione, via, citta, numero_civico, cap
-    
+    if($_SESSION["agricoltore"] == 1){
+        $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($templateParams["username"]);
+        $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
+        //info utente del profilo che sto visitando
+        $templateParams["user"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]; //immagine, num_telefono, email, nome, cognome
+        $templateParams["azienda_info"] = $dbh -> getAziendaAgrByName($nome_azienda)[0]; //nome_azienda, descrizione, via, citta, numero_civico, cap
+    }
 }
 
-$templateParams["titolo"] = "Zuccampus- Venditore";
+$templateParams["titolo"] = "Zuccampus - Il mio profilo";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
 $templateParams["main"] = "dati_utente.php";

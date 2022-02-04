@@ -1,6 +1,6 @@
 <?php 
 $azione = $templateParams["azione"];
-var_dump($azione);
+
 ?>
 <section>
     <div class="row">
@@ -49,14 +49,13 @@ var_dump($azione);
         </form>
     <?php else: ?>
         <form  action="./form_pagamento.php" method="post">
-            <button name="Inserisci" value="Inserisci" class="acquista">Modifica metodo di pagamento</button>           
+            <button style="visibility:hidden;" name="Inserisci" value="Inserisci" class="acquista">Modifica metodo di pagamentoAAAAA</button>           
         </form>  
         <form action="./form_pagamento.php" class="text-center pb-2" method="post">
-            <button   name="Inserisci" value="Inserisci" class="rounded p-4" >Modifica metodo di pagamento</button>
-           
+            <button name="Inserisci" value="Inserisci" class="rounded p-4" >Modifica metodo di pagamento</button>
         </form>
     <?php endif;?>
-    <?php if(isset($_SESSION["acquista"]) && $_SESSION["acquista"] == 1 ): ?>
+    <?php if(isset($_SESSION["acquista"]) && $_SESSION["acquista"] == 1 && $azione != "Inserisci"): ?>
         <form action="salva_pagamento.php" class="text-center pb-2" method="post">
             <button class="rounded p-4"  name="paga">Paga ora</button>
         </form>
