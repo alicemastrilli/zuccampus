@@ -48,7 +48,11 @@
                     <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="40%" alt="">
                     <p>€<?php echo $zucca["prezzo"]; ?></p>
                     <form  action="info_prodotti.php?id=<?php echo $zucca["nome_zucca"]?>" method="post">
+                    <?php if($_SESSION["agricoltore"] == 0): ?>
                         <button class="acquista mt-2 mb-2">Acquista</button>
+                    <?php else: ?>
+                        <button class="acquista mt-2 mb-2">Visualizza</button>
+                    <?php endif; ?>
                         <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
                     </form>
                 </div>

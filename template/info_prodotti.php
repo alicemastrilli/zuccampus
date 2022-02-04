@@ -73,34 +73,41 @@ if(isset($_POST['submit'])){
                     <label for="quantity">Quantità:</label>
                     <input type="number" id="quantity" name="quantity" value="1" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
                     <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
+                    <?php if($_SESSION["agricoltore"] == 0): ?>
                     <div class="text-center mb-2">
                         <input type="submit" name="submit" class="aggiungi-al-carrello" value="Aggiungi al Carrello" />                
                     </div>
+                    <?php endif; ?>
                 </div>
             </div> 
         </form>
         <hr>
         <div class="container text-center appendino">
             <p>Recensioni clienti:</p>
-            <?php if(isUserLoggedIn()): ?>
-                <form action="aggiungi_recensione.php" method="post">
-                    <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
-                    <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
-                </form>
-                <hr>
-            <?php elseif(!isUserLoggedIn()): ?>
-                <form action="login.php" method="post">
-                    <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
-                    <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
-                </form>
-                <hr>
+            <?php if($_SESSION["agricoltore"] == 0): ?>
+                <?php if(isUserLoggedIn()): ?>
+                    <form action="aggiungi_recensione.php" method="post">
+                        <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
+                        <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
+                    </form>
+                    <hr>
+                <?php elseif(!isUserLoggedIn()): ?>
+                    <form action="login.php" method="post">
+                        <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
+                        <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
+                    </form>
+                    <hr>
+                <?php endif; ?>
             <?php endif; ?>
             <?php foreach($templateParams["recensioni"] as $recensione):?>
             <div class="row">
                 <div class="col sm-0">
 				    <div class="star-rating text-center" id="div-star">
                     <?php for($k=0;$k<intval($recensione["punteggio"]);$k++):?>
-                        <img class="rounded" src="./icons/star.png" width="6%" alt="" />
+                        <img class="rounded" src="<?php echo UPLOAD_DIR?>stella_piena.png" width="6%" alt="" />
+                    <?php endfor;?>
+                    <?php for($k=0;$k<(5-intval($recensione["punteggio"]));$k++):?>
+                        <img class="rounded" src="<?php echo UPLOAD_DIR?>stella.png" width="6%" alt="" />
                     <?php endfor;?>
                     </div>
                     <p class="font-weight-bold" ><?php echo $recensione["nome_azienda"]; ?></p>

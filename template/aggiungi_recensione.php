@@ -1,15 +1,15 @@
 <?php
 require_once 'bootstrap.php';
 if(isset($_POST['submit'])){
-    $idReview = intval(rand(1,1342));
     $nome_zucca = htmlspecialchars($_POST["zucca"]);
     $nome_azienda = htmlspecialchars($_POST["produttori"]);
     $punteggio = intval(htmlspecialchars($_POST["punteggio"]));
     $descrizione_zucca = htmlspecialchars($_POST["descrizione_zucca"]); 
     $data=date('m/d/Y');
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
-    $dbh->insertNewRecensione($idReview,$descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
+    $dbh->insertNewRecensione($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
     echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
+    //rimanda a un altra pagina lista-recensione
 }
 ?>
 <!DOCTYPE html>
