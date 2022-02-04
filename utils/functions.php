@@ -41,13 +41,13 @@ function countMessagesUnread($messaggi){
 function setMessageText($n, $ordine){
     if($n==1){
         $arr = array();
-        array_push($arr,array("testo"=>"Gentile ". $_SESSION["username"] . " la sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$ordine["username"],"agr"=>1 ));
+        array_push($arr,array("testo"=>"La sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$ordine["username"],"agr"=>1 ));
         array_push($arr,array("testo"=>"Gentile ".$_SESSION["username"] . " il tuo ordine è andato a buon fine.", "agr"=>0));
         return $arr;
     } elseif($n==2){
         $arr = array();
-        array_push($arr, "Gentile ". $_SESSION["username"] . " l'ordine di ".$ordine["username"]. "arriverà in giornata! ");
-        array_push($arr,"Gentile ". $_SESSION["username"] . " il tuo ordine arriverà in giornata");
+        array_push($arr,array("L'ordine di ".$ordine["username"]. "arriverà in giornata! ", "agr"=>1));
+        array_push($arr,array("Gentile ". $_SESSION["username"] . " il tuo ordine arriverà in giornata", "agr"=>0));
         return $arr;
     }
 }
