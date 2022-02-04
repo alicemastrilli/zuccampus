@@ -37,17 +37,21 @@ username: ".$_SESSION["username"] . " password: ".$_POST["password"];
   $testo = setMessageText(2, $_POST["ordine"]);
 } 
   ?>
-<div class="row ">
-  
-<div class="toast show  col-12 ">
-  <div class="toast-header  col-12 text-white text-center">
+
+<script>
+  $("document").ready(function(){
+    $(".toast").fadeOut(15000);
+  })
+</script>
+<div class="toast  show  col-12 ">
+  <div class="toast-header col-12  text-center text-black">
     Nuovo messaggio
     <div class="col-6">
       </div>
-    <button type="button" class="btn-close float-end text-white" data-bs-dismiss="toast"></button>
+    <button type="button" class="btn-close float-end text-black " data-bs-dismiss="toast"></button>
     
   </div>
-  <div class="toast-body col-12 text-white">
+  <div class="toast-body col-12 text-black">
   <?php echo $msg[1]["testo"];?>
   </div>
 </div>

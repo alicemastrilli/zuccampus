@@ -42,7 +42,7 @@ function setMessageText($n, $ordine){
     if($n==1){
         $arr = array();
         array_push($arr,array("testo"=>"Gentile ". $_SESSION["username"] . " la sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$ordine["username"],"agr"=>1 ));
-        array_push($arr,array("testo"=>"Gentile ".$_SESSION["username"] . " hai effettuato un nuovo ordine.", "agr"=>0));
+        array_push($arr,array("testo"=>"Gentile ".$_SESSION["username"] . " il tuo ordine è andato a buon fine.", "agr"=>0));
         return $arr;
     } elseif($n==2){
         $arr = array();

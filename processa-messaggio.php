@@ -10,7 +10,7 @@ if($_POST["agr"] == 0){
     $nome_azienda =$dbh->getOrderById($_POST["ordine"]["id_ordine"])[0]["nome_azienda"];
     $username = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]["username"];
 }
-var_dump($username);
+
 $testo = htmlspecialchars($_POST["testo"]);
 $data = htmlspecialchars($_POST["data"]);
 $ora = htmlspecialchars($_POST["ora"]);
