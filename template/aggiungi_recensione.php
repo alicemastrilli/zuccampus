@@ -8,13 +8,6 @@ if(isset($_POST['submit'])){
     $descrizione_zucca = htmlspecialchars($_POST["descrizione_zucca"]); 
     $data=date('m/d/Y');
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
-    var_dump($_SESSION["username"]);
-    var_dump($idReview);
-    var_dump($nome_zucca);
-    var_dump($nome_azienda);
-    var_dump($punteggio);
-    var_dump($descrizione_zucca);
-    var_dump($data);
     $dbh->insertNewRecensione($idReview,$descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
     echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
 }

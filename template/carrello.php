@@ -40,6 +40,7 @@ if(isset($_POST['delete'])){
             if($key["nome_azienda"]==$newproduct["nome_azienda"]){
                 $_SESSION['product'][$i];
                 unset($_SESSION['product'][$i]);
+                echo '<script type="text/JavaScript">location.reload();</script>';
             }
         }else{
             array_push($products,$_SESSION['product'][$i]);
@@ -55,19 +56,19 @@ if(isset($_POST['delete'])){
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Simple Shopping Cart using Session in PHP</title>
+	<title>Zuccampus-Carrello</title>
 	<link rel="stylesheet" type="text/css" href="./css/prodotti.css">
 </head>
-<div class="container-fluid">
+<div class="container-fluid text-center">
     <h1>Il mio carrello:</h1>
     <hr></hr>
 </div>
 <?php $total=0; ?>
 <?php if(empty($_SESSION['product'])): ?>
-<div class="container-fluid mt-1">
+<div class="container-fluid mt-1 text-center">
     <p>Il carrello è vuoto<p>
 </div>
-<div class="btn-group text-center mb-2 mt-2 ml-2">
+<div class="container-left mb-2 mt-2 text-center">
     <button type="button" class="acquista" onclick="goBackShopping()">Torna allo shopping</button>
 </div>
 <?php else: ?>
@@ -89,7 +90,7 @@ if(isset($_POST['delete'])){
                                     <input type="submit" name="delete" value="Elimina il Prodotto" class="acquista" />                  
                                 </div>
                                 <div class="col-6 text-center">
-                                    <input type="number" id="quantity" name="quantity" value="<?php echo $prodotto["quantita"]; ?>" min="1" max="" ><br><br>
+                                    <input type="number" id="quantity" name="quantity" class="quantity-input" value="<?php echo $prodotto["quantita"]; ?>" min="1" max="" ><br><br>
                                     <input type="submit" name="quantityUpdate" value="Salva le modifiche" class="acquista">
                                 </div>
                             </div>
@@ -108,13 +109,15 @@ if(isset($_POST['delete'])){
             <p>Sub-totale:<?php echo $total; ?>€</p>
         </div>       
     </article>
-    <div class="btn-group text-center mb-2">
-        <button type="button" class="acquista" onclick="goBackShopping()">Torna allo shopping</button>
-    </div>
-    <div class="btn-group text-center mb-2">
-        <form  action="<?php if(!isUserLoggedIn()) echo "login.php"; else echo "gestisci_ordine.php"; ?>" method="post">
-            <button name="procediordine" class="acquista">Procedi all'ordine</button>           
-        </form>  
+    <div class="text-center">
+        <div class="btn-group text-center mb-2">
+            <button type="button" class="acquista" onclick="goBackShopping()">Torna allo shopping</button>
+        </div>
+        <div class="btn-group text-center mb-2">
+            <form  action="<?php if(!isUserLoggedIn()) echo "login.php"; else echo "gestisci_ordine.php"; ?>" method="post">
+                <button name="procediordine" class="acquista">Procedi all'ordine</button>           
+            </form>  
+        </div>
     </div>
 </div>
 <?php endif; ?>

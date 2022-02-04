@@ -19,10 +19,8 @@ if(isset($_POST['submit'])){
         }
     }
     if($value==0){
-        countShoppingCartProducts($_SESSION['product']);
         array_push($_SESSION['product'], $newproduct);
-    }else{
-        echo '<div class="alert alert-dark">Attenzione! Il prodotto selezionato è già nel carrello!</div>';
+        echo '<script type="text/JavaScript">location.reload();</script>';
     }
 }
 ?>
@@ -76,7 +74,7 @@ if(isset($_POST['submit'])){
                     <input type="number" id="quantity" name="quantity" value="1" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
                     <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
                     <div class="text-center mb-2">
-                        <input type="submit" name="submit" value="Aggiungi al Carrello" />                
+                        <input type="submit" name="submit" class="aggiungi-al-carrello" value="Aggiungi al Carrello" />                
                     </div>
                 </div>
             </div> 

@@ -61,8 +61,16 @@ body>main>div>div>div>img:nth-child(1) {
     border-color: #D9AF5D;
 }
 
+.quantity-input {
+    width: 40%;
+    margin-right: 0px;
+}
+
 body>main>div>div>div>div {
     margin-left: 3%;
     margin-right: 3%;
-    align-items: center;
+}
+
+.container-left {
+    margin-left: 10px;
 }

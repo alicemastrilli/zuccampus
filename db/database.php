@@ -465,6 +465,7 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getRecensioneFromAzienda($nome_azienda){
         $query = "SELECT * FROM recensione r WHERE r.nome_azienda = ? order by data desc ";
         $stmt = $this->db->prepare($query);
@@ -474,6 +475,7 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getRecensioneFromCliente($username){
         $query = "SELECT * FROM recensione r WHERE r.username = ? order by data desc ";
         $stmt = $this->db->prepare($query);
@@ -531,15 +533,12 @@ class DatabaseHelper{
     public function insertNewRecensione($idRecensione, $descrizione, $punteggio, $nome_azienda, $nome_zucca, $username, $data){
         $query = "INSERT INTO recensione (idRecensione, descrizione, punteggio, nome_azienda, nome_zucca, username, data) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssiii', $idRecensione, $descrizione, $punteggio,  $nome_azienda, $nome_zucca, $username, $data);
+        $stmt->bind_param('isissss', $idRecensione, $descrizione, $punteggio,  $nome_azienda, $nome_zucca, $username, $data);
         $ris = $stmt->execute();
         
-        if($ris){
-            $msg = True;
-        }
-        else {
-            $msg = $stmt->error;
-        }
+        if($ris) $msg = 1;
+        else $msg = $stmt->error;
+    
         return $msg;
     }
 
