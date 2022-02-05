@@ -3,10 +3,20 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/invia_messaggio.css" /> 
+  <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
-
+<script>
+  $(document).ready(function(){
+    $.get("template/header.php",function(){
+      $num = $(".notify-badge").text();
+      
+//        $(".notify-badge").text(++$num);
+    })
+  })
+</script>
 <?php 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -19,32 +29,39 @@ use PHPMailer\PHPMailer\Exception;
 //caso 3: è stata fatta una recensione
 ?>
 <?php if($_POST["messaggio_action"]==0) {
-$_POST["testo"] = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
+$testo = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
 username: ".$_SESSION["username"] . " password: ".$_POST["password"];
 }elseif ($_POST["messaggio_action"]==1){
-  $_POST["testo"] = setMessageText(1, $_POST["ordine"]);
+  $msg = setMessageText(1, $_POST["ordine"]);
 }elseif ($_POST["messaggio_action"]==2){
-  $_POST["testo"] = setMessageText(2, $_POST["ordine"]);
-} 
+  $msg = setMessageText(2, $_POST["ordine"]);
+} else if($_POST["messaggio_action"]==3){
+  $msg = setRecensioneMessageText();
+}
   ?>
-<div class="row ">
-  
-<div class="toast show  col-12 ">
-  <div class="toast-header  col-12 text-white text-center">
+
+<script>
+  $("document").ready(function(){
+    $(".toast").fadeOut(15000);
+  })
+</script>
+<div class="toast  show  col-12 ">
+  <div class="toast-header col-12  text-center text-black">
     Nuovo messaggio
     <div class="col-6">
       </div>
-    <button type="button" class="btn-close float-end text-white" data-bs-dismiss="toast"></button>
+    <button type="button" class="btn-close float-end text-black " data-bs-dismiss="toast"></button>
     
   </div>
-  <div class="toast-body col-12 text-white">
-  <?php echo $_POST["testo"];?>
+  <div class="toast-body col-12 text-black">
+  <?php echo $msg[1]["testo"];?>
   </div>
 </div>
 </div>
 <div class="col-3"></div>
 <?php
 if($_POST["messaggio_action"]==0) {
+  $_POST["testo"] =$testo;
 //Load Composer's autoloader
 require 'composer/vendor/autoload.php';
 //Create an instance; passing `true` enables exceptions
@@ -73,23 +90,33 @@ try {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 
-}elseif ($_POST["messaggio_action"]==1){
-    $ordine = $_POST["ordine"];
+}
+$_POST["info"]=array("testo"=>array(), "agr"=>array());
+  foreach($msg as $x){
+    array_push($_POST["info"]["testo"], $x["testo"]);
+    array_push($_POST["info"]["agr"], $x["agr"]);
+    if($_POST["messaggio_action"] ==1){
+       $ordine = $_POST["ordine"];
     $_POST["data"] = $ordine["data_ordine"]; 
     $_POST["ora"] = $ordine["ora"];
     $_POST["link"] = "ordine.php?id=". $ordine["id_ordine"];
-    require_once "processa-messaggio.php";
-} elseif ($_POST["messaggio_action"] ==2) {
+    $_POST["ordine"] = $ordine;
+  } elseif ($_POST["messaggio_action"] ==2) {
     $ordine = $_POST["ordine"];
     $campus_info = $_POST["campus_info"];
     $_POST["data"] = date_format(computeDeliveryTime($ordine, $campus_info)[0], "Y-m-d");     
     $_POST["ora"] = $ordine["ora"];
     $_POST["link"] = "ordine.php?id=". $ordine["id_ordine"];
-    require_once "processa-messaggio.php";
+    $_POST["ordine"] = $ordine;
 } elseif ($_POST["messaggio_action"] == 3) {
     $recensione = $_POST["recensione"];
-    $_POST["testo"] = "Gentile ". $_SESSION["username"] . ", il cliente ".$recensione["username"]. "ha lasciato una recensione! ";   
-    $_POST["link"] = "recensione.php?id=". $recensione["id"];
-    require_once "processa-messaggio.php";
-}
+
+    $_POST["data"] = $recensione[5];
+    $_POST["ora"] = date('H:i');
+    $_POST["nome_azienda"] = $recensione[2];
+    $_POST["link"] = "lista_recensioni.php";
+} 
+
+
+}require "processa-messaggio.php";
 ?>

@@ -67,7 +67,7 @@ class DatabaseHelper{
     }
 
    public function getAgricoltoreOfAzienda($nomeAzienda) {
-    $stmt = $this->db->prepare("SELECT u.immagine, u.num_telefono, u.email, u.nome, u.cognome from utente u, agricoltore a
+    $stmt = $this->db->prepare("SELECT u.username,u.immagine, u.num_telefono, u.email, u.nome, u.cognome from utente u, agricoltore a
      where a.nome_azienda = ? and a.username = u.username");
     $stmt->bind_param("s",$nomeAzienda);
     $stmt->execute();
@@ -131,10 +131,10 @@ class DatabaseHelper{
         
         return $stmt->execute();
     }
-    public function checkMessage($username, $data, $ora){
-        $query = "SELECT username, data, ora FROM messaggio WHERE username = ? AND data = ? and ora= ?";
+    public function checkMessage($username, $data, $ora, $testo){
+        $query = "SELECT username, data, ora FROM messaggio WHERE username = ? AND data = ? and ora= ? and testo=?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sss',$username, $data, $ora);
+        $stmt->bind_param('ssss',$username, $data, $ora, $testo);
         $stmt->execute();
         $result = $stmt->get_result();
     
@@ -349,6 +349,7 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    
     public function insertNewZucca($nome_azienda = null, $nome_zucca = null, $tipo = null,  $immagine = null, $prezzo = null, $peso = null, $disponibilita = null, $descrizione_zucca = null){
         $query = "INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
@@ -378,7 +379,6 @@ class DatabaseHelper{
         
         
     }
-
 
     public function getOrderById($id){
         $query = "SELECT c.nome_zucca, c.nome_azienda, c.id_ordine, c.quantita,o.username, o.data_ordine,o.ora,z.prezzo, z.tipo, u.nome,u.cognome,o.via, o.numero_civico,
@@ -473,6 +473,7 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getRecensioneFromAzienda($nome_azienda){
         $query = "SELECT * FROM recensione r WHERE r.nome_azienda = ? order by data desc ";
         $stmt = $this->db->prepare($query);
@@ -482,6 +483,7 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getRecensioneFromCliente($username){
         $query = "SELECT * FROM recensione r WHERE r.username = ? order by data desc ";
         $stmt = $this->db->prepare($query);
@@ -549,18 +551,15 @@ class DatabaseHelper{
     }
     
 
-    public function insertNewRecensione($idRecensione, $descrizione, $punteggio, $nome_azienda, $nome_zucca, $username, $data){
-        $query = "INSERT INTO recensione (idRecensione, descrizione, punteggio, nome_azienda, nome_zucca, username, data) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public function insertNewRecensione($descrizione, $punteggio, $nome_azienda, $nome_zucca, $username, $data){
+        $query = "INSERT INTO recensione (descrizione, punteggio, nome_azienda, nome_zucca, username, data) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssiii', $idRecensione, $descrizione, $punteggio,  $nome_azienda, $nome_zucca, $username, $data);
+        $stmt->bind_param('sissss', $descrizione, $punteggio,  $nome_azienda, $nome_zucca, $username, $data);
         $ris = $stmt->execute();
         
-        if($ris){
-            $msg = True;
-        }
-        else {
-            $msg = $stmt->error;
-        }
+        if($ris) $msg = 1;
+        else $msg = $stmt->error;
+    
         return $msg;
     }
 

@@ -38,20 +38,25 @@ function countMessagesUnread($messaggi){
     }
     return $i;
 }
+function setRecensioneMessageText(){
+        $arr = array();
+        array_push($arr,array("testo"=>"Il cliente". $_SESSION["username"]." ha lasciato una nuova recensione! ", "agr"=>1));
+        array_push($arr,array("testo"=>"Gentile ". $_SESSION["username"] . " la sua recensione è stata salvata!", "agr"=>0));
+        return $arr;
+    
+}
 function setMessageText($n, $ordine){
     if($n==1){
-        if( $_SESSION["agricoltore"]==1){
-        return "Gentile ". $_SESSION["username"] . " la sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$ordine["username"];
-        } else{
-            return "Gentile ".$_SESSION["username"] . " hai effettuato un nuovo ordine.";
-        }
+        $arr = array();
+        array_push($arr,array("testo"=>"La sua azienda agricola ha ricevuto un nuovo ordine da parte di: ".$ordine["username"],"agr"=>1 ));
+        array_push($arr,array("testo"=>"Gentile ".$_SESSION["username"] . " il suo ordine è andato a buon fine.", "agr"=>0));
+        return $arr;
     } elseif($n==2){
-        if( $_SESSION["agricoltore"]==1){
-            return "Gentile ". $_SESSION["username"] . " l'ordine di ".$ordine["username"]. "arriverà in giornata! "; 
-        } else {
-            return "Gentile ". $_SESSION["username"] . " il tuo ordine arriverà in giornata";
-        }
-    }
+        $arr = array();
+        array_push($arr,array("testo"=>"L'ordine di ".$ordine["username"]. "arriverà in giornata! ", "agr"=>1));
+        array_push($arr,array("testo"=>"Gentile ". $_SESSION["username"] . " il suo ordine arriverà in giornata", "agr"=>0));
+        return $arr;
+    } 
 }
 function countShoppingCartProducts($cart_products){
     $i=0;

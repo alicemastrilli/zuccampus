@@ -1,22 +1,18 @@
 <?php
 require_once 'bootstrap.php';
 if(isset($_POST['submit'])){
-    $idReview = intval(rand(1,1342));
     $nome_zucca = htmlspecialchars($_POST["zucca"]);
     $nome_azienda = htmlspecialchars($_POST["produttori"]);
     $punteggio = intval(htmlspecialchars($_POST["punteggio"]));
     $descrizione_zucca = htmlspecialchars($_POST["descrizione_zucca"]); 
     $data=date('m/d/Y');
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
-    var_dump($_SESSION["username"]);
-    var_dump($idReview);
-    var_dump($nome_zucca);
-    var_dump($nome_azienda);
-    var_dump($punteggio);
-    var_dump($descrizione_zucca);
-    var_dump($data);
-    $dbh->insertNewRecensione($idReview,$descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
+    $dbh->insertNewRecensione($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
     echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
+    //rimanda a un altra pagina lista-recensione
+    $_POST["recensione"] = array($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
+    $_POST["messaggio_action"]=3;
+    require_once "invia_messaggio.php";
 }
 ?>
 <!DOCTYPE html>
