@@ -4,14 +4,21 @@ require_once("bootstrap.php");
 //caso 1: viene mandato un messaggio per informare che un ordine è stato inviato/ricevuto
 //caso 2: ordine è arrivato
 //caso 3: è stata fatta una recensione
-if($_POST["agr"] == 0){
-    $username = htmlspecialchars($_SESSION["username"]);
-} else{
+
+for($i =0; $i<count($_POST["info"]["agr"]); $i++){
+if($_POST["info"]["agr"][$i] == 0){
+     $username = htmlspecialchars($_SESSION["username"]);
+     var_dump($username);
+} elseif(isset($_POST["nome_azienda"])){
+    $nome_azienda =$_POST["nome_azienda"];
+    $username = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]["username"];
+} 
+else{
     $nome_azienda =$dbh->getOrderById($_POST["ordine"]["id_ordine"])[0]["nome_azienda"];
     $username = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]["username"];
 }
 
-$testo = htmlspecialchars($_POST["testo"]);
+$testo = htmlspecialchars($_POST["info"]["testo"][$i]);
 $data = htmlspecialchars($_POST["data"]);
 $ora = htmlspecialchars($_POST["ora"]);
 $link = htmlspecialchars($_POST["link"]);
@@ -21,5 +28,5 @@ if(count($messaggio) == 0){
     //messaggio non c'è, lo inserisco
     $dbh->insertMessage($username, $testo, $data, $ora, $link, 0);
 }
-
+}
 ?>

@@ -10,6 +10,9 @@ if(isset($_POST['submit'])){
     $dbh->insertNewRecensione($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
     echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
     //rimanda a un altra pagina lista-recensione
+    $_POST["recensione"] = array($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
+    $_POST["messaggio_action"]=3;
+    require_once "invia_messaggio.php";
 }
 ?>
 <!DOCTYPE html>
