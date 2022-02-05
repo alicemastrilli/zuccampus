@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="<?php echo CSS_DIR?>agricoltore_loggato.css" > 
     </head>
 <?php if(isset($templateParams["js"])):?>
-<canvas class="align-items-center" id="myChart" style="width:100%;max-width:700px"></canvas>
+<canvas class="align-items-center mt-4" id="myChart" style="width:100%;max-width:700px"></canvas>
 <script src="<?php echo $templateParams["js"]?>"></script> 
   
     <?php

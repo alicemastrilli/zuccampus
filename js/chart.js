@@ -14,11 +14,24 @@ function prova(xValues, yValues) {
         options: {
             legend: { display: false },
             scales: {
-                yAxes: [{ ticks: { min: 0, max: 20 } }],
-            }
+                yAxes: [{scaleLabel: {
+                    display: true,
+                    labelString: 'zucche vendute',
+                    fontStyle: 'bold',
+                    fontSize:20
+                  },
+                  ticks: { min: 0, max: 20 } }],
+                xAxes: [{scaleLabel: {
+                    display: true,
+                    labelString: 'giorno',
+                    fontStyle: 'bold',
+                    fontSize:20
+                  }}]
         }
+    }
     });
 }
+
 function getUserGraph(xValues, yValues) {
     var barColors = ["red", "green","blue","orange","brown"];
 
@@ -37,7 +50,19 @@ function getUserGraph(xValues, yValues) {
         options: {
             legend: { display: false },
             scales: {
-                yAxes: [{ ticks: { min: 0, max: 20 } }],
+                yAxes: [{scaleLabel: {
+                    display: true,
+                    labelString: 'zucche acquistate',
+                    fontStyle: 'bold',
+                    fontSize:20
+                  },
+                  ticks: { min: 0, max: 20 } }],
+                xAxes: [{scaleLabel: {
+                    display: true,
+                    labelString: 'azienda agricola',
+                    fontStyle: 'bold',
+                    fontSize:20
+                  }}]
             }
         }
     });
