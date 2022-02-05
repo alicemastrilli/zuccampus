@@ -19,6 +19,30 @@ function prova(xValues, yValues) {
         }
     });
 }
+function getUserGraph(xValues, yValues) {
+    var barColors = ["red", "green","blue","orange","brown"];
+
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: barColors,
+                borderColor: "rgba(0,0,255,0.1)",
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: false },
+            scales: {
+                yAxes: [{ ticks: { min: 0, max: 20 } }],
+            }
+        }
+    });
+}
+
 
 function deliveryAnimation(stop) {
     const arrivo = parseInt(window.innerWidth * stop / 100);

@@ -208,7 +208,16 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    public function getVenditeByAziendaAgricola($username){
+        $query = "SELECT c.nome_azienda, sum(c.quantita) as quantita FROM comprende c, ordine o
+        WHERE o.username=? and c.id_ordine = o.id_ordine group by nome_azienda";
+       $stmt = $this->db->prepare($query);
+       $stmt->bind_param('s', $username);
+       $stmt->execute();
+       $result = $stmt->get_result();
 
+       return $result->fetch_all(MYSQLI_ASSOC);
+    }
     public function getAziendaByUsername($username){
         $query = "SELECT nome_azienda  FROM agricoltore WHERE username = ? ";
         $stmt = $this->db->prepare($query);
