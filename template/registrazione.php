@@ -2,8 +2,10 @@
   $azione = $templateParams["azione"];
   $utente = $templateParams["utente"];
   $immagine = $templateParams["immagine"];
+  $form_azione = "#";
+
 ?>
-<form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
+<form action="<?php echo $form_azione?>" method="POST" enctype="multipart/form-data">
   <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
      
@@ -92,3 +94,14 @@
   </section>
   <input type="hidden" name="oldimg" value="<?php echo $immagine?>" />
 </form>
+<?php
+if(isset($_POST['submit'])){
+  if(empty($_FILES["immagine"]["tmp_name"])){
+      echo '<div class="alert alert-warning">Aggiungi un\'immagine!</div>';
+  }
+  else{
+    $form_azione = "./salva_registrazione.php";
+    require_once("./salva_registrazione.php");
+  }
+}
+?>

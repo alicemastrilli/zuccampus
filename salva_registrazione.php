@@ -44,7 +44,7 @@ if($_POST["action"] == 'Inserisci'){
     if($msg){  
         $msg = "Registrazione avvenuta con successo";
         $_SESSION["username"] = $username;
-        header("location:login.php?formmsg=".$msg);
+        header("location:casella_messaggi.php?formmsg=".$msg);
     }
     else print($error);
 }
@@ -87,7 +87,7 @@ if($_POST["action"] == 'Modifica'){
     }
     
     $msg = $dbh->updateUser($immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username);
-    header("location:login.php?formmsg=".$msg);
+    header("location:dati_utente.php?formmsg=".$msg);
 
 }
 
