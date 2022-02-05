@@ -9,6 +9,9 @@ if(isset($_POST['submit'])){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $dbh->insertNewRecensione($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
     echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
+    //rimanda a lista-recensione
+    //puoi togliere l'alert che tanto se la ha inserita lo vedi
+    //controllo che tutti i campi siano sttai riempiti
     //rimanda a un altra pagina lista-recensione
     $_POST["recensione"] = array($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
     $_POST["messaggio_action"]=3;

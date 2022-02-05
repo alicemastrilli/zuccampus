@@ -22,9 +22,8 @@
                         <div class="col-6 text-center">
                         <form  action="dati_utente.php?id=<?php echo $azienda["nome_azienda"]?>" method="post">
                             <button class="rounded">Scopri il venditore</button>
-                            </form>
-                        </div>
-                    
+                        </form>
+                    </div>
                 </td>
                 <td class="col-1 p-2">
                     <img class="float-end" src="<?php echo UPLOAD_DIR.getImageOfUser($azienda["immagine"])?>" alt="">
