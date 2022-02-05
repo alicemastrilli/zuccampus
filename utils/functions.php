@@ -32,7 +32,7 @@ function getFootersIcons(){
 function countMessagesUnread($messaggi){
     $i=0;
     foreach($messaggi as $messaggio){
-        if($messaggio["tag_letto"] == 0){
+        if($messaggio["tag_letto"] == 0 && canBeAdded($messaggio)){
             $i= $i+1;
         }
     }
