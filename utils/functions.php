@@ -53,8 +53,8 @@ function setMessageText($n, $ordine){
         return $arr;
     } elseif($n==2){
         $arr = array();
-        array_push($arr,array("L'ordine di ".$ordine["username"]. "arriverà in giornata! ", "agr"=>1));
-        array_push($arr,array("Gentile ". $_SESSION["username"] . " il suo ordine arriverà in giornata", "agr"=>0));
+        array_push($arr,array("testo"=>"L'ordine di ".$ordine["username"]. "arriverà in giornata! ", "agr"=>1));
+        array_push($arr,array("testo"=>"Gentile ". $_SESSION["username"] . " il suo ordine arriverà in giornata", "agr"=>0));
         return $arr;
     } 
 }

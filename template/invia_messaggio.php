@@ -118,5 +118,5 @@ $_POST["info"]=array("testo"=>array(), "agr"=>array());
 } 
 
 
-}require_once "processa-messaggio.php";
+}require "processa-messaggio.php";
 ?>
