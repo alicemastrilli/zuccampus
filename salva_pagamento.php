@@ -40,13 +40,18 @@ if($id_ordine!=false){
             $msg = $dbh -> updateZucca($zucca["immagine"], $zucca["prezzo"], $zucca["peso"], $disponibilita, $zucca["descrizione_zucca"], $zucca["nome_azienda"], $zucca["nome_zucca"], $zucca["tipo"]);
             if($msg){
                 $msg = $dbh->insertComprende($id_ordine, $zucca["nome_azienda"], $zucca["nome_zucca"], $quantity);
+
             }
         }else{
             //TODO: messaggio di errore
         }
-        unset($_SESSION["product"]);
+
+
     }
+    unset($_SESSION["product"]);
 }
+
+
 $_POST["messaggio_action"]=1;
 $_POST["ordine"] =  $dbh->getUserOrders($_SESSION["username"],1)[0];
 require("template/invia_messaggio.php");

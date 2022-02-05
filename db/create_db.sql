@@ -144,23 +144,18 @@ create table if not exists `zuccampus`.`zucca` (
     ENGINE = InnoDB;
     
 create table if not exists `zuccampus`.`comprende` (
-     `id_ordine`INT NOT NULL AUTO_INCREMENT,
+     `id_ordine`INT NOT NULL,
      `nome_azienda` char(30) not null,
      `nome_zucca` char(20) not null,
      `quantita` numeric(3) not null,
-      constraint ID_COMPRENDE_ID primary key (`id_ordine`),
+     
       
      constraint `FKcom_ZUC`
      foreign key (`nome_azienda`, `nome_zucca`)
      references `zuccampus`.`zucca` (`nome_azienda`, `nome_zucca`)
      ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    constraint ID_COMPRENDE_ID 
-    foreign key (`id_ordine`)
-     references `zuccampus`.`ordine`(`id_ordine`)
-     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
+ENGINE = InnoDB;
 
 
 create table if not exists `zuccampus`.`link` (
@@ -258,8 +253,7 @@ create index FKpossiede_IND
 create unique index FKUTE_CLI_IND
      on CLIENTE (username);
 
-create unique index ID_COMPRENDE_ID
-     on comprende (id_ordine);
+
 
 create index FKcom_ORD_IND
      on comprende (id_ordine);
