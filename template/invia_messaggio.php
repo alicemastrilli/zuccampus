@@ -7,16 +7,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
-
 <script>
-  $(document).ready(function(){
+  function setWhenShow(){
+    $(document).ready(function(){
     $.get("template/header.php",function(){
-      $num = $(".notify-badge").text();
       
-//        $(".notify-badge").text(++$num);
+      setTimeout(function(){$("#toast2").addClass("show");
+        $("#toast2").fadeOut(10000); }, 3600*100*24*2);
+    }) 
     })
+};
+</script>
+<?php if($_POST["messaggio_action"]==2):  ?>
+  <?php
+  echo '<script type="text/javascript">',
+  'setWhenShow()',
+  '</script>'
+;
+  else:?>
+  <script>
+  $("document").ready(function(){
+    $(".toast").fadeOut(10000);
   })
 </script>
+<?php endif;?> 
 <?php 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -40,12 +54,21 @@ username: ".$_SESSION["username"] . " password: ".$_POST["password"];
 }
   ?>
 
-<script>
-  $("document").ready(function(){
-    $(".toast").fadeOut(15000);
-  })
-</script>
-<div class="toast  show  col-12 ">
+<?php if ($_POST["messaggio_action"]!=2):?>
+<div class="toast  show  col-12 " id="toast">
+  <div class="toast-header col-12  text-center text-black">
+    Nuovo messaggio
+    <div class="col-6">
+      </div>
+    <button type="button" class="btn-close float-end text-black " data-bs-dismiss="toast"></button>
+  </div>
+  <div class="toast-body col-12 text-black">
+  <?php echo $msg[1]["testo"];?>
+  </div>
+</div>
+</div>
+<?php else:;?>
+<div class="toast    col-12 " id="toast2">
   <div class="toast-header col-12  text-center text-black">
     Nuovo messaggio
     <div class="col-6">
@@ -58,6 +81,22 @@ username: ".$_SESSION["username"] . " password: ".$_POST["password"];
   </div>
 </div>
 </div>
+<?php endif?>
+<?php if ($_POST["messaggio_action"]!=2):?>
+<div class="toast  show  col-12 " id="toast">
+  <div class="toast-header col-12  text-center text-black">
+    Nuovo messaggio
+    <div class="col-6">
+      </div>
+    <button type="button" class="btn-close float-end text-black " data-bs-dismiss="toast"></button>
+    
+  </div>
+  <div class="toast-body col-12 text-black">
+  <?php echo $msg[1]["testo"];?>
+  </div>
+</div>
+</div>
+<?php endif;?>
 <div class="col-3"></div>
 <?php
 if($_POST["messaggio_action"]==0) {
