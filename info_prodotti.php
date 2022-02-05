@@ -20,9 +20,19 @@ if(isset($_GET["id"])){
 }
 
 $nome_azienda = $_POST["nome_azienda"];
+$templateParams["produttori"] = $dbh -> getProduttoriByZuccaName($nome_zucca);
+
+if(!empty($_SESSION['produttore'])){
+    $i=0;
+    foreach($templateParams["produttori"] as $produttore){
+        if($produttore["nome_azienda"]==$_SESSION['produttore'][0]){
+            unset($templateParams["produttori"][$i]);
+        }
+        $i++;
+    }
+}
 
 $templateParams["zucca_info"] = $dbh -> getProductByFarmerAndName($nome_azienda, $nome_zucca);
-$templateParams["produttori"] = $dbh -> getProduttoriByZuccaName($nome_zucca);
 $templateParams["recensioni"] = $dbh -> getAllReviews($nome_zucca);
 
 require("template/homePage.php");

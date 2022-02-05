@@ -21,6 +21,7 @@ if(isset($_POST['submit'])){
     if($value==0){
         array_push($_SESSION['product'], $newproduct);
         echo '<script type="text/JavaScript">location.reload();</script>';
+        echo '<div class="alert alert-success">Success!You should</div>';
     }
 }
 ?>
@@ -53,9 +54,16 @@ if(isset($_POST['submit'])){
                         <div class="container mb-2" width="68%">
                             <label for="browser" class="form-label">Produttori:</label>
                             <select class="form-select" name="nome_azienda" onchange="seleziona_fornitore(this.value,'<?php echo $zucca["nome_zucca"]; ?>');" >
-                            <?php foreach($templateParams["produttori"] as $produttori):?>
+                            <?php if(!empty($_SESSION['produttore'])): ?>
+                                <option selected><?php echo $_SESSION['produttore'][0]; ?></option>
+                                <?php foreach($templateParams["produttori"] as $produttori):?>
+                                    <option value="<?php echo $produttori["nome_azienda"]; ?>"><?php echo $produttori["nome_azienda"]; ?></option>
+                                <?php endforeach;?>
+                            <?php else: ?>
+                                <?php foreach($templateParams["produttori"] as $produttori):?>
                                 <option value="<?php echo $produttori["nome_azienda"]; ?>"><?php echo $produttori["nome_azienda"]; ?></option>
-                            <?php endforeach;?>
+                                <?php endforeach;?>
+                            <?php endif; ?>
                             </select>
                         </div>
                     </div>
@@ -73,10 +81,16 @@ if(isset($_POST['submit'])){
                     <label for="quantity">Quantità:</label>
                     <input type="number" id="quantity" name="quantity" value="1" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
                     <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
-                    <?php if($_SESSION["agricoltore"] == 0): ?>
-                    <div class="text-center mb-2">
-                        <input type="submit" name="submit" class="aggiungi-al-carrello" value="Aggiungi al Carrello" />                
-                    </div>
+                    <?php if(isset($_SESSION["agricoltore"])):?>
+                        <?php if($_SESSION["agricoltore"] == 0): ?>
+                        <div class="text-center mb-2">
+                            <input type="submit" name="submit" class="aggiungi-al-carrello" value="Aggiungi al Carrello" />                
+                        </div>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <div class="text-center mb-2">
+                            <input type="submit" name="submit" class="aggiungi-al-carrello" value="Aggiungi al Carrello" />                
+                        </div>
                     <?php endif; ?>
                 </div>
             </div> 
@@ -84,20 +98,20 @@ if(isset($_POST['submit'])){
         <hr>
         <div class="container text-center appendino">
             <p>Recensioni clienti:</p>
-            <?php if($_SESSION["agricoltore"] == 0): ?>
-                <?php if(isUserLoggedIn()): ?>
+            <?php if(isUserLoggedIn()): ?>
+                <?php if($_SESSION["agricoltore"] == 0): ?>
                     <form action="aggiungi_recensione.php" method="post">
                         <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
                         <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
                     </form>
                     <hr>
-                <?php elseif(!isUserLoggedIn()): ?>
-                    <form action="login.php" method="post">
-                        <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
-                        <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
-                    </form>
-                    <hr>
                 <?php endif; ?>
+            <?php elseif(!isUserLoggedIn()): ?>
+                <form action="login.php" method="post">
+                    <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
+                    <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
+                </form>
+                <hr>
             <?php endif; ?>
             <?php foreach($templateParams["recensioni"] as $recensione):?>
             <div class="row">
