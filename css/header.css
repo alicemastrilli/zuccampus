@@ -30,7 +30,7 @@
 }
 
 .shop-cart-badge {
-    position: absolute;
+    position: relative;
     background: rgb(179, 57, 57);
     text-align: center;
     border-radius: 10px;
