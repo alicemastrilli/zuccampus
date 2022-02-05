@@ -5,7 +5,7 @@ if(isset($_POST['submit'])){
     $nome_azienda = htmlspecialchars($_POST["produttori"]);
     $punteggio = intval(htmlspecialchars($_POST["punteggio"]));
     $descrizione_zucca = htmlspecialchars($_POST["descrizione_zucca"]); 
-    $data=date('m/d/Y');
+    $data=date("Y-m-d");
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $dbh->insertNewRecensione($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
     echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
