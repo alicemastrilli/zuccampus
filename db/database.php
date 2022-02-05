@@ -582,5 +582,19 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function checkUsername($username){
+        $query = "SELECT username FROM utente WHERE username=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $username = $result->fetch_all(MYSQLI_ASSOC);
+        if (empty($username)){
+            return false;
+        }
+        else return true;
+    }
+
 }
 ?>

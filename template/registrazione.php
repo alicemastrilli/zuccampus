@@ -97,9 +97,13 @@
 <?php
 if(isset($_POST['submit'])){
   if(empty($_FILES["immagine"]["tmp_name"])){
-      echo '<div class="alert alert-warning">Aggiungi un\'immagine!</div>';
+    echo '<div class="alert alert-warning">Aggiungi un\'immagine!</div>';
+  }
+  if(($dbh->checkUsername($_POST["username"]))){
+    echo '<div class="alert alert-warning">Username già esistente!</div>';
   }
   else{
+    var_dump($dbh->checkUsername($utente["username"]));
     $form_azione = "./salva_registrazione.php";
     require_once("./salva_registrazione.php");
   }

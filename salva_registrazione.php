@@ -15,9 +15,10 @@ if($_POST["action"] == 'Inserisci'){
     list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
     if($result != 0){
         $immagine = $msg;
-        $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+
+            $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+
         $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
-        //var_dump($msg);
     }
 
     if($_SESSION["agricoltore"] == 1){
@@ -44,7 +45,8 @@ if($_POST["action"] == 'Inserisci'){
     if($msg){  
         $msg = "Registrazione avvenuta con successo";
         $_SESSION["username"] = $username;
-        header("location:casella_messaggi.php?formmsg=".$msg);
+
+        //header("location:casella_messaggi.php?formmsg=".$msg);
     }
     else print($error);
 }
