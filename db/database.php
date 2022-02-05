@@ -131,10 +131,10 @@ class DatabaseHelper{
         
         return $stmt->execute();
     }
-    public function checkMessage($username, $data, $ora){
-        $query = "SELECT username, data, ora FROM messaggio WHERE username = ? AND data = ? and ora= ?";
+    public function checkMessage($username, $data, $ora, $testo){
+        $query = "SELECT username, data, ora FROM messaggio WHERE username = ? AND data = ? and ora= ? and testo=?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sss',$username, $data, $ora);
+        $stmt->bind_param('ssss',$username, $data, $ora, $testo);
         $stmt->execute();
         $result = $stmt->get_result();
     

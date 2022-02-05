@@ -5,13 +5,17 @@ if(isset($_POST['submit'])){
     $nome_azienda = htmlspecialchars($_POST["produttori"]);
     $punteggio = intval(htmlspecialchars($_POST["punteggio"]));
     $descrizione_zucca = htmlspecialchars($_POST["descrizione_zucca"]); 
-    $data=date('m/d/Y');
+    $data=date("Y-m-d");
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $dbh->insertNewRecensione($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
     echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
     //rimanda a lista-recensione
     //puoi togliere l'alert che tanto se la ha inserita lo vedi
     //controllo che tutti i campi siano sttai riempiti
+    //rimanda a un altra pagina lista-recensione
+    $_POST["recensione"] = array($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
+    $_POST["messaggio_action"]=3;
+    require_once "invia_messaggio.php";
 }
 ?>
 <!DOCTYPE html>

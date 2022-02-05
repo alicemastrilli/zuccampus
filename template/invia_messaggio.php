@@ -34,20 +34,26 @@ username: ".$_SESSION["username"] . " password: ".$_POST["password"];
 }elseif ($_POST["messaggio_action"]==1){
   $msg = setMessageText(1, $_POST["ordine"]);
 }elseif ($_POST["messaggio_action"]==2){
-  $testo = setMessageText(2, $_POST["ordine"]);
-} 
+  $msg = setMessageText(2, $_POST["ordine"]);
+} else if($_POST["messaggio_action"]==3){
+  $msg = setRecensioneMessageText();
+}
   ?>
-<div class="row ">
-  
-<div class="toast show  col-12 ">
-  <div class="toast-header  col-12 text-white text-center">
+
+<script>
+  $("document").ready(function(){
+    $(".toast").fadeOut(15000);
+  })
+</script>
+<div class="toast  show  col-12 ">
+  <div class="toast-header col-12  text-center text-black">
     Nuovo messaggio
     <div class="col-6">
       </div>
-    <button type="button" class="btn-close float-end text-white" data-bs-dismiss="toast"></button>
+    <button type="button" class="btn-close float-end text-black " data-bs-dismiss="toast"></button>
     
   </div>
-  <div class="toast-body col-12 text-white">
+  <div class="toast-body col-12 text-black">
   <?php echo $msg[1]["testo"];?>
   </div>
 </div>
@@ -84,28 +90,33 @@ try {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 
-}elseif ($_POST["messaggio_action"]==1){
+}
+$_POST["info"]=array("testo"=>array(), "agr"=>array());
   foreach($msg as $x){
+    array_push($_POST["info"]["testo"], $x["testo"]);
+    array_push($_POST["info"]["agr"], $x["agr"]);
+    if($_POST["messaggio_action"] ==1){
        $ordine = $_POST["ordine"];
     $_POST["data"] = $ordine["data_ordine"]; 
     $_POST["ora"] = $ordine["ora"];
     $_POST["link"] = "ordine.php?id=". $ordine["id_ordine"];
-    $_POST["testo"] = $x["testo"];
-    $_POST["agr"]=$x["agr"];
     $_POST["ordine"] = $ordine;
-    require_once "processa-messaggio.php";
-  }
-} elseif ($_POST["messaggio_action"] ==2) {
+  } elseif ($_POST["messaggio_action"] ==2) {
     $ordine = $_POST["ordine"];
     $campus_info = $_POST["campus_info"];
     $_POST["data"] = date_format(computeDeliveryTime($ordine, $campus_info)[0], "Y-m-d");     
     $_POST["ora"] = $ordine["ora"];
     $_POST["link"] = "ordine.php?id=". $ordine["id_ordine"];
-    require_once "processa-messaggio.php";
+    $_POST["ordine"] = $ordine;
 } elseif ($_POST["messaggio_action"] == 3) {
     $recensione = $_POST["recensione"];
-    $_POST["testo"] = "Gentile ". $_SESSION["username"] . ", il cliente ".$recensione["username"]. "ha lasciato una recensione! ";   
-    $_POST["link"] = "recensione.php?id=". $recensione["id"];
-    require_once "processa-messaggio.php";
-}
+
+    $_POST["data"] = $recensione[5];
+    $_POST["ora"] = date('H:i');
+    $_POST["nome_azienda"] = $recensione[2];
+    $_POST["link"] = "lista_recensioni.php";
+} 
+
+
+}require "processa-messaggio.php";
 ?>
