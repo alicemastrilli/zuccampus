@@ -7,6 +7,7 @@
     <a class="col-3"  onclick="goBack()">
       <img id = "freccia"src="./icons/freccia.png"width="60px" alt="freccia indietro">
     </a>
+    
 <ul class="list-group">
 <?php foreach($templateParams["recensioni"] as $recensione):?>
     <li class="list-group-item">

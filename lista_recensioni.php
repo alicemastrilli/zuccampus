@@ -20,7 +20,11 @@ if(isset($_POST['submit'])){
     $data=date("Y-m-d");
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $dbh->insertNewRecensione($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
+    $_POST["recensione"] = array($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
+    $_POST["messaggio_action"]=3;
+    require "template/invia_messaggio.php";
 }
+
 
 if($_SESSION["agricoltore"]==1){
     $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"])[0]["nome_azienda"];
