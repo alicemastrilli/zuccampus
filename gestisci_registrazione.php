@@ -18,6 +18,7 @@ if (isset($_POST['agricoltore'])) {
     $_SESSION["agricoltore"] = 1;
 }
 
+
 if (isUserLoggedIn()){
     //due righe che mi servono per l'header
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];

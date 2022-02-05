@@ -2,8 +2,10 @@
   $azione = $templateParams["azione"];
   $utente = $templateParams["utente"];
   $immagine = $templateParams["immagine"];
+  $form_azione = "#";
+
 ?>
-<form action="salva_registrazione.php" method="POST" enctype="multipart/form-data">
+<form action="<?php echo $form_azione?>" method="POST" enctype="multipart/form-data">
   <head>
         <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
      
@@ -38,19 +40,29 @@
                 <div class="mx-2 pb-3">
                   <input type="text" id="password" name="password" value="<?php echo $utente["password"]; ?>" />
                 </div>
-                <div class="mx-2 pb-3">
-                  <!--TO DO: fare in modo che sia checkato uno solo alla volta -->
-<!--    
-                  <input type="checkbox" id="studente" name="studente" value=true/><label for="studente">Studente</label>
-                </div>
-                <div class="mx-2 pb-3">
-                  <input type="checkbox" id="Professore" name="Professore" value=true/><label for="Professore">Professore</label>
-                </div>
-                <div class="mx-2 pb-3">
-                  <input type="checkbox" id="altro" name="altro " value=true/><label for="altro">Altro</label>
-                </div>
-                TODO: visualizzare la matricola solo se studente e' checkato  -->
+                <?php if($_SESSION["agricoltore"] == 0): ?>
+                  <form>
+                    <div class="mx-2 pb-3">
+                      <input type="radio" id="tipo_cliente" name="tipo_cliente" value=studente/><label for="studente">Studente</label>
+                    </div>
+                    <div class="mx-2 pb-3">
+                      <input type="radio" id="tipo_cliente" name="tipo_cliente" value=professore/><label for="Professore">Professore</label>
+                    </div>
+                    <div class="mx-2 pb-3">
+                      <input type="radio" id="tipo_cliente" name="tipo_cliente" value=altro/><label for="altro">Altro</label>
+                    </div>
+                  <!--  TODO: visualizzare la matricola solo se studente e' checkato  -->
+                  <?php if($_POST['tipo_cliente'] == "studente"):?>
+                    <label for="matricola" class="form-label px-2 ">Matricola:</label><br>
+                    <div class="mx-2 pb-3">
+                      <input type="text" id="matricola" name="matricola" value="<?php echo $utente["password"]; ?>" />
+                    </div>
+                  <?php endif; ?>
+                  </form>
+                <?php endif; ?>
               </div>
+                
+              
         </article>
         <article class="rounded mx-2">
             <?php if($_SESSION["agricoltore"] == 1){
@@ -82,3 +94,14 @@
   </section>
   <input type="hidden" name="oldimg" value="<?php echo $immagine?>" />
 </form>
+<?php
+if(isset($_POST['submit'])){
+  if(empty($_FILES["immagine"]["tmp_name"])){
+      echo '<div class="alert alert-warning">Aggiungi un\'immagine!</div>';
+  }
+  else{
+    $form_azione = "./salva_registrazione.php";
+    require_once("./salva_registrazione.php");
+  }
+}
+?>

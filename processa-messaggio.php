@@ -22,7 +22,6 @@ $ora = htmlspecialchars($_POST["ora"]);
 $link = htmlspecialchars($_POST["link"]);
 //verifico che il messaggio che voglio inserire non è già nel db
 $messaggio = $dbh->checkMessage($username, $data, $ora,$testo);
-
 if(count($messaggio) == 0){
     
     //messaggio non c'è, lo inserisco

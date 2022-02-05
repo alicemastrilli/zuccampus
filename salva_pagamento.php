@@ -14,7 +14,7 @@ if(isUserLoggedIn()){
 date_default_timezone_set('Europe/Berlin');
 $t = time();
 $username = $_SESSION["username"];
-$data_ordine = date("Y-m-d");;
+$data_ordine = date("Y-m-d");
 $ora = date("H:i:sa", $t);
 $via = "Via dell'Università";
 $numero_civico = "50";
@@ -22,6 +22,7 @@ $cap = "40013";
 
 //inserisco una nuova row con l'ordine
 $id_ordine = $dbh-> insertNewOrdine($username, $data_ordine, $ora, $via, $numero_civico, $cap);
+
 
 //decremento i valori delle quantita' delle zucche comprate
 //per ogni prodotto comprato recupero la zucca corrispondente
@@ -39,12 +40,18 @@ if($id_ordine!=false){
             $msg = $dbh -> updateZucca($zucca["immagine"], $zucca["prezzo"], $zucca["peso"], $disponibilita, $zucca["descrizione_zucca"], $zucca["nome_azienda"], $zucca["nome_zucca"], $zucca["tipo"]);
             if($msg){
                 $msg = $dbh->insertComprende($id_ordine, $zucca["nome_azienda"], $zucca["nome_zucca"], $quantity);
+
             }
         }else{
             //TODO: messaggio di errore
         }
+
+
     }
+    unset($_SESSION["product"]);
 }
+
+
 $_POST["messaggio_action"]=1;
 $_POST["ordine"] =  $dbh->getUserOrders($_SESSION["username"],1)[0];
 require("template/invia_messaggio.php");

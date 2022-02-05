@@ -1,20 +1,3 @@
-<?php
-require_once 'bootstrap.php';
-if(isset($_POST['submit'])){
-    $nome_zucca = htmlspecialchars($_POST["zucca"]);
-    $nome_azienda = htmlspecialchars($_POST["produttori"]);
-    $punteggio = intval(htmlspecialchars($_POST["punteggio"]));
-    $descrizione_zucca = htmlspecialchars($_POST["descrizione_zucca"]); 
-    $data=date('m/d/Y');
-    $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
-    $dbh->insertNewRecensione($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
-    echo '<div class="alert alert-dark">La recensione è stata aggiunta con successo!</div>';
-    //rimanda a un altra pagina lista-recensione
-    $_POST["recensione"] = array($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
-    $_POST["messaggio_action"]=3;
-    require_once "invia_messaggio.php";
-}
-?>
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -29,7 +12,7 @@ if(isset($_POST['submit'])){
             </div>
         </div>
     </nav>
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="lista_recensioni.php" method="POST" enctype="multipart/form-data">
         <section>
             <div class="row mb-3 mt-3">
                 <div class="col-sm-0 text-center">

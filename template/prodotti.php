@@ -48,10 +48,16 @@
                     <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="40%" alt="">
                     <p>€<?php echo $zucca["prezzo"]; ?></p>
                     <form  action="info_prodotti.php?id=<?php echo $zucca["nome_zucca"]?>" method="post">
-                    <?php if($_SESSION["agricoltore"] == 0): ?>
-                        <button class="acquista mt-2 mb-2">Acquista</button>
+                    <?php if(isset($_SESSION["agricoltore"])): ?>
+                        <?php if($_SESSION["agricoltore"]==0): ?>
+                            <button class="acquista mt-2 mb-2">Acquista</button>
+                            <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
+                        <?php else: ?>
+                            <button class="acquista mt-2 mb-2">Visualizza</button>
+                            <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
+                        <?php endif; ?>
                     <?php else: ?>
-                        <button class="acquista mt-2 mb-2">Visualizza</button>
+                        <button class="acquista mt-2 mb-2">Acquista</button>
                     <?php endif; ?>
                         <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
                     </form>

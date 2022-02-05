@@ -21,8 +21,10 @@
                     <img class=" img-fluid ps-1 " src="<?php echo $icon["img"]?>" alt="<?php echo $icon["img"]?>" />
                     <?php if(!isset($_SESSION['product'])){
                         $_SESSION['product']=array();
-                    } ?>
-                    <span class="shop-cart-badge"><?php echo countShoppingCartProducts($_SESSION['product']) ?></span>
+                    }?>
+                    <?php if($icon["a"] == "carrello.php"): ?>
+                        <span class="shop-cart-badge"><?php echo countShoppingCartProducts($_SESSION['product']) ?></span>
+                    <?php endif; ?>
                 </a>
             <?php endforeach;?>
             <div class="offcanvas offcanvas-end" id="offcanvas">
