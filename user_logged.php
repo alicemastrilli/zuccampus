@@ -15,7 +15,7 @@ if(isUserLoggedIn()){
 }
 
 $templateParams["main"] = "user_logged.php";
-if(!isset($_POST["out"])){
+if(!isset($_POST["out"]) && !isset($_SESSION["registrazione"])){
     unset($_POST["out"]);
     $templateParams["js"] =array("js/jquery-3.4.1.min.js","js/user_logged.js");
 } else{

@@ -65,7 +65,7 @@
         
             $(document).ready(function(){
                 var update = "1";
-                var id = <?php echo json_encode($_POST["id"], JSON_HEX_TAG) ?>;
+                
                 $("#posta").click(function(){
                     $.ajax({
             type: "POST",

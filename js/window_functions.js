@@ -1,4 +1,5 @@
 function goBack() {
+    console.log(window.history.back());
     window.history.back();
 }
 
