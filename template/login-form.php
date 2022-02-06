@@ -5,6 +5,11 @@
         <script src="https://kit.fontawesome.com/1ecd8bfea6.js" crossorigin="anonymous"></script>
     </head>
 <!-- tolto action ="#"-->
+<?php if(isset($templateParams["errorelogin"])):?>
+    <div class="alert alert-warning text-center">
+  <strong>Attenzione!</strong> <?php echo $templateParams["errorelogin"]?>
+</div>
+    <?php endif;?>
 <form  method="POST">
     <ul class="list-group text-center">
         <li class="text-center mt-4">
