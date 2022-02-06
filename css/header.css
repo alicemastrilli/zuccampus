@@ -16,7 +16,7 @@
     padding-top: 20px;
     display: inline-block;
 }
-img{
+header img{
     width: 60px;
 }
 .notify-badge {
@@ -42,7 +42,7 @@ img{
     font-size: 10px;
 }
 @media screen and (max-width: 500px) {
-    img{
+    header img{
         width:50px;
     }
 }
