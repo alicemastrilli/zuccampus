@@ -142,7 +142,8 @@ function isInCorso($ordine, $campus_info){
 
 function computeDeliveryStatus($ordine, $campus_info){
     $consegna = computeDeliveryTime($ordine, $campus_info)[0];
-    $today = date_create();
+    $today = date_create()->format('Y-m-d');
+    
     if($ordine["data_ordine"] == $today){
         return array("in preparazione","10" );
     } elseif($consegna > $today) {
