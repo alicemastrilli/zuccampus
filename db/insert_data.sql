@@ -56,8 +56,8 @@ INSERT INTO `link` (`nome_app`, `link`, `logo`) VALUES
 ('ZUCCAMPUS', 'www.instagram.com/zuccampus', 'logoinstagram.png');
 
 INSERT INTO `messaggio` (`id_messaggio`,`username`, `testo`, `data`, `ora`, `tag_letto`) VALUES 
-(1,'GentiAle', 'Zucca consegnata', '2021-12-05', '11:10:30.000000', NULL),
-(2,'Verdi', 'Zucca in arrivo', '2021-12-15', '11:10:30.000000', NULL);
+(1,'ProfCarletti', 'Gentile ProfCarletti il suo ordine è andato a buon fine.', '2022-02-06', '13:22:30.000000', 1),
+(2,'Gigiiii', 'La sua azienda agricola ha ricevuto un nuovo ordine da parte di: ProfCarletti ', '2022-02-06', '13:22:30.000000', 0);
 
 INSERT INTO `comprende` (`id_ordine`, `nome_azienda`, `nome_zucca`, `quantita`) VALUES 
 (1, 'Gigi e le sue zucche', 'Zucca Delica', '2'),

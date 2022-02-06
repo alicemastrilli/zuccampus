@@ -19,6 +19,9 @@
 header img{
     width: 60px;
 }
+header img:hover{
+    cursor: pointer;
+}
 .notify-badge {
     position: absolute;
     right: -5px;
