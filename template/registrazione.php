@@ -121,6 +121,11 @@
                   <strong>Attenzione!</strong> <?php echo $templateParams["errore"]."email"?>
                 </div>
             <?php endif;?>
+            <?php if(isset($templateParams["errEmail"])):?>
+                <div class="alert alert-warning text-center">
+                  <strong>Attenzione!</strong> <?php echo $templateParams["errEmail"]?>
+                </div>
+              <?php endif;?>
           </div>
           <label for="num_telefono" class="form-label px-2">Numero telefonico:</label><br>
           <div class="mx-2 pb-3">

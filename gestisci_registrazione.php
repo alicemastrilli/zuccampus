@@ -30,11 +30,31 @@ if(isset($_POST["username"])){
         $templateParams["errUsername"] = "Username già esistente!";
     }
 }
+
+
+if(isset($_POST["email"])){
+    $email = $_POST["email"];
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $templateParams["errEmail"] = "Email non valida";
+    }
+}
+
+/*
 foreach($_POST as $post){
     if(isset($post)){
         if(empty($post)){
             $templateParams["errore"] = "Inserisci ";
         }
+    }
+    else{
+        require("salva_registrazione.php");
+    }
+}*/
+
+if(isset($_POST["nome"])){
+    if(empty($_POST["nome"])){
+        //Login fallito
+        $templateParams["errore"] = "Inserisci ";
     }
     else{
         require("salva_registrazione.php");
