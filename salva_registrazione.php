@@ -45,10 +45,10 @@ if($_POST["action"] == 'Inserisci'){
     if($msg){  
         $msg = "Registrazione avvenuta con successo";
         $_SESSION["username"] = $username;
-
+        require("dati_utente.php");
         //header("location:casella_messaggi.php?formmsg=".$msg);
     }
-    else print($error);
+    //else print($error);
 }
 
 if($_POST["action"] == 'Modifica'){
