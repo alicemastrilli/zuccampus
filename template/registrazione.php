@@ -4,6 +4,25 @@
   $immagine = $templateParams["immagine"];
 ?>
 <form method="post" enctype="multipart/form-data"> 
+  <head>
+        <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
+        <script src="js/jquery-3.4.1.min.js" ></script>
+
+  </head>
+  
+                  <!--  TODO: visualizzare la matricola solo se studente e' checkato  -->
+                  <script>
+                    $(document).ready(function(){
+                      $("#matricola, #matricola_label").hide();
+                    })
+                    function myFunction(){
+                      $("#matricola, #matricola_label").show();
+                    }
+                    function hide(){
+                      $("#matricola, #matricola_label").hide();
+
+                    }
+                  </script>
   <section>
     <div class="row">
       <div class="col-12 p-3 text-center ">
@@ -38,28 +57,27 @@
           <label for="password" class="form-label px-2 ">Password:</label><br>
           <div class="mx-2 pb-3">
             <input type="text" id="password" name="password" value="<?php echo $utente["password"]; ?>" />
-          </div>
-          <?php if($_SESSION["agricoltore"] == 0): ?>
-            <form>
-              <div class="mx-2 pb-3">
-                <input type="radio" id="tipo_cliente" name="tipo_cliente" value=studente/><label for="studente">Studente</label>
+          </div>  
+                <?php if($_SESSION["agricoltore"] == 0): ?>
+                  <form>
+                    <div class="mx-2 pb-3">
+                      <input type="radio" id="studente" name="tipo_cliente" value=studente onchange="myFunction()"/><label for="studente">Studente</label>
+                    </div>
+                    <div class="mx-2 pb-3">
+                      <input type="radio" id="professore" name="tipo_cliente" value=professore onchange="hide()"/><label for="Professore">Professore</label>
+                    </div>
+                    <div class="mx-2 pb-3">
+                      <input type="radio" id="altro" name="tipo_cliente" value=altro onchange="hide()"/><label for="altro">Altro</label>
+                    </div>
+                  <!--  TODO: visualizzare la matricola solo se studente e' checkato  -->
+                  </form>
+                  
+                <?php endif; ?>
+                <label for="matricola" id="matricola_label" class="form-label px-2 ">Matricola:</label><br>
+                    <div class="mx-2 pb-3">
+                      <input type="text" id="matricola" name="matricola" value="<?php echo $utente["password"]; ?>" />
+                    </div>
               </div>
-              <div class="mx-2 pb-3">
-                <input type="radio" id="tipo_cliente" name="tipo_cliente" value=professore/><label for="Professore">Professore</label>
-              </div>
-              <div class="mx-2 pb-3">
-                <input type="radio" id="tipo_cliente" name="tipo_cliente" value=altro/><label for="altro">Altro</label>
-              </div>
-            <!--  TODO: visualizzare la matricola solo se studente e' checkato  -->
-            <?php if($_POST['tipo_cliente'] == "studente"):?>
-              <label for="matricola" class="form-label px-2 ">Matricola:</label><br>
-              <div class="mx-2 pb-3">
-                <input type="text" id="matricola" name="matricola" value="<?php echo $utente["password"]; ?>" />
-              </div>
-            <?php endif; ?>
-            </form>
-          <?php endif; ?>
-        </div>  
         </article>
         <article class="rounded mx-2">
           <?php if($_SESSION["agricoltore"] == 1){
