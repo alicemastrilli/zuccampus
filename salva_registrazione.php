@@ -22,8 +22,6 @@ if($_POST["action"] == 'Inserisci'){
         $msg = 1;
     }
     $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
-    $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
-
     if($_SESSION["agricoltore"] == 1){
         $cliente = 0;
         $agricoltore = 1;
@@ -37,21 +35,17 @@ if($_POST["action"] == 'Inserisci'){
         $msg_azienda = $dbh->insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione, $citta);
         if($msg_azienda) $msg = $dbh->insertNewAgricoltore($username, $nome_azienda);
         
-        //controllo che i campi siano pieni
-        $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore, $nome_azienda, $via, $numero_civico, $cap, $descrizione);
-        //TODO: if user is agricoltore require user_logged.php
     }
     //registrazione per cliente
     else $_SESSION["agricoltore"] = 0;
 
-    $error = checkFormFilledCorrectly($fields);
     if($msg){  
         $msg = "Registrazione avvenuta con successo";
         $_SESSION["username"] = $username;
         require("dati_utente.php");
-        //header("location:casella_messaggi.php?formmsg=".$msg);
+
     }
-    //else print($error);
+
 }
 
 if($_POST["action"] == 'Modifica'){

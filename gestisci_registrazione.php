@@ -25,15 +25,23 @@ if (isUserLoggedIn()){
 }
 $templateParams["azione"] = getAction($_GET["action"]);
 
-if(isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["num_telefono"]) ){
-    if(empty($_POST["nome"]) || empty($_POST["cognome"]) || empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["email"]) || empty($_POST["num_telefono"])){
-        //Login fallito
-        $templateParams["errore"] = "Inserisci ";
+if(isset($_POST["username"])){
+    if($dbh->checkUsername($_POST["username"])){
+        $templateParams["errUsername"] = "Username già esistente!";
+    }
+}
+foreach($_POST as $post){
+    if(isset($post)){
+        if(empty($post)){
+            $templateParams["errore"] = "Inserisci ";
+        }
     }
     else{
         require("salva_registrazione.php");
     }
 }
+
+
 
 //Inserisco
 if($templateParams["azione"] == 'Inserisci'){

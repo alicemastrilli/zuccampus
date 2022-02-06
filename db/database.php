@@ -583,6 +583,8 @@ class DatabaseHelper{
     }
 
     public function checkUsername($username){
+        //Return: true se non posso aggiungerlo
+        //false se posso aggiungerlo
         $query = "SELECT username FROM utente WHERE username=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$username);
