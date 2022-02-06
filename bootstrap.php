@@ -1,4 +1,5 @@
 <?php
+header('Cache-Control: no cache'); //no cache
 session_start();
 require_once("db/database.php");
 require_once("utils/functions.php");
