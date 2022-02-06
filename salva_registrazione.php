@@ -12,14 +12,17 @@ if($_POST["action"] == 'Inserisci'){
     $cliente = 1;
     $agricoltore = 0;
     unsset($_SESSION["registrazione"]);
-    list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
-    if($result != 0){
+
+    if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
+        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
         $immagine = $msg;
-
-            $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
-
-        $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
     }
+    else{
+        $immagine = $_POST["oldimg"];
+        $msg = 1;
+    }
+    $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+    $fields = array($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
 
     if($_SESSION["agricoltore"] == 1){
         $cliente = 0;
