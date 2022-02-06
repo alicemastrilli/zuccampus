@@ -18,14 +18,14 @@ function prova(xValues, yValues) {
                     display: true,
                     labelString: 'zucche vendute',
                     fontStyle: 'bold',
-                    fontSize:20
+                    fontSize:16
                   },
-                  ticks: { min: 0, max: 20 } }],
+                  ticks: { min: 0, max: 14 } }],
                 xAxes: [{scaleLabel: {
                     display: true,
                     labelString: 'giorno',
                     fontStyle: 'bold',
-                    fontSize:20
+                    fontSize:16
                   }}]
         }
     }
@@ -54,14 +54,14 @@ function getUserGraph(xValues, yValues) {
                     display: true,
                     labelString: 'zucche acquistate',
                     fontStyle: 'bold',
-                    fontSize:20
+                    fontSize:16
                   },
-                  ticks: { min: 0, max: 20 } }],
+                  ticks: { min: 0, max: 14 } }],
                 xAxes: [{scaleLabel: {
                     display: true,
                     labelString: 'azienda agricola',
                     fontStyle: 'bold',
-                    fontSize:20
+                    fontSize:16
                   }}]
             }
         }
@@ -70,11 +70,9 @@ function getUserGraph(xValues, yValues) {
 
 
 function deliveryAnimation(stop) {
+    if(stop != 10){
     const arrivo = parseInt(window.innerWidth * stop / 100);
     const start = parseInt(window.innerWidth * 9 / 100);
-    console.log(arrivo);
-    console.log(start);
-    console.log(arrivo - 2 * start);
     let id = null;
     const elem = document.getElementById("animate");
     let pos = start;
@@ -89,5 +87,6 @@ function deliveryAnimation(stop) {
             elem.style.left = pos + "px";
         }
     }
+}
 
 }
