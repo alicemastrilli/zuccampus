@@ -44,7 +44,7 @@ header img:hover{
     right: 70px;
     font-size: 10px;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 300px) {
     header img{
         width:50px;
     }
