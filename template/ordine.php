@@ -2,7 +2,6 @@
 <html>
     <head>
         <link rel="stylesheet" href="./css/ordine.css" > 
-        <script type="text/javascript" src="./js/window_functions.js"></script> 
     </head>
     <section>
     <div class="row">

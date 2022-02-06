@@ -143,9 +143,11 @@ function isInCorso($ordine, $campus_info){
 function computeDeliveryStatus($ordine, $campus_info){
     $consegna = computeDeliveryTime($ordine, $campus_info)[0];
     $today = date_create();
-    if($ordine["data_ordine"] == $today){
+    
+    if($ordine["data_ordine"] == date_create()->format('Y-m-d')){
         return array("in preparazione","10" );
     } elseif($consegna > $today) {
+        
         $diff = date_diff($consegna, $today);
         $pro =$diff->format('%a');
         $percent = $pro *10 + 20;
