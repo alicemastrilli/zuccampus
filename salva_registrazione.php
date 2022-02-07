@@ -61,7 +61,7 @@ if($_POST["action"] == 'Modifica'){
 
     $num_telefono = htmlspecialchars($_POST["num_telefono"]);
     $email = htmlspecialchars($_POST["email"]);
-    $username = htmlspecialchars($_POST["username"]);
+    $username = $_SESSION["username"];
     $password = htmlspecialchars($_POST["password"]);
     $nome = htmlspecialchars($_POST["nome"]);
     $cognome = htmlspecialchars($_POST["cognome"]);
