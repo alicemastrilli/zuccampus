@@ -81,16 +81,10 @@ if($_POST["action"] == 'Modifica'){
     if($_SESSION["agricoltore"]==1){
         $cliente = 0;
         $agricoltore = 1;
-        $nome_azienda = htmlspecialchars($_POST["nome_azienda"]);
-        $via = htmlspecialchars($_POST["via"]);
-        $numero_civico = htmlspecialchars($_POST["numero_civico"]);
-        $cap = htmlspecialchars($_POST["cap"]);
+        $nome_azienda = $_POST["nome_azienda"];
         $descrizione = htmlspecialchars($_POST["descrizione"]);
-        $citta = htmlspecialchars($_POST["citta"]);
 
-        $msg_indirizzo = updateIndirizzo($numero_civico, $citta, $cap, $via);
-        $msg_azienda = $dbh->updateAzienda($via, $numero_civico, $cap, $descrizione, $citta, $nome_azienda);
-        if($msg_azienda) $msg = $dbh->updateAgricoltore($nome_azienda, $username,);
+        $msg_azienda = $dbh->updateAzienda($descrizione, $nome_azienda);
 
     }
     
