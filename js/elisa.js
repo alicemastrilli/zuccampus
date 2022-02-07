@@ -81,15 +81,15 @@ function generaZuccheProduttoreSelezionato(zucche) {
                 <div class="text-center m-2">
                     <a>${zucche[i]["descrizione_zucca"]}</a>
                 </div>
-                <p> €${zucche[i]["prezzo"]}</p>
+                <p>€${zucche[i]["prezzo"]}</p>
+                <input type="hidden" name="prezzo" value="${zucche[i]["prezzo"]}">
                 <p>${zucche[i]["peso"]} kg </p>
-                <form>
-                    <label for="quantity">Quantità:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" max="${zucche[i]["disponibilita"]}"><br><br>
-                </form>
+                <input type="hidden" name="peso" value="${zucche[i]["peso"]}">
+                <label for="quantity">Quantità:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="${zucche[i]["disponibilita"]}"><br><br>
                 <p>${zucche[i]["disponibilita"]} pezzi </p>
                 <div class="text-center m-2">
-                    <button class="aggiungi-al-carrello">Aggiungi al carrello</button>
+                    <input type="submit" name="submit" class="aggiungi-al-carrello" value="Aggiungi al Carrello" />                
                 </div>
             </div>
         </div> 
