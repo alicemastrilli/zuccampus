@@ -614,5 +614,21 @@ class DatabaseHelper{
         else return true;
     }
 
+    public function isStudente($username){
+        //Return: true se sono uno studente
+        //false se non sono uno studente
+        $query = "SELECT matricola FROM cliente WHERE username=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$matricola);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $matricola = $result->fetch_all(MYSQLI_ASSOC);
+        if (is_null($matricola)){
+            return false;
+        }
+        else return true;
+    }
+
 }
 ?>

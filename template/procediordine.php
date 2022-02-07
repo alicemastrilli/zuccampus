@@ -1,6 +1,8 @@
 <?php 
 $total = 0; 
 $costospedizione = 5; 
+$sconto = 20;
+$isStudente = $templateParams["studente"];
 ?>
 <div class="container-fluid">
     <article>
@@ -36,9 +38,15 @@ $costospedizione = 5;
             <tr>
                 <td class="col-9">
                     <p>Costo di spedizione: <?php echo $costospedizione ?>€</p>
-                </td>
-                
+                </td>           
             </tr>
+            <?php if ($isStudente): ?>
+            <tr>
+                <td class="col-9">
+                    <p>Sconto studente: <?php echo $sconto?>%</p>
+                </td>           
+            </tr>
+            <?php endif; ?>
             <tr>
                 <td >
                     <div class="btn-group text-center mb-2">
@@ -59,5 +67,9 @@ $costospedizione = 5;
         </tbody>
     </table>
     <div class="container mt-2 mb-2 text-center">
-        <p>Totale complessivo:<?php $total = $total + $costospedizione; echo $total; ?>€</p>
+        <?php if ($isStudente){
+            $total = $total + $costospedizione;
+            $total = $total - (($total / 100) * $sconto);
+        }else $total = $total + $costospedizione; ?>
+        <p>Totale complessivo:<?php echo $total; ?>€</p>
     </div> 

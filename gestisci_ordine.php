@@ -12,7 +12,7 @@ $templateParams["main"] = "procediordine.php";
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
-
+$templateParams["studente"] = $dbh->isStudente([$_SESSION["username"]]);
 
 require("template/homePage.php");
 ?>
