@@ -55,7 +55,7 @@
             </div>
           <label for="username" class="form-label px-2 ">Username:</label><br>
             <div class="mx-2 pb-3">
-              <input type="text" id="username" name="username" value="<?php echo $utente["username"]; ?>" <?php if($azione = 'Modifica') echo "disabled";?> />
+              <input type="text" id="username" name="username" value="<?php echo $utente["username"]; ?>" <?php if($azione == 'Modifica') echo "disabled";?> />
               <?php if(isset($templateParams["errore"])):?>
                 <div class="alert alert-warning text-center">
                   <strong>Attenzione!</strong> <?php echo $templateParams["errore"]."username"?>

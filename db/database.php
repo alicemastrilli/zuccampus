@@ -283,6 +283,7 @@ class DatabaseHelper{
         return $msg;
     }
 
+    //TODO: mi serve veramente?
     public function updateIndirizzo($numero_civico, $citta, $cap, $via){
         $query = "UPDATE indirizzo SET numero_civico = ?, citta = ?, cap = ? WHERE via = ?";
         $stmt = $this->db->prepare($query);
@@ -308,12 +309,19 @@ class DatabaseHelper{
         return $msg;
     }
 
-    public function updateAzienda($via, $numero_civico, $cap, $descrizione, $nome_azienda){
-        $query = "UPDATE azienda_agricola SET  via = ?, numero_civico = ?,  cap = ?, descrizione = ? WHERE nome_azienda = ?";
+    public function updateAzienda($descrizione, $nome_azienda){
+        $query = "UPDATE azienda_agricola SET  descrizione = ? WHERE nome_azienda = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('siiss', $via, $numero_civico, $cap, $descrizione, $nome_azienda);
+        $stmt->bind_param('ss', $descrizione, $nome_azienda);
+        $ris=$stmt->execute();
         
-        return $stmt->execute();
+        if($ris){
+            $msg = 1;
+        }
+        else {
+            $msg = $stmt->error;
+        }
+        return $msg;
     }
 
     public function insertNewCliente($username, $matricola){

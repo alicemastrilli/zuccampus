@@ -13,14 +13,14 @@ if($_POST["action"] == 'Inserisci'){
     $agricoltore = 0;
     //unsset($_SESSION["registrazione"]);
 
-    if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
-        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
-        $immagine = $msg;
-    }
-    else{
+    list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
+    $immagine = $msg;
+    if($result == 0){
         $immagine = $_POST["oldimg"];
         $msg = 1;
     }
+    
+    
     $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
     if($_SESSION["agricoltore"] == 1){
         $cliente = 0;
@@ -29,7 +29,7 @@ if($_POST["action"] == 'Inserisci'){
         $via = htmlspecialchars($_POST["via"]);
         $numero_civico = htmlspecialchars($_POST["numero_civico"]);
         $cap = htmlspecialchars($_POST["cap"]);
-        $descrizione = htmlspecialchars($_POST["descrizione_azienda"]);
+        $descrizione = htmlspecialchars($_POST["descrizione"]);
         $citta = htmlspecialchars($_POST["citta"]);
 
         $msg_azienda = $dbh->insertNewAzienda($nome_azienda, $via, $numero_civico, $cap, $descrizione, $citta);
@@ -76,21 +76,15 @@ if($_POST["action"] == 'Modifica'){
         $immagine = $_POST["oldimg"];
         $msg = 1;
     }
-    
+
 
     if($_SESSION["agricoltore"]==1){
         $cliente = 0;
         $agricoltore = 1;
-        $nome_azienda = htmlspecialchars($_POST["nome_azienda"]);
-        $via = htmlspecialchars($_POST["via"]);
-        $numero_civico = htmlspecialchars($_POST["numero_civico"]);
-        $cap = htmlspecialchars($_POST["cap"]);
+        $nome_azienda = $_POST["nome_azienda"];
         $descrizione = htmlspecialchars($_POST["descrizione"]);
-        $citta = htmlspecialchars($_POST["citta"]);
 
-        $msg_indirizzo = updateIndirizzo($numero_civico, $citta, $cap, $via);
-        $msg_azienda = $dbh->updateAzienda($via, $numero_civico, $cap, $descrizione, $citta, $nome_azienda);
-        if($msg_azienda) $msg = $dbh->updateAgricoltore($nome_azienda, $username,);
+        $msg_azienda = $dbh->updateAzienda($descrizione, $nome_azienda);
 
     }
     
