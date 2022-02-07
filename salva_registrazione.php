@@ -11,7 +11,7 @@ if($_POST["action"] == 'Inserisci'){
     $cognome = htmlspecialchars($_POST["cognome"]);
     $cliente = 1;
     $agricoltore = 0;
-    unsset($_SESSION["registrazione"]);
+    //unsset($_SESSION["registrazione"]);
 
     if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
         list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
@@ -38,6 +38,15 @@ if($_POST["action"] == 'Inserisci'){
     }
     //registrazione per cliente
     else $_SESSION["agricoltore"] = 0;
+
+    if(isset($_POST["tipo_cliente"])){
+        if ($_POST["tipo_cliente"] == "studente"){
+            $matricola = htmlspecialchars($_POST["matricola"]);
+
+        }
+        else $matricola = NULL;
+        $msg = $dbh->insertNewCliente($username, $matricola);
+    }
 
     if($msg){  
         $msg = "Registrazione avvenuta con successo";

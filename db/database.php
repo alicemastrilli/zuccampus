@@ -316,6 +316,22 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
+    public function insertNewCliente($username, $matricola){
+        $query = "INSERT INTO `cliente` ( `username`, `matricola`) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $username, $matricola);
+        $ris=$stmt->execute();
+        
+        if($ris){
+            $msg = 1;
+        }
+        else {
+            $msg = $stmt->error;
+        }
+        return $msg;
+    }
+
+
     public function getAllOrders($nome_azienda, $n=-1){
         $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,o.ora, z.prezzo,u.nome,u.cognome,o.via, o.numero_civico,
         o.cap   FROM ordine o, comprende c,zucca z,utente u
