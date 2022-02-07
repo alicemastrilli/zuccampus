@@ -8,7 +8,7 @@
       <div class="mx-2 pb-3">
             <input class="form-control" type="text" id="nome_azienda" name="nome_azienda" value="<?php echo $azienda["nome_azienda"]; ?>" <?php if($azione == "Modifica") echo "disabled"; ?>/>
       </div>
-<label for="descrizione_azienda" class="form-label px-2">Descrizione</label><br>
+<label for="descrizione" class="form-label px-2">Descrizione</label><br>
       <div class="mx-2 pb-3">
             <input class="form-control" type="text" id="descrzione" name="descrizione"  value="<?php echo $azienda["descrizione"]; ?>" />
       </div>
