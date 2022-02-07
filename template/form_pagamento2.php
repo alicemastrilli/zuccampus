@@ -1,6 +1,6 @@
 <?php 
 $azione = $templateParams["azione"];
-
+$num_cc = 1;
 ?>
 <section>
     <div class="row">
@@ -13,6 +13,10 @@ $azione = $templateParams["azione"];
   <form action="salva_cc.php?action=<?php echo $azione?>" class="text-center pb-2"method="POST" enctype="multipart/form-data">
     <?php foreach($templateParams["pagamento"] as $pagamento):?>
         <article class="rounded mx-2">
+            <div>
+                <input type="radio" id="num_cc" name="num_cc" value="<?php echo $num_cc?>"/>
+                <label>Selezione questa carta di credito</label>
+            </div>
             <h3 class="pt-2 px-2 text-center">Carta di credito</h3>
             <div class="mb-3 mt-3">
                 <label for="nome" class="form-label px-2">Nome:</label><br>
@@ -43,7 +47,7 @@ $azione = $templateParams["azione"];
                 </div>
             </div>
         </article>
-    <?php endforeach;?>
+    <?php $num_cc += 1; endforeach;?>
     <?php if( isUserLoggedIn() && $azione == "Inserisci"): ?>
             <button class="rounded p-4"  name="<?php echo $azione?>">Salva metodo di pagamento</button>
         </form>
