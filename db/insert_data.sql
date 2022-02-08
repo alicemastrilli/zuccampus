@@ -5,7 +5,7 @@ INSERT INTO `indirizzo` (`via`, `numero_civico`, `citta`, `cap`) VALUES
 ('via dell''Università', '50', 'Cesena', '40013');
 
 INSERT INTO `azienda` (`via`, `numero_civico`, `cap`, `nome_app`, `nome_azienda`, `email`, `descrizione_azienda`, `qualita`) VALUES 
-('via dell\'Università', '50', '40013', 'ZUCCAMPUS', 'zuccampus.srl', 'zuccampus@gmail.com', 'Zuccampus è l\'app che cerchi per i tuoi ordini! ', 'Massima qualità!');
+('via dell\'Università', '50', '40013', 'Zuccampus', 'zuccampus.srl', 'zuccampus@gmail.com', 'Zuccampus è l\'app che cerchi per i tuoi ordini! ', 'Massima qualità!');
 
 INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `descrizione`) VALUES 
 ('La fattoria di Mario', 'via Canale', '9', '40023', 'Mario e la sua famiglia si prendono cura delle loro zucche da generazioni.\r\n\"Onestà e qualità sono le mie parole d''ordine!\" '),

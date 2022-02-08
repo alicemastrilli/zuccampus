@@ -1,3 +1,8 @@
+h1{
+    font-family: 'Barlow', sans-serif;
+    font-size: 40px;
+}
+
 #offcanvas {
     width: 70%;
     height: 60%;
@@ -17,7 +22,7 @@
     display: inline-block;
 }
 header img{
-    width: 60px;
+    width: 50px;
 }
 header img:hover{
     cursor: pointer;

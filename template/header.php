@@ -5,6 +5,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/header.css" /> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -13,7 +16,7 @@
 <nav class="navbar">
     <div class="container ">
         <a class="navbar-brand text-black" href="homepage.php">
-            <h1 class="text-dark"><?php echo $templateParams["nome"] ; ?></h1>
+            <h1 class="text-dark">Zuccampus</h1>
         </a>
         <div class="float-end">
             <?php foreach(getFootersIcons() as $icon):?>
