@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+        <link rel="stylesheet" type="text/css" href="./css/dati_utente.css" /> 
+   
+    </head>
+<body>
+   
+
 <?php 
 if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
    $azienda = $templateParams["azienda_info"];
 }
 ?>
-    <head>
-        <link rel="stylesheet" type="text/css" href="./css/dati_utente.css" /> 
-   
-    </head>
+
     <section>
        <div class="row">
        <a class="col-3" onclick="goBack()">
@@ -18,8 +24,7 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
         </div>
         </div>
         <h2 class="text-center"><?php echo $templateParams["utente"]["nome"]; ?> <?php echo $templateParams["utente"]["cognome"]; ?></h2>
-        <h3 class="text-center"><?php echo $templateParams["utente"]["email"]; ?><h3>
-        <article class="rounded mx-2">
+        <h3 class="text-center"><?php echo $templateParams["utente"]["email"]; ?></h3>
             <h4 class="pt-2 px-2">Informazioni di base</h4>
             <div class="mb-3 mt-3">
                 <label for="nome" class="form-label px-2">Nome:</label><br>
@@ -31,10 +36,8 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
                    <input  type="text" class="input-box " id="cognome" value="<?php echo $templateParams["utente"]["cognome"]; ?>" name="cognome" readonly>
                 </div>
             </div>
-        </article>
         <!--aggiungere che si deve vedere anche se arrivo da aziende agricole -->
         <?php if ( !isUserLoggedIn() || $_SESSION["agricoltore"]==1 || isset($_GET["id"])): ?>
-        <article class="rounded mx-2">
             <div class="mb-3 mt-3">
             <label for="azienda_agricola" class="form-label px-2">Azienda agricola:</label><br>
                 <div class="mx-2 pb-3">
@@ -59,9 +62,7 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
                    <input  type="number" class="input-box" id="cap" value="<?php echo $azienda["cap"]; ?>" name="cap" readonly>
                 </div>
               </div>
-        </article>
         <?php endif;?>
-        <article class="rounded mx-2">
             <h3 class="pt-2 px-2">Informazioni di contatto</h3>
             <div class="mb-3 mt-3">
                 <label for="email" class="form-label px-2">Email:</label><br>
@@ -74,7 +75,6 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
                 </div>
                 
               </div>
-        </article>
         <?php if(isUserLoggedIn() && $templateParams["user_loggato"]["nome"]==$templateParams["utente"]["nome"]): ?>
          <!--passare come post lo utentename dell'utente -->
          <form class="text-center pb-2" action="gestisci_registrazione.php?action=2" method="post">
@@ -87,3 +87,5 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
          </form>
          <?php endif;?>
     </section>
+    </body>
+    </html>
