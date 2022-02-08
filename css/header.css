@@ -8,8 +8,9 @@ h1{
     height: 60%;
 }
 
-#offcanvas>img {
-    border-radius: 100px;
+nav>div>div>img {
+    width: 70px;
+    clip-path: circle();
 }
 
 #offcanvas>div>ul>li:last-of-type {
@@ -52,5 +53,8 @@ header img:hover{
 @media screen and (max-width: 300px) {
     header img{
         width:50px;
+    }
+    h1{
+        font-size: 20px;
     }
 }
