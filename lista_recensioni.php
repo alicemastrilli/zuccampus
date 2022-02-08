@@ -32,5 +32,5 @@ if($_SESSION["agricoltore"]==1){
 } else{
     $templateParams["recensioni"] = $dbh->getRecensioneFromCliente($_SESSION["username"]);
 }
-require("template/homePage.php");
+require("template/base.php");
 ?>

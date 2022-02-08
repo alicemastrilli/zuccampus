@@ -20,5 +20,5 @@ $templateParams["categorie"] = $dbh->getCategories();
 $templateParams["articoli"] = $dbh->getPosts(2);
 */
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

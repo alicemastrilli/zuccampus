@@ -10,8 +10,8 @@
                 <?php foreach($templateParams["aziende_agricole"] as $azienda):?>
                 <tr>
                 <td class="col-9">
-                    <h3><?php echo $azienda["nome_azienda"]; ?> </h3>
-                    <h5>di <?php echo $azienda["nome"]; ?> <?php echo $azienda["cognome"]; ?></h5>
+                    <h2><?php echo $azienda["nome_azienda"]; ?> </h2>
+                    <h3>di <?php echo $azienda["nome"]; ?> <?php echo $azienda["cognome"]; ?></h3>
                     <p><?php echo $azienda["descrizione"]; ?></p>
                     <div class="row">
                         <div class="col-6 text-center"> 

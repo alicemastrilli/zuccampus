@@ -15,5 +15,5 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 $templateParams["zucchePopolari"] = $dbh->getPopularPumpkins();
 $templateParams["primaZucca"] = $dbh->getFirstPumpkin();
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

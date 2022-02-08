@@ -36,7 +36,7 @@ if(isset($_POST["username"])){
     $templateParams["utente"] = getEmptyUser();
     $templateParams["azienda"] = getEmptyAzienda();
     $templateParams["immagine"] = "utente_generico.jpg";
-    require("template/homePage.php");
+    require("template/base.php");
 
 }
 
@@ -58,7 +58,7 @@ if($templateParams["azione"] == 'Modifica') {
             $templateParams["azienda"] = $dbh -> getAziendaAgrByName($nome_azienda)[0];
         }
     }
-    require("template/homePage.php");
+    require("template/base.php");
 
 }  
 

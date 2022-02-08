@@ -49,5 +49,5 @@ $templateParams["aziende_agricole"] = $dbh->getAziendaAgricolaInfo();
 
 
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

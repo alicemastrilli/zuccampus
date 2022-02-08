@@ -22,5 +22,5 @@ if($templateParams["azione"] == 'Modifica') {
     }
 }   
 
-require 'template/homePage.php';
+require 'template/base.php';
 ?>

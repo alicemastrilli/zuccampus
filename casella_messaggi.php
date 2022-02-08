@@ -21,5 +21,5 @@ if(isset($_POST["update"])) {
     }
 }$templateParams["main"] = "messaggio.php";
 $templateParams["aggiungi"] = "processa-messaggio.php";
-require("template/homePage.php");
+require("template/base.php");
 ?>

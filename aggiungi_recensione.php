@@ -19,5 +19,5 @@ if(isset($_POST["zucca"])){
 
 $templateParams["produttori"] = $dbh->getProduttoriByZuccaName($nome_zucca);
  
-require("template/homePage.php");
+require("template/base.php");
 ?>

@@ -35,5 +35,5 @@ if(!empty($_SESSION['produttore'])){
 $templateParams["zucca_info"] = $dbh -> getProductByFarmerAndName($nome_azienda, $nome_zucca);
 $templateParams["recensioni"] = $dbh -> getAllReviews($nome_zucca);
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

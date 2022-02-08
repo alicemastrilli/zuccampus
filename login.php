@@ -48,7 +48,7 @@ if(isUserLoggedIn()){
 else{
     $templateParams["titolo"] = $templateParams["nome"]." - Login";
     $templateParams["main"] = "login-form.php";
-    require 'template/homePage.php';
+    require 'template/base.php';
 }
 
 
