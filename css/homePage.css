@@ -9,8 +9,9 @@ header {
     background-color: #F5982B;
 }
 
-
 footer {
+    position: relative;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.69);
     font-size: 20px;
     bottom: 0;

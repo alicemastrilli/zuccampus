@@ -57,7 +57,7 @@ if(isset($_POST['delete'])){
 <head>
 	<meta charset="utf-8">
 	<title>Zuccampus-Carrello</title>
-	<link rel="stylesheet" type="text/css" href="./css/prodotti.css">
+	<link rel="stylesheet" type="text/css" href="./css/carrello.css">
 </head>
 <div class="container-fluid text-center">
     <h1>Il mio carrello:</h1>
