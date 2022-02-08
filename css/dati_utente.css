@@ -1,0 +1,21 @@
+
+.fotoprofilo{
+    width: 150px;
+    clip-path: circle();
+}
+
+article div{
+    background-color:  #FAFAFA;
+}
+
+input.input-box, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    
+    background-color: #FAFAFA;
+    outline: 0;
+  border-width: 0 0 3px;
+  border-color:#8DC7A3;
+  }

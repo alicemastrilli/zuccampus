@@ -16,7 +16,21 @@ button{
 }
 button:hover{
     padding: 4% 11% 4% 11%;
-  }
+}
+
+table{
+    background-color: #EDEDED;
+}
+td, th {
+    border: none;
+}
+
+
+tr:hover {background-color: #FFEED4;}
+
+.freccia{
+    width: 50px;
+}
 
 #offcanvas {
     width: 70%;

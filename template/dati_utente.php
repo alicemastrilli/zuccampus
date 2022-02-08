@@ -4,16 +4,16 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
 }
 ?>
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/venditore.css" /> 
+        <link rel="stylesheet" type="text/css" href="./css/dati_utente.css" /> 
    
     </head>
     <section>
        <div class="row">
        <a class="col-3" onclick="goBack()">
-         <img src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">
+         <img class="freccia" src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">
        </a>
         <div class="col-6 p-3 text-center ">
-        <img src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"]);?>" class=" rounded-circle border border-2 border-dark" 
+        <img class="fotoprofilo" src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"]);?>" class=" rounded-circle border border-2 border-dark" 
         alt="<?php echo $templateParams["user"]["nome"]?>"/>
         </div>
         </div>
@@ -24,7 +24,7 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
             <div class="mb-3 mt-3">
                 <label for="nome" class="form-label px-2">Nome:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="nome" value="<?php echo $templateParams["user"]["nome"]; ?>" name="nome" readonly>
+                   <input  type="text" class="input-box" id="nome" value="<?php echo $templateParams["user"]["nome"]; ?>" name="nome" readonly>
                 </div>
                 <label for="cognome" class="form-label px-2 ">Cognome:</label><br>
                 <div class="mx-2 pb-3">
