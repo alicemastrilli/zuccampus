@@ -19,6 +19,11 @@ h4{
     font-size: 10px;
 }
 
+p{
+    font-family: 'Questrial', sans-serif;
+    font-size: 23px;
+}
+
 .input[type=text]{
     font-family: 'Questrial', sans-serif;
     font-size: 20px;
@@ -27,6 +32,7 @@ h4{
 button{
     background-color: #0C403D;
     font-family:'Barlow', sans-serif; 
+    font-size: 20px;
     color: #EDEDED;
     padding: 3% 10% 3% 10%;
 }
@@ -35,7 +41,7 @@ button:hover{
 }
 
 table{
-    background-color: #EDEDED;
+    background-color: #FAFAFA;
 }
 td, th {
     border: none;

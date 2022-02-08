@@ -1,5 +1,24 @@
 
+body{
+    background-color: #FAFAFA;
+}
+article{
+    margin: 0 3% 0 3%;
+}
+
 td>img{
     width: 130px;
     clip-path: circle();
+}
+
+button{
+    background-color: #0C403D;
+    font-family:'Barlow', sans-serif; 
+    font-size: 23px;
+    color: #EDEDED;
+    padding: 3% 10% 3% 10%;
+}
+
+h3{
+    font-style: italic;
 }

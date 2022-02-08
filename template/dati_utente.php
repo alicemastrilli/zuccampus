@@ -63,12 +63,8 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
                 </div>
               </div>
         <?php endif;?>
-<<<<<<< HEAD
         <article class="rounded mx-2">
             <h4>Informazioni di contatto</h4>
-=======
-            <h3 class="pt-2 px-2">Informazioni di contatto</h3>
->>>>>>> 41546237e51c187c78b7c6ac5ccf07083c0e4236
             <div class="mb-3 mt-3">
                 <label for="email" class="form-label px-2">Email:</label><br>
                 <div class="mx-2 pb-3">
