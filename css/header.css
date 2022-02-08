@@ -8,6 +8,16 @@ h1{
     color: #0C403D;
 }
 
+button{
+    background-color: #0C403D;
+    font-family:'Barlow', sans-serif; 
+    color: #EDEDED;
+    padding: 3% 10% 3% 10%;
+}
+button:hover{
+    padding: 4% 11% 4% 11%;
+  }
+
 #offcanvas {
     width: 70%;
     height: 60%;
