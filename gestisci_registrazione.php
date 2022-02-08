@@ -7,9 +7,9 @@ $templateParams["footer"] = "footer.php";
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
-$templateParams["main"] = "registrazione.php";
-$templateParams["registrazione_agricoltore"] = "registrazione_agricoltore.php";
 
+$templateParams["registrazione_agricoltore"] = "registrazione_agricoltore.php";
+$templateParams["main"] = "registrazione.php";
 
 if (isset($_POST['cliente'])) {
     $_SESSION["agricoltore"] = 0;
@@ -28,14 +28,9 @@ $templateParams["azione"] = getAction($_GET["action"]);
 if(isset($_POST["username"])){
     if($dbh->checkUsername($_POST["username"])){
         $templateParams["errUsername"] = "Username già esistente!";
-    }
-}
-
-
-if(isset($_POST["email"])){
-    $email = $_POST["email"];
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $templateParams["errEmail"] = "Email non valida";
+        
+    } else{
+        require("salva_registrazione.php");
     }
 }
 
@@ -50,18 +45,6 @@ foreach($_POST as $post){
         require("salva_registrazione.php");
     }
 }*/
-
-if(isset($_POST["nome"])){
-    if(empty($_POST["nome"])){
-        //Login fallito
-        $templateParams["errore"] = "Inserisci ";
-    }
-    else{
-        require("salva_registrazione.php");
-    }
-}
-
-
 
 //Inserisco
 if($templateParams["azione"] == 'Inserisci'){

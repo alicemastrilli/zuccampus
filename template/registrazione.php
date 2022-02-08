@@ -14,15 +14,17 @@
   $azione = $templateParams["azione"];
   $utente = $templateParams["utente"];
   $immagine = $templateParams["immagine"];
+ 
 ?>
-
-
-
-<form id="form" method="post" enctype="multipart/form-data"  > 
-  
+<form id="form" method="post"  enctype="multipart/form-data"  > 
+<?php if(isset($templateParams["errUsername"])):?>
+                <div class="alert alert-warning text-center">
+                  <strong>Attenzione!</strong> <?php echo $templateParams["errUsername"]?>
+                </div>
+              <?php endif;?>
   <script>
     
-
+  
     function myFunction(){
       $("#matricola, #matricola_label").show();
     }
@@ -56,7 +58,8 @@
                 <span class="error" aria-live="polite"></span>
 
             </div>
-          <?php endforeach;?> 
+          <?php endforeach;?>
+          
             <?php if($_SESSION["agricoltore"]== 0 && !isUserLoggedIn()): ?>
               <fieldset>
                 <legend class="mx-2">Professione:</legend>

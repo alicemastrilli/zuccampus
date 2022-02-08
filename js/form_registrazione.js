@@ -1,5 +1,8 @@
 $(document).ready(function(){
-    
+  
+  
+  
+      
       $("#matricola, #matricola_label").hide();
       nome = document.getElementById('nome');
       nomeError = document.querySelector('#nome + span.error');
@@ -96,5 +99,4 @@ $(document).ready(function(){
     
   });
     })
-
-    
+     
