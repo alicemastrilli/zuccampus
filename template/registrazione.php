@@ -57,18 +57,6 @@
 
             </div>
           <?php endforeach;?> 
-              <?php if(isset($templateParams["errUsername"])):?>
-                <div class="alert alert-warning text-center">
-                  <strong>Attenzione!</strong> <?php echo $templateParams["errUsername"]?>
-                </div>
-              <?php endif;?>
-            
-          <?php if(isset($templateParams["errore"])):?>
-                <div class="alert alert-warning text-center">
-                  <strong>Attenzione!</strong> <?php echo $templateParams["errore"]."password"?>
-                </div>
-              <?php endif;?>
-          </div>  
             <?php if($_SESSION["agricoltore"]== 0 && !isUserLoggedIn()): ?>
               <fieldset>
                 <legend class="mx-2">Professione:</legend>
