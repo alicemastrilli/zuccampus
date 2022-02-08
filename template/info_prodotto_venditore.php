@@ -19,8 +19,8 @@
                 <p><?php echo $zucca["tipo"]; ?></p>
                 <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="50%" alt="">
                 <p><?php echo $zucca["descrizione_zucca"]; ?></p>
-                <p>€<?php echo $zucca["prezzo"]; ?></p>
-                <p><?php echo $zucca["peso"]; ?>kg</p>
+                <p>Costo:€<?php echo $zucca["prezzo"]; ?></p>
+                <p>Peso:<?php echo $zucca["peso"]; ?>kg</p>
                 <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
             </div>
         </div>
@@ -28,9 +28,8 @@
             <div class="col text-center">
                 <p>Costo: €<?php echo $zucca["prezzo"]; ?></p>
                 <form action="gestisci_prodotto.php?action=2" method="post">
-                    <input type="submit" name="modifica" value="Modifica">
+                    <input type="submit" class="visualize mb-2" name="modifica" value="Modifica">
                     <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]?>"/>
-                    
                 </form>
             </div>
         </div>

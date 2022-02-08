@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
     <nav class="navbar">
         <div class="container">
             <div class="float-start">
-                <a class="text-decoration-none" onclick="goBack()" >
+                <a class="text-decoration-none" href="prodotti.php" >
                     <img class="img-fluid ps-1 " src="./icons/freccia.png" width="10%" alt="" />
                 </a>
             </div>

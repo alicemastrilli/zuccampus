@@ -13,14 +13,14 @@ INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `
 ('La gioia di Marta', 'via del Campo', '14', '40013', 'Marta cura le sue zucche come se fossero sue figlie!\r\nAssapora l''amore!');
 
 INSERT INTO `utente` (`immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`,`CLIENTE`,`AGRICOLTORE`) VALUES 
-('mario.png', '92746', 'mario@gmail.com', 'MarioRossi', 'mario_71', 'Mario', 'Rossi',0,1),
-('marta.jpeg', '92345', 'marta@gmail.com', 'MartaGioia', 'Marta_81', 'Marta', 'Creti',0,1),
-('gigi.jpeg', '92476', 'gigi@gmail.com', 'Gigiiii', 'Gigetto', 'Gigi', 'Carlino',0,1);
+('mario.png', '3333208475', 'mario@gmail.com', 'MarioRossi', 'mario_71', 'Mario', 'Rossi',0,1),
+('marta.jpeg', '3457859375', 'marta@gmail.com', 'MartaGioia', 'Marta_81', 'Marta', 'Creti',0,1),
+('gigi.jpeg', '3204558694', 'gigi@gmail.com', 'Gigiiii', 'Gigetto', 'Gigi', 'Carlino',0,1);
 
 INSERT INTO `utente` (`immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`,`CLIENTE`,`AGRICOLTORE`) VALUES
-(NULL, '3395872', 'alessia.gentili@studio.unibo.it', 'GentiAle', 'GentiAle', 'Alessia', 'Gentili',1,0),
-('fotoprofilo.jpeg', '3357263485', 'francesco.verdi@studio.unibo.it', 'Verdi', 'FraVe', 'Francesco', 'Verdi',1,0),
-('', '3319558', 'f.carletti@unibo.it', 'ProfCarletti', 'SonoBello', 'Federico', 'Carletti',1,0);
+('Alessia.jpg', '3903208899', 'alessia.gentili@studio.unibo.it', 'GentiAle', 'GentiAle', 'Alessia', 'Gentili',1,0),
+('Federico.jpg', '3353217788', 'francesco.verdi@studio.unibo.it', 'Verdi', 'FraVe', 'Francesco', 'Verdi',1,0),
+('ProfCarletti.jpg', '3313459090', 'f.carletti@unibo.it', 'ProfCarletti', 'SonoBello', 'Federico', 'Carletti',1,0);
 
 INSERT INTO `cliente` (`username`, `matricola`) VALUES 
 ('GentiAle', '910004625'),
@@ -73,3 +73,6 @@ INSERT INTO `agricoltore` (`username`, `nome_azienda`) VALUES
 ('MarioRossi', 'La fattoria di Mario'),
 ('MartaGioia', 'La gioia di Marta'),
 ('Gigiiii', 'Gigi e le sue zucche');
+
+INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES ('La fattoria di Mario', 'Zucca Cigno', 'ornamentale', 'zuccaCigno.jpg', '7', '1,5', '9', 'Ottima zucca per decorare e abbellire i vostri pranzi autunnali!');
+INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES ('Gigi e le sue zucche', 'Zucca Birillo', 'ornamentale', 'zuccaBirillo.jpg', '6.90', '2', '8', 'Aggiungi un po\' di vibe autunnale alla tua casa con queste originali zucche!');

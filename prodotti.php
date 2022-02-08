@@ -22,7 +22,6 @@ if(isset($_GET["id"])){
     $nome_azienda=$_GET["id"];
     $templateParams["zucche"] = $dbh->getProductsByFarmer($nome_azienda);
     array_push($_SESSION['produttore'],$nome_azienda);
-    var_dump($_SESSION['produttore'][0]);
 }else{
     $templateParams["zucche"] = $dbh->getAllPumpkins();
 }

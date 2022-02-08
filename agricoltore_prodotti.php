@@ -9,7 +9,11 @@ $templateParams["main"] = "agricoltore_base.php";
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
-$templateParams["prodottiVenditore"] = $dbh->getProductsByFarmer('Gigi e le sue zucche');
+//il venditore non è sempre gigi e le sue zucche
+//quidni chiarire questo
+$templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"]);
+var_dump($templateParams["nome_azienda"]);
+$templateParams["prodottiVenditore"] = $dbh->getProductsByFarmer($templateParams["nome_azienda"][0]["nome_azienda"]);
 if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
