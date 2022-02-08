@@ -11,7 +11,7 @@
     <div class="col-6 p-3 text-center ">
         <h3><?php echo $templateParams["ordine"]["nome_zucca"];?></h3>
         <h4><?php echo $templateParams["ordine"]["tipo"];?></h4>
-        <img src="./icons/".<?php echo $templateParams["ordine"]["immagine"];?>
+        <img src="./icons/<?php echo $templateParams['ordine']['immagine'];?>"
         alt="zucca"/>
     </div>
 
