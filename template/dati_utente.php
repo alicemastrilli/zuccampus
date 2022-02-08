@@ -16,12 +16,12 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
         <img class="fotoprofilo" src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["utente"]["immagine"]);?>" class=" rounded-circle border border-2 border-dark" 
         alt="<?php echo $templateParams["utente"]["nome"]?>"/>
         </div>
-      </div>
-        <h3 class="text-center"><?php echo $templateParams["utente"]["nome"]; ?> <?php echo $templateParams["utente"]["cognome"]; ?></h3>
-        <h5 class="text-center"><?php echo $templateParams["utente"]["email"]; ?></h5>
-        <article class=" mx-2">
-            <h3 class="pt-2 px-2">Informazioni di base</h3>
-            <div >
+        </div>
+        <h2 class="text-center"><?php echo $templateParams["utente"]["nome"]; ?> <?php echo $templateParams["utente"]["cognome"]; ?></h2>
+        <h3 class="text-center"><?php echo $templateParams["utente"]["email"]; ?><h3>
+        <article class="rounded mx-2">
+            <h4 class="pt-2 px-2">Informazioni di base</h4>
+            <div class="mb-3 mt-3">
                 <label for="nome" class="form-label px-2">Nome:</label><br>
                 <div class="mx-2">
                    <input  type="text" class="input-box" id="nome" value="<?php echo $templateParams["utente"]["nome"]; ?>" name="nome" readonly>
@@ -35,7 +35,6 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
         <!--aggiungere che si deve vedere anche se arrivo da aziende agricole -->
         <?php if ( !isUserLoggedIn() || $_SESSION["agricoltore"]==1 || isset($_GET["id"])): ?>
         <article class="rounded mx-2">
-            <h3 class="pt-2 px-2">Azienda Agricola</h3>
             <div class="mb-3 mt-3">
             <label for="azienda_agricola" class="form-label px-2">Azienda agricola:</label><br>
                 <div class="mx-2 pb-3">
