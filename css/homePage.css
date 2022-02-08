@@ -19,7 +19,7 @@ div>div>div{
 }
 
 .image img{
-    opacity: 0.8;
+    opacity: 0.;
 }
 
 .image img:hover{
@@ -42,7 +42,7 @@ div>div>div{
     color:white;
     line-height:200px;
     margin:0;
-    top: 80%;
+    top: 95%;
     font-size: 80px;
 }
 
@@ -58,7 +58,7 @@ div>div>div{
 footer {
     position: relative;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.69);
+    background-color: #0C403D;
     font-size: 20px;
     bottom: 0;
 }
