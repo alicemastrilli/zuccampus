@@ -6,7 +6,7 @@
         <div class="container">
             <div class="float-start">
                 <a class="text-decoration-none" onclick="goBack()" >
-                    <img class="rounded" src="./icons/freccia.png" width="30" alt="" />
+                    <img class="rounded" src="./icons/freccia.png" width="40" alt="goBack" />
                 </a>
             </div>
         </div>

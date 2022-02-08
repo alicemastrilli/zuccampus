@@ -58,7 +58,7 @@ if(isset($_POST['delete'])){
 	<link rel="stylesheet" type="text/css" href="./css/carrello.css">
 </head>
 <div class="container-fluid text-center">
-    <h1>Il mio carrello:</h1>
+    <h2>Il mio carrello:</h2>
     <hr></hr>
 </div>
 <?php $total=0; ?>
@@ -90,6 +90,7 @@ if(isset($_POST['delete'])){
                                     <input type="submit" name="delete" value="Elimina il Prodotto" class="acquista" />                  
                                 </div>
                                 <div class="col-6 text-center">
+                                    <label for="quantity<?php echo $i; ?>">Quantità:</label>
                                     <input type="number" id="quantity<?php echo $i; ?>" name="quantity" class="quantity-input" value="<?php echo $prodotto["quantita"]; ?>" min="1" ><br><br>
                                     <input type="submit" name="quantityUpdate" value="Salva le modifiche" class="acquista">
                                 </div>

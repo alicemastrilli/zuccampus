@@ -7,12 +7,10 @@
       <a class=" <?php isActive("agricoltore_prodotti.php");?> nav-link" href="agricoltore_prodotti.php"><h3>Prodotti</h3></a>
     </li>
   </ul>
-  <main>
   <?php
     if(isset($templateParams["main_agr"])){
         require($templateParams["main_agr"]);
     }
     ?>
-    </main>
 
     

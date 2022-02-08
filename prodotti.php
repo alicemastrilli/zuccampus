@@ -18,8 +18,8 @@ if(isset($_SESSION['produttore'])){
 }
 $_SESSION['produttore'] = array();
 
-if(isset($_GET["id"])){
-    $nome_azienda=$_GET["id"];
+if(isset($_POST["nome_produttore"])){
+    $nome_azienda=$_POST["nome_produttore"];
     $templateParams["zucche"] = $dbh->getProductsByFarmer($nome_azienda);
     array_push($_SESSION['produttore'],$nome_azienda);
 }else{

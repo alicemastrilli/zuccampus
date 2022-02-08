@@ -2,7 +2,6 @@
 <html lang="it">
     <head>
         <link rel="stylesheet" type="text/css" href="./css/aziende_agricole.css" /> 
-
     </head>
 <article>
         <table class="table table-striped">
@@ -15,8 +14,9 @@
                     <p><?php echo $azienda["descrizione"]; ?></p>
                     <div class="row">
                         <div class="col-6 text-center"> 
-                            <form  action="prodotti.php?id=<?php echo $azienda["nome_azienda"]?>" method="post">
+                            <form  action="prodotti.php" method="post">
                                 <button class="rounded" >Scopri i prodotti</button>
+                                <input type="hidden" name="nome_produttore" value="<?php echo $azienda["nome_azienda"]; ?>">
                             </form>
                         </div>  
                         <div class="col-6 text-center">
