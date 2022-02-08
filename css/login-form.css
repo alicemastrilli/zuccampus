@@ -1,7 +1,11 @@
 .row>img{
     width:70px;
 }
-li>input:nth-child(1){
-    font-weight: bold;
-    background-color: #D9AF5D;  
+
+input[type=submit]{
+    background-color: #0C403D;
+    font-family:'Barlow', sans-serif; 
+    font-size: 20px;
+    color: #EDEDED;
+    padding: 3% 10% 3% 10%;
 }

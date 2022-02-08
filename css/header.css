@@ -40,6 +40,15 @@ button:hover{
     padding: 4% 11% 4% 11%;
 }
 
+input[type=submit]{
+    background-color: #0C403D;
+    font-family:'Barlow', sans-serif; 
+    font-size: 20px;
+    color: #EDEDED;
+    padding: 3% 10% 3% 10%;
+
+}
+
 table{
     background-color: #FAFAFA;
 }
@@ -47,7 +56,10 @@ td, th {
     border: none;
 }
 
-
+label{
+    font-family: 'Barlow', sans-serif;
+    font-size: 25px;
+}
 .freccia{
     width: 50px;
 }
