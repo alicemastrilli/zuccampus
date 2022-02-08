@@ -17,7 +17,7 @@
                     <tr>                   
                         <td class="col-9">
                             <h3><?php echo $prodotto["nome_zucca"]; ?></h3>
-                            <h5><?php echo $prodotto["tipo"]; ?></h5>
+                            <h4><?php echo $prodotto["tipo"]; ?></h5>
                             <p>Quantità disponibile:<?php echo $prodotto["disponibilita"]; ?></p>
                             <div class="row">
                                 <div class="col-6 text-center">

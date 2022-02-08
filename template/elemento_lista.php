@@ -4,9 +4,9 @@
          <?php echo $ordine["nome"]?> <?php echo $ordine["cognome"]?> <br><?php echo $ordine["quantita"]?> x
         <?php echo $ordine["nome_zucca"] ?>
         <?php if($_SESSION["agricoltore"]==1): ?>
-            <span class="float-end text-success"> <h6>+<?php echo $prezzo_totale;?>€</h6>
+            <span class="float-end text-success"> <span>+<?php echo $prezzo_totale;?>€
           <?php else: ?>
-            <span class="float-end text-danger"> <h6>-<?php echo $prezzo_totale;?>€</h6>
+            <span class="float-end text-danger"> <span>-<?php echo $prezzo_totale;?>€
           <?php endif; ?>
 
       </button> 

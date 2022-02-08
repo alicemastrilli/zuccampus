@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
         <div class="container">
             <div class="float-start">
                 <a class="text-decoration-none" href="prodotti.php" >
-                    <img class="img-fluid ps-1 " src="./icons/freccia.png" width="40" alt="" />
+                    <img class="img-fluid ps-1 " src="./icons/freccia.png" width="40" alt="goBack" />
                 </a>
             </div>
         </div>
@@ -52,8 +52,8 @@ if(isset($_POST['submit'])){
                         <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="200" alt="">
                         <input type="hidden" name="immagine" value="<?php echo $zucca["immagine"]; ?>">
                         <div class="container mb-2 text-center">
-                            <a>Produttori:</a>
-                            <select class="form-select" name="nome_azienda" onchange="seleziona_fornitore(this.value,'<?php echo $zucca["nome_zucca"]; ?>');" >
+                            <label for="produttori" >Produttori:</label>
+                            <select class="form-select" name="nome_azienda" id="produttori" onchange="seleziona_fornitore(this.value,'<?php echo $zucca["nome_zucca"]; ?>');" >
                             <?php if(!empty($_SESSION['produttore'])): ?>
                                 <option selected><?php echo $_SESSION['produttore'][0]; ?></option>
                                 <?php foreach($templateParams["produttori"] as $produttori):?>
@@ -116,7 +116,7 @@ if(isset($_POST['submit'])){
             <?php foreach($templateParams["recensioni"] as $recensione):?>
             <div class="row">
                 <div class="col sm-0">
-				    <div class="star-rating text-center" id="div-star">
+				    <div class="star-rating text-center">
                     <?php for($k=0;$k<intval($recensione["punteggio"]);$k++):?>
                         <img class="rounded" src="<?php echo UPLOAD_DIR?>stella_piena.png" width="30" alt="" />
                     <?php endfor;?>
