@@ -9,9 +9,9 @@
       <img src="./icons/freccia.png" alt="freccia indietro">
     </a>
     <div class="col-6 p-3 text-center ">
-        <h5><?php echo $templateParams["ordine"]["nome_zucca"];?></h5>
-        <h6><?php echo $templateParams["ordine"]["tipo"];?></h6>
-        <img src="./icons/zucca_ornamentale.jpg"  
+        <h3><?php echo $templateParams["ordine"]["nome_zucca"];?></h3>
+        <h4><?php echo $templateParams["ordine"]["tipo"];?></h4>
+        <img src="./icons/".<?php echo $templateParams["ordine"]["immagine"];?>
         alt="zucca"/>
     </div>
 
@@ -34,21 +34,12 @@
         src="<?php echo $templateParams["js"]?>"></script> 
   <?php if(isset($templateParams["js"])):?>
     <?php
-    //$valx = json_encode($templateParams["xV"]);
-    //$valy = json_encode($templateParams["yV"]);
+
     echo "<script>deliveryAnimation($width)</script>";
 
 ?>
 
-<?php 
 
-//$_POST["password"] =  "SonoBello";
-//$_POST["email"] = "alicemastrilli27@gmail.com";
-/*
-$_POST["ordine"] = $templateParams["ordine"];
-$_POST["campus_info"] = $templateParams["info"];
-$_POST["messaggio_action"]=1;
-require "invia_messaggio.php" */?>
 
 <?php 
 endif;?>
