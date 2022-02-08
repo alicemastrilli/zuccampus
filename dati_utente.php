@@ -16,7 +16,7 @@ if (isUserLoggedIn()){
 //accedo al form tramite 'scopri il venditore"
 if(isset($_GET["id"])){
         $nome_azienda = $_GET["id"];
-        $templateParams["user"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0];
+        $templateParams["utente"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0];
         $templateParams["azienda_info"] = $dbh -> getAziendaAgrByName($nome_azienda)[0];
 }
 
@@ -28,7 +28,7 @@ else{
         $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($templateParams["username"]);
         $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
         //info utente del profilo che sto visitando
-        $templateParams["user"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]; //immagine, num_telefono, email, nome, cognome
+        $templateParams["utente"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]; //immagine, num_telefono, email, nome, cognome
         $templateParams["azienda_info"] = $dbh -> getAziendaAgrByName($nome_azienda)[0]; //nome_azienda, descrizione, via, citta, numero_civico, cap
     }
 }
