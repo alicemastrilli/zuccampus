@@ -13,7 +13,6 @@
                 <div class="col-sm">
                     <img class="img-fluid float-sm-start" src="./icons/signoreSx.png" onclick="window.location.href='./aziende_agricole.php'" alt="produttori" />
                 </div>
-            </div>
-            
+            </div> 
         </div>
 </html>

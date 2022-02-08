@@ -12,7 +12,6 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 //il venditore non è sempre gigi e le sue zucche
 //quidni chiarire questo
 $templateParams["nome_azienda"] = $dbh->getAziendaByUsername($_SESSION["username"]);
-var_dump($templateParams["nome_azienda"]);
 $templateParams["prodottiVenditore"] = $dbh->getProductsByFarmer($templateParams["nome_azienda"][0]["nome_azienda"]);
 if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];

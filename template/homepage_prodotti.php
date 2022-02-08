@@ -7,7 +7,7 @@
         <div class="container">
             <div class="float-start">
                 <a class="text-decoration-none" onclick="goBack()" >
-                    <img class="rounded" src="./icons/freccia.png" width="10%" alt="" />
+                    <img class="rounded" src="./icons/freccia.png" width="40" alt="" />
                 </a>
             </div>
         </div>
@@ -31,7 +31,7 @@
                         <div class="carousel-item active">
                             <p><?php echo $zucca["nome_zucca"]; ?></p>
                             <p><?php echo $zucca["tipo"]; ?></p>
-                            <img class="mx-auto d-block" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="50%" alt="First slide">
+                            <img class="mx-auto d-block" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="220" alt="First slide">
                             <p>€<?php echo $zucca["prezzo"]; ?></p>
                         </div>
                     <?php endforeach; ?>
@@ -39,7 +39,7 @@
                         <div class="carousel-item">
                             <p><?php echo $zuccaPopolare["nome_zucca"]; ?></p>
                             <p><?php echo $zuccaPopolare["tipo"]; ?></p>
-                            <img class="mx-auto d-block" src="<?php echo UPLOAD_DIR.$zuccaPopolare["immagine"]; ?>" width="50%" alt="First slide">
+                            <img class="mx-auto d-block" src="<?php echo UPLOAD_DIR.$zuccaPopolare["immagine"]; ?>" width="220" alt="First slide">
                             <p>€<?php echo $zuccaPopolare["prezzo"]; ?></p>
                         </div>
                     <?php endforeach; ?>
@@ -60,8 +60,8 @@
         </div>
         <div class="row">
             <div class="col-sm text-center mb-2">
-                <button class="visualize" type="button" width="50%" id="visualizeButton"> Visualizza tutti i prodotti</button>
-                <script type="text/javascript">
+                <button class="visualize" type="button" id="visualizeButton"> Visualizza tutti i prodotti</button>
+                <script>
                     document.getElementById("visualizeButton").onclick = function () {
                     location.href = "./prodotti.php";
                     };

@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/header.css" /> 
-
 </head>
 
 <body>
@@ -29,7 +25,9 @@
             <?php endforeach;?>
             <div class="offcanvas offcanvas-end" id="offcanvas">
                 <div class="offcanvas-header ">
-                    <img src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="foto profilo utente">
+                    <?php if(!empty($templateParams["user"])): ?>
+                        <img src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="foto profilo utente">
+                    <?php endif; ?>
                     <h2 class="offcanvas-title p-2"><?php echo $templateParams["user"]["nome"]?> <?php echo $templateParams["user"]["cognome"]?></h2>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
                 </div>
@@ -59,26 +57,25 @@
             <img class="ps-2"data-bs-toggle="offcanvas" data-bs-target="#offcanvas" 
              src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="">
         <?php endif; ?>
-  
     </div>
     <script>
-        
             $(document).ready(function(){
                 var update = "1";
                 
                 $("#posta").click(function(){
                     $.ajax({
-            type: "POST",
-            url: "casella_messaggi.php",
-        data: { 'update': update, 'id':id }
-    });
+                        type: "POST",
+                        url: "casella_messaggi.php",
+                        data: { 'update': update, 'id':id }
+                    });
                 });
             });
-        </script>
-        
-     
+    </script>
 </nav>
         
-   </body>
-   </html>
+</body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</html>
 

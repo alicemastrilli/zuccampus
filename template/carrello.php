@@ -55,8 +55,6 @@ if(isset($_POST['delete'])){
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Zuccampus-Carrello</title>
 	<link rel="stylesheet" type="text/css" href="./css/carrello.css">
 </head>
 <div class="container-fluid text-center">
@@ -73,13 +71,15 @@ if(isset($_POST['delete'])){
 </div>
 <?php else: ?>
 <div class="container-fluid">
-    <article>
+    <article aria-label="article">
         <table class="table table-striped">
             <tbody>
+            <?php $i=0; ?>
             <?php foreach($_SESSION['product'] as $prodotto): ?>
                 <tr>                   
                     <td class="col-9">
                         <form action="#" method="POST" enctype="multipart/form-data">
+                            <?php $i=$i+1; ?>
                             <p><?php echo $prodotto["nome"]; ?></p>
                             <input type="hidden" name="nome" value="<?php echo $prodotto["nome"]; ?>">
                             <p><?php echo $prodotto["tipo"]; ?></p>
@@ -90,14 +90,14 @@ if(isset($_POST['delete'])){
                                     <input type="submit" name="delete" value="Elimina il Prodotto" class="acquista" />                  
                                 </div>
                                 <div class="col-6 text-center">
-                                    <input type="number" id="quantity" name="quantity" class="quantity-input" value="<?php echo $prodotto["quantita"]; ?>" min="1" max="" ><br><br>
+                                    <input type="number" id="quantity<?php echo $i; ?>" name="quantity" class="quantity-input" value="<?php echo $prodotto["quantita"]; ?>" min="1" ><br><br>
                                     <input type="submit" name="quantityUpdate" value="Salva le modifiche" class="acquista">
                                 </div>
                             </div>
                         </form>
                     </td>
                     <td class="col-3 p-2">
-                        <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="50%" alt="" />
+                        <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="150" alt="" />
                         <p>Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</p>
                         <?php $total=$total+(floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]));?>
                     </td>

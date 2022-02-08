@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 if(isset($_POST['submit'])){
     $newproduct=array(
-        'nome' => $_POST["nome"],
+        'nome' => $_POST["nome_zucca"],
         'tipo' => $_POST["tipo"],
         'immagine' => $_POST["immagine"],
         'nome_azienda' => $_POST["nome_azienda"],
@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
         <div class="container">
             <div class="float-start">
                 <a class="text-decoration-none" href="prodotti.php" >
-                    <img class="img-fluid ps-1 " src="./icons/freccia.png" width="10%" alt="" />
+                    <img class="img-fluid ps-1 " src="./icons/freccia.png" width="40" alt="" />
                 </a>
             </div>
         </div>
@@ -46,13 +46,13 @@ if(isset($_POST['submit'])){
                 <div class="row"> 
                     <div class="col-sm-0 text-center">
                         <h2><?php echo $zucca["nome_zucca"]; ?></h2>
-                        <input type="hidden" name="nome" value="<?php echo $zucca["nome_zucca"]; ?>">
+                        <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
                         <p><?php echo $zucca["tipo"]; ?></p>
                         <input type="hidden" name="tipo" value="<?php echo $zucca["tipo"]; ?>">
-                        <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="60%" alt="">
+                        <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="200" alt="">
                         <input type="hidden" name="immagine" value="<?php echo $zucca["immagine"]; ?>">
-                        <div class="container mb-2" width="68%">
-                            <label for="browser" class="form-label">Produttori:</label>
+                        <div class="container mb-2 text-center">
+                            <a>Produttori:</a>
                             <select class="form-select" name="nome_azienda" onchange="seleziona_fornitore(this.value,'<?php echo $zucca["nome_zucca"]; ?>');" >
                             <?php if(!empty($_SESSION['produttore'])): ?>
                                 <option selected><?php echo $_SESSION['produttore'][0]; ?></option>
@@ -118,10 +118,10 @@ if(isset($_POST['submit'])){
                 <div class="col sm-0">
 				    <div class="star-rating text-center" id="div-star">
                     <?php for($k=0;$k<intval($recensione["punteggio"]);$k++):?>
-                        <img class="rounded" src="<?php echo UPLOAD_DIR?>stella_piena.png" width="6%" alt="" />
+                        <img class="rounded" src="<?php echo UPLOAD_DIR?>stella_piena.png" width="30" alt="" />
                     <?php endfor;?>
                     <?php for($k=0;$k<(5-intval($recensione["punteggio"]));$k++):?>
-                        <img class="rounded" src="<?php echo UPLOAD_DIR?>stella.png" width="6%" alt="" />
+                        <img class="rounded" src="<?php echo UPLOAD_DIR?>stella.png" width="30" alt="" />
                     <?php endfor;?>
                     </div>
                     <p class="font-weight-bold" ><?php echo $recensione["nome_azienda"]; ?></p>

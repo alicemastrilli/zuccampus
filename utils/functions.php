@@ -70,8 +70,10 @@ function countShoppingCartProducts($cart_products){
 
 function UserWindowFields(){
     $field = array();
-    if($_SESSION["agricoltore"]==1){
-        array_push($field, array("text" => "Home", "href" => "agricoltore_vendite.php"));
+    if(isUserLoggedIn()){
+        if($_SESSION["agricoltore"]==1){
+            array_push($field, array("text" => "Home", "href" => "agricoltore_vendite.php"));
+        }
     }
     array_push($field, array("text" => "Il mio profilo", "href" => "dati_utente.php"));
     array_push($field, array("text" => "Ordini", "href" => "lista_ordini.php"));

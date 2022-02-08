@@ -1,4 +1,4 @@
-
+<html>
     <head>
         <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />
     </head>
@@ -6,7 +6,7 @@
         <div class="container">
             <div class="float-start">
                 <a class="text-decoration-none" onclick="goBack()" >
-                    <img class="rounded" src="./icons/freccia.png" width="10%" alt="" />
+                    <img class="rounded" src="./icons/freccia.png" width="30" alt="" />
                 </a>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <div class="col-sm-0 text-center">
                 <h2><?php echo $zucca["nome_zucca"]; ?></h2>
                 <p><?php echo $zucca["tipo"]; ?></p>
-                <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="50%" alt="">
+                <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="220" alt="">
                 <p><?php echo $zucca["descrizione_zucca"]; ?></p>
                 <p>Costo:€<?php echo $zucca["prezzo"]; ?></p>
                 <p>Peso:<?php echo $zucca["peso"]; ?>kg</p>

@@ -15,8 +15,8 @@ if(!isset($_SESSION['product'])){
     $_SESSION['product'] = array();
 }
 
-if(isset($_GET["id"])){
-    $nome_zucca = $_GET["id"];
+if(isset($_POST["nome_zucca"])){
+    $nome_zucca = $_POST["nome_zucca"];
 }
 
 $nome_azienda = $_POST["nome_azienda"];
