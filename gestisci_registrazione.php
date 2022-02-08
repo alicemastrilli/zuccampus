@@ -32,28 +32,15 @@ if(isset($_POST["username"])){
     } else{
         require("salva_registrazione.php");
     }
-}
-
-/*
-foreach($_POST as $post){
-    if(isset($post)){
-        if(empty($post)){
-            $templateParams["errore"] = "Inserisci ";
-        }
-    }
-    else{
-        require("salva_registrazione.php");
-    }
-}*/
-
-//Inserisco
-if($templateParams["azione"] == 'Inserisci'){
+}else if($templateParams["azione"] == 'Inserisci'){
     $templateParams["utente"] = getEmptyUser();
     $templateParams["azienda"] = getEmptyAzienda();
     $templateParams["immagine"] = "utente_generico.jpg";
+    require("template/homePage.php");
+
 }
 
-//Modifico
+
 if($templateParams["azione"] == 'Modifica') {    
     
     $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];
@@ -71,8 +58,9 @@ if($templateParams["azione"] == 'Modifica') {
             $templateParams["azienda"] = $dbh -> getAziendaAgrByName($nome_azienda)[0];
         }
     }
+    require("template/homePage.php");
+
 }  
 
-    require("template/homePage.php");
 
 ?>

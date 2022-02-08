@@ -7,7 +7,7 @@
         <div class="container">
             <div class="float-start">
                 <a class="text-decoration-none" onclick="goBack()">
-                    <img class="img-fluid ps-1 " src="./icons/freccia.png" width="10%" alt="" />
+                    <img class="img-fluid ps-1 " src="./icons/" width="10%" alt="" />
                 </a>
             </div>
         </div>
