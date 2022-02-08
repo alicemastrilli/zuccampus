@@ -38,5 +38,5 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 
 $templateParams["azione"] = getAction($_GET["action"]);
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

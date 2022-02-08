@@ -72,9 +72,14 @@ function fillForm(){
     array_push($arr, array("text"=>"nome", "type"=>"text"));
     array_push($arr, array("text"=>"cognome", "type"=>"text"));
     array_push($arr, array("text"=>"username", "type"=>"text"));
+    
+    return $arr;
+}
+function fillToHide() {
+    $arr = array();
+
     array_push($arr, array("text"=>"password", "type"=>"password"));
     array_push($arr, array("text"=>"conferma password", "type"=>"password"));
-
     return $arr;
 }
 
@@ -86,8 +91,10 @@ function contattoForm(){
 }
 function UserWindowFields(){
     $field = array();
-    if($_SESSION["agricoltore"]==1){
-        array_push($field, array("text" => "Home", "href" => "agricoltore_vendite.php"));
+    if(isUserLoggedIn()){
+        if($_SESSION["agricoltore"]==1){
+            array_push($field, array("text" => "Home", "href" => "agricoltore_vendite.php"));
+        }
     }
     array_push($field, array("text" => "Il mio profilo", "href" => "dati_utente.php"));
     array_push($field, array("text" => "Ordini", "href" => "lista_ordini.php"));

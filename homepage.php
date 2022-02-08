@@ -16,5 +16,5 @@ if(!isset($_SESSION['product'])){
     $_SESSION['product'] = array();
 }
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

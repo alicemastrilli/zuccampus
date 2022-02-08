@@ -63,7 +63,6 @@ endif;?>
     <div class="m-5 text-center">
 
   
-    <span >  Consegna prevista: </span> <span class="text-secondary"> Zucca delica</span><br>
         </div>      
         
         

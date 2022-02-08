@@ -14,5 +14,5 @@ $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 $templateParams["studente"] = $dbh->isStudente([$_SESSION["username"]]);
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

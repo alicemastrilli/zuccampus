@@ -32,5 +32,5 @@ else{
 
 
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

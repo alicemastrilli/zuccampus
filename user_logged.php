@@ -21,7 +21,7 @@ if(!isset($_POST["out"]) && !isset($_SESSION["registrazione"])){
 } else{
     $templateParams["main"] = "homepage2.php";
 }
-require("template/homepage.php");
+require("template/base.php");
 
 
 ?>

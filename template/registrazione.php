@@ -14,20 +14,25 @@
   $azione = $templateParams["azione"];
   $utente = $templateParams["utente"];
   $immagine = $templateParams["immagine"];
+ 
 ?>
-
-
-
-<form id="form" method="post" enctype="multipart/form-data"  > 
-  
+<form id="form" method="post"  enctype="multipart/form-data"  > 
+<?php if(isset($templateParams["errUsername"])):?>
+                <div class="alert alert-warning text-center">
+                  <strong>Attenzione!</strong> <?php echo $templateParams["errUsername"]?>
+                </div>
+              <?php endif;?>
   <script>
     
-
+  
     function myFunction(){
       $("#matricola, #matricola_label").show();
     }
     function hide(){
       $("#matricola, #matricola_label").hide();
+    }
+    function hideAll($c){
+      $($c).hide();
     }
   </script>
   <section>
@@ -56,7 +61,23 @@
                 <span class="error" aria-live="polite"></span>
 
             </div>
-          <?php endforeach;?> 
+          <?php endforeach;?>
+          <?php foreach(fillToHide() as $field):?>
+
+          <label <?php if(isUserLoggedIn()){ echo "hidden";}?>  for=<?php echo str_replace(' ', '',  $field["text"]);?> class="form-label px-2"><?php echo ucwords($field["text"])?> :</label>
+            <div class="mx-2 pb-3">
+              <input class="form-control" type="<?php if(isUserLoggedIn()){ echo "hidden";} else{echo $field["type"];}?>" id="<?php echo str_replace(' ', '',  $field["text"]);?>" name="<?php echo $field["text"]?>" required/>
+                <span class="error" aria-live="polite"></span>
+
+            </div>
+          <?php endforeach;?>
+          <?php if(isset($utente["matricola"]) && $_SESSION["agricoltore"]==0 && !is_null($utente["matricola"]) ):?>
+          <label for="matricola"id="matricola_label" class="form-label px-2">Matricola:</label>
+            <div class="mx-2 pb-3">
+              <input class="form-control" type="number" size="10" id="matricola" name="matricola" <?php if($azione=="Modifica"):?> value="<?php echo $utente["matricola"]; ?>" <?php endif;?> />
+                <span class="error" aria-live="polite"></span>
+              </div>
+          <?php endif;?>
             <?php if($_SESSION["agricoltore"]== 0 && !isUserLoggedIn()): ?>
               <fieldset>
                 <legend class="mx-2">Professione:</legend>
@@ -83,7 +104,7 @@
       </article>
       <article class="rounded mx-2">
         <?php if($_SESSION["agricoltore"] == 1):?>
-          <h3> Informazioni azienda agricola</h3>
+          <h3> </h3>
           <?php    require($templateParams["registrazione_agricoltore"]); ?>
             
         <?php endif; ?>
@@ -101,10 +122,11 @@
 
               </div>
           <?php endforeach;?>  
+          
           <label for="num_telefono" class="form-label px-2">Numero di telefono:</label>
             <div class="mx-2 pb-3">
               <input class="form-control" type="number" id="numeroditelefono" name="num_telefono" required
-              <?php if($azione=="Modifica"):?> value="num_telefono" <?php endif;?> />
+              <?php if($azione=="Modifica"):?> value="<?php echo $utente["num_telefono"]; ?>" <?php endif;?> />
                 <span class="error" aria-live="polite"></span>
 
               </div>

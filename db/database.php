@@ -163,7 +163,7 @@ class DatabaseHelper{
     }
 
     public function getPopularPumpkins(){
-        $query="SELECT * FROM comprende,zucca WHERE comprende.nome_zucca=zucca.nome_zucca ORDER BY quantita ASC LIMIT 2";
+        $query="SELECT * FROM comprende,zucca WHERE comprende.nome_zucca=zucca.nome_zucca ORDER BY quantita ASC ";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();

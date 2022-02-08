@@ -22,5 +22,5 @@ if(isUserLoggedIn()){
 $templateParams["js"] = "js/chart.js";
 
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

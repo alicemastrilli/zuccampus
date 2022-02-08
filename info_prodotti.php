@@ -15,8 +15,8 @@ if(!isset($_SESSION['product'])){
     $_SESSION['product'] = array();
 }
 
-if(isset($_GET["id"])){
-    $nome_zucca = $_GET["id"];
+if(isset($_POST["nome_zucca"])){
+    $nome_zucca = $_POST["nome_zucca"];
 }
 
 $nome_azienda = $_POST["nome_azienda"];
@@ -35,5 +35,5 @@ if(!empty($_SESSION['produttore'])){
 $templateParams["zucca_info"] = $dbh -> getProductByFarmerAndName($nome_azienda, $nome_zucca);
 $templateParams["recensioni"] = $dbh -> getAllReviews($nome_zucca);
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

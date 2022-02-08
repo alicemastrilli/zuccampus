@@ -1,4 +1,4 @@
-
+<html>
     <head>
         <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />
     </head>
@@ -21,8 +21,9 @@
                             <p>Quantità disponibile:<?php echo $prodotto["disponibilita"]; ?></p>
                             <div class="row">
                                 <div class="col-6 text-center">
-                                    <form  action="info_prodotto_venditore.php?id=<?php echo $prodotto["nome_zucca"]?>" method="post">
+                                    <form  action="info_prodotto_venditore.php" method="post">
                                         <button class="visualize mb-2">Visualizza Prodotto</button>
+                                        <input type="hidden" name="nome_zucca" value="<?php echo $prodotto["nome_zucca"]; ?>" />
                                     </form>
                                 </div>
                                 <div class="col-6 text-center">
@@ -34,7 +35,7 @@
                             </div>
                         </td>
                         <td class="col-3 p-2">
-                            <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="30%" alt="" />
+                            <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="150" alt="" />
                         </td>
                     </tr>
                 <?php endforeach;?>
