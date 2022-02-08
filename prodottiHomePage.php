@@ -28,6 +28,5 @@ foreach($templateParams["zucchePopolari"] as $zucca){
 
 $templateParams["zucchePopolari"]=$zucchePopolari;
 
-//effettuare controllo che le zucche non abbiano quel nome
-require("template/homePage.php");
+require("template/base.php");
 ?>

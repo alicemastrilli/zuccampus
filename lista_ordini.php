@@ -32,5 +32,5 @@ if($_SESSION["agricoltore"]==1){
 
 
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

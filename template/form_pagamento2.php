@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="it">
+
+
+<head>
+       <link rel="stylesheet" type="text/css" href="./css/venditore.css"/> 
+       <script  src="./js/jquery-3.4.1.min.js"></script> 
+        <script  src="./js/form_pagamento.js"></script> 
+  </head>
+
 <?php 
 $azione = $templateParams["azione"];
 $num_cc = 1;
@@ -21,35 +31,47 @@ $num_cc = 1;
             <div class="mb-3 mt-3">
                 <label for="nome" class="form-label px-2">Nome:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="nome" value="<?php echo $pagamento["nome"]; ?>" name="nome" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                   <input  type="text" class="form-control " id="nome" required value="<?php echo $pagamento["nome"]; ?>" name="nome" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                   <span class="error" aria-live="polite"></span>
+
                 </div>
                 <label for="cognome" class="form-label px-2 ">Cognome:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="cognome" value="<?php echo $pagamento["cognome"]; ?>" name="cognome" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                   <input  type="text" class="form-control " id="cognome" required value="<?php echo $pagamento["cognome"]; ?>" name="cognome" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                   <span class="error" aria-live="polite"></span>
+
                 </div>
                 <label for="numero_carta" class="form-label px-2 ">Numero carta:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="numero_carta" value="<?php echo $pagamento["numero_carta"]; ?>" name="numero_carta" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                   <input  type="number" class="form-control " id="numero_carta" size="16" required value="<?php echo $pagamento["numero_carta"]; ?>" name="numero_carta" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                   <span class="error" aria-live="polite"></span>
+
                 </div>
                 <label for="cvv" class="form-label px-2 ">Cvv:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="cvv" value="<?php echo $pagamento["cvv"]; ?>" name="cvv" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                   <input  type="number" class="form-control " id="cvv" size="3" required value="<?php echo $pagamento["cvv"]; ?>" name="cvv" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                   <span class="error" aria-live="polite"></span>
+
                 </div>
                 <div class="row">
                     <label for="mese_scadenza" class="form-label mx-2  col-5">Mese scadenza:</label>
                     <label for="anno_scadenza" class="form-label mx-2 align-content-end  col-5">Anno scadenza:</label><br>
                     <div class="mx-2 pb-3 col-5">
-                    <input  type="text" class="form-control col-2" id="mese_scadenza" value="<?php echo $pagamento["mese_scadenza"]; ?>" name="mese_scadenza" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
-                    </div>
+                    <input  type="number" class="form-control col-2" id="mese_scadenza" min="1" max="12" required value="<?php echo $pagamento["mese_scadenza"]; ?>" name="mese_scadenza" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                    <span class="error" aria-live="polite"></span>
+    
+                </div>
                     <div class="mx-2 pb-3 col-5">
-                    <input  type="text" class="form-control " id="anno_scadenza" value="<?php echo $pagamento["anno_scadenza"]; ?>" name="anno_scadenza" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
-                    </div>
+                    <input  type="number" class="form-control " id="anno_scadenza" min="2022" max="2027" step="1" required value="<?php echo $pagamento["anno_scadenza"]; ?>" name="anno_scadenza" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                    <span class="error" aria-live="polite"></span>
+    
+                </div>
                 </div>
             </div>
         </article>
     <?php $num_cc += 1; endforeach;?>
     <?php if( isUserLoggedIn() && $azione == "Inserisci"): ?>
-            <button class="rounded p-4"  name="<?php echo $azione?>">Salva metodo di pagamento</button>
+            <button id="btn" class="rounded p-4"  name="<?php echo $azione?>">Salva metodo di pagamento</button>
         </form>
     <?php else: ?>
         <form  action="./form_pagamento.php" method="post">

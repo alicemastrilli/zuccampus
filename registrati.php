@@ -10,5 +10,5 @@ $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 $_SESSION["registrazione"]=1;
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

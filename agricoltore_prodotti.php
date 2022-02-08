@@ -19,5 +19,5 @@ if(isUserLoggedIn()){
 }
 
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

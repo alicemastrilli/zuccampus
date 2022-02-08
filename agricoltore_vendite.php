@@ -30,5 +30,5 @@ foreach($templateParams["ordini"] as $ordine){
 }
 $templateParams["main"] = "agricoltore_vendite.php";
 $templateParams["js"] = "js/chart.js";
-require("template/homePage.php");
+require("template/base.php");
 ?>

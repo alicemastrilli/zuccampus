@@ -11,7 +11,8 @@ if($_POST["action"] == 'Inserisci'){
     $cognome = htmlspecialchars($_POST["cognome"]);
     $cliente = 1;
     $agricoltore = 0;
-    //unsset($_SESSION["registrazione"]);
+    var_dump($_SESSION["registrazione"]);
+    unset($_SESSION["registrazione"]);
 
     list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
     $immagine = $msg;

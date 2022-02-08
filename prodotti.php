@@ -28,5 +28,5 @@ if(isset($_GET["id"])){
 
 $templateParams["agricoltori"] = $dbh->getAllFarmers();
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

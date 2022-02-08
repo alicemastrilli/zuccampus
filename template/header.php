@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <link rel="stylesheet" type="text/css" href="./css/header.css" /> 
 </head>
@@ -23,6 +23,7 @@
                     <?php endif; ?>
                 </a>
             <?php endforeach;?>
+            <?php if(isUserLoggedIn() && isset($templateParams["user"])):?>
             <div class="offcanvas offcanvas-end" id="offcanvas">
                 <div class="offcanvas-header ">
                     <?php if(!empty($templateParams["user"])): ?>
@@ -40,7 +41,8 @@
                 <?php endforeach; ?>
                 </ul>
             </div>
-        </div>
+            </div>
+            <?php endif;?>
         
         <?php if(isUserLoggedIn()): ?>
             

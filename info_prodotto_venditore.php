@@ -17,5 +17,5 @@ if(isset($_POST["nome_zucca"])){
 }
 $templateParams["zucca_info"] = $dbh -> getZuccaByName($nome_zucca);
 
-require("template/homePage.php");
+require("template/base.php");
 ?>

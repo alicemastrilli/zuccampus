@@ -13,22 +13,22 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
          <img src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">
        </a>
         <div class="col-6 p-3 text-center ">
-        <img src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"]);?>" class=" rounded-circle border border-2 border-dark" 
-        alt="<?php echo $templateParams["user"]["nome"]?>"/>
+        <img src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["utente"]["immagine"]);?>" class=" rounded-circle border border-2 border-dark" 
+        alt="<?php echo $templateParams["utente"]["nome"]?>"/>
         </div>
         </div>
-        <h3 class="text-center"><?php echo $templateParams["user"]["nome"]; ?> <?php echo $templateParams["user"]["cognome"]; ?></h3>
-        <h5 class="text-center"><?php echo $templateParams["user"]["email"]; ?></h5>
+        <h3 class="text-center"><?php echo $templateParams["utente"]["nome"]; ?> <?php echo $templateParams["utente"]["cognome"]; ?></h3>
+        <h5 class="text-center"><?php echo $templateParams["utente"]["email"]; ?></h5>
         <article class="rounded mx-2">
             <h3 class="pt-2 px-2">Informazioni di base</h3>
             <div class="mb-3 mt-3">
                 <label for="nome" class="form-label px-2">Nome:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="nome" value="<?php echo $templateParams["user"]["nome"]; ?>" name="nome" readonly>
+                   <input  type="text" class="form-control " id="nome" value="<?php echo $templateParams["utente"]["nome"]; ?>" name="nome" readonly>
                 </div>
                 <label for="cognome" class="form-label px-2 ">Cognome:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="text" class="form-control " id="cognome" value="<?php echo $templateParams["user"]["cognome"]; ?>" name="cognome" readonly>
+                   <input  type="text" class="form-control " id="cognome" value="<?php echo $templateParams["utente"]["cognome"]; ?>" name="cognome" readonly>
                 </div>
             </div>
         </article>
@@ -67,17 +67,17 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
             <div class="mb-3 mt-3">
                 <label for="email" class="form-label px-2">Email:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="email" class="form-control " id="email" value="<?php echo $templateParams["user"]["email"]; ?>" name="email" readonly>
+                   <input  type="email" class="form-control " id="email" value="<?php echo $templateParams["utente"]["email"]; ?>" name="email" readonly>
                 </div>
                 <label for="num_telefono" class="form-label px-2">Numero telefonico:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="number" class="form-control " id="num_telefono" value="<?php echo $templateParams["user"]["num_telefono"]; ?>" name="numero_telefono" readonly>
+                   <input  type="number" class="form-control " id="num_telefono" value="<?php echo $templateParams["utente"]["num_telefono"]; ?>" name="numero_telefono" readonly>
                 </div>
                 
               </div>
         </article>
-        <?php if(isUserLoggedIn() && $templateParams["user_loggato"]["nome"]==$templateParams["user"]["nome"]): ?>
-         <!--passare come post lo username dell'utente -->
+        <?php if(isUserLoggedIn() && $templateParams["user_loggato"]["nome"]==$templateParams["utente"]["nome"]): ?>
+         <!--passare come post lo utentename dell'utente -->
          <form class="text-center pb-2" action="gestisci_registrazione.php?action=2" method="post">
             <?php if($_SESSION["agricoltore"] == 1):?>
                <input type="hidden" name="nome_azienda" value="<?php echo $azienda["nome_azienda"]; ?>" />
