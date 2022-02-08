@@ -1,4 +1,5 @@
- button {
-    font-weight: bold;
-    background-color: #D9AF5D;
+
+td>img{
+    width: 130px;
+    clip-path: circle();
 }

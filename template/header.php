@@ -2,6 +2,9 @@
 <html lang="it">
 <head>
   <link rel="stylesheet" type="text/css" href="./css/header.css" /> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Questrial&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -9,7 +12,7 @@
 <nav class="navbar">
     <div class="container ">
         <a class="navbar-brand text-black" href="homepage.php">
-            <h1 class="text-dark"><?php echo $templateParams["nome"] ; ?></h1>
+            <h1 class="text-dark">Zuccampus</h1>
         </a>
         <div class="float-end">
             <?php foreach(getFootersIcons() as $icon):?>

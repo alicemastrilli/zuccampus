@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="./css/aziende_agricole.css" /> 
     </head>
 <article>
-        <table class="table table-striped">
+        <table class="table bordless">
             <tbody>
                 <?php foreach($templateParams["aziende_agricole"] as $azienda):?>
                 <tr>
