@@ -1,4 +1,8 @@
 
+section{
+    background-color: #FAFAFA;
+}
+
 .fotoprofilo{
     width: 150px;
     clip-path: circle();
@@ -8,9 +12,10 @@ article div{
     background-color:  #FAFAFA;
 }
 
+
 input.input-box, textarea {
     width: 100%;
-    padding: 12px 20px;
+    padding: 8px 15px;
     margin: 8px 0;
     display: inline-block;
     
@@ -18,4 +23,12 @@ input.input-box, textarea {
     outline: 0;
   border-width: 0 0 3px;
   border-color:#8DC7A3;
+  }
+
+  label{
+      margin-bottom: 0%;
+  }
+
+  .form-label{
+      margin: 0;
   }
