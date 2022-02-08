@@ -1,6 +1,11 @@
 
+body{
+    background-color: #FAFAFA;
+}
+
 section{
     background-color: #FAFAFA;
+    margin: 0 3% 0 3%;
 }
 
 .fotoprofilo{
@@ -12,21 +17,32 @@ article div{
     background-color:  #FAFAFA;
 }
 
-
 input.input-box, textarea {
     width: 100%;
     padding: 8px 15px;
     margin: 8px 0;
     display: inline-block;
-    
+    font-family: 'Questrial', sans-serif;
+    font-size: 20px;
     background-color: #FAFAFA;
     outline: 0;
   border-width: 0 0 3px;
   border-color:#8DC7A3;
   }
 
+  h4{
+    width: 23%;
+    font-size: 18px;
+    background-color:#8DC7A3 ;
+    border-radius: 25px;
+    padding: 3px 0 5px 8px;
+    margin-bottom: 0%;
+  
+}
+
   label{
       margin-bottom: 0%;
+      font-family: 'Barlow', sans-serif;
   }
 
   .form-label{
