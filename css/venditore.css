@@ -7,3 +7,17 @@ button {
     font-weight: bold;
     background-color: #D9AF5D;
 }
+/*
+input:invalid {
+    border: 2px dashed red;
+    background-color:rgb(245, 125, 56);
+  }
+  
+  input:invalid:required {
+    background-image: rgb(245, 125, 56);
+  }
+  
+  input:valid {
+    border: 2px solid black;
+  }
+  */

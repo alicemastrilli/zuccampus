@@ -67,7 +67,23 @@ function countShoppingCartProducts($cart_products){
     }
     return $i;
 }
+function fillForm(){
+    $arr = array();
+    array_push($arr, array("text"=>"nome", "type"=>"text"));
+    array_push($arr, array("text"=>"cognome", "type"=>"text"));
+    array_push($arr, array("text"=>"username", "type"=>"text"));
+    array_push($arr, array("text"=>"password", "type"=>"password"));
+    array_push($arr, array("text"=>"conferma password", "type"=>"password"));
 
+    return $arr;
+}
+
+function contattoForm(){
+    $arr = array();
+    array_push($arr, array("text"=>"email", "type"=>"email"));
+
+    return $arr;
+}
 function UserWindowFields(){
     $field = array();
     if($_SESSION["agricoltore"]==1){
