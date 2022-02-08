@@ -11,7 +11,10 @@ if (isUserLoggedIn()){
     //due righe che mi servono per l'header
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
+    $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];
+
 }
+
 
 //accedo al form tramite 'scopri il venditore"
 if(isset($_GET["id"])){
