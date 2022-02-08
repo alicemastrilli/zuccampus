@@ -85,18 +85,6 @@ $(document).ready(function(){
     
   });
 
-  matr = document.getElementById('matricola');
-  matrErr = document.querySelector('#matricola + span.error');
-  matr.addEventListener('input', function (event) {
-    matr.size = 10;
-   
-    if (matr.value.length != 10) {
-        matrErr.textContent = 'Numero di matricola non valida!'; // Reset the content of the message
-    } else {
-        matrErr.textContent = ''; // Reset the content of the message
-
-    } 
-    
-  });
+  
     })
      

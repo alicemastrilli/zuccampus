@@ -72,9 +72,14 @@ function fillForm(){
     array_push($arr, array("text"=>"nome", "type"=>"text"));
     array_push($arr, array("text"=>"cognome", "type"=>"text"));
     array_push($arr, array("text"=>"username", "type"=>"text"));
+    
+    return $arr;
+}
+function fillToHide() {
+    $arr = array();
+
     array_push($arr, array("text"=>"password", "type"=>"password"));
     array_push($arr, array("text"=>"conferma password", "type"=>"password"));
-
     return $arr;
 }
 
