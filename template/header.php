@@ -27,6 +27,7 @@
                     <?php endif; ?>
                 </a>
             <?php endforeach;?>
+            <?php if(isUserLoggedIn() && isset($templateParams["user"])):?>
             <div class="offcanvas offcanvas-end" id="offcanvas">
                 <div class="offcanvas-header ">
                     <img src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="foto profilo utente">
@@ -42,7 +43,8 @@
                 <?php endforeach; ?>
                 </ul>
             </div>
-        </div>
+            </div>
+            <?php endif;?>
         
         <?php if(isUserLoggedIn()): ?>
             
