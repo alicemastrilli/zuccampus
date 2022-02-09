@@ -2,6 +2,12 @@ nav{
     background-color: #FFA416;
 }
 
+body{
+    background-color: #FAFAFA;
+}
+article{
+    margin: 0 3% 0 3%;
+}
 h1{
     font-family: 'Barlow', sans-serif;
     font-size: 40px;
@@ -46,13 +52,13 @@ input[type=submit]{
     font-size: 20px;
     color: #EDEDED;
     padding: 3% 10% 3% 10%;
-
 }
 
 table{
     background-color: #FAFAFA;
 }
 td, th {
+    margin: 10px;
     border: none;
 }
 

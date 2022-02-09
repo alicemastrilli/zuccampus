@@ -55,7 +55,7 @@ if(isset($_POST['delete'])){
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="./css/carrello.css">
+    <link rel="stylesheet" type="text/css" href="./css/carrello.css" /> 
 </head>
 <div class="container-fluid text-center">
     <h2>Il mio carrello:</h2>
@@ -67,7 +67,7 @@ if(isset($_POST['delete'])){
     <p>Il carrello è vuoto<p>
 </div>
 <div class="container-left mb-2 mt-2 text-center">
-    <button type="button" class="acquista" onclick="goBackShopping()">Torna allo shopping</button>
+    <button type="button" class="rounded" onclick="goBackShopping()">Torna allo shopping</button>
 </div>
 <?php else: ?>
 <div class="container-fluid">
@@ -80,19 +80,19 @@ if(isset($_POST['delete'])){
                     <td class="col-9">
                         <form action="#" method="POST" enctype="multipart/form-data">
                             <?php $i=$i+1; ?>
-                            <p><?php echo $prodotto["nome"]; ?></p>
+                            <h3><?php echo $prodotto["nome"]; ?></h3>
                             <input type="hidden" name="nome" value="<?php echo $prodotto["nome"]; ?>">
                             <p><?php echo $prodotto["tipo"]; ?></p>
-                            <p><?php echo $prodotto["nome_azienda"]; ?></p>
+                            <p class="azienda"><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
                             <div class="row">
                                 <div class="col-6 text-center ">
-                                    <input type="submit" name="delete" value="Elimina il Prodotto" class="acquista" />                  
+                                    <input type="submit" name="delete" value="Elimina il Prodotto" class="rounded" />                  
                                 </div>
                                 <div class="col-6 text-center">
                                     <label for="quantity<?php echo $i; ?>">Quantità:</label>
                                     <input type="number" id="quantity<?php echo $i; ?>" name="quantity" class="quantity-input" value="<?php echo $prodotto["quantita"]; ?>" min="1" ><br><br>
-                                    <input type="submit" name="quantityUpdate" value="Salva le modifiche" class="acquista">
+                                    <input type="submit" name="quantityUpdate" value="Salva le modifiche" class="rounded">
                                 </div>
                             </div>
                         </form>
@@ -107,16 +107,16 @@ if(isset($_POST['delete'])){
             </tbody>
         </table>
         <div class="container mt-2 mb-2 text-center">
-            <p>Sub-totale:<?php echo $total; ?>€</p>
+            <p>Totale:<?php echo $total; ?>€</p>
         </div>       
     </article>
     <div class="text-center">
         <div class="btn-group text-center mb-2">
-            <button type="button" class="acquista" onclick="goBackShopping()">Torna allo shopping</button>
+            <button type="button" class="rounded" onclick="goBackShopping()">Torna allo shopping</button>
         </div>
         <div class="btn-group text-center mb-2">
             <form  action="<?php if(!isUserLoggedIn()) echo "login.php"; else echo "gestisci_ordine.php"; ?>" method="post">
-                <button name="procediordine" class="acquista">Procedi all'ordine</button>           
+                <button name="procediordine" class="rounded">Procedi all'ordine</button>           
             </form>  
         </div>
     </div>
