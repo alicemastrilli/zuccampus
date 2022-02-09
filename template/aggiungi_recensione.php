@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/info_prodotti.css" /> 
+        <link rel="stylesheet" type="text/css" href="./css/dati_utente.css" /> 
     </head>
         <div class="container">
             <div class="float-start">
@@ -15,11 +15,10 @@
             <h2>Aggiungi una recensione</h2>
             <div class="row mb-3 mt-3">
                 <div class="col-sm-0 text-center">
-                    <div class="font-weight-bold">
-                        <a><strong><?php echo $nome_zucca; ?></strong></a>
+                    <div >
+                        <h3><?php echo $nome_zucca; ?></h3>
                         <input type="hidden" name="zucca" value="<?php echo $nome_zucca; ?>" />
-                        <br><br>
-                        <div class="mt-2 m-2 text-center" >
+                        <div class=" m-2 text-center" >
                             <label for="produttori" ><strong>Produttore:</strong></label>
                             <select class="form-select mb-2" id="produttori" name="produttori">
                             <?php foreach($templateParams["produttori"] as $produttore):?>
@@ -27,7 +26,6 @@
                             <?php endforeach;?>
                             </select> 
                         </div>
-                        <br><br>
                     </div>
                     <div class="mt-2 m-2">
                         <label for="valutazione"><strong>Valutazione:</strong></label>    
