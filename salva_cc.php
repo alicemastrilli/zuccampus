@@ -11,7 +11,6 @@ if($_GET["action"] == "Inserisci"){
     $mese_scadenza = htmlspecialchars($_POST["mese_scadenza"]);
     $username = $_SESSION["username"];
 
-    var_dump($cvv);
     $msg = $dbh -> insertNewCC($cvv, $nome, $numero_carta, $mese_scadenza, $anno_scadenza, $cognome, $username);
 }
 

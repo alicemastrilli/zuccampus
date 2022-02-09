@@ -31,11 +31,8 @@ if(isset($_GET["formmsg"])){
 if(isUserLoggedIn()){
     $login_result = $dbh->checkAgricoltore($_SESSION["username"]);
     if( $login_result[0]["AGRICOLTORE"]==0){
-        var_dump("cia");
         $_SESSION["agricoltore"]= 0;
         if(isset($_POST["out"])){
-            var_dump("set");
- 
             $_POST["out"] = $_POST["out"];
         }
         require "user_logged.php";
