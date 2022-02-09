@@ -23,9 +23,20 @@ foreach($vendite as $vendita){
     array_push($templateParams["yV"], $vendita["quantita"]);
 }
 $templateParams["ordini"] = $dbh->getAllOrders($nome_azienda);
+
+$templateParams["comprende"] = array();
+foreach($templateParams["ordini"] as $ord){
+    array_push($templateParams["comprende"], $dbh->getAllComprende($ord["id_ordine"]));
+}
+//per ogni ordine posso avere più voci comprende--> in quel caso nel "riassunto ordine"
+//si dovrà calcolare la somma totale dei comprende e mettere tutti i nomi delle zucche 
 $templateParams["guadagno"] =0;
 foreach($templateParams["ordini"] as $ordine){
-    $templateParams["guadagno"]+=$ordine["prezzo"]*$ordine["quantita"];
+    $comprende = $dbh->getAllComprende($ordine["id_ordine"]);
+    foreach($comprende as $compr){
+        $templateParams["guadagno"]+=$compr["prezzo"]*$compr["quantita"];
+
+    }
     
 }
 $templateParams["main"] = "agricoltore_vendite.php";

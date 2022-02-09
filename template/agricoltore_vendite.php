@@ -24,7 +24,8 @@
   
   <div class="mx-4 p-3"> <h5>Ultime transazioni:</h5></div>
   <ul class="list-group mx-3 mb-3 ">
-    <?php foreach($templateParams["ordini"] as $ordine):?>
+    <?php foreach($templateParams["ordini"] as $ord):?>
+      <?php foreach($dbh->getAllComprende($ord["id_ordine"]) as $ordine): ?>
       <?php $prezzo_totale = $ordine["prezzo"] * $ordine["quantita"];?>
     <li class="list-group-item border-dark ">
     <form action="ordine.php?id=<?php echo $ordine["id_ordine"]?>" method="post">
@@ -36,6 +37,7 @@
     </button>
     </form>
     </li>
+    <?php endforeach;?>
   <?php endforeach;?>  </ul>
 </div>
 </html>

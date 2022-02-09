@@ -70,7 +70,7 @@ function setMessageText($n, $ordine){
 }
 function setFineProdottoText($zucca){
     $arr = array();
-    array_push($arr,array("testo"=>"Gentile ". $_SESSION["username"] . " la zucca ". $zucca["nome_zucca"] . " è in esaurimento!", "agr"=>1));
+    array_push($arr,array("testo"=>"Gentile agricoltore, la sua ". $zucca[0] . " è in esaurimento!", "agr"=>1));
     return $arr;
 }
 function countShoppingCartProducts($cart_products){

@@ -59,7 +59,7 @@ username: ".$_SESSION["username"] . " password: ".$_POST["password"];
 }
   ?>
 
-<?php if ($_POST["messaggio_action"]!=2):?>
+<?php if ($_POST["messaggio_action"]!=2 && $_POST["messaggio_action"]!=4):?>
 <div class="toast  show  col-12 " id="toast">
   <div class="toast-header col-12  text-center text-black">
     Nuovo messaggio
@@ -87,21 +87,6 @@ username: ".$_SESSION["username"] . " password: ".$_POST["password"];
 </div>
 </div>
 <?php endif?>
-<?php if ($_POST["messaggio_action"]!=2):?>
-<div class="toast  show  col-12 " id="toast">
-  <div class="toast-header col-12  text-center text-black">
-    Nuovo messaggio
-    <div class="col-6">
-      </div>
-    <button type="button" class="btn-close float-end text-black " data-bs-dismiss="toast"></button>
-    
-  </div>
-  <div class="toast-body col-12 text-black">
-  <?php echo $msg[1]["testo"];?>
-  </div>
-</div>
-</div>
-<?php endif;?>
 <div class="col-3"></div>
 <?php
 if($_POST["messaggio_action"]==0) {
@@ -159,11 +144,11 @@ $_POST["info"]=array("testo"=>array(), "agr"=>array());
     $_POST["ora"] = date('H:i');
     $_POST["nome_azienda"] = $recensione[2];
     $_POST["link"] = "lista_recensioni.php";
-}  elseif($_POST["messagigo_action"] == 4){
+}  elseif($_POST["messaggio_action"] == 4){
     $_POST["data"] = date('Y-m-d');
     $_POST["ora"] = date('H:i');
-    $_POST["nome_zucca"] = $_POST["zucca"]["nome_zucca"];
-    $_POST["link"] = "info_prodotti_venditore.php";
+    $_POST["nome_zucca"] = $_POST["zucca"][0];
+    $_POST["link"] = "";
 }
 
 
