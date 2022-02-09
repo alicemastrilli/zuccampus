@@ -4,7 +4,7 @@
 
 
 <head>
-       <link rel="stylesheet" type="text/css" href="./css/venditore.css"/> 
+       <link rel="stylesheet" type="text/css" href="./css/dati_utente.css"/> 
        <script  src="./js/jquery-3.4.1.min.js"></script> 
         <script  src="./js/form_registrazione.js"></script> 
   </head>
@@ -38,17 +38,16 @@
   <section>
     <div class="row">
       <div class="col-12 p-3 text-center ">
-        <!--sistemare l'immagine-->
-         <img src="<?php echo UPLOAD_DIR.$immagine?>" class="round-circle max" alt="foto profilo default"/>
+         <img class="fotoprofilo"src="<?php echo UPLOAD_DIR.$immagine?>" class="round-circle max" alt="foto profilo default"/>
         <div class="pb-1 text-center">
-          <label for="immagine">Foto profilo:</label>
+          <label  for="immagine">Foto profilo:</label>
           <input type="file" name="immagine" id="immagine"/>
         </div>
       </div>
     </div>
    
     <article class="rounded mx-2">
-      <h3 class="pt-2 px-2">Informazioni di base</h3>
+      <h4 class="pt-2 px-2">Informazioni di base</h4>
         <div class="mb-3 mt-3">
         
         <?php foreach(fillForm() as $field):?>
@@ -80,14 +79,11 @@
           <?php endif;?>
             <?php if($_SESSION["agricoltore"]== 0 && !isUserLoggedIn()): ?>
               <fieldset>
-                <legend class="mx-2">Professione:</legend>
-              <div class="mx-2 pb-3">
+                <label class="mx-2">Professione:</label>
+              <div class="mx-2 pb-3 tipocliente">
                 <input type="radio" id="studente" name="tipo_cliente" value=studente onchange="myFunction()"/><label for="studente">Studente</label>
               </div>
-              <div class="mx-2 pb-3">
-                <input type="radio" id="professore" name="tipo_cliente" value=professore onchange="hide()"/><label for="professore">Professore</label>
-              </div>
-              <div class="mx-2 pb-3">
+              <div class="mx-2 pb-3 tipocliente">
                 <input type="radio" id="altro" name="tipo_cliente" value=altro onchange="hide()"/><label for="altro">Altro</label>
               </div>
               </fieldset>
@@ -111,16 +107,16 @@
       </article>
       
       <article class="rounded mx-2 mt-3">
-        <h3 class="pt-2 px-2">Informazioni di contatto</h3>
+        <h4 class="pt-2 px-2">Informazioni di contatto</h4>
         <div class="mb-3 mt-3">
-        <?php foreach(contattoForm() as $field):?>
+          <?php foreach(contattoForm() as $field):?>
           <label for=<?php echo str_replace(' ', '',  $field["text"]);?> class="form-label px-2"><?php echo ucwords($field["text"])?>:</label>
             <div class="mx-2 pb-3">
               <input class="form-control" type="<?php echo $field["type"]?>" id="<?php echo str_replace(' ', '',  $field["text"]);?>" name="<?php echo str_replace(' ', '',  $field["text"]);?>" required
               <?php if($azione=="Modifica"):?> value="<?php echo $utente[$field["text"]]; ?>" <?php endif;?> />
                 <span class="error" aria-live="polite"></span>
 
-              </div>
+            </div>
           <?php endforeach;?>  
           
           <label for="num_telefono" class="form-label px-2">Numero di telefono:</label>
@@ -129,16 +125,13 @@
               <?php if($azione=="Modifica"):?> value="<?php echo $utente["num_telefono"]; ?>" <?php endif;?> />
                 <span class="error" aria-live="polite"></span>
 
-              </div>
-          
+            </div>
         </div>
-      </article>
-      
-      <div class="pb-3 text-center">
+    </article>  
+      <div class="pb-3 text-center button">
         <input id="submit" type="submit" name="submit" value="<?php echo $azione?>"/>
         <input type="hidden" name="action" value="<?php echo $azione?>"/>
       </div>
-
   <input type="hidden" name="oldimg" value="<?php echo $immagine?>" />
 </form>
 </section>
