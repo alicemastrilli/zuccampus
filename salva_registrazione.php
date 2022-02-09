@@ -11,7 +11,6 @@ if($_POST["action"] == 'Inserisci'){
     $cognome = htmlspecialchars($_POST["cognome"]);
     $cliente = 1;
     $agricoltore = 0;
-    //var_dump($_SESSION["registrazione"]);
     unset($_SESSION["registrazione"]);
 
 

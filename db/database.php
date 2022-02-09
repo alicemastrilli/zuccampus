@@ -565,10 +565,7 @@ class DatabaseHelper{
         $stmt->bind_param('ssssii', $username, $data_ordine, $ora, $via, $numero_civico, $cap);
         $ris = $stmt->execute();
         
-        if($ris) $msg = 1;
-        else $msg = $stmt->error;
-    
-        return $stmt->insert_id;
+        return array($ris, $stmt->insert_id);
     }
 
     public function insertComprende($id_ordine, $nome_azienda, $nome_zucca, $quantita){
@@ -627,12 +624,11 @@ class DatabaseHelper{
         //false se non sono uno studente
         $query = "SELECT matricola FROM cliente WHERE username=?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i',$matricola);
+        $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
-
         $matricola = $result->fetch_all(MYSQLI_ASSOC);
-        if (is_null($matricola)){
+        if (is_null($matricola[0]["matricola"])){
             return false;
         }
         else return true;
