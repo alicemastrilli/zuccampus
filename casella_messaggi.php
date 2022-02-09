@@ -14,12 +14,11 @@ if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["messaggi"] = $dbh->getMessaggi($_SESSION["username"]);
 }
-if(isset($_POST["update"])) {
-    foreach($_POST["id"] as $id){
-            $dbh->updateMessageAsRead($id);
-
+    foreach(getMessagesUnread($templateParams["messaggi"]) as $id){
+        $dbh->updateMessageAsRead($id["id_messaggio"]);
     }
-}$templateParams["main"] = "messaggio.php";
+
+$templateParams["main"] = "messaggio.php";
 $templateParams["aggiungi"] = "processa-messaggio.php";
 require("template/base.php");
 ?>

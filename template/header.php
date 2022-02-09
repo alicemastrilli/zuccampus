@@ -65,14 +65,9 @@
     </div>
     <script>
             $(document).ready(function(){
-                var update = "1";
                 
                 $("#posta").click(function(){
-                    $.ajax({
-                        type: "POST",
-                        url: "casella_messaggi.php",
-                        data: { 'update': update, 'id':id }
-                    });
+                    $("#posta + span").val(0);
                 });
             });
     </script>

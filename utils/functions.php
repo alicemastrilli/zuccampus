@@ -38,6 +38,16 @@ function countMessagesUnread($messaggi){
     }
     return $i;
 }
+
+function getMessagesUnread($messaggi){
+    $arr = array();
+    foreach($messaggi as $messaggio){
+        if($messaggio["tag_letto"] == 0 && canBeAdded($messaggio)){
+           array_push($arr, $messaggio);
+        }
+    }
+    return $arr;
+}
 function setRecensioneMessageText(){
         $arr = array();
         array_push($arr,array("testo"=>"Il cliente". $_SESSION["username"]." ha lasciato una nuova recensione! ", "agr"=>1));
