@@ -1,73 +1,22 @@
-html,
-body {
-    margin: 0;
-    height: 100%;
-    width: 100%;
+h4{
+    font-family: 'Questrial', sans-serif;
+    font-size: 22px;
+    background-color:#8DC7A3 ;
+    border-radius: 25px;
+    padding: 2px;
+  
 }
 
-header {
-    background-color: #F5982B;
+.zucca img{
+    width: 70px;
+    clip-path: circle();
 }
 
-header img {
-    width: 60px;
-}
-
-footer {
-    position: relative;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.69);
+h3{
     font-size: 20px;
-    bottom: 0;
+    font-style: italic;
 }
 
-footer img {
-    width: 40px;
-}
-
-section img {
-    width: 150px;
-    height: 150px;
-}
-
-section>h3 {
-    font-weight: bold;
-}
-
-section>article {
-    background-color: rgb(196, 196, 196);
-}
-
-article img {
-    width: 100px;
-}
-
-article button {
-    background-color: #D9AF5D;
-}
-
-article textarea {
-    resize: none;
-}
-
-article button a {
-    font-weight: bold;
-}
-
-body>main>div>div>div>img:nth-child(1) {
-    right: 0;
-}
-
-p {
-    font-family: serif;
-}
-
-.visualize {
-    background-color: #D9AF5D;
-    border-color: #D9AF5D;
-}
-
-.visualize:hover {
-    background-color: #D9AF5D;
-    border-color: #D9AF5D;
+p{
+    font-size: 20px;
 }

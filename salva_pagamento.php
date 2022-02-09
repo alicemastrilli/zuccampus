@@ -39,11 +39,7 @@ var_dump($_SESSION["product"]);
         $quantity = $prodotto["quantita"][0];
         $templateParams["zucca"] = $dbh -> getProductByFarmerAndName($nome_azienda, $nome_zucca)[0];
         $zucca = $templateParams["zucca"];
-<<<<<<< HEAD
-       
-=======
         
->>>>>>> a164c777568b64386524e687c7c37cce3b525343
         if ($zucca["disponibilita"] >= $quantity){
             $disponibilita = bcsub($zucca["disponibilita"], $quantity);
             
