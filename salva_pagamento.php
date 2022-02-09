@@ -38,7 +38,6 @@ if($id_ordine!=false){
         $zucca = $templateParams["zucca"];
        
         if ($zucca["disponibilita"] >= $quantity){
-            var_dump($zucca);
             $disponibilita = bcsub($zucca["disponibilita"], $quantity);
             $msg = $dbh -> updateZucca($zucca["immagine"], $zucca["prezzo"], $zucca["peso"], $disponibilita, $zucca["descrizione_zucca"], $zucca["nome_azienda"], $zucca["nome_zucca"], $zucca["tipo"]);
             if($msg){
