@@ -32,10 +32,13 @@ $id_ordine = $dbh-> insertNewOrdine($username, $data_ordine, $ora, $via, $numero
 if($id_ordine!=false){
     foreach($_SESSION['product'] as $prodotto){
         $nome_zucca = $prodotto["nome"];
+        $nome_azienda = $prodotto["nome_azienda"];
         $quantity = $prodotto["quantita"][0];
-        $templateParams["zucca"] = $dbh -> getZuccaByName($nome_zucca)[0];
+        $templateParams["zucca"] = $dbh -> getProductByFarmerAndName($nome_azienda, $nome_zucca)[0];
         $zucca = $templateParams["zucca"];
+       
         if ($zucca["disponibilita"] >= $quantity){
+            var_dump($zucca);
             $disponibilita = bcsub($zucca["disponibilita"], $quantity);
             $msg = $dbh -> updateZucca($zucca["immagine"], $zucca["prezzo"], $zucca["peso"], $disponibilita, $zucca["descrizione_zucca"], $zucca["nome_azienda"], $zucca["nome_zucca"], $zucca["tipo"]);
             if($msg){
