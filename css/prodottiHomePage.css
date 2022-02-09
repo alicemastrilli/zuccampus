@@ -7,7 +7,7 @@ h4 {
     margin: 10px;
 }
 
-.zucca img {
+.zucca {
     width: 170px;
     clip-path: circle();
 }
@@ -42,6 +42,8 @@ button:hover {
     background-color: #D9AF5D;
     border-color: #D9AF5D;
 }
+
+
 
 body {
     display: flex;

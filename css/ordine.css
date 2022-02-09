@@ -3,6 +3,15 @@ section> img{
     height: 180px;
     
 }
+
+span{
+    font-family: 'Questrial', sans-serif;
+    font-size: 19px;
+}
+
+.zucca img{
+    width: 50%;
+}
 section a img{
     width: 60px;
     height: 60px;

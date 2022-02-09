@@ -76,13 +76,12 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
             
          </div>
    <?php if(isUserLoggedIn() && $templateParams["user_loggato"]["nome"]==$templateParams["utente"]["nome"]): ?>
-      <!--passare come post lo utentename dell'utente -->
       <form class="text-center pb-2" action="gestisci_registrazione.php?action=2" method="post">
          <?php if($_SESSION["agricoltore"] == 1):?>
             <input type="hidden" name="nome_azienda" value="<?php echo $azienda["nome_azienda"]; ?>" />
-            <button class="rounded p-4" name="agricoltore">Modifica profilo</button> 
+            <button class="rounded" name="agricoltore">Modifica profilo</button> 
          <?php else: ?>
-            <button class="rounded p-4" name="cliente">Modifica profilo</button> 
+            <button class="rounded" name="cliente">Modifica profilo</button> 
          <?php endif;?>
       </form>
       <?php endif;?>

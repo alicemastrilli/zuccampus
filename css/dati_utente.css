@@ -49,6 +49,7 @@ label{
 }
 
 input[type=submit]{
+    font-family: 'Barlow', sans-serif;
     border-radius: 7px;
     font-size: 23px;
     padding: 2% 6% 2% 6%;
