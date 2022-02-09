@@ -1,5 +1,5 @@
 <?php $prezzo_totale = $ordine["prezzo"] * $ordine["quantita"] +2;?>
-  <?php if($dbh->isStudente($ordine["username"])):?>
+  <?php if($_SESSION["agricoltore"]==0 && $dbh->isStudente($ordine["username"])):?>
     <?php $prezzo_totale = $prezzo_totale * 80 /100;?>
     <?php endif;?>
     <form  action="ordine.php?id=<?php echo $ordine["id_ordine"]?>" method="post">

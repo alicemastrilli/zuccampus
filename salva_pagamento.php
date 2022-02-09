@@ -48,8 +48,9 @@ var_dump($_SESSION["product"]);
                 $msg = $dbh->insertComprende($id_ordine, $zucca["nome_azienda"], $zucca["nome_zucca"], $quantity);
 
             }
-            if($disponibilita <=1){
-                $_POST["zucca"] = array($nome_zucca);
+            if($disponibilita <=1){                
+                $_POST["zucca"] = array($nome_zucca, $nome_azienda);
+                var_dump($_POST["zucca"]);
                 $_POST["messaggio_action"] = 4;
                 require "template/invia_messaggio.php";
             }
