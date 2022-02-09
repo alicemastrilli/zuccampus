@@ -1,40 +1,56 @@
-h4{
+h4 {
     font-family: 'Questrial', sans-serif;
     font-size: 22px;
-    background-color:#8DC7A3 ;
+    background-color: #8DC7A3;
     border-radius: 25px;
     padding: 2px;
     margin: 10px;
-  
 }
 
-.zucca img{
+.zucca img {
     width: 170px;
     clip-path: circle();
 }
 
-h3{
+h3 {
     font-size: 20px;
     font-style: italic;
 }
 
-h2{
+h2 {
     margin-top: 10px;
 }
 
-p{
+p {
     font-size: 20px;
 }
 
-button{
+button {
     background-color: #0C403D;
-    font-family:'Barlow', sans-serif; 
+    font-family: 'Barlow', sans-serif;
     font-size: 20px;
     color: #EDEDED;
     padding: 1% 6% 1% 6%;
     margin: 2px;
 }
-button:hover{
+
+button:hover {
     padding: 2% 7% 2% 7%;
 }
 
+.visualize:hover {
+    background-color: #D9AF5D;
+    border-color: #D9AF5D;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    flex: 0 0 50px;
+    /*or just height:50px;*/
+    margin-top: auto;
+}
