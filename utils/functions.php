@@ -68,6 +68,11 @@ function setMessageText($n, $ordine){
         return $arr;
     } 
 }
+function setFineProdottoText($zucca){
+    $arr = array();
+    array_push($arr,array("testo"=>"Gentile ". $_SESSION["username"] . " la zucca ". $zucca["nome_zucca"] . " è in esaurimento!", "agr"=>1));
+    return $arr;
+}
 function countShoppingCartProducts($cart_products){
     $i=0;
     if(!empty($cart_products)){

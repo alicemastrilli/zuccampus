@@ -28,31 +28,29 @@ if(isset($_POST['submit'])){
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/info_prodotti.css" /> 
+    <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" /> 
     </head>
-    <nav class="navbar">
-        <div class="container">
-            <div class="float-start">
-                <a class="text-decoration-none" href="prodotti.php" >
-                    <img class="img-fluid ps-1 " src="./icons/freccia.png" width="40" alt="goBack" />
-                </a>
-            </div>
+    <div class="container">
+        <div class="float-start">
+            <a class="text-decoration-none" href="prodotti.php" >
+                <img class="img-fluid ps-1 " src="./icons/freccia.png" width="40" alt="goBack" />
+            </a>
         </div>
-    </nav>
+    </div>
     <div class="container-fluid">
         <form action="#" method="POST" enctype="multipart/form-data">
             <div class="container per-appendere">
             <?php foreach($templateParams["zucca_info"] as $zucca):?>
                 <div class="row"> 
-                    <div class="col-sm-0 text-center">
+                    <div class="col-sm-0 text-center zucca">
                         <h2><?php echo $zucca["nome_zucca"]; ?></h2>
                         <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
-                        <p><?php echo $zucca["tipo"]; ?></p>
+                        <h3><?php echo $zucca["tipo"]; ?></h3>
                         <input type="hidden" name="tipo" value="<?php echo $zucca["tipo"]; ?>">
                         <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="200" alt="">
                         <input type="hidden" name="immagine" value="<?php echo $zucca["immagine"]; ?>">
                         <div class="container mb-2 text-center">
-                            <label for="produttori" >Produttori:</label>
+                            <h4>Produttori:</h4>
                             <select class="form-select" name="nome_azienda" id="produttori" onchange="seleziona_fornitore(this.value,'<?php echo $zucca["nome_zucca"]; ?>');" >
                             <?php if(!empty($_SESSION['produttore'])): ?>
                                 <option selected><?php echo $_SESSION['produttore'][0]; ?></option>
@@ -72,7 +70,7 @@ if(isset($_POST['submit'])){
             <div class="row da-sostituire">
                 <div class="col sm-0 text-center">
                     <div class="text-center mb-2">
-                        <a><?php echo $zucca["descrizione_zucca"]; ?></a>
+                        <p><?php echo $zucca["descrizione_zucca"]; ?></p>
                     </div>
                     <p> €<?php echo $zucca["prezzo"]; ?></p>
                     <input type="hidden" name="prezzo" value="<?php echo $zucca["prezzo"]; ?>">
@@ -83,13 +81,13 @@ if(isset($_POST['submit'])){
                     <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
                     <?php if(isset($_SESSION["agricoltore"])):?>
                         <?php if($_SESSION["agricoltore"] == 0): ?>
-                        <div class="text-center mb-2">
-                            <input type="submit" name="submit" class="aggiungi-al-carrello" value="Aggiungi al Carrello" />                
+                        <div class="text-center">
+                            <input class="roudned" type="submit" name="submit" value="Aggiungi al carrello" />                
                         </div>
                         <?php endif; ?>
                     <?php else: ?>
-                        <div class="text-center mb-2">
-                            <input type="submit" name="submit" class="aggiungi-al-carrello" value="Aggiungi al Carrello" />                
+                        <div class="text-center">
+                            <input class="rounded" type="submit" name="submit" value="Aggiungi al carrello" />                
                         </div>
                     <?php endif; ?>
                 </div>
@@ -101,14 +99,14 @@ if(isset($_POST['submit'])){
             <?php if(isUserLoggedIn()): ?>
                 <?php if($_SESSION["agricoltore"] == 0): ?>
                     <form action="aggiungi_recensione.php" method="post">
-                        <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
+                        <button class="rounded">Aggiungi una recensione</button>
                         <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
                     </form>
                     <hr>
                 <?php endif; ?>
             <?php elseif(!isUserLoggedIn()): ?>
                 <form action="login.php" method="post">
-                    <button class="aggiungi-al-carrello mt-2 mb-2 text-decoration-underline">aggiungi una recensione</button>
+                    <button class="rounded">Aggiungi una recensione</button>
                     <input type="hidden" name="zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
                 </form>
                 <hr>

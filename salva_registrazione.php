@@ -55,9 +55,7 @@ if($_POST["action"] == 'Inserisci'){
         $msg = "Registrazione avvenuta con successo";
         $_SESSION["username"] = $username;
         require("dati_utente.php");
-
     }
-
 }
 
 if($_POST["action"] == 'Modifica'){
