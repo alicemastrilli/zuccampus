@@ -16,9 +16,10 @@
     </div>
 
     <div class="text-center">
-      <?php foreach(fillOrders($templateParams["ordine"], $templateParams["info"]) as $x => $x_value ):?>
+      <?php foreach(fillOrders($templateParams["ordine"], $templateParams["info"], $templateParams["studente"]) as $x => $x_value ):?>
         <span > <?php echo $x?> </span> <span class="text-secondary"> <?php echo $x_value?></span><br>
         <?php endforeach;?>
+        
         <div class="col-10 pb-1">
             
           <div id ="animate"  style="width: 1px;

@@ -114,16 +114,26 @@ function UserWindowFields(){
     return $field;
 }
 
-function fillOrders($ordine, $campus_info){
-    $costo_sped = computeDeliveryTime($ordine, $campus_info)[1];
+function fillOrders($ordine, $campus_info, $isStudente){
+    
+    $costo_sped = 2;
     $costo_ordine  = $ordine["quantita"] * $ordine["prezzo"];
     $costo_tot = $costo_ordine + $costo_sped;
-    $info=array("Produttore: "=>$ordine["nome_azienda"],"Tipo prodotto" => $ordine["tipo"],"Quantità: " => $ordine["quantita"],
+    if($isStudente){
+        $sconto_stud = "20 %";
+        $costo_tot = $costo_tot * 80 /100; 
+    }
+    $info=array("Produttore: "=>$ordine["nome_azienda"],"Tipo prodotto: " => $ordine["tipo"],"Quantità: " => $ordine["quantita"],
     "Data dell'ordine: "=> $ordine["data_ordine"],
-    "Indirizzo di spedizione: "=> $ordine["via"].$ordine["numero_civico"],
-    "Costo ordine: " => $costo_ordine,
-    "Costi di spedizione: " => $costo_sped, "Costo totale: " => $costo_tot,
-    "Stato: "=> computeDeliveryStatus($ordine, $campus_info)[0]);
+    "Indirizzo di spedizione: "=> $ordine["via"]." ".$ordine["numero_civico"],
+    "Costo ordine: " => $costo_ordine . " €",
+    "Costi di spedizione: " => $costo_sped . " €");
+    if($isStudente){
+        $info["Sconto studente: "] = $sconto_stud;
+    }
+    $info["Costo totale: "] = $costo_tot . " €";
+    $info["Stato: "] = computeDeliveryStatus($ordine, $campus_info)[0];
+
     return $info;
     
 }

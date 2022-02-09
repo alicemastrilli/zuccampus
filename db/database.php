@@ -627,12 +627,12 @@ class DatabaseHelper{
         //false se non sono uno studente
         $query = "SELECT matricola FROM cliente WHERE username=?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i',$matricola);
+        $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
 
         $matricola = $result->fetch_all(MYSQLI_ASSOC);
-        if (is_null($matricola)){
+        if (count($matricola) ==0){
             return false;
         }
         else return true;

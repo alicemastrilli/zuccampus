@@ -14,6 +14,7 @@ $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 
 if(isset($_GET["id"])){
     $templateParams["ordine"] = $dbh->getOrderById($_GET["id"])[0];
+    $templateParams["studente"] = $dbh->isStudente($templateParams["ordine"]["username"]);
 }
 if(isUserLoggedIn()){
     $templateParams["user"] = $dbh->getUserByUsername($_SESSION["username"])[0];
