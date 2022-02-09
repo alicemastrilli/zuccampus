@@ -27,10 +27,10 @@
                     </ol>
                     <div class="carousel-inner text-center">
                     <?php foreach($templateParams["primaZucca"] as $zucca): ?>
-                        <div class="carousel-item active">
+                        <div class="carousel-item active zucca">
                             <h2><?php echo $zucca["nome_zucca"]; ?></h2>
                             <h3><?php echo $zucca["tipo"]; ?></h3>
-                            <img class="zucca mx-auto d-block" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="220" alt="First slide">
+                            <img class="mx-auto d-block" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="220" alt="First slide">
                             <p>€<?php echo $zucca["prezzo"]; ?></p>
                         </div>
                     <?php endforeach; ?>
