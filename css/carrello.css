@@ -1,38 +1,71 @@
-h2, h3{
+h2,
+h3 {
     margin-top: 5px;
 }
 
-button{
+button {
     background-color: #0C403D;
-    font-family:'Barlow', sans-serif; 
+    font-family: 'Barlow', sans-serif;
     font-size: 20px;
     color: #EDEDED;
     padding: 4% 12% 4% 12%;
     margin: 7%;
 }
 
-input[type=submit]{
+input[type=submit] {
     background-color: #0C403D;
-    font-family:'Barlow', sans-serif; 
+    font-family: 'Barlow', sans-serif;
     font-size: 18px;
     color: #EDEDED;
     padding: 1% 6% 1% 6%;
+    text-align: center;
 }
 
-label{
+label {
     font-size: 22px;
+    margin-left: 100px;
 }
 
-.azienda{
+p {
+    font-size: 20px;
+}
+
+.quantity-input {
+    width: 50%;
+    margin-left: 120px;
+}
+
+.azienda {
     font-style: italic;
 }
 
-form{
+form {
     margin: 6px;
 }
 
-td img{
-    margin: 10px;
-    width: 180px;
+td img {
+    width: 120%;
+    margin-top: 5px;
     clip-path: circle();
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    flex: 0 0 50px;
+    /*or just height:50px;*/
+    margin-top: auto;
+}
+
+.container-product {
+    margin-left: 20px;
+    margin-rigth: 20px;
+}
+
+.salva {
+    left: 0;
 }

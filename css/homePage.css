@@ -1,66 +1,19 @@
-html,
-body {
+html {
     margin: 0;
     height: 100%;
     width: 100%;
 }
 
-div>div{
-    padding: 0;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-
-div>div>div{
-    background-image: url("./icons/campodizucche.jpg");
-    background-size: cover;
-    text-align: center;
-    height: 80%;
-    
-
-}
-
-.image img{
-    opacity: 0.;
-}
-
-.image img:hover{
-   opacity: 1;
-}
-.prodotti{
-    position:absolute;
-    width:100%;
-    color:white;
-    line-height:200px;
-    margin:0;
-    top: 27%;
-    font-size: 80px;
-
-}
-
-.agricoltori{
-    position:absolute;
-    width:100%;
-    color:white;
-    line-height:200px;
-    margin:0;
-    top: 95%;
-    font-size: 80px;
-}
-
-
-
-@media screen and (max-width: 300px) {
-   h1{
-       font-size: 20px;
-   }
-}
-
 
 footer {
-    position: relative;
-    width: 100%;
-    background-color: #0C403D;
-    font-size: 20px;
-    bottom: 0;
+    flex: 0 0 50px;
+    /*or just height:50px;*/
+    margin-top: auto;
 }
 
 footer img {

@@ -76,7 +76,7 @@ if(isset($_POST['delete'])){
             <tbody>
             <?php $i=0; ?>
             <?php foreach($_SESSION['product'] as $prodotto): ?>
-                <tr>                   
+                <tr class="container-product">                   
                     <td class="col-9">
                         <form action="#" method="POST" enctype="multipart/form-data">
                             <?php $i=$i+1; ?>
@@ -85,22 +85,22 @@ if(isset($_POST['delete'])){
                             <p><?php echo $prodotto["tipo"]; ?></p>
                             <p class="azienda"><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
+                            <p>Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</p>
+                            <?php $total=$total+(floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]));?>
                             <div class="row">
-                                <div class="col-6 text-center ">
+                                <div class="col-6 text-center mt-3">
                                     <input type="submit" name="delete" value="Elimina il Prodotto" class="rounded" />                  
                                 </div>
-                                <div class="col-6 text-center">
+                                <div class="col-6 text-center mt-2">
                                     <label for="quantity<?php echo $i; ?>">Quantità:</label>
                                     <input type="number" id="quantity<?php echo $i; ?>" name="quantity" class="quantity-input" value="<?php echo $prodotto["quantita"]; ?>" min="1" ><br><br>
-                                    <input type="submit" name="quantityUpdate" value="Salva le modifiche" class="rounded">
+                                    <input type="submit" name="quantityUpdate" value="Salva le modifiche" class="rounded salva">
                                 </div>
                             </div>
                         </form>
                     </td>
                     <td class="col-3 p-2">
-                        <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="150" alt="" />
-                        <p>Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</p>
-                        <?php $total=$total+(floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]));?>
+                        <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="150" alt="prodottoCarrello" />
                     </td>
                 </tr>
             <?php endforeach;?>
