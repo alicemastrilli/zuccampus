@@ -342,12 +342,7 @@ class DatabaseHelper{
     
     public function getAllOrders($nome_azienda, $n=-1){
         $query = "SELECT o.data_ordine,c.nome,c.cognome, o.ora,o.via,o.numero_civico,o.cap,o.id_ordine from ordine o,comprende c where c.nome_azienda = ? and o.id_ordine=c.id_ordine order by o.data_ordine desc";
-         /*c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,o.ora, z.prezzo,u.nome,u.cognome,o.via, o.numero_civico,
-        o.cap   FROM ordine o, comprende c,zucca z,utente u
-         WHERE c.nome_azienda =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
-          and o.id_ordine = c.id_ordine and o.username = u.username
-         order by o.data_ordine desc";
-         */
+        
          if($n >0){
             $query .= " LIMIT ?";
          }
@@ -365,7 +360,7 @@ class DatabaseHelper{
     }
 
     public function getAllComprende($id_ordine){
-        $query = "select c.nome_zucca, c.id_ordine, c.quantita, z.prezzo,u.nome,u.cognome from comprende c, zucca z, utente u, ordine o
+        $query = "select c.nome_zucca,c.nome_azienda, o.data_ordine,o.via,o.numero_civico,o.cap, c.id_ordine, c.quantita, z.prezzo,z.tipo,u.nome,u.cognome,z.immagine from comprende c, zucca z, utente u, ordine o
          where c.id_ordine = ? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca and o.id_ordine=c.id_ordine
          and o.username = u.username ";
          $stmt = $this->db->prepare($query);
