@@ -4,6 +4,7 @@ h4{
     background-color:#8DC7A3 ;
     border-radius: 25px;
     padding: 2px;
+    margin: 10px;
   
 }
 
@@ -17,6 +18,23 @@ h3{
     font-style: italic;
 }
 
+h2{
+    margin-top: 10px;
+}
+
 p{
     font-size: 20px;
 }
+
+button{
+    background-color: #0C403D;
+    font-family:'Barlow', sans-serif; 
+    font-size: 20px;
+    color: #EDEDED;
+    padding: 1% 6% 1% 6%;
+    margin: 2px;
+}
+button:hover{
+    padding: 2% 7% 2% 7%;
+}
+
