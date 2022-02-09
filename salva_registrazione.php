@@ -11,16 +11,19 @@ if($_POST["action"] == 'Inserisci'){
     $cognome = htmlspecialchars($_POST["cognome"]);
     $cliente = 1;
     $agricoltore = 0;
-    var_dump($_SESSION["registrazione"]);
+    //var_dump($_SESSION["registrazione"]);
     unset($_SESSION["registrazione"]);
 
-    list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
-    $immagine = $msg;
-    if($result == 0){
-        $immagine = $_POST["oldimg"];
-        $msg = 1;
+
+    if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
+        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
+        $immagine = $msg;
     }
-    
+    else{     
+        $immagine = $_POST["oldimg"];
+        $msg = 1; 
+    }
+
     
     $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
     if($_SESSION["agricoltore"] == 1){
