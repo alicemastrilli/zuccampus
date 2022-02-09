@@ -100,13 +100,7 @@ if(isset($_POST['delete'])){
                         </form>
                     </td>
                     <td class="col-3 p-2">
-<<<<<<< HEAD
                         <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="150" alt="" />
-                        <label>Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</label>
-                        <?php $total=$total+(floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]));?>
-=======
-                        <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="150" alt="prodottoCarrello" />
->>>>>>> 496aaed05cbc6bcd3ed514e63899c48d5b44dadc
                     </td>
                 </tr>
             <?php endforeach;?>
