@@ -18,17 +18,17 @@
             <label for="password"  class="px-3">Password:</label><input type="password" id="password" name="password" />
         </li>
         <li>
-            <input class="mt-4" type="submit" name="submit" value="Accedi" />
+            <input class="mt-4 rounded" type="submit" name="submit" value="Accedi" />
             </li>
         <li>
-            <div class="row d-flex justify-content-center bg-primary col-8 mx-auto mt-4 rounded">
-            <img class="col-3" src="<?php echo UPLOAD_DIR?>./facebook.png" alt=""><a class="col-8 text-light p-2 "  href="">Connettiti con Facebook</a>
+            <div class="row link d-flex justify-content-center col-4 mt-4 mx-auto rounded">
+            <img src="<?php echo UPLOAD_DIR?>./facebook.png" alt=""><a class="col-8 text-dark p-2 "  href="">Connettiti con Facebook</a>
             </div>
         </li>
        
         <li>
-            <div class="row d-flex justify-content-center bg-primary col-8 mx-auto mt-4 rounded">
-           <img class="col-3" src="<?php echo UPLOAD_DIR?>./google.png" alt=""><a class="col-8 text-light p-2 "  href="">Connettiti con Google</a>
+            <div class="link row d-flex justify-content-center mt-4 mx-auto col-4 rounded">
+           <img src="<?php echo UPLOAD_DIR?>./google.png" alt=""><a class="col-8 text-dark p-2 "  href="">Connettiti con Google</a>
             </div>
         </li>
     </ul>

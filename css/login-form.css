@@ -1,11 +1,33 @@
-.row>img{
-    width:70px;
+.link img{
+    width: 60px;
+    height: auto;
+    padding: 10px 0px 10px 10px;
+    clip-path: circle();
 }
+
+
 
 input[type=submit]{
     background-color: #0C403D;
     font-family:'Barlow', sans-serif; 
-    font-size: 20px;
+    font-size: 22px;
     color: #EDEDED;
-    padding: 3% 10% 3% 10%;
+    padding: 1% 6% 1% 6%;
+}
+
+
+
+.link{
+    background-color: #FAFAFA;
+    border: 3px solid #8DC7A3;
+    font-family: 'Questrial', sans-serif;
+}
+
+.link a{
+    padding-top: 100px;
+}
+
+span{
+    font-family: 'Questrial', sans-serif;
+
 }
