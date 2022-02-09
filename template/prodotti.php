@@ -14,14 +14,14 @@
         <div class="row mt-2">
             <div class="col-sm-0 text-center">
                 <div class="btn-group">
-                    <button type="button m-2" class="rounded" data-toggle="dropdown">Ordina per</button>
+                    <button type="button" class="rounded" data-toggle="dropdown">Ordina per</button>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item" onclick="ordinaPerPrezzo('ASC');">Prezzo:crescente</li>
                         <li class="dropdown-item" onclick="ordinaPerPrezzo('DECS');">Prezzo:decrescente</li>
                     </ul>
                 </div>
                 <div class="btn-group">
-                    <button type="button m-2" class="rounded" data-toggle="dropdown">Produttori</button>
+                    <button type="button" class="rounded" data-toggle="dropdown">Produttori</button>
                     <ul class="dropdown-menu">
                     <?php foreach($templateParams["agricoltori"] as $agricoltore): ?>
                         <li class="dropdown-item" onclick="filtra_prodotti_agricoltore('<?php echo $agricoltore["nome_azienda"]; ?>');"><?php echo $agricoltore["nome_azienda"]; ?></li>
@@ -29,7 +29,7 @@
                     </ul>
                 </div>
                 <div class="btn-group">
-                    <button type="button m-2" class="rounded" data-toggle="dropdown"> Categoria</button>
+                    <button type="button" class="rounded" data-toggle="dropdown"> Categoria</button>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item" onclick="ordina_categoria('ornamentale');">ornamentale</li>
                         <li class="dropdown-item" onclick="ordina_categoria('commestibile');">commestibile</li>
@@ -48,16 +48,16 @@
                     <form  action="info_prodotti.php" method="post">
                     <?php if(isset($_SESSION["agricoltore"])): ?>
                         <?php if($_SESSION["agricoltore"]==0): ?>
-                            <button class="rounded m-2 ">Acquista</button>
+                            <button class="rounded">Acquista</button>
                             <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
                             <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
                         <?php else: ?>
-                            <button class="acquista mt-2 mb-2">Visualizza</button>
+                            <button class="rounded">Visualizza</button>
                             <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
                             <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
                         <?php endif; ?>
                     <?php else: ?>
-                        <button class="rounded mt-2 mb-2">Acquista</button>
+                        <button class="rounded">Acquista</button>
                     <?php endif; ?>
                         <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
                         <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
