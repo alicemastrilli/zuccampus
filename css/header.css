@@ -23,6 +23,7 @@ h3{
     font-size: 15px;
 }
 h4{
+    font-family: 'Questrial', sans-serif;
     font-size: 10px;
 }
 
@@ -56,6 +57,11 @@ input[type=submit]{
     color: #EDEDED;
     padding: 1% 6% 1% 6%;
     margin: 2px;
+}
+
+section{
+
+    margin: 0 3% 0 3%;
 }
 
 table{

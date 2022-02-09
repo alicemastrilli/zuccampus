@@ -3,15 +3,13 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./css/info_prodotti.css" /> 
     </head>
-    <nav class="navbar">
         <div class="container">
             <div class="float-start">
                 <a class="text-decoration-none" onclick="goBack()">
-                    <img class="img-fluid ps-1 " src="./icons/freccia.png" width="40" alt="goBack" />
+                    <img class="img-fluid ps-1 freccia " src="./icons/freccia.png" width="40" alt="goBack" />
                 </a>
             </div>
         </div>
-    </nav>
     <form action="lista_recensioni.php" method="POST" enctype="multipart/form-data">
         <section class="text-center">
             <h2>Aggiungi una recensione</h2>
