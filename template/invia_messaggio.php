@@ -16,7 +16,9 @@
         $("#toast2").fadeOut(10000); }, 3600*100*24*2);
     }) 
     })
+
 };
+
 </script>
 <?php if($_POST["messaggio_action"]==2):  ?>
   <?php
@@ -41,6 +43,7 @@ use PHPMailer\PHPMailer\Exception;
 //caso 1: viene mandato un messaggio per informare che un ordine è stato inviato/ricevuto
 //caso 2: ordine è arrivato
 //caso 3: è stata fatta una recensione
+//caso 4: invio notifica all'agricoltore che il prodotto è in esaurimento;
 ?>
 <?php if($_POST["messaggio_action"]==0) {
 $testo = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
@@ -51,6 +54,8 @@ username: ".$_SESSION["username"] . " password: ".$_POST["password"];
   $msg = setMessageText(2, $_POST["ordine"]);
 } else if($_POST["messaggio_action"]==3){
   $msg = setRecensioneMessageText();
+} else if($_POST["messaggio_action"] == 4){
+  $msg=  setFineProdottoText($_POST["zucca"]);
 }
   ?>
 
@@ -154,7 +159,12 @@ $_POST["info"]=array("testo"=>array(), "agr"=>array());
     $_POST["ora"] = date('H:i');
     $_POST["nome_azienda"] = $recensione[2];
     $_POST["link"] = "lista_recensioni.php";
-} 
+}  elseif($_POST["messagigo_action"] == 4){
+    $_POST["data"] = date('Y-m-d');
+    $_POST["ora"] = date('H:i');
+    $_POST["nome_zucca"] = $_POST["zucca"]["nome_zucca"];
+    $_POST["link"] = "info_prodotti_venditore.php";
+}
 
 
 }require "processa-messaggio.php";
