@@ -3,6 +3,13 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./css/aziende_agricole.css" /> 
     </head>
+    <div class="row col-sm-1">
+    <div class="col-sm-1">
+    <a class="col-3"  onclick="goBack()">
+      <img class="freccia"id = "freccia"src="./icons/freccia.png" alt="freccia indietro">
+    </a>
+    </div>
+</div>
 <article>
         <table class="table bordless">
             <tbody>

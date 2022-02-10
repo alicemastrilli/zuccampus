@@ -3,10 +3,10 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" /> 
     </head>
-    <div class="container">
-        <div class="float-start">
-            <a class="text-decoration-none" onclick="goBack()" >
-                <img class="freccia" src="./icons/freccia.png" width="40" alt="goBack" />
+    <div class="row col-sm-1">
+        <div class="col-sm-1">
+            <a class="col-3"  onclick="goBack()">
+            <img class="freccia"id = "freccia"src="./icons/freccia.png" alt="freccia indietro">
             </a>
         </div>
     </div>
@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row align-content-center">
             <div class="col-sm text-center mt-3">
-                <h2>Prodotti più venduti</h2>
+                <h2 class="sezione">Prodotti più venduti</h2>
             </div>
         </div>
         <div class="row">
@@ -28,15 +28,15 @@
                     <div class="carousel-inner text-center">
                     <?php foreach($templateParams["primaZucca"] as $zucca): ?>
                         <div class="carousel-item active">
-                            <h2><?php echo $zucca["nome_zucca"]; ?></h2>
+                            <h2 class="nome_zucca"><?php echo $zucca["nome_zucca"]; ?></h2>
                             <h3><?php echo $zucca["tipo"]; ?></h3>
-                            <img class="mx-auto d-block zucca" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="220" alt="First slide">
+                            <img class=" zucca mx-auto d-block" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="220" alt="First slide">
                             <p>€<?php echo $zucca["prezzo"]; ?></p>
                         </div>
                     <?php endforeach; ?>
                     <?php foreach($templateParams["zucchePopolari"] as $zuccaPopolare): ?>
                         <div class="carousel-item">
-                            <h2><?php echo $zuccaPopolare["nome_zucca"]; ?></h2>
+                            <h2 class="nome_zucca"><?php echo $zuccaPopolare["nome_zucca"]; ?></h2>
                             <h3><?php echo $zuccaPopolare["tipo"]; ?></h3>
                             <img class="mx-auto d-block" src="<?php echo UPLOAD_DIR.$zuccaPopolare["immagine"]; ?>" width="220" alt="First slide">
                             <p>€<?php echo $zuccaPopolare["prezzo"]; ?></p>
@@ -59,7 +59,7 @@
         </div>
         <div class="row">
             <div class="col-sm text-center mb-2">
-                <button type="button" id="visualizeButton"> Visualizza tutti i prodotti</button>
+                <button class="rounded" type="button" id="visualizeButton"> Visualizza tutti i prodotti</button>
                 <script>
                     document.getElementById("visualizeButton").onclick = function () {
                     location.href = "./prodotti.php";

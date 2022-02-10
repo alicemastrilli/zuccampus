@@ -14,7 +14,7 @@
 <form action="salva_prodotto.php" method="POST" enctype="multipart/form-data">
     <section>
         <div class="row text-center">
-            <h3 class=" px-2"><?php echo $azione?> prodotto</h3>
+            <h2 class=" px-2"><?php echo $azione?> prodotto</h2>
         </div>
         <div class="row text-center">
         <article aria-label="article" class="rounded mx-2">

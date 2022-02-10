@@ -26,6 +26,10 @@ input[type=submit] {
     text-align: center;
 }
 
+input[type=submit]:disabled{
+    background-color: #8DC7A3;
+}
+
 label {
     margin: 2px 0 2px 0;
     font-size: 22px;
@@ -36,6 +40,9 @@ p {
     font-size: 20px;
 }
 
+span {
+    font-size: 20px; 
+}
 .quantity-input {
     width: 50%;
     margin-left: 120px;
