@@ -114,7 +114,7 @@ header img{
 header img:hover{
     cursor: pointer;
 }
-.notify-badge {
+#posta>span {
     position: absolute;
     right: -5px;
     top: 10px;
@@ -126,14 +126,15 @@ header img:hover{
     font-size: 10px;
 }
 
-.shop-cart-badge {
+#carrello>span {
     position: relative;
+    right: -54px;
+    top: -15px;
     background: rgb(179, 57, 57);
     text-align: center;
     border-radius: 10px;
     color: white;
     padding: 5px 10px;
-    right: 70px;
     font-size: 10px;
 }
 @media screen and (max-width: 300px) {

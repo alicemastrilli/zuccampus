@@ -1,6 +1,6 @@
 <?php 
 $total = 0; 
-$costospedizione = 5; 
+$costospedizione = 2; 
 $sconto = 20;
 $isStudente = $templateParams["studente"];
 ?>

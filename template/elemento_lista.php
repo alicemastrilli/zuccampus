@@ -4,11 +4,12 @@ if($_SESSION["agricoltore"]==1){
 }?>
 <?php $prezzo_totale=0;?>
 <?php foreach( $dbh->getAllComprende($ordine["id_ordine"]) as $x): ?>
-  <?php if($nome_azienda==$x["nome_azienda"]): ?>
+  <?php if($_SESSION["agricoltore"]==0 || $nome_azienda==$x["nome_azienda"]): ?>
 <?php $prezzo_totale += $x["prezzo"] * $x["quantita"];?>
 <?php endif; ?>
 <?php endforeach; ?>
-<?php $prezzo_totale = $prezzo_totale +2;?>
+<?php 
+$prezzo_totale = $prezzo_totale +2;?>
   <?php if($_SESSION["agricoltore"]==0 && $dbh->isStudente($ordine["username"])):?>
     <?php $prezzo_totale = $prezzo_totale * 80 /100;?>
     <?php endif;?>

@@ -88,7 +88,7 @@
               <fieldset>
                 <label class="mx-2">Professione:</label>
               <div class="mx-2 pb-3 tipocliente">
-                <input type="radio" id="studente" name="tipo_cliente" value=studente onchange="myFunction()"/><label for="studente">Studente</label>
+                <input type="radio" id="studente" name="tipo_cliente" value=studente required onchange="myFunction()"/><label for="studente">Studente</label>
               </div>
               <div class="mx-2 pb-3 tipocliente">
                 <input type="radio" id="altro" name="tipo_cliente" value=altro onchange="hide()"/><label for="altro">Altro</label>

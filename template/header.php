@@ -14,17 +14,20 @@
             <h1 class="text-dark">Zuccampus</h1>
         </a>
         <div class="float-end">
-            <?php foreach(getFootersIcons() as $icon):?>
-                <a class="text-decoration-none col-2" href="<?php echo $icon["a"]?>">
-                    <img class=" img-fluid ps-1 " src="<?php echo $icon["img"]?>" alt="<?php echo $icon["img"]?>" />
-                    <?php if(!isset($_SESSION['product'])){
+        <?php if(!isset($_SESSION["agricoltore"]) || $_SESSION["agricoltore"]==0):?>
+            <?php if(!isset($_SESSION['product'])){
                         $_SESSION['product']=array();
                     }?>
-                    <?php if($icon["a"] == "carrello.php"): ?>
-                        <span class="shop-cart-badge"><?php echo countShoppingCartProducts($_SESSION['product']) ?></span>
-                    <?php endif; ?>
-                </a>
-            <?php endforeach;?>
+        <a class="text-decoration-none text-dark" id="carrello" href="carrello.php">
+			<span class="notify-badge"><?php echo countShoppingCartProducts($_SESSION['product']) ?></span>
+      		<img src="<?php echo UPLOAD_DIR.'carrello.png'?>"  alt="carrello" />
+		    </a>
+        <?php endif;?>
+        <?php if(!isUserLoggedIn()):?>
+            <a class="text-decoration-none text-dark"  href="login.php">
+      		<img src="<?php echo UPLOAD_DIR.'user.png'?>"  alt="icona login" />
+		    </a>
+        <?php endif; ?>
             <?php if(isUserLoggedIn() && isset($templateParams["user"])):?>
             <div class="offcanvas offcanvas-end" id="offcanvas">
                 <div class="offcanvas-header ">

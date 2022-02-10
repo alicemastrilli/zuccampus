@@ -11,7 +11,7 @@ $templateParams["azione"] = getAction($_GET["action"]);
 
 if($_GET["action"]==1){
     $templateParams["zucca"] = getEmptyZucca();
-    $templateParams["immagine"] = "utente_generico.jpg";
+    $templateParams["immagine"] = "zuccadefault.jpg";
 }
 
 if($templateParams["azione"] == 'Modifica'){
