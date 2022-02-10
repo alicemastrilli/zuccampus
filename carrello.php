@@ -14,6 +14,28 @@ $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 
 $templateParams["aziende_agricole"] = $dbh->getAziendaAgricolaInfo();
+if(isset($_POST['submit'])){
+    $newproduct=array(
+        'nome' => $_POST["nome_zucca"],
+        'tipo' => $_POST["tipo"],
+        'immagine' => $_POST["immagine"],
+        'nome_azienda' => $_POST["nome_azienda"],
+        'prezzo' => $_POST["prezzo"],
+        'peso' => $_POST["peso"],
+        'quantita' => $_POST["quantity"]
+    );
+    $value=0;
+    foreach($_SESSION['product'] as $key){
+        if($key["nome"]==$newproduct["nome"]){
+            if($key["nome_azienda"]==$newproduct["nome_azienda"]){
+                $value=$value + 1;
+            }
+        }
+    }
+    if($value==0){
+        array_push($_SESSION['product'], $newproduct);
+    }
+}
 /*
 $templateParams["articolicasuali"] = $dbh->getRandomPosts(2);
 $templateParams["categorie"] = $dbh->getCategories();

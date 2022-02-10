@@ -1,30 +1,3 @@
-<?php
-require_once 'bootstrap.php';
-if(isset($_POST['submit'])){
-    $newproduct=array(
-        'nome' => $_POST["nome_zucca"],
-        'tipo' => $_POST["tipo"],
-        'immagine' => $_POST["immagine"],
-        'nome_azienda' => $_POST["nome_azienda"],
-        'prezzo' => $_POST["prezzo"],
-        'peso' => $_POST["peso"],
-        'quantita' => $_POST["quantity"]
-    );
-    $value=0;
-    foreach($_SESSION['product'] as $key){
-        if($key["nome"]==$newproduct["nome"]){
-            if($key["nome_azienda"]==$newproduct["nome_azienda"]){
-                $value=$value + 1;
-            }
-        }
-    }
-    if($value==0){
-        array_push($_SESSION['product'], $newproduct);
-        echo '<script type="text/JavaScript">location.reload();</script>';
-    }
-    require "carrello.php";
-}
-?>
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -46,7 +19,7 @@ if(isset($_POST['submit'])){
     }
     ?>
     <div class="container-fluid">
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="carrello.php" method="POST" enctype="multipart/form-data">
             <div class="container per-appendere">
             <?php foreach($templateParams["zucca_info"] as $zucca):?>
                 <div class="row"> 
