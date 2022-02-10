@@ -2,7 +2,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />
     </head>
-    <div class="container col-sm-12">
+    <div class="container col-sm-0">
         <div class="float-start">
             <a class="text-decoration-none" onclick="goBack()" >
                 <img class="freccia" src="./icons/freccia.png" width="40" alt="goBack" />

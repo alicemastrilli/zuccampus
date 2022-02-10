@@ -19,3 +19,9 @@ hr {
     height: 60px;
 
 }
+
+span{
+    padding: 10px;
+    font-family: 'Questrial', sans-serif;
+    font-size: 21px;
+}

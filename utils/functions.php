@@ -50,7 +50,7 @@ function getMessagesUnread($messaggi){
 }
 function setRecensioneMessageText(){
         $arr = array();
-        array_push($arr,array("testo"=>"Il cliente". $_SESSION["username"]." ha lasciato una nuova recensione! ", "agr"=>1));
+        array_push($arr,array("testo"=>"Il cliente ". $_SESSION["username"]." ha lasciato una nuova recensione! ", "agr"=>1));
         array_push($arr,array("testo"=>"Gentile ". $_SESSION["username"] . " la sua recensione è stata salvata!", "agr"=>0));
         return $arr;
     
