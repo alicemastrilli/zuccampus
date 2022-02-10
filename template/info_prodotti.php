@@ -22,6 +22,7 @@ if(isset($_POST['submit'])){
         array_push($_SESSION['product'], $newproduct);
         echo '<script type="text/JavaScript">location.reload();</script>';
     }
+    require "carrello.php";
 }
 ?>
 <!DOCTYPE html>
@@ -35,6 +36,15 @@ if(isset($_POST['submit'])){
             </a>
         </div>
     </div>
+
+    <?php
+    $disable= false;
+    foreach($_SESSION["product"] as $p){
+        if($p["nome"] == $_POST["nome_zucca"] && $p["nome_azienda"]==$_POST["nome_azienda"]){
+            $disable=true;
+        }
+    }
+    ?>
     <div class="container-fluid">
         <form action="#" method="POST" enctype="multipart/form-data">
             <div class="container per-appendere">
@@ -80,15 +90,12 @@ if(isset($_POST['submit'])){
                         <label for="quantity">Quantità:</label>
                         <input type="number" id="quantity" name="quantity" value="1" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
                         <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
-                        <?php if(isset($_SESSION["agricoltore"])):?>
-                            <?php if($_SESSION["agricoltore"] == 0): ?>
+                        <?php if(isset($_SESSION["agricoltore"]) && !$_SESSION["agricoltore"]):?>
                             <div class="text-center">
-                                <input class="rounded" type="submit" name="submit" value="Aggiungi al carrello" />                
-                            </div>
-                            <?php endif; ?>
-                        <?php else: ?>
-                            <div class="text-center">
-                                <input class="rounded" type="submit" name="submit" value="Aggiungi al carrello" />                
+                                <input id="aggiungi" class="rounded" type="submit" name="submit" <?php if($disable):?> disabled <?php endif;?> value="Aggiungi al carrello" />  
+                                <?php if($disable):?>
+                                    <p>Il prodotto è già nel carrello</p>
+                                <?php endif;?>              
                             </div>
                         <?php endif; ?>
                     <?php endif; ?>
@@ -133,6 +140,7 @@ if(isset($_POST['submit'])){
             <?php endforeach;?>
         </div>
     <?php endforeach;?>
+    
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

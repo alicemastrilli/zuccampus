@@ -146,7 +146,9 @@ header img:hover {
     padding: 5px 10px;
     font-size: 10px;
 }
-
+input[type=submit]:disabled{
+    background-color: #3D5151;
+}
 #carrello>span {
     position: relative;
     right: -54px;

@@ -65,15 +65,13 @@ if(isset($_POST['delete'])){
     $.each($("input[name='quantity']"), function(index, item){
         index++;
         $("#salva_modifiche"+index+"").prop( "disabled", true );
-      
-
-        
+ 
         $disponibilita = $("#disponibilita"+index+"").text();
         item.max=$disponibilita;
         value=$(this).val();
         item.addEventListener('input', function (event) {
             $("#salva_modifiche"+index+"").prop( "disabled", false );
-            $("#procediordine").prop( "disabled", true );
+            $("#procediordine").prop("disabled", true );
             $totale_zucca= $("#totale_zucca"+index+"").text();
             $prezzo_zucca =$("#prezzo"+index+"").val();
             $totale_tutto = $("#totale_tutto"+index+"").text();
