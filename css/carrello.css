@@ -27,9 +27,11 @@ input[type=submit] {
 }
 
 input[type=submit]:disabled{
-    background-color: #8DC7A3;
+    background-color: #3D5151;
 }
-
+#procediordine:disabled{
+    background-color: #3D5151;
+}
 label {
     margin: 2px 0 2px 0;
     font-size: 22px;
