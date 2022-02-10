@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="<?php echo CSS_DIR?>agricoltore_loggato.css" > 
-    </head>
+  <head>
+      <link rel="stylesheet" href="<?php echo CSS_DIR?>agricoltore_loggato.css" > 
+  </head>
+  <div class="mx-4 pt-3 text-center"> <h2>I miei ordini:</h2></div>
 <?php if(isset($templateParams["js"])):?>
 <canvas class="align-items-center mt-4" id="myChart" style="width:100%;max-width:700px"></canvas>
 <script src="<?php echo $templateParams["js"]?>"></script> 

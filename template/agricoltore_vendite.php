@@ -5,10 +5,10 @@
     </head>
     <ul class="nav nav-tabs nav-justified">
     <li class="nav-item col-6">
-      <a class="active  nav-link" href="agricoltore_vendite.php"><h3>Vendite</h3></a>
+      <a class="active  nav-link" href="agricoltore_vendite.php"><h2>Vendite</h2></a>
     </li>
     <li class="nav-item col-6">
-      <a class=" <?php isActive("agricoltore_prodotti.php");?> nav-link" href="agricoltore_prodotti.php"><h3>Prodotti</h3></a>
+      <a class=" <?php isActive("agricoltore_prodotti.php");?> nav-link" href="agricoltore_prodotti.php"><h2>Prodotti</h2></a>
     </li>
   </ul>
   <div class="p-3 text-center" > <h4>Guadagno: <span class="text-success">+<?php echo $templateParams["guadagno"]?>€</span></h4>  </div> </div>
