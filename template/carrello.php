@@ -15,13 +15,7 @@ if(isset($_POST['quantityUpdate'])) {
                 $value=$value+1;
             }
         }
-        if($value!=0){
-            if($quantity>intval($massimo)){
-                echo '<div class="alert alert-dark">Attenzione! Inserire una quantità valida!</div>';
-            }else{
-                $_SESSION['product'][$i]["quantita"]=$quantity;
-            }
-        }
+        
         $i++;
     }
 }else { 
@@ -57,6 +51,36 @@ if(isset($_POST['delete'])){
 <head>
     <link rel="stylesheet" type="text/css" href="./css/carrello.css" /> 
 </head>
+<script>
+    $(document).ready(function(){
+    $.each($("input[name='quantity']"), function(index, item){
+        console.log(item);
+
+        item.min="1";
+
+        index++;
+        console.log(index);
+        console.log($("#disponibilita"+index+"").text());
+        $disponibilita = $("#disponibilita"+index+"").text();
+        item.max=$disponibilita;
+        console.log(item.max);
+        item.addEventListener('input', function (event) {
+            console.log( $("span.error:nth-of-type("+index+")").text(""));
+            
+        if(item.value==$disponibilita){
+           
+            $("#error"+index+"").text("Hai selezionato la massima quantià di prodotto disponibile");
+
+        } else{
+            $("#error"+index+"").text("");
+        }
+            
+        });
+    })
+  
+    
+    });
+</script>
 <div class="container-fluid text-center">
     <h2>Il mio carrello:</h2>
     <hr></hr>
@@ -76,15 +100,19 @@ if(isset($_POST['delete'])){
             <tbody>
             <?php $i=0; ?>
             <?php foreach($_SESSION['product'] as $prodotto): ?>
+                <?php $disponibilita = $dbh->getDisponibilita($prodotto["nome"], $prodotto["nome_azienda"])[0]["disponibilita"];?>
                 <tr class="container-product">                   
                     <td class="col-9">
                         <form action="#" method="POST" enctype="multipart/form-data">
                             <?php $i=$i+1; ?>
+                       
                             <h2><?php echo $prodotto["nome"]; ?></h2>
                             <input type="hidden" name="nome" value="<?php echo $prodotto["nome"]; ?>">
                             <p><?php echo $prodotto["tipo"]; ?></p>
+                            <p>Disponibilità:  <span id="disponibilita<?php echo $i; ?>"><?php echo $disponibilita;?></span> </p>
                             <p class="azienda"><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
+             
                             <p>Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</p>
                             <?php $total=$total+(floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]));?>
                             <div class="row">
@@ -93,8 +121,10 @@ if(isset($_POST['delete'])){
                                 </div>
                                 <div class="col-6 text-center mt-2">
                                     <label for="quantity<?php echo $i; ?>">Quantità:</label>
-                                    <input type="number" id="quantity<?php echo $i; ?>" name="quantity" class="quantity-input" value="<?php echo $prodotto["quantita"]; ?>" min="1" ><br><br>
-                                    <input type="submit" name="quantityUpdate" value="Salva le modifiche" class="rounded salva">
+                                   
+                                    <input type="number" id="quantity<?php echo $i; ?>" name="quantity" class="quantity-input"  value="<?php echo $prodotto["quantita"]; ?>" min="1" ><br>
+                                    <span class="error" id="error<?php echo $i; ?>"></span><br>
+                                    <input class="mt-2" type="submit" id="salva_modifiche" name="quantityUpdate" value="Salva le modifiche" class="rounded salva">
                                 </div>
                             </div>
                         </form>
@@ -111,12 +141,12 @@ if(isset($_POST['delete'])){
         </div>       
     </article>
     <div class="text-center">
-        <div class="text-center">
+    <div class="text-center">
             <button type="button" class="rounded" onclick="goBackShopping()">Torna allo shopping</button>
         </div>
         <div class="text-center">
-            <form  action="<?php if(!isUserLoggedIn()) echo "login.php"; else echo "gestisci_ordine.php"; ?>" method="post">
-                <button name="procediordine" class="rounded">Procedi all'ordine</button>           
+            <form  action="<?php if(!isUserLoggedIn()) echo "login.php"; else echo "gestisci_ordine.php"; ?>" method="post">               
+             <button name="procediordine" class="rounded">Procedi all'ordine</button>           
             </form>  
         </div>
     </div>
