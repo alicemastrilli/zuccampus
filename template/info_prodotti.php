@@ -21,7 +21,6 @@ if(isset($_POST['submit'])){
     if($value==0){
         array_push($_SESSION['product'], $newproduct);
         echo '<script type="text/JavaScript">location.reload();</script>';
-        echo '<div class="alert alert-success">Success!You should</div>';
     }
 }
 ?>
@@ -76,19 +75,23 @@ if(isset($_POST['submit'])){
                     <input type="hidden" name="prezzo" value="<?php echo $zucca["prezzo"]; ?>">
                     <p><?php echo $zucca["peso"]; ?> kg </p>
                     <input type="hidden" name="peso" value="<?php echo $zucca["peso"]; ?>">
-                    <label for="quantity">Quantità:</label>
-                    <input type="number" id="quantity" name="quantity" value="1" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
-                    <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
-                    <?php if(isset($_SESSION["agricoltore"])):?>
-                        <?php if($_SESSION["agricoltore"] == 0): ?>
-                        <div class="text-center">
-                            <input class="roudned" type="submit" name="submit" value="Aggiungi al carrello" />                
-                        </div>
-                        <?php endif; ?>
+                    <?php if($zucca["disponibilita"]==0): ?>
+                        <p>Disponibilità: il prodotto non è momentaneamente disponibilie.</p>
                     <?php else: ?>
-                        <div class="text-center">
-                            <input class="rounded" type="submit" name="submit" value="Aggiungi al carrello" />                
-                        </div>
+                        <label for="quantity">Quantità:</label>
+                        <input type="number" id="quantity" name="quantity" value="1" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
+                        <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
+                        <?php if(isset($_SESSION["agricoltore"])):?>
+                            <?php if($_SESSION["agricoltore"] == 0): ?>
+                            <div class="text-center">
+                                <input class="roudned" type="submit" name="submit" value="Aggiungi al carrello" />                
+                            </div>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <div class="text-center">
+                                <input class="rounded" type="submit" name="submit" value="Aggiungi al carrello" />                
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
             </div> 

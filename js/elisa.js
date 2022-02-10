@@ -52,7 +52,7 @@ function generaZucche(zucche) {
 
     for (let i = 0; i < zucche.length; i++) {
         let articolo = `
-        <div class="row da-sostituire">
+        <div class="row da-sostituire zucca mt-2">
             <div class="col-sm-0">
                 <div class="text-center">
                     <h2>${zucche[i]["nome_zucca"]}</h2>
