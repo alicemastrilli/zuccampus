@@ -30,21 +30,34 @@ input.input-box, textarea {
   border-color:#8DC7A3;
   }
 
-  h4{
+h4{
     width: 23%;
     font-size: 18px;
     background-color:#8DC7A3 ;
     border-radius: 25px;
     padding: 3px 0 5px 8px;
     margin-bottom: 0%;
-  
 }
 
-  label{
-      margin-bottom: 0%;
-      font-family: 'Barlow', sans-serif;
-  }
+label{
+    margin-bottom: 0%;
+    font-family: 'Barlow', sans-serif;
+}
 
-  .form-label{
-      margin: 0;
-  }
+.form-label{
+    margin: 0;
+}
+
+input[type=submit]{
+    font-family: 'Barlow', sans-serif;
+    border-radius: 7px;
+    font-size: 23px;
+    padding: 2% 6% 2% 6%;
+    margin: 2px;
+}
+
+.tipocliente label{
+    font-family: 'Questrial', sans-serif;
+    font-size: 23px;
+    padding-left: 5px;
+}

@@ -80,7 +80,7 @@ if(isset($_POST['delete'])){
                     <td class="col-9">
                         <form action="#" method="POST" enctype="multipart/form-data">
                             <?php $i=$i+1; ?>
-                            <h3><?php echo $prodotto["nome"]; ?></h3>
+                            <h2><?php echo $prodotto["nome"]; ?></h2>
                             <input type="hidden" name="nome" value="<?php echo $prodotto["nome"]; ?>">
                             <p><?php echo $prodotto["tipo"]; ?></p>
                             <p class="azienda"><?php echo $prodotto["nome_azienda"]; ?></p>
@@ -100,7 +100,7 @@ if(isset($_POST['delete'])){
                         </form>
                     </td>
                     <td class="col-3 p-2">
-                        <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="150" alt="prodottoCarrello" />
+                        <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="150" alt="" />
                     </td>
                 </tr>
             <?php endforeach;?>
@@ -111,10 +111,10 @@ if(isset($_POST['delete'])){
         </div>       
     </article>
     <div class="text-center">
-        <div class="btn-group text-center mb-2">
+        <div class="text-center">
             <button type="button" class="rounded" onclick="goBackShopping()">Torna allo shopping</button>
         </div>
-        <div class="btn-group text-center mb-2">
+        <div class="text-center">
             <form  action="<?php if(!isUserLoggedIn()) echo "login.php"; else echo "gestisci_ordine.php"; ?>" method="post">
                 <button name="procediordine" class="rounded">Procedi all'ordine</button>           
             </form>  

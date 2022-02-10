@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
-
-
 <head>
-       <link rel="stylesheet" type="text/css" href="./css/venditore.css"/> 
        <script  src="./js/jquery-3.4.1.min.js"></script> 
         <script  src="./js/form_pagamento.js"></script> 
   </head>
@@ -15,7 +12,7 @@ $num_cc = 1;
 <section>
     <div class="row">
         <a class="col-3" onclick="goBack()">
-            <img src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">
+            <img class="freccia" src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">
         </a>
     </div>
     

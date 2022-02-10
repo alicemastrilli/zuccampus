@@ -4,6 +4,9 @@ $costospedizione = 5;
 $sconto = 20;
 $isStudente = $templateParams["studente"];
 ?>
+<head>
+    <link rel="stylesheet" type="text/css" href="./css/carrello.css" /> 
+</head>
 <div class="container-fluid">
     <article>
         <h3>Resoconto ordine:</h3>
@@ -12,11 +15,10 @@ $isStudente = $templateParams["studente"];
             <?php foreach($_SESSION['product'] as $prodotto): ?>
                 <tr>                   
                     <td class="col-9">
-                            <p><?php echo $prodotto["nome"]; ?></p>
-                            <!--che e' sta roba? a che serve la riga successiva?-->
+                            <h2><?php echo $prodotto["nome"]; ?></h2>
                             <input type="hidden" name="id" value="<?php echo $prodotto["nome"]; ?>">
                             <p><?php echo $prodotto["tipo"]; ?></p>
-                            <p><?php echo $prodotto["nome_azienda"]; ?></p>
+                            <p class="azienda"><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
                         <div class="row">
                             <div class="col-6 text-center">
@@ -25,7 +27,7 @@ $isStudente = $templateParams["studente"];
                         </div>
                         <div class="row">
                             <div class="col-6 text-center">
-                                <p>Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</p>
+                                <label>Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</label>
                             </div>
                         </div>
                     </td>
@@ -47,23 +49,6 @@ $isStudente = $templateParams["studente"];
                 </td>           
             </tr>
             <?php endif; ?>
-            <tr>
-                <td >
-                    <div class="btn-group text-center mb-2">
-                        <form  action="carrello.php" method="post">
-                            <button name="paga" class="acquista">Modifica carrello</button>           
-                        </form>  
-                    </div>
-                    <div class="btn-group text-center mb-2">
-                        <form  action="./form_pagamento.php" method="post">
-                        <?php
-                        $_SESSION["acquista"] = 1;
-                        ?>
-                            <button name="paga" class="acquista">Vai al pagamento</button>           
-                        </form>  
-                    </div>
-                </td>
-            </tr>
         </tbody>
     </table>
     <div class="container mt-2 mb-2 text-center">
@@ -71,5 +56,20 @@ $isStudente = $templateParams["studente"];
             $total = $total + $costospedizione;
             $total = $total - (($total / 100) * $sconto);
         }else $total = $total + $costospedizione; ?>
-        <p>Totale complessivo:<?php echo $total; ?>€</p>
+        <label>Totale complessivo: <?php echo $total; ?>€</label>
     </div> 
+    <div class="container-right">
+        <div class="text-center float-right">
+            <form  action="carrello.php" method="post">
+                <button name="paga" class="rounded">Modifica carrello</button>           
+            </form>  
+        </div>
+        <div class="text-center float-left">
+            <form  action="./form_pagamento.php" method="post">
+            <?php
+            $_SESSION["acquista"] = 1;
+            ?>
+                <button name="paga" class="rounded">Vai al pagamento</button>           
+            </form>  
+        </div>
+    </div>

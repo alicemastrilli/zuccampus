@@ -11,7 +11,7 @@
 <nav class="navbar">
     <div class="container ">
         <a class="navbar-brand text-black" href="homepage.php">
-            <h2 class="text-dark">Zuccampus</h2>
+            <h1 class="text-dark">Zuccampus</h1>
         </a>
         <div class="float-end">
             <?php foreach(getFootersIcons() as $icon):?>

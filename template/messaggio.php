@@ -20,7 +20,7 @@
     <div class="text-center mx-3">
     <div class=" text-center mb-2 ">
         <?php $hour=date_create($messaggio["ora"]); ?>
-        <span class="p-2"> <?php echo $messaggio["testo"];?> <a href="<?php echo $messaggio["link"]; ?>">Clicchi qui</a>  <span > per ulteriori dettagli.
+        <span class="p-2"> <?php echo $messaggio["testo"];?><?php if($messaggio["link"]!= ""):?> <a href="<?php echo $messaggio["link"]; ?>">Clicchi qui</a>  <span > per ulteriori dettagli. <?php endif;?>
            <br> <span class="px-3 d-flex flex-row-reverse "><small><?php echo date_format($hour,"H:i"); ?></small> </span>
     </div> 
     </div>  

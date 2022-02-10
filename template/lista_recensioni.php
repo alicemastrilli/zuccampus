@@ -5,12 +5,12 @@
 
     </head>
     <a class="col-3"  onclick="goBack()">
-      <img id = "freccia"src="./icons/freccia.png"width="60px" alt="freccia indietro">
+      <img id = "freccia" src="./icons/freccia.png" width="60px" alt="freccia indietro">
     </a>
     
-<ul class="list-group">
+<ul class="list-group mx-4">
 <?php foreach($templateParams["recensioni"] as $recensione):?>
-    <li class="list-group-item">
+    <li class="list-group-item border-0">
     <div class="row">
         <div class="col sm-0">
 			<div class="star-rating text-center" id="div-star">
@@ -22,10 +22,10 @@
                     <img class="rounded" src="<?php echo UPLOAD_DIR?>stella.png" width="6%" alt="" />
                 <?php endfor;?>
                 </div>
-                <br>
-                <span class="fw-bold">Azienda: </span> <span><?php echo $recensione["nome_azienda"]; ?></span> <br>
-                <span class="fw-bold">Zucca: </span> <span><?php echo $recensione["nome_zucca"]; ?></span><br>
-                <span class="fw-bold">Descrizione: </span><span><?php echo $recensione["descrizione"]; ?></span><br>
+                
+                <h2>Azienda: </h2> <p><?php echo $recensione["nome_azienda"]; ?></p> 
+                <h2>Zucca: </h2> <p><?php echo $recensione["nome_zucca"]; ?></p>
+                <h2>Descrizione: </h2><p><?php echo $recensione["descrizione"]; ?></p>
                 <p class="text-end fw-bold"> -<?php echo $recensione["username"]; ?> </p> 
             </div>
         </div>

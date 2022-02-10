@@ -339,13 +339,12 @@ class DatabaseHelper{
         return $msg;
     }
 
-
+    
     public function getAllOrders($nome_azienda, $n=-1){
-        $query = "SELECT c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,o.ora, z.prezzo,u.nome,u.cognome,o.via, o.numero_civico,
-        o.cap   FROM ordine o, comprende c,zucca z,utente u
-         WHERE c.nome_azienda =? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
-          and o.id_ordine = c.id_ordine and o.username = u.username
-         order by o.data_ordine desc";
+        $query = "SELECT o.data_ordine,u.nome,u.cognome, o.ora,o.via,o.numero_civico,o.cap,o.id_ordine from ordine o,comprende c,utente u
+         where c.nome_azienda = ? and o.id_ordine=c.id_ordine and u.username = o.username
+         order by o.data_ordine desc,o.ora desc";
+        
          if($n >0){
             $query .= " LIMIT ?";
          }
@@ -362,11 +361,25 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAllComprende($id_ordine){
+        $query = "select c.nome_zucca,c.nome_azienda, o.data_ordine,o.via,o.numero_civico,o.cap, c.id_ordine, c.quantita, z.prezzo,z.tipo,u.nome,u.cognome,z.immagine from comprende c, zucca z, utente u, ordine o
+         where c.id_ordine = ? and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca and o.id_ordine=c.id_ordine
+         and o.username = u.username ";
+         $stmt = $this->db->prepare($query);
+
+        $stmt->bind_param('i',$id_ordine);
+      
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+      
+    }
     public function getUserOrders($username, $n=-1){
         $query = "SELECT o.username ,c.nome_zucca, c.id_ordine, c.quantita,o.data_ordine,o.ora, z.prezzo,u.nome,u.cognome,o.via, o.numero_civico,
         o.cap   FROM ordine o, comprende c,zucca z,utente u
          WHERE o.username =? and u.username = o.username and o.id_ordine = c.id_ordine and z.nome_azienda = c.nome_azienda and c.nome_zucca = z.nome_zucca 
-          order by o.data_ordine desc";
+          order by o.data_ordine desc,o.ora desc";
           if($n >0){
             $query .= " LIMIT ?";
          }

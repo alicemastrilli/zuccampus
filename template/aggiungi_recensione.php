@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/info_prodotti.css" /> 
+        <link rel="stylesheet" type="text/css" href="./css/dati_utente.css" /> 
     </head>
-    <nav class="navbar">
         <div class="container">
             <div class="float-start">
                 <a class="text-decoration-none" onclick="goBack()">
-                    <img class="img-fluid ps-1 " src="./icons/freccia.png" width="40" alt="goBack" />
+                    <img class="img-fluid ps-1 freccia " src="./icons/freccia.png" width="40" alt="goBack" />
                 </a>
             </div>
         </div>
-    </nav>
     <form action="lista_recensioni.php" method="POST" enctype="multipart/form-data">
         <section class="text-center">
             <h2>Aggiungi una recensione</h2>
             <div class="row mb-3 mt-3">
                 <div class="col-sm-0 text-center">
-                    <div class="font-weight-bold">
-                        <a><strong><?php echo $nome_zucca; ?></strong></a>
+                    <div >
+                        <h3><?php echo $nome_zucca; ?></h3>
                         <input type="hidden" name="zucca" value="<?php echo $nome_zucca; ?>" />
-                        <br><br>
-                        <div class="mt-2 m-2 text-center" >
+                        <div class=" m-2 text-center" >
                             <label for="produttori" ><strong>Produttore:</strong></label>
                             <select class="form-select mb-2" id="produttori" name="produttori">
                             <?php foreach($templateParams["produttori"] as $produttore):?>
@@ -29,7 +26,6 @@
                             <?php endforeach;?>
                             </select> 
                         </div>
-                        <br><br>
                     </div>
                     <div class="mt-2 m-2">
                         <label for="valutazione"><strong>Valutazione:</strong></label>    
