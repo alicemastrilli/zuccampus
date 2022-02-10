@@ -2,6 +2,10 @@ nav{
     background-color: #FFA416;
 }
 
+.zucca img {
+    clip-path: circle();
+}
+
 body{
     background-color: #FAFAFA;
 }
