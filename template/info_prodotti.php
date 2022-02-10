@@ -27,12 +27,11 @@ if(isset($_POST['submit'])){
 <!DOCTYPE html>
 <html lang="it">
     <head>
-    <!--<link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" /> -->
     </head>
-    <div class="container">
-        <div class="float-start">
-            <a class="text-decoration-none" href="prodotti.php" >
-                <img class="img-fluid ps-1 " src="./icons/freccia.png" width="40" alt="goBack" />
+    <div class="row col-sm-1">
+        <div class="col-sm-1">
+            <a class="col-3"  onclick="goBack()">
+            <img class="freccia"id = "freccia"src="./icons/freccia.png" alt="freccia indietro">
             </a>
         </div>
     </div>
@@ -49,7 +48,7 @@ if(isset($_POST['submit'])){
                         <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="200" alt="">
                         <input type="hidden" name="immagine" value="<?php echo $zucca["immagine"]; ?>">
                         <div class="container mb-2 text-center">
-                            <h4>Produttori:</h4>
+                            <label for="produttori">Produttori:</label>
                             <select class="form-select" name="nome_azienda" id="produttori" onchange="seleziona_fornitore(this.value,'<?php echo $zucca["nome_zucca"]; ?>');" >
                             <?php if(!empty($_SESSION['produttore'])): ?>
                                 <option selected><?php echo $_SESSION['produttore'][0]; ?></option>
@@ -84,7 +83,7 @@ if(isset($_POST['submit'])){
                         <?php if(isset($_SESSION["agricoltore"])):?>
                             <?php if($_SESSION["agricoltore"] == 0): ?>
                             <div class="text-center">
-                                <input class="roudned" type="submit" name="submit" value="Aggiungi al carrello" />                
+                                <input class="rounded" type="submit" name="submit" value="Aggiungi al carrello" />                
                             </div>
                             <?php endif; ?>
                         <?php else: ?>

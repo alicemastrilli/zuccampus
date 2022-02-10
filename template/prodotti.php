@@ -3,10 +3,10 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./css/prodotti.css" />
     </head>
-    <div class="container">
-        <div class="float-start">
-            <a class="text-decoration-none" onclick="goBack()" >
-                <img class="rounded" src="./icons/freccia.png" width="40" alt="goBack" />
+    <div class="row col-sm-1">
+        <div class="col-sm-1">
+            <a class="col-3"  onclick="goBack()">
+            <img class="freccia"id = "freccia"src="./icons/freccia.png" alt="freccia indietro">
             </a>
         </div>
     </div>
@@ -46,7 +46,7 @@
                     <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="200" alt="">
                     <p>€<?php echo $zucca["prezzo"]; ?></p>
                     <form  action="info_prodotti.php" method="post">
-                        <button class="acquista mt-2 mb-2">Acquista</button>
+                        <button class="rounded mt-2 mb-2">Acquista</button>
                         <input type="hidden" name="nome_azienda" value="<?php echo $zucca["nome_azienda"]; ?>">
                         <input type="hidden" name="nome_zucca" value="<?php echo $zucca["nome_zucca"]; ?>">
                     </form>

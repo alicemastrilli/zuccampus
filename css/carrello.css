@@ -55,18 +55,6 @@ td img {
     clip-path: circle();
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-footer {
-    flex: 0 0 50px;
-    /*or just height:50px;*/
-    margin-top: auto;
-}
-
 .container-product {
     margin-left: 20px;
     margin-right: 20px;

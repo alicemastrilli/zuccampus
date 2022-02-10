@@ -1,3 +1,15 @@
+
+h2 {
+    font-family: 'Questrial', sans-serif;
+    font-size: 20px;
+}
+
+h3{
+    font-style: italic;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
 h4 {
     font-family: 'Questrial', sans-serif;
     font-size: 22px;
@@ -6,20 +18,16 @@ h4 {
     padding: 2px;
     margin: 10px;
 }
+.nome_zucca{
+    font-family: 'Barlow', sans-serif;
+    font-size: 28px;
+    font-style: normal;
+}
 
 .zucca {
     width: 170px;
     margin-bottom: 10px;
     clip-path: circle();
-}
-
-h3 {
-    font-size: 20px;
-    font-style: italic;
-}
-
-h2 {
-    margin-top: 10px;
 }
 
 p {
@@ -42,12 +50,6 @@ button:hover {
 .visualize:hover {
     background-color: #D9AF5D;
     border-color: #D9AF5D;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 .delete-product {

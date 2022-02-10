@@ -13,8 +13,8 @@
     <?php foreach($templateParams["zucca_info"] as $zucca):?> 
         <div class="row">
             <div class="col text-center">
-                <h2><?php echo $zucca["nome_zucca"]; ?></h2>
-                <p><?php echo $zucca["tipo"]; ?></p>
+                <h2 class="nome_zucca"><?php echo $zucca["nome_zucca"]; ?></h2>
+                <h3><?php echo $zucca["tipo"]; ?></h3>
                 <img class="zucca" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="220" alt="">
                 <p><?php echo $zucca["descrizione_zucca"]; ?></p>
                 <p>Costo: €<?php echo $zucca["prezzo"]; ?></p>
