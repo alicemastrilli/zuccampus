@@ -26,6 +26,10 @@ input[type=submit] {
     text-align: center;
 }
 
+input[type=submit]{
+    background-color: #8DC7A3;
+}
+
 label {
     margin: 2px 0 2px 0;
     font-size: 22px;
