@@ -3,10 +3,10 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" /> 
     </head>
-    <div class="container">
-        <div class="float-start">
-            <a class="text-decoration-none" onclick="goBack()" >
-                <img class="freccia" src="./icons/freccia.png" width="40" alt="goBack" />
+    <div class="row col-sm-1">
+        <div class="col-sm-1">
+            <a class="col-3"  onclick="goBack()">
+            <img class="freccia"id = "freccia"src="./icons/freccia.png" alt="freccia indietro">
             </a>
         </div>
     </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="row">
             <div class="col-sm text-center mb-2">
-                <button type="button" id="visualizeButton"> Visualizza tutti i prodotti</button>
+                <button class="rounded" type="button" id="visualizeButton"> Visualizza tutti i prodotti</button>
                 <script>
                     document.getElementById("visualizeButton").onclick = function () {
                     location.href = "./prodotti.php";

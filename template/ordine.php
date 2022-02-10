@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="./css/ordine.css" > 
-    </head>
-    <section>
+  <head>
+      <link rel="stylesheet" href="./css/ordine.css" > 
+  </head>
+  <section>
     <div class="row">
       <?php if(!isset($_POST["ordine_effettuato"])):?>
-    <a  onclick="goBack()">
+      <a  onclick="goBack()">
       <img clas="freccia" src="./icons/freccia.png" alt="freccia indietro">
-    </a>
-    <?php endif;?>
-    <?php foreach( $dbh->getAllComprende($templateParams["ordine"]["id_ordine"]) as $ord): ?>
-      <div class="col-12 text-center">
-      <h2><?php echo $ord["nome_zucca"];?></h2>
-      </div>
-    <div class="col-6 text-center">
-      
-    <?php foreach(fillOrders($ord, $templateParams["info"], $templateParams["studente"]) as $x => $x_value ):?>
-        <span > <?php echo $x?> </span> <span class="text-secondary"> <?php echo $x_value?></span><br>
-        <?php endforeach;?>
-    </div>
-      <div class="col-6 p-3 text-center zucca">        
-        
-        <img src="./icons/<?php echo $ord["immagine"];?>"
+      </a>
+      <?php endif;?>
+      <?php foreach( $dbh->getAllComprende($templateParams["ordine"]["id_ordine"]) as $ord): ?>
+        <div class="col-12 text-center">
+          <h2><?php echo $ord["nome_zucca"];?></h2>
+        </div>
+        <div class="col-6 text-center">
+          <?php foreach(fillOrders($ord, $templateParams["info"], $templateParams["studente"]) as $x => $x_value ):?>
+              <span > <?php echo $x?> </span> <span class="text-secondary"> <?php echo $x_value?></span><br>
+          <?php endforeach;?>
+        </div>
+        <div class="col-6 p-3 text-center zucca">        
+          <img src="./icons/<?php echo $ord["immagine"];?>"
         alt="zucca"/>
-    </div>
-
-    <div class="text-center">
-      
-      </div>
-    </div>
+        </div>  
       <?php endforeach;?>   
-
-    <div class="col-10 pb-1">        
+    </div>
+    <div class="col-10 pb-10 mb-10">        
       <div id ="animate"  style="width: 1px;
       height: 1px;
       position: relative;
@@ -43,16 +36,14 @@
         <script 
         src="<?php echo $templateParams["js"]?>"></script> 
       <?php if(isset($templateParams["js"])):?>
-    <?php echo "<script>deliveryAnimation($width)</script>";?>
-    <?php endif;?>
+      <?php echo "<script>deliveryAnimation($width)</script>";?>
+      <?php endif;?>
       <div class="text-center pt-5 mt-4">      
         <div class="progress mx-5  ">
             <div id ="bar" class="progress-bar progress-bar-striped progress-bar-animated" style="width:<?php echo $width."%"?>"></div>
         </div>
-     </div>
+      </div>   
+    </div>
     <div class="m-5 text-center">
-
-  
-        </div>      
-        
-</section>
+    </div> 
+  </section>

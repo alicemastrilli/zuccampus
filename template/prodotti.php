@@ -3,10 +3,10 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./css/prodotti.css" />
     </head>
-    <div class="container">
-        <div class="float-start">
-            <a class="text-decoration-none" onclick="goBack()" >
-                <img class="rounded" src="./icons/freccia.png" width="40" alt="goBack" />
+    <div class="row col-sm-1">
+        <div class="col-sm-1">
+            <a class="col-3"  onclick="goBack()">
+            <img class="freccia"id = "freccia"src="./icons/freccia.png" alt="freccia indietro">
             </a>
         </div>
     </div>

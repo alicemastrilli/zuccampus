@@ -89,7 +89,7 @@ if(isset($_POST['delete'])){
                             <?php $total=$total+(floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]));?>
                             <div class="row">
                                 <div class="col-6 text-center mt-3">
-                                    <input type="submit" name="delete" value="Elimina il Prodotto" class="rounded" />                  
+                                    <input type="submit" name="delete" value="Elimina il prodotto" class="rounded" />                  
                                 </div>
                                 <div class="col-6 text-center mt-2">
                                     <label for="quantity<?php echo $i; ?>">Quantità:</label>
