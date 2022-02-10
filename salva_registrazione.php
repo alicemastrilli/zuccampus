@@ -1,6 +1,6 @@
 <?php
 require_once 'bootstrap.php';
-
+var_dump($_POST);
 if($_POST["action"] == 'Inserisci'){
     //Inserisco
     $num_telefono = htmlspecialchars($_POST["num_telefono"]);
@@ -59,7 +59,7 @@ if($_POST["action"] == 'Inserisci'){
 }
 
 if($_POST["action"] == 'Modifica'){
-
+    var_dump("ci");
     $num_telefono = htmlspecialchars($_POST["num_telefono"]);
     $email = htmlspecialchars($_POST["email"]);
     $username = $_SESSION["username"];
@@ -90,6 +90,7 @@ if($_POST["action"] == 'Modifica'){
     }
     
     $msg = $dbh->updateUser($immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username);
+    var_dump($msg);
     header("location:dati_utente.php?formmsg=".$msg);
 
 }

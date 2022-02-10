@@ -63,7 +63,7 @@
                         <label for="quantity">Quantità:</label>
                         <input type="number" id="quantity" name="quantity" value="1" min="1" max="<?php echo $zucca["disponibilita"]; ?>"><br><br>
                         <p>Disponibilità: <?php echo $zucca["disponibilita"]; ?> pezzi </p>
-                        <?php if(isset($_SESSION["agricoltore"]) && !$_SESSION["agricoltore"]):?>
+                        <?php if(!isUserLoggedIn() || (isset($_SESSION["agricoltore"]) && !$_SESSION["agricoltore"] )):?>
                             <div class="text-center">
                                 <input id="aggiungi" class="rounded" type="submit" name="submit" <?php if($disable):?> disabled <?php endif;?> value="Aggiungi al carrello" />  
                                 <?php if($disable):?>

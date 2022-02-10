@@ -10,12 +10,10 @@ $(document).ready(function(){
       }
   });
 
-  if(document.getElementById("paga_ora") != null){
-  document.getElementById('paga_ora').disabled = true;
-  }
   
   if($("input[type='radio']") != null){
     console.log($("input[type='radio']"));
+   
     $.each($("input[type='radio']"), function(index, item) {
       item.addEventListener('input',function(){
         document.getElementById('paga_ora').disabled = false;

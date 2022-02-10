@@ -25,7 +25,7 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
    </div>
    <h2 class="text-center"><?php echo $templateParams["utente"]["nome"]; ?> <?php echo $templateParams["utente"]["cognome"]; ?></h2>
    <h3 class="text-center"><?php echo $templateParams["utente"]["email"]; ?></h3>
-      <h4 class="pt-2 px-2">Informazioni di base</h4>
+      <h4 class="pt-2 px-2 col-12 text-center">Informazioni di base</h4>
       <div class="mb-3 mt-3">
          <label for="nome" class="form-label px-2">Nome:</label><br>
          <div class="mx-2">
@@ -63,7 +63,7 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
          </div>
    <?php endif;?>
    <article class="rounded mx-2">
-         <h4>Informazioni di contatto</h4>
+         <h4 class="pt-2 px-2 col-12 text-center">Informazioni di contatto</h4>
          <div class="mb-3 mt-3">
             <label for="email" class="form-label px-2">Email:</label><br>
             <div class="mx-2 pb-3">
