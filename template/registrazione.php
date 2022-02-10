@@ -34,8 +34,12 @@
     function hideAll($c){
       $($c).hide();
     }
+    function disableUsername(){
+      document.getElementById('username').disabled = true;    
+    }
   </script>
   <section>
+    
     <div class="row">
       <div class="col-12 p-3 text-center ">
          <img class="fotoprofilo"src="<?php echo UPLOAD_DIR.$immagine?>" class="round-circle max" alt="foto profilo default"/>
@@ -61,6 +65,9 @@
 
             </div>
           <?php endforeach;?>
+          <?php if($azione=="Modifica"):?>
+        <script>disableUsername();</script> 
+     <?php endif; ?>
           <?php foreach(fillToHide() as $field):?>
 
           <label <?php if(isUserLoggedIn()){ echo "hidden";}?>  for=<?php echo str_replace(' ', '',  $field["text"]);?> class="form-label px-2"><?php echo ucwords($field["text"])?> :</label>

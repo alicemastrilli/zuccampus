@@ -18,7 +18,7 @@
 <label for="nome_azienda" class="form-label px-2">Nome azienda agricola</label><br>
       <div class="mx-2 pb-3">
             <input class="form-control" type="text" id="nome_azienda" name="nome_azienda" required 
-            <?php if($azione=="Modifica"):?> value="<?php echo $azienda["nome_azienda"]; ?>" <?php endif;?>/>
+            <?php if($azione=="Modifica"):?> value="<?php echo $azienda["nome_azienda"]; ?>" disabled <?php endif;?>/>
                   <span class="error" aria-live="polite"></span>
 
       </div>

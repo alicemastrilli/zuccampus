@@ -1,12 +1,12 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />
+        <link rel="stylesheet" type="text/css" href="./css/carrello.css" />
     </head>
     <div class="container-fluid">
         <div class="row">
             <div class="col sm-0 text-center">
                 <form action="gestisci_prodotto.php?action=1" method="post">
-                    <button class="visualize mb-2 mt-2"  name="inserisci">Inserisci nuovo prodotto</button>
+                    <button class="visualize mb-2 mt-2 rounded"  name="inserisci">Inserisci nuovo prodotto</button>
                 </form>
             </div>
         </div>
@@ -16,13 +16,13 @@
                 <?php foreach($templateParams["prodottiVenditore"] as $prodotto): ?>
                     <tr>                   
                         <td class="col-9">
-                            <h3><?php echo $prodotto["nome_zucca"]; ?></h3>
-                            <h4><?php echo $prodotto["tipo"]; ?></h5>
+                            <h2><?php echo $prodotto["nome_zucca"]; ?></h2>
+                            <h4 class="azienda"><?php echo $prodotto["tipo"]; ?></h5>
                             <p>Quantità disponibile:<?php echo $prodotto["disponibilita"]; ?></p>
                             <div class="row">
                                 <div class="col-6 text-center">
                                     <form  action="info_prodotto_venditore.php" method="post">
-                                        <button class="visualize mb-2">Visualizza Prodotto</button>
+                                        <button class="visualize mb-2 rounded">Visualizza Prodotto</button>
                                         <input type="hidden" name="nome_zucca" value="<?php echo $prodotto["nome_zucca"]; ?>" />
                                     </form>
                                 </div>
