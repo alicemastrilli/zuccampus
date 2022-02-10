@@ -57,7 +57,7 @@ if($templateParams["azione"] == 'Modifica') {
             $templateParams["azienda"] = $dbh -> getAziendaAgrByName($nome_azienda)[0];
         }
     }
-    require("template/base.php");
+    require("salva_registrazione.php");
 
 }  
 
