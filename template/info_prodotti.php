@@ -22,6 +22,7 @@ if(isset($_POST['submit'])){
         array_push($_SESSION['product'], $newproduct);
         echo '<script type="text/JavaScript">location.reload();</script>';
     }
+    require "carrello.php";
 }
 ?>
 <!DOCTYPE html>
@@ -45,7 +46,7 @@ if(isset($_POST['submit'])){
     }
     ?>
     <div class="container-fluid">
-        <form action="carrello.php" method="POST" enctype="multipart/form-data">
+        <form action="#" method="POST" enctype="multipart/form-data">
             <div class="container per-appendere">
             <?php foreach($templateParams["zucca_info"] as $zucca):?>
                 <div class="row"> 
