@@ -115,14 +115,17 @@ if(isset($_POST['delete'])){
     <h2>Il mio carrello:</h2>
     <hr></hr>
 </div>
-<?php $total=0; ?>
+<?php $total=0;
+if(isset($_SESSION["acquista"]) && $_SESSION["acquista"] == 1 && empty($_SESSION['product'])){
+        unset($_SESSION["acquista"]);
+} ?> 
 <?php if(empty($_SESSION['product'])): ?>
-<div class="container-fluid mt-1 text-center">
-    <p>Il carrello è vuoto<p>
-</div>
-<div class="container-left mb-2 mt-2 text-center">
-    <button type="button" class="rounded" onclick="goBackShopping()">Torna allo shopping</button>
-</div>
+    <div class="container-fluid mt-1 text-center">
+        <p>Il carrello è vuoto<p>
+    </div>
+    <div class="container-left mb-2 mt-2 text-center">
+        <button type="button" class="rounded" onclick="goBackShopping()">Torna allo shopping</button>
+    </div>
 <?php else: ?>
 <div class="container-fluid">
     <article aria-label="article">

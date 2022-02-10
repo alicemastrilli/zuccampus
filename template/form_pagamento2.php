@@ -22,7 +22,7 @@ $num_cc = 1;
         <article class="rounded mx-2">
         <?php if($azione != "Modifica" && $azione != "Inserisci"):?>
             <div>
-                <?php if(isset($_SESSION["acquista"]) && $_SESSION["acquista"]):?>
+                <?php if(isset($_SESSION["acquista"]) && $_SESSION["acquista"]==1):?>
                 <input type="radio" id="selezione" name="selezione" required  value="<?php echo $num_cc?>" <?php if ($num_cc == 1){ echo "checked";}?>/>
                 <label>Selezione questa carta di credito</label>
                 <?php endif;?>
