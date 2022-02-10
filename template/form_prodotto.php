@@ -17,11 +17,12 @@
             <h2 class=" px-2"><?php echo $azione?> prodotto</h2>
         </div>
         <div class="row text-center">
-        <article class="rounded mx-2">
+        <article aria-label="article" class="rounded mx-2">
             <div class=" zucca col-12 text-center ">
                 <img class="zucca" src="<?php echo UPLOAD_DIR.$immagine?>" alt="foto profilo default"/>
                 <div class="pb-1 text-center">
-                    <input type="file" name="immagine" id="immagine" value="immagine" />
+                    <label for="immagine">Inserisci immagine</label>
+                    <input type="file" name="immagine" id="immagine" />
                 </div>
             </div>
             <div class="mb-3 mt-3">
