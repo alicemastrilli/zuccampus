@@ -26,7 +26,7 @@ input[type=submit] {
     text-align: center;
 }
 
-input[type=submit]:disabled{
+input[type=submit]:disabled {
     background-color: #8DC7A3;
 }
 
@@ -41,8 +41,9 @@ p {
 }
 
 span {
-    font-size: 20px; 
+    font-size: 20px;
 }
+
 .quantity-input {
     width: 50%;
     margin-left: 120px;
@@ -69,4 +70,15 @@ td img {
 
 .salva {
     left: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    flex: 0 0 50px;
+    margin-top: auto;
 }

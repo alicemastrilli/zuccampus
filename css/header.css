@@ -1,4 +1,4 @@
-nav{
+nav {
     background-color: #FFA416;
 }
 
@@ -8,85 +8,102 @@ nav{
     clip-path: circle();
 }
 
-
-
-body{
+body {
     background-color: #FAFAFA;
 }
-article{
+
+article {
     margin: 0 3% 0 3%;
 }
-h1{
+
+h1 {
     font-family: 'Barlow', sans-serif;
     font-size: 40px;
     color: #0C403D;
 }
-h2{
+
+h2 {
     margin-top: 10px;
     font-family: 'Barlow', sans-serif;
     font-size: 30px;
 }
-h3{
+
+h3 {
     font-family: 'Questrial', sans-serif;
     font-size: 15px;
     padding: 10px 0 3px 0;
     font-style: italic;
 }
-h4{
+
+h4 {
     font-family: 'Questrial', sans-serif;
     font-size: 10px;
 }
 
-p, option, select{
+p,
+option,
+select {
     font-family: 'Questrial', sans-serif;
     font-size: 21px;
 }
 
-.input[type=text]{
+.input[type=text] {
     font-family: 'Questrial', sans-serif;
     font-size: 20px;
 }
 
-button{
+button {
     background-color: #0C403D;
-    font-family:'Barlow', sans-serif; 
+    font-family: 'Barlow', sans-serif;
     font-size: 20px;
     color: #EDEDED;
     padding: 1% 6% 1% 6%;
     margin: 2px;
 }
-button:hover{
+
+.aggiungi-recensione {
+    background-color: #0C403D;
+    font-family: 'Barlow', sans-serif;
+    font-size: 50px;
+    color: #EDEDED;
+    padding: 1% 6% 1% 6%;
+    margin: 2px;
+}
+
+button:hover {
     padding: 2% 7% 2% 7%;
 }
 
-input[type=submit]{
+input[type=submit] {
     border-radius: 7px;
     background-color: #0C403D;
-    font-family:'Barlow', sans-serif; 
+    font-family: 'Barlow', sans-serif;
     font-size: 20px;
     color: #EDEDED;
     padding: 1% 6% 1% 6%;
     margin: 2px;
 }
 
-section{
-
+section {
     margin: 0 3% 0 3%;
 }
 
-table{
+table {
     background-color: #FAFAFA;
 }
-td, th {
+
+td,
+th {
     margin: 10px;
     border: none;
 }
 
-label{
+label {
     font-family: 'Barlow', sans-serif;
     font-size: 25px;
 }
-.freccia{
+
+.freccia {
     width: 50px;
 }
 
@@ -109,12 +126,15 @@ nav>div>div>img {
     padding-top: 20px;
     display: inline-block;
 }
-header img{
+
+header img {
     width: 50px;
 }
-header img:hover{
+
+header img:hover {
     cursor: pointer;
 }
+
 #posta>span {
     position: absolute;
     right: -5px;
@@ -138,11 +158,12 @@ header img:hover{
     padding: 5px 10px;
     font-size: 10px;
 }
+
 @media screen and (max-width: 300px) {
-    header img{
-        width:50px;
+    header img {
+        width: 50px;
     }
-    h1{
+    h1 {
         font-size: 20px;
     }
 }
