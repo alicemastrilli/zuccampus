@@ -1,9 +1,3 @@
-html {
-    margin: 0;
-    height: 100%;
-    width: 100%;
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -16,39 +10,13 @@ footer {
     margin-top: auto;
 }
 
-footer img {
-    width: 40px;
+.img-container {
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
-section img {
-    width: 150px;
-    height: 150px;
-}
-
-section>h3 {
-    font-weight: bold;
-}
-
-section>article {
-    background-color: rgb(196, 196, 196);
-}
-
-article img {
-    width: 100px;
-}
-
-article button {
-    background-color: #D9AF5D;
-}
-
-article textarea {
-    resize: none;
-}
-
-article button a {
-    font-weight: bold;
-}
-
-body>main>div>div>div>img:nth-child(1) {
-    right: 0;
+.col-sm {
+    padding-left: 0px;
+    padding-right: 0px;
 }

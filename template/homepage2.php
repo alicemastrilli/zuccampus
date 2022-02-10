@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm">
-                <img class="img-fluid" src="./icons/campodizucche.jpeg" onclick="window.location.href='./prodottiHomePage.php'" width="100%" alt="prodotti" />
+                <img class="img-container" src="./icons/campodizucche.jpeg" onclick="window.location.href='./prodottiHomePage.php'" width="100%" alt="prodotti" />
             </div>
         </div>
         <div class="row">
             <div class="col-sm ">
-                <img class="img-fluid" src="./icons/contadino.jpeg" onclick="window.location.href='./aziende_agricole.php'" width="100%" alt="produttori" />
+                <img class="img-container" src="./icons/contadino.jpeg" onclick="window.location.href='./aziende_agricole.php'" width="100%" alt="produttori" />
             </div>
         </div> 
     </div>
