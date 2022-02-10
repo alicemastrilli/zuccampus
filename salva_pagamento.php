@@ -57,7 +57,7 @@ if($bool!=false){
 
     }
     unset($_SESSION["product"]);
-    unset($_SESSION["acquista"])
+    unset($_SESSION["acquista"]);
 }
 
 $_POST["messaggio_action"]=1;
