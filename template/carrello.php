@@ -54,23 +54,34 @@ if(isset($_POST['delete'])){
 <script>
     $(document).ready(function(){
     $.each($("input[name='quantity']"), function(index, item){
-        console.log(item);
 
         item.min="1";
 
         index++;
-        console.log(index);
-        console.log($("#disponibilita"+index+"").text());
         $disponibilita = $("#disponibilita"+index+"").text();
         item.max=$disponibilita;
-        console.log(item.max);
+        value=$(this).val();
         item.addEventListener('input', function (event) {
-            console.log( $("span.error:nth-of-type("+index+")").text(""));
+            $totale_zucca= $("#totale_zucca"+index+"").text();
+            $prezzo_zucca =$("#prezzo"+index+"").val();
+            console.log($prezzo_zucca);
+
+            console.log($totale_zucca);
+
+            if($(this).val() > value){
+
+                $tot = parseFloat($totale_zucca)+parseFloat($prezzo_zucca);
+                $("#totale_zucca"+index+"").text($tot + " €");
+            } else{
+                
+                $tot = parseFloat($totale_zucca)-parseFloat($prezzo_zucca);
+                $("#totale_zucca"+index+"").text($tot + " €");
+            }
             
         if(item.value==$disponibilita){
            
             $("#error"+index+"").text("Hai selezionato la massima quantià di prodotto disponibile");
-
+            
         } else{
             $("#error"+index+"").text("");
         }
@@ -105,15 +116,15 @@ if(isset($_POST['delete'])){
                     <td class="col-9">
                         <form action="#" method="POST" enctype="multipart/form-data">
                             <?php $i=$i+1; ?>
-                       
                             <h2><?php echo $prodotto["nome"]; ?></h2>
                             <input type="hidden" name="nome" value="<?php echo $prodotto["nome"]; ?>">
                             <p><?php echo $prodotto["tipo"]; ?></p>
                             <p>Disponibilità:  <span id="disponibilita<?php echo $i; ?>"><?php echo $disponibilita;?></span> </p>
                             <p class="azienda"><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
+                            <input type="hidden" id="prezzo<?php echo $i; ?>" value="<?php echo $prodotto["prezzo"]; ?>">
              
-                            <p>Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</p>
+                            <span>Totale:</span> <span id="totale_zucca<?php echo $i; ?>"> <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</span>
                             <?php $total=$total+(floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]));?>
                             <div class="row">
                                 <div class="col-6 text-center mt-3">

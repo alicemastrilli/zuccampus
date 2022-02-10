@@ -36,6 +36,9 @@ p {
     font-size: 20px;
 }
 
+span {
+    font-size: 20px; 
+}
 .quantity-input {
     width: 50%;
     margin-left: 120px;
