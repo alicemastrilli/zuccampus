@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row align-content-center">
             <div class="col-sm text-center mt-3">
-                <h4>Prodotti più venduti</h4>
+                <h2>Prodotti più venduti</h2>
             </div>
         </div>
         <div class="row">

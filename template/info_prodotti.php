@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
                         <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="200" alt="">
                         <input type="hidden" name="immagine" value="<?php echo $zucca["immagine"]; ?>">
                         <div class="container mb-2 text-center">
-                            <h4>Produttori:</h4>
+                            <label for="produttori">Produttori:</label>
                             <select class="form-select" name="nome_azienda" id="produttori" onchange="seleziona_fornitore(this.value,'<?php echo $zucca["nome_zucca"]; ?>');" >
                             <?php if(!empty($_SESSION['produttore'])): ?>
                                 <option selected><?php echo $_SESSION['produttore'][0]; ?></option>

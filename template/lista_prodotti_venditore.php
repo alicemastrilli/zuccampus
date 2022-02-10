@@ -16,7 +16,7 @@
                 <?php foreach($templateParams["prodottiVenditore"] as $prodotto): ?>
                     <tr>                   
                         <td class="col-9">
-                            <h2><?php echo $prodotto["nome_zucca"]; ?></h2>
+                            <h3><?php echo $prodotto["nome_zucca"]; ?></h3>
                             <h4 class="azienda"><?php echo $prodotto["tipo"]; ?></h5>
                             <p>Quantità disponibile:<?php echo $prodotto["disponibilita"]; ?></p>
                             <div class="row">
