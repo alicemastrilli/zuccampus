@@ -12,3 +12,16 @@ footer {
 .center-button {
     margin-right: 10px;
 }
+
+
+button{
+    background-color: #0C403D;
+    font-family:'Barlow', sans-serif; 
+    font-size: 19px;
+    color: #EDEDED;
+    padding: 1% 6% 1% 6%;
+    margin: 2px;
+}
+button:hover{
+    padding: 2% 7% 2% 7%;
+}

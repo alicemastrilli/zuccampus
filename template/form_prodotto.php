@@ -14,14 +14,14 @@
 <form action="salva_prodotto.php" method="POST" enctype="multipart/form-data">
     <section>
         <div class="row text-center">
-            <h3 class=" px-2"><?php echo $azione?> prodotto</h3>
+            <h2 class=" px-2"><?php echo $azione?> prodotto</h2>
         </div>
         <div class="row text-center">
         <article class="rounded mx-2">
             <div class=" zucca col-12 text-center ">
                 <img class="zucca" src="<?php echo UPLOAD_DIR.$immagine?>" alt="foto profilo default"/>
                 <div class="pb-1 text-center">
-                    <input type="file" name="immagine" id="immagine" />
+                    <input type="file" name="immagine" id="immagine" value="immagine" />
                 </div>
             </div>
             <div class="mb-3 mt-3">

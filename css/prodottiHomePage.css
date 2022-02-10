@@ -1,3 +1,15 @@
+
+h2 {
+    font-family: 'Questrial', sans-serif;
+    font-size: 20px;
+}
+
+h3{
+    font-style: italic;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
 h4 {
     font-family: 'Questrial', sans-serif;
     font-size: 22px;
@@ -6,20 +18,16 @@ h4 {
     padding: 2px;
     margin: 10px;
 }
+.nome_zucca{
+    font-family: 'Barlow', sans-serif;
+    font-size: 28px;
+    font-style: normal;
+}
 
 .zucca {
     width: 170px;
     margin-bottom: 10px;
     clip-path: circle();
-}
-
-h2 {
-    font-size: 20px;
-    font-style: italic;
-}
-
-h3 {
-    margin-top: 10px;
 }
 
 p {

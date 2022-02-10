@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row align-content-center">
             <div class="col-sm text-center mt-3">
-                <h2>Prodotti più venduti</h2>
+                <h2 class="sezione">Prodotti più venduti</h2>
             </div>
         </div>
         <div class="row">
@@ -28,15 +28,15 @@
                     <div class="carousel-inner text-center">
                     <?php foreach($templateParams["primaZucca"] as $zucca): ?>
                         <div class="carousel-item active">
-                            <h2><?php echo $zucca["nome_zucca"]; ?></h2>
+                            <h2 class="nome_zucca"><?php echo $zucca["nome_zucca"]; ?></h2>
                             <h3><?php echo $zucca["tipo"]; ?></h3>
-                            <img class="mx-auto d-block zucca" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="220" alt="First slide">
+                            <img class=" zucca mx-auto d-block" src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="220" alt="First slide">
                             <p>€<?php echo $zucca["prezzo"]; ?></p>
                         </div>
                     <?php endforeach; ?>
                     <?php foreach($templateParams["zucchePopolari"] as $zuccaPopolare): ?>
                         <div class="carousel-item">
-                            <h2><?php echo $zuccaPopolare["nome_zucca"]; ?></h2>
+                            <h2 class="nome_zucca"><?php echo $zuccaPopolare["nome_zucca"]; ?></h2>
                             <h3><?php echo $zuccaPopolare["tipo"]; ?></h3>
                             <img class="mx-auto d-block" src="<?php echo UPLOAD_DIR.$zuccaPopolare["immagine"]; ?>" width="220" alt="First slide">
                             <p>€<?php echo $zuccaPopolare["prezzo"]; ?></p>
