@@ -12,7 +12,7 @@ $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
 
-if(isset($_POST["nome_zucca"]) || isset($_GET["nome_zucca"])){
+if(isset($_POST["nome_zucca"])){
     $nome_zucca = $_POST["nome_zucca"];
 }
 $templateParams["zucca_info"] = $dbh -> getZuccaByName($nome_zucca);

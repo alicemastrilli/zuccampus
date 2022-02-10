@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="row zucca mt-2">
+        <div class="row da-sostituire zucca mt-2">
             <div class="col-sm-0">
             <?php foreach($templateParams["zucche"] as $zucca): ?>
                 <div class="text-center">

@@ -54,7 +54,8 @@ if($_POST["action"] == 'Modifica'){
     $msg = $dbh->updateZucca($immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca, $tipo);
     if($msg){
         $msg = "Modifica avvenuta con successo";
-        header("location: info_prodotto_venditore.php?formmsg=".$msg."&id=".$nome_zucca);    
+        $_POST["nome_zucca"]=$nome_zucca;
+        require "info_prodotto_venditore.php";
     }
     //TODO: gestisco l'errore con un messaggio a video
     else{

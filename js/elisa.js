@@ -100,7 +100,7 @@ function generaZuccheProduttoreSelezionato(zucche) {
     return result;
 }
 
-function ordinaPerPrezzo(tipo_ordine, isFarmer) {
+function ordinaPerPrezzo(tipo_ordine) {
     $.ajax({
         url: "ordina_elementi.php",
         data: "tipo_ordine=" + tipo_ordine,
