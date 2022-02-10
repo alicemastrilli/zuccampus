@@ -26,7 +26,7 @@
                                         <input type="hidden" name="nome_zucca" value="<?php echo $prodotto["nome_zucca"]; ?>" />
                                     </form>
                                 </div>
-                                <div class="col-6 text-center">
+                                <div class="col-6 text-center delete-product">
                                 <form action="gestisci_prodotto.php?action=3" method="post">
                                     <input class="visualize mb-2" type="submit" name="elimina" value="Elimina Prodotto">  
                                     <input type="hidden" name="nome_zucca" value="<?php echo $prodotto["nome_zucca"]; ?>" />
@@ -35,7 +35,7 @@
                             </div>
                         </td>
                         <td class="col-3 p-2">
-                            <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="150" alt="" />
+                            <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="120" alt="" />
                         </td>
                     </tr>
                 <?php endforeach;?>

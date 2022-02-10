@@ -44,16 +44,13 @@ button:hover {
     border-color: #D9AF5D;
 }
 
-
-
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-footer {
-    flex: 0 0 50px;
-    /*or just height:50px;*/
-    margin-top: auto;
+.delete-product {
+    padding-top: 5px;
+    padding-left: 60px;
 }

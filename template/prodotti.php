@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <!--<link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />-->
+        <link rel="stylesheet" type="text/css" href="./css/prodotti.css" />
     </head>
     <div class="container">
         <div class="float-start">
@@ -20,7 +20,7 @@
                         <li class="dropdown-item" onclick="ordinaPerPrezzo('DECS');">Prezzo:decrescente</li>
                     </ul>
                 </div>
-                <div class="btn-group">
+                <div class="btn-group center-button">
                     <button type="button" class="rounded" data-toggle="dropdown">Produttori</button>
                     <ul class="dropdown-menu">
                     <?php foreach($templateParams["agricoltori"] as $agricoltore): ?>
