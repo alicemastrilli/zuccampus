@@ -1,6 +1,7 @@
 <?php
 require_once 'bootstrap.php'; 
 if(isset($_POST['quantityUpdate'])) {
+
     $newproduct=array(
         'nome' => $_POST["nome"],
         'nome_azienda' => $_POST["nome_azienda"]
@@ -11,11 +12,19 @@ if(isset($_POST['quantityUpdate'])) {
         $value=0;
         if($key["nome"]==$newproduct["nome"]){
             if($key["nome_azienda"]==$newproduct["nome_azienda"]){
+                
                 $quantity=$_POST["quantity"];
                 $value=$value+1;
             }
+
         }
-        
+        if($value!=0){
+            if($quantity>intval($massimo)){
+                echo '<div class="alert alert-dark">Attenzione! Inserire una quantità valida!</div>';
+            }else{
+                $_SESSION['product'][$i]["quantita"]=$quantity;
+            }
+        }
         $i++;
     }
 }else { 
@@ -54,39 +63,49 @@ if(isset($_POST['delete'])){
 <script>
     $(document).ready(function(){
     $.each($("input[name='quantity']"), function(index, item){
-
-        item.min="1";
-
         index++;
+        $("#salva_modifiche"+index+"").prop( "disabled", true );
+      
+
+        
         $disponibilita = $("#disponibilita"+index+"").text();
         item.max=$disponibilita;
         value=$(this).val();
         item.addEventListener('input', function (event) {
+            $("#salva_modifiche"+index+"").prop( "disabled", false );
+            $("#procediordine").prop( "disabled", true );
             $totale_zucca= $("#totale_zucca"+index+"").text();
             $prezzo_zucca =$("#prezzo"+index+"").val();
-            console.log($prezzo_zucca);
-
-            console.log($totale_zucca);
-
+            $totale_tutto = $("#totale_tutto"+index+"").text();
             if($(this).val() > value){
-
                 $tot = parseFloat($totale_zucca)+parseFloat($prezzo_zucca);
                 $("#totale_zucca"+index+"").text($tot + " €");
+                $tot_tutto = parseFloat($totale_tutto)+parseFloat($prezzo_zucca);
+                $("#totale_tutto"+index+"").text($tot_tutto + " €");
+                
+            
+    
             } else{
                 
                 $tot = parseFloat($totale_zucca)-parseFloat($prezzo_zucca);
                 $("#totale_zucca"+index+"").text($tot + " €");
+                $tot_tutto = parseFloat($totale_tutto)-parseFloat($prezzo_zucca);
+                $("#totale_tutto"+index+"").text($tot_tutto + " €");
             }
-            
+            value = $(this).val();
+
         if(item.value==$disponibilita){
-           
             $("#error"+index+"").text("Hai selezionato la massima quantià di prodotto disponibile");
             
         } else{
             $("#error"+index+"").text("");
         }
-            
+        $("#salva_modifiche"+index+"").click(function(){
+            $("#procediordine").prop( "disabled", false );
+
+        }) ;
         });
+       
     })
   
     
@@ -111,6 +130,10 @@ if(isset($_POST['delete'])){
             <tbody>
             <?php $i=0; ?>
             <?php foreach($_SESSION['product'] as $prodotto): ?>
+                <?php $total=$total+(floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]));?>
+
+            <?php endforeach;?>
+            <?php foreach($_SESSION['product'] as $prodotto): ?>
                 <?php $disponibilita = $dbh->getDisponibilita($prodotto["nome"], $prodotto["nome_azienda"])[0]["disponibilita"];?>
                 <tr class="container-product">                   
                     <td class="col-9">
@@ -125,7 +148,6 @@ if(isset($_POST['delete'])){
                             <input type="hidden" id="prezzo<?php echo $i; ?>" value="<?php echo $prodotto["prezzo"]; ?>">
              
                             <span>Totale:</span> <span id="totale_zucca<?php echo $i; ?>"> <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</span>
-                            <?php $total=$total+(floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]));?>
                             <div class="row">
                                 <div class="col-6 text-center mt-3">
                                     <input type="submit" name="delete" value="Elimina il prodotto" class="rounded" />                  
@@ -135,7 +157,7 @@ if(isset($_POST['delete'])){
                                    
                                     <input type="number" id="quantity<?php echo $i; ?>" name="quantity" class="quantity-input"  value="<?php echo $prodotto["quantita"]; ?>" min="1" ><br>
                                     <span class="error" id="error<?php echo $i; ?>"></span><br>
-                                    <input class="mt-2" type="submit" id="salva_modifiche" name="quantityUpdate" value="Salva le modifiche" class="rounded salva">
+                                    <input class="mt-2" type="submit" id="salva_modifiche<?php echo $i; ?>" name="quantityUpdate" value="Salva le modifiche" class="rounded salva">
                                 </div>
                             </div>
                         </form>
@@ -148,7 +170,7 @@ if(isset($_POST['delete'])){
             </tbody>
         </table>
         <div class="container mt-2 mb-2 text-center">
-            <p>Totale:<?php echo $total; ?>€</p>
+            <span>Totale: </span><span id="totale_tutto<?php echo $i; ?>"> <?php echo $total; ?>€</span>
         </div>       
     </article>
     <div class="text-center">
@@ -157,7 +179,7 @@ if(isset($_POST['delete'])){
         </div>
         <div class="text-center">
             <form  action="<?php if(!isUserLoggedIn()) echo "login.php"; else echo "gestisci_ordine.php"; ?>" method="post">               
-             <button name="procediordine" class="rounded">Procedi all'ordine</button>           
+             <button name="procediordine" id="procediordine"class="rounded">Procedi all'ordine</button>           
             </form>  
         </div>
     </div>

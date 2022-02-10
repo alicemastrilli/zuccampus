@@ -12,6 +12,7 @@ $isStudente = $templateParams["studente"];
         <h3>Resoconto ordine:</h3>
         <table class="table table-striped">
             <tbody>
+                <?php var_dump($_POST);?>
             <?php foreach($_SESSION['product'] as $prodotto): ?>
                 <tr>                   
                     <td class="col-9">
@@ -22,6 +23,7 @@ $isStudente = $templateParams["studente"];
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
                         <div class="row">
                             <div class="col-6 text-center">
+                                <?php var_dump ($prodotto);?>
                                 <p>Quantità: <?php echo $prodotto["quantita"];?></p>
                             </div>
                         </div>
