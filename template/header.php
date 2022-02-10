@@ -58,7 +58,7 @@
                 ?>
   		    <a id="posta" href="casella_messaggi.php">
 			<span class="notify-badge"><?php echo countMessagesUnread($templateParams["messaggi"]) ?></span>
-      		<img src="<?php echo UPLOAD_DIR.'posta.png'?>"  alt="casella di posta" />
+      		<img src="<?php echo UPLOAD_DIR.'posta.jpg'?>"  alt="casella di posta" />
 		    </a>
 	        </div>
             <img class="ps-2"data-bs-toggle="offcanvas" data-bs-target="#offcanvas" 

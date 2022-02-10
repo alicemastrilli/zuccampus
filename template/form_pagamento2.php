@@ -23,8 +23,8 @@ $num_cc = 1;
         <?php if($azione != "Modifica" && $azione != "Inserisci"):?>
             <div>
                 <?php if(isset($_SESSION["acquista"]) && $_SESSION["acquista"]==1):?>
-                <input type="radio" id="selezione" name="selezione" required  value="<?php echo $num_cc?>" <?php if ($num_cc == 1){ echo "checked";}?>/>
-                <label>Selezione questa carta di credito</label>
+                    <input type="radio" id="selezione" name="selezione" required  value="<?php echo $num_cc?>" <?php if ($num_cc == 1){ echo "checked";}?>/>
+                    <label>Selezione questa carta di credito</label>
                 <?php endif;?>
             </div>
             <?php endif;?>
@@ -65,7 +65,6 @@ $num_cc = 1;
                     <div class="mx-2 pb-3 col-5">
                     <input  type="number" class="form-control " id="anno_scadenza" min="2022" max="2027" step="1" required value="<?php echo $pagamento["anno_scadenza"]; ?>" name="anno_scadenza" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
                     <span class="error" aria-live="polite"></span>
-    
                 </div>
                 </div>
             </div>
@@ -76,7 +75,7 @@ $num_cc = 1;
         </form>
     <?php else: ?>
         <form  action="./form_pagamento.php" method="post">
-            <button style="visibility:hidden;" name="Inserisci" value="Inserisci" class="acquista">Modifica metodo di pagamentoAAAAA</button>           
+            <button style="visibility:hidden;" name="Inserisci" value="Inserisci" class="acquista">Modifica metodo di pagamento</button>           
         </form>  
         <form action="./form_pagamento.php" class="text-center pb-2" method="post">
             <button name="Inserisci" value="Inserisci" class="rounded p-4" >Modifica metodo di pagamento</button>

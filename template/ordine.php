@@ -11,15 +11,15 @@
       </a>
       <?php endif;?>
       <?php foreach( $dbh->getAllComprende($templateParams["ordine"]["id_ordine"]) as $ord): ?>
-        <div class="col-12 text-center">
+        <div class="col-12 mb-4 text-center">
           <h2><?php echo $ord["nome_zucca"];?></h2>
         </div>
-        <div class="col-6 text-center">
+        <div class="col-7 text-center">
           <?php foreach(fillOrders($ord, $templateParams["info"], $templateParams["studente"]) as $x => $x_value ):?>
               <span > <?php echo $x?> </span> <span class="text-secondary"> <?php echo $x_value?></span><br>
           <?php endforeach;?>
         </div>
-        <div class="col-6 p-3 text-center zucca">        
+        <div class="col-5 p-3 text-center zucca">        
           <img src="./icons/<?php echo $ord["immagine"];?>"
         alt="zucca"/>
         </div>  
@@ -44,6 +44,9 @@
         </div>
       </div>   
     </div>
-    <div class="m-5 text-center">
+    <div class="container-left mb-5 mt-5 text-center">
+        <button type="button" class="rounded" onclick="goBackShopping()">Torna allo shopping</button>
+    </div>
+    <div class="m-2 text-center">
     </div> 
   </section>
