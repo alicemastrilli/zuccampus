@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />
+        <!--<link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />-->
     </head>
     <div class="container">
         <div class="float-start">

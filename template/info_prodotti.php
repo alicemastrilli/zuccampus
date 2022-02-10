@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
 <!DOCTYPE html>
 <html lang="it">
     <head>
-    <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" /> 
+    <!--<link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" /> -->
     </head>
     <div class="container">
         <div class="float-start">
@@ -122,9 +122,9 @@ if(isset($_POST['submit'])){
                         <img class="rounded" src="<?php echo UPLOAD_DIR?>stella.png" width="30" alt="" />
                     <?php endfor;?>
                     </div>
-                    <p class="font-weight-bold" ><?php echo $recensione["nome_azienda"]; ?></p>
+                    <p><?php echo $recensione["nome_azienda"]; ?></p>
                     <p><?php echo $recensione["descrizione"]; ?></p>
-                    <p>-<?php echo $recensione["username"]; ?></p>
+                    <p class="font-weight-bold">-<?php echo $recensione["username"]; ?></p>
                 </div>
             </div>
             <hr>

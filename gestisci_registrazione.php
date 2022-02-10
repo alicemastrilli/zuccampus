@@ -26,9 +26,8 @@ if (isUserLoggedIn()){
 $templateParams["azione"] = getAction($_GET["action"]);
 
 if(isset($_POST["username"])){
-    if($dbh->checkUsername($_POST["username"])){
+    if($dbh->checkUsername($_POST["username"]) && $templateParams["azione"] == 'Inserisci'){
         $templateParams["errUsername"] = "Username già esistente!";
-        
     } else{
         require("salva_registrazione.php");
     }
