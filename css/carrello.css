@@ -26,7 +26,7 @@ input[type=submit] {
     text-align: center;
 }
 
-input[type=submit]{
+input[type=submit]:disabled{
     background-color: #8DC7A3;
 }
 
