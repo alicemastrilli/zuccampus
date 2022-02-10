@@ -5,9 +5,11 @@
     </head>
     <section>
     <div class="row">
+      <?php if(!isset($_POST["ordine_effettuato"])):?>
     <a  onclick="goBack()">
       <img clas="freccia" src="./icons/freccia.png" alt="freccia indietro">
     </a>
+    <?php endif;?>
     <?php foreach( $dbh->getAllComprende($templateParams["ordine"]["id_ordine"]) as $ord): ?>
       <div class="col-12 text-center">
       <h2><?php echo $ord["nome_zucca"];?></h2>

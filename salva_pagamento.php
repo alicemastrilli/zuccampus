@@ -62,11 +62,13 @@ if($bool!=false){
 
 $_POST["messaggio_action"]=1;
 $_POST["ordine"] =  $dbh->getUserOrders($_SESSION["username"],1)[0];
+
 require("template/invia_messaggio.php");
 
 $ordine = $_POST["ordine"]["id_ordine"];
 //$templateParams["main"] = "lista_ordini.php";
 $_GET["id"] = $ordine;
+$_POST["ordine_effettuato"]=1;
 require("ordine.php");
 //header("location: casella_messaggi.php?formmsg=".$msg);
 
