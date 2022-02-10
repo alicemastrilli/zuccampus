@@ -56,7 +56,7 @@ function getUserGraph(xValues, yValues) {
                     fontStyle: 'bold',
                     fontSize:16
                   },
-                  ticks: { min: 0, max: 14 } }],
+                  ticks: { min: 0, max: 50 } }],
                 xAxes: [{scaleLabel: {
                     display: true,
                     labelString: 'azienda agricola',

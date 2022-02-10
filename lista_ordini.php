@@ -21,7 +21,6 @@ if($_SESSION["agricoltore"]==1){
     foreach($templateParams["ordini"] as $ord){
         array_push($templateParams["comprende"], $dbh->getAllComprende($ord["id_ordine"]));
     }
-    var_dump($templateParams["comprende"]);
 } else {
     $templateParams["js"] = "js/chart.js";
     $ordini=$dbh-> getVenditeByAziendaAgricola($_SESSION["username"]);
@@ -35,7 +34,10 @@ if($_SESSION["agricoltore"]==1){
 
 }
 
-
-
+$templateParams["id_ordine"]=array();
+foreach($templateParams["ordini"] as $ord){
+    array_push($templateParams["id_ordine"],$ord["id_ordine"]);
+}
+$templateParams["id_ordine"] = array_unique($templateParams["id_ordine"]);
 require("template/base.php");
 ?>
