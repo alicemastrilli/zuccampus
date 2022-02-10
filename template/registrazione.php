@@ -11,10 +11,11 @@
   <body>
    
 <?php 
+
   $azione = $templateParams["azione"];
   $utente = $templateParams["utente"];
   $immagine = $templateParams["immagine"];
- 
+ var_dump($azione);
 ?>
 <form id="form" method="post"  enctype="multipart/form-data"  > 
 <?php if(isset($templateParams["errUsername"])):?>
@@ -51,7 +52,7 @@
     </div>
    
     <article class="rounded mx-2">
-      <h4 class="pt-2 px-2">Informazioni di base</h4>
+      <h4 class="pt-2 px-2 col-12 text-center">Informazioni di base</h4>
         <div class="mb-3 mt-3">
         
         <?php foreach(fillForm() as $field):?>
@@ -114,7 +115,7 @@
       </article>
       
       <article class="rounded mx-2 mt-3">
-        <h4 class="pt-2 px-2">Informazioni di contatto</h4>
+        <h4 class="pt-2 px-2 col-12 text-center">Informazioni di contatto</h4>
         <div class="mb-3 mt-3">
           <?php foreach(contattoForm() as $field):?>
           <label for=<?php echo str_replace(' ', '',  $field["text"]);?> class="form-label px-2"><?php echo ucwords($field["text"])?>:</label>

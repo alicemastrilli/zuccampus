@@ -8,3 +8,6 @@
     padding-left: 0px;
     padding-right: 0px;
 }
+div>img:hover{
+    cursor:pointer;
+}
