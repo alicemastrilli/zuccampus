@@ -4,13 +4,13 @@
     $immagine = $templateParams["immagine"];
     $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
 ?>
-<div class="container">
-            <div class="float-start">
-                <a class="text-decoration-none" onclick="goBack()">
-                    <img class="img-fluid ps-1 freccia " src="./icons/freccia.png" width="40" alt="goBack" />
-                </a>
-            </div>
-        </div>
+<div class="row col-sm-1">
+    <div class="col-sm-1">
+    <a class="col-3"  onclick="goBack()">
+      <img class="freccia"id = "freccia"src="./icons/freccia.png" alt="freccia indietro">
+    </a>
+    </div>
+</div>
 <form action="salva_prodotto.php" method="POST" enctype="multipart/form-data">
     <section>
         <div class="row text-center">

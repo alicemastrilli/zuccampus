@@ -2,13 +2,13 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./css/prodottiHomePage.css" />
     </head>
-    <div class="container col-sm-0">
-        <div class="float-start">
-            <a class="text-decoration-none" onclick="goBack()" >
-                <img class="freccia" src="./icons/freccia.png" width="40" alt="goBack" />
-            </a>
-        </div>
+    <div class="row col-sm-1">
+    <div class="col-sm-1">
+    <a class="col-3"  onclick="goBack()">
+      <img class="freccia"id = "freccia"src="./icons/freccia.png" alt="freccia indietro">
+    </a>
     </div>
+</div>
     <div class="container-fluid">
     <?php foreach($templateParams["zucca_info"] as $zucca):?> 
         <div class="row">
