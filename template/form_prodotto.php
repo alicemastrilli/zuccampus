@@ -4,6 +4,13 @@
     $immagine = $templateParams["immagine"];
     $nome_azienda = $templateParams["nome_azienda"][0]["nome_azienda"];
 ?>
+<div class="container">
+            <div class="float-start">
+                <a class="text-decoration-none" onclick="goBack()">
+                    <img class="img-fluid ps-1 freccia " src="./icons/freccia.png" width="40" alt="goBack" />
+                </a>
+            </div>
+        </div>
 <form action="salva_prodotto.php" method="POST" enctype="multipart/form-data">
     <section>
         <div class="row text-center">
@@ -11,9 +18,8 @@
         </div>
         <div class="row text-center">
         <article class="rounded mx-2">
-            <div class="col-12 p-3 text-center ">
-                <!--correggere la tondita' della foto profilo di default-->
-                <img src="<?php echo UPLOAD_DIR.$immagine?>" alt="foto profilo default"/>
+            <div class=" zucca col-12 text-center ">
+                <img class="zucca" src="<?php echo UPLOAD_DIR.$immagine?>" alt="foto profilo default"/>
                 <div class="pb-1 text-center">
                     <input type="file" name="immagine" id="immagine" />
                 </div>

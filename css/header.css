@@ -3,8 +3,12 @@ nav{
 }
 
 .zucca img {
+    width: 170px;
+    margin-bottom: 10px;
     clip-path: circle();
 }
+
+
 
 body{
     background-color: #FAFAFA;
@@ -25,6 +29,7 @@ h2{
 h3{
     font-family: 'Questrial', sans-serif;
     font-size: 15px;
+    padding: 10px 0 3px 0;
 }
 h4{
     font-family: 'Questrial', sans-serif;

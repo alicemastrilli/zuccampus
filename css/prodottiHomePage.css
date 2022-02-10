@@ -9,6 +9,7 @@ h4 {
 
 .zucca {
     width: 170px;
+    margin-bottom: 10px;
     clip-path: circle();
 }
 
