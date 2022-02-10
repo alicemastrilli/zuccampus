@@ -44,15 +44,15 @@
             </div>
             <div  class="mb-3 mt-3">
             <label for="peso">Peso:</label>
-                <input type="text" id="peso" name="peso" value="<?php echo $zucca["peso"]; ?>" />
+                <input type="number"step=".01" id="peso" name="peso" value="<?php echo $zucca["peso"]; ?>" />
             </div>
             <div  class="mb-3 mt-3">
             <label for="prezzo">Prezzo al chilo:</label>
-                <input type="text" id="prezzo" name="prezzo" value="<?php echo $zucca["prezzo"]; ?>" />
+                <input type="number" step=".01" id="prezzo" name="prezzo" value="<?php echo $zucca["prezzo"]; ?>" />
             </div>
             <div  class="mb-3 mt-3">
             <label for="disponibilita">Disponibilità:</label>
-                <input type="text" id="disponibilita" name="disponibilita" value="<?php echo $zucca["disponibilita"]; ?>" />
+                <input type="number" id="disponibilita" name="disponibilita" value="<?php echo $zucca["disponibilita"]; ?>" />
             </div>    
         </div>
         </article>
