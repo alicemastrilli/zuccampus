@@ -58,7 +58,7 @@ if($_POST["action"] == 'Inserisci'){
     }
 }
 
-if($_POST["action"] == 'Modifica'){
+if($_POST["action"] == 'Modifica' || $_GET["action"]){
     var_dump("ci");
     $num_telefono = htmlspecialchars($_POST["num_telefono"]);
     $email = htmlspecialchars($_POST["email"]);
