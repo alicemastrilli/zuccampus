@@ -62,35 +62,38 @@ if(isset($_POST['delete'])){
 </head>
 <script>
     $(document).ready(function(){
+    let values=[];
     $.each($("input[name='quantity']"), function(index, item){
         index++;
         $("#salva_modifiche"+index+"").prop( "disabled", true );
- 
-        $disponibilita = $("#disponibilita"+index+"").text();
-        item.max=$disponibilita;
-        value=$(this).val();
+        
+        values[index] = $(this).val();
+        item.max=$("#disponibilita"+index+"").text();
+        
         item.addEventListener('input', function (event) {
+           
+
             $("#salva_modifiche"+index+"").prop( "disabled", false );
             $("#procediordine").prop("disabled", true );
             $totale_zucca= $("#totale_zucca"+index+"").text();
             $prezzo_zucca =$("#prezzo"+index+"").val();
-            $totale_tutto = $("#totale_tutto"+index+"").text();
-            if($(this).val() > value){
+            $totale_tutto = $("#totale_tutto").text();
+            if($(this).val() > values[index]){
                 $tot = parseFloat($totale_zucca)+parseFloat($prezzo_zucca);
                 $("#totale_zucca"+index+"").text($tot + " €");
                 $tot_tutto = parseFloat($totale_tutto)+parseFloat($prezzo_zucca);
-                $("#totale_tutto"+index+"").text($tot_tutto + " €");
+                $("#totale_tutto").text($tot_tutto + " €");
     
             } else{
                 $tot = parseFloat($totale_zucca)-parseFloat($prezzo_zucca);
                 $("#totale_zucca"+index+"").text($tot + " €");
                 $tot_tutto = parseFloat($totale_tutto)-parseFloat($prezzo_zucca);
-                $("#totale_tutto"+index+"").text($tot_tutto + " €");
+                $("#totale_tutto").text($tot_tutto + " €");
             }
-            value = $(this).val();
+            values[index] = $(this).val();
 
-        if(item.value==$disponibilita){
-            $("#error"+index+"").text("Hai selezionato la massima quantià di prodotto disponibile");
+        if(item.value==$("#disponibilita"+index+"").text()){
+            $("#error"+index+"").text("Hai selezionato la massima quantità di prodotto disponibile");
             
         } else{
             $("#error"+index+"").text("");
@@ -163,7 +166,7 @@ if(isset($_SESSION["acquista"]) && $_SESSION["acquista"] == 1 && empty($_SESSION
             </tbody>
         </table>
         <div class="container mt-2 mb-2 text-center">
-            <span>Totale: </span><span id="totale_tutto<?php echo $i; ?>"> <?php echo $total; ?>€</span>
+            <span>Totale: </span><span id="totale_tutto"> <?php echo $total; ?>€</span>
         </div>       
     </article>
     <div class="row text-center mb-2">
