@@ -5,9 +5,17 @@
 
     </head>
     <a class="col-3"  onclick="goBack()">
-      <img id = "freccia" src="./icons/freccia.png" width="60px" alt="freccia indietro">
+      <img id = "freccia" src="./icons/freccia.png" alt="freccia indietro">
     </a>
     
+
+<?php if (count($templateParams["recensioni"])==0):?>
+    <?php if($_SESSION["agricoltore"]):?>
+        <p class="text-center">Non ci sono recensioni per prodotti della tua azienda agricola.</p>
+    <?php else:?>
+        <p class="text-center">Non hai lasciato alcuna recensione!</p>
+    <?php endif;?>
+<?php endif;?>
 <ul class="list-group mx-4">
 <?php foreach($templateParams["recensioni"] as $recensione):?>
     <li class="list-group-item border-0">
@@ -16,10 +24,10 @@
 			<div class="star-rating text-center" id="div-star">
                 <p class="text-center fw-bold"><?php echo $recensione["data"]; ?></p>
                 <?php for($k=0;$k<intval($recensione["punteggio"]);$k++):?>
-                    <img class="rounded" src="<?php echo UPLOAD_DIR?>stella_piena.png" width="6%" alt="" />
+                    <img class="rounded" src="<?php echo UPLOAD_DIR?>stella_piena.png"  alt="" />
                 <?php endfor;?>
                 <?php for($k=0;$k<(5-intval($recensione["punteggio"]));$k++):?>
-                    <img class="rounded" src="<?php echo UPLOAD_DIR?>stella.png" width="6%" alt="" />
+                    <img class="rounded" src="<?php echo UPLOAD_DIR?>stella.png"  alt="" />
                 <?php endfor;?>
                 </div>
                 

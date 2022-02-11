@@ -9,7 +9,7 @@
 $azione = $templateParams["azione"];
 $num_cc = 1;
 ?>
-<section>
+
     <div class="row">
         <a class="col-3" onclick="goBack()">
             <img class="freccia" src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">
@@ -44,13 +44,13 @@ $num_cc = 1;
                 </div>
                 <label for="numero_carta" class="form-label px-2 ">Numero carta:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="number" class="form-control " id="numero_carta" size="16" required value="<?php echo $pagamento["numero_carta"]; ?>" name="numero_carta" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                   <input  type="number" class="form-control " id="numero_carta" max="16" required value="<?php echo $pagamento["numero_carta"]; ?>" name="numero_carta" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
                    <span class="error" aria-live="polite"></span>
 
                 </div>
                 <label for="cvv" class="form-label px-2 ">Cvv:</label><br>
                 <div class="mx-2 pb-3">
-                   <input  type="number" class="form-control " id="cvv" size="3" required value="<?php echo $pagamento["cvv"]; ?>" name="cvv" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
+                   <input  type="number" class="form-control " id="cvv" max="3" required value="<?php echo $pagamento["cvv"]; ?>" name="cvv" <?php if ($azione == "Visualizza"){ echo "readonly"; }?>>
                    <span class="error" aria-live="polite"></span>
 
                 </div>
@@ -87,5 +87,6 @@ $num_cc = 1;
         </form>
     <?php endif; ?>
 
-</section>
+
+
 
