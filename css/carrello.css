@@ -65,11 +65,17 @@ form {
     margin: 6px;
 }
 
+.prodotto{
+    width: 80% !important;
+}
+
 td img {
     width: 120%;
-    margin-top: 55px;
+    margin: 10% 10% 10% 10% ;
     clip-path: circle();
 }
+
+
 
 .container-product {
     margin-left: 20px;
@@ -102,6 +108,6 @@ footer {
 
 @media screen and (max-width: 400px) {
     td img {
-        width: 150px;
+        width: 80px;
     }
 }

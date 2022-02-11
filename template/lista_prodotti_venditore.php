@@ -35,7 +35,7 @@
                             </div>
                         </td>
                         <td class="col-3 p-2">
-                            <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="120" alt="" />
+                            <img class="prodotto float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" alt="" />
                         </td>
                     </tr>
                 <?php endforeach;?>

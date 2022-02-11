@@ -61,7 +61,7 @@
       		<img src="<?php echo UPLOAD_DIR.'posta.jpg'?>"  alt="casella di posta" />
 		    </a>
 	        </div>
-            <img class="fotoprofilo" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" 
+            <img class="iconalogin" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" 
              src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="">
         <?php endif; ?>
     </div>
