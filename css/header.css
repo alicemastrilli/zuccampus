@@ -131,7 +131,10 @@ nav>div>div>img {
 
 header img {
     width: 50px;
+    margin: 0 4px 0 4px ;
 }
+
+
 
 header img:hover {
     cursor: pointer;
@@ -165,7 +168,10 @@ input[type=submit]:disabled{
 
 @media screen and (max-width: 300px) {
     header img {
-        width: 50px;
+        width: 30px;
+    }
+    .fotoprofilo{
+        width: 30px;
     }
     h1 {
         font-size: 20px;

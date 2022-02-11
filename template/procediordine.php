@@ -60,18 +60,19 @@ $isStudente = $templateParams["studente"];
         }else $total = $total + $costospedizione; ?>
         <label>Totale complessivo: <?php echo $total; ?>€</label>
     </div> 
-    <div class="container-right">
-        <div class="text-center float-right">
+    <div class="row text-center mb-2">
+        <div class="col sm-2">
             <form  action="carrello.php" method="post">
-                <button name="paga" class="rounded">Modifica carrello</button>           
+                <button name="paga" class="rounded rounded pl-10 py-2">Modifica carrello</button>           
             </form>  
-        </div>
-        <div class="text-center float-left">
+            </div>
+        <div class="col sm-6"></div>
+        <div class="col sm-2">
             <form  action="./form_pagamento.php" method="post">
             <?php
             $_SESSION["acquista"] = 1;
             ?>
-                <button name="paga" class="rounded">Vai al pagamento</button>           
+                <button name="paga" class="rounded rounded pl-10 py-2">Vai al pagamento</button>           
             </form>  
         </div>
     </div>

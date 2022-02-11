@@ -166,15 +166,14 @@ if(isset($_SESSION["acquista"]) && $_SESSION["acquista"] == 1 && empty($_SESSION
             <span>Totale: </span><span id="totale_tutto<?php echo $i; ?>"> <?php echo $total; ?>€</span>
         </div>       
     </article>
-    <div class="row text-center">
-        
+    <div class="row text-center mb-2">
         <div class="col sm-2">
-            <button type="button" class="rounded" onclick="goBackShopping()">Torna allo shopping</button>
+            <button type="button" class="rounded pl-10 py-2" onclick="goBackShopping()">Torna allo shopping</button>
         </div>
         <div class="col sm-6"></div>
-        <div class=" col sm-2 ">
+        <div class="col sm-2">
             <form  action="<?php if(!isUserLoggedIn()) echo "login.php"; else echo "gestisci_ordine.php"; ?>" method="post">               
-             <button name="procediordine" id="procediordine"class="rounded">Procedi all'ordine</button>           
+             <button name="procediordine" id="procediordine"class="rounded pl-10 py-2">Procedi all'ordine</button>           
             </form>  
         </div>
         

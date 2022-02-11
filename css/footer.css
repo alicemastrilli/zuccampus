@@ -3,7 +3,7 @@ footer {
     width: 100%;
     bottom: 0;
     background-color: #0C403D;
-    font-size: 20px;
+    font-size: 20px !important;
 }
 
 footer img {
@@ -11,9 +11,9 @@ footer img {
 }
 
 p {
-    font-size: 18px;
+    font-size: 18px !important;
 }
 
 a {
-    font-size: 18px;
+    font-size: 18px !important;
 }
