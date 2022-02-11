@@ -40,6 +40,11 @@ label {
     margin-left: 100px;
 }
 
+.quantity-label {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 p {
     font-size: 20px;
 }
@@ -49,8 +54,7 @@ span {
 }
 
 .quantity-input {
-    width: 50%;
-    margin-left: 120px;
+    width: 60px;
 }
 
 .azienda {
@@ -63,7 +67,7 @@ form {
 
 td img {
     width: 120%;
-    margin-top: 5px;
+    margin-top: 55px;
     clip-path: circle();
 }
 
@@ -85,4 +89,19 @@ body {
 footer {
     flex: 0 0 50px;
     margin-top: auto;
+}
+
+.shopping-cart-input {
+    margin-left: 0;
+}
+
+.delete-product {
+    margin-top: 15px;
+    padding-left: 50px;
+}
+
+@media screen and (max-width: 400px) {
+    td img {
+        width: 150px;
+    }
 }

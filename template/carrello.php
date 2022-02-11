@@ -147,24 +147,18 @@ if(isset($_SESSION["acquista"]) && $_SESSION["acquista"] == 1 && empty($_SESSION
                             <p class="azienda"><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
                             <input type="hidden" id="prezzo<?php echo $i; ?>" value="<?php echo $prodotto["prezzo"]; ?>">
-             
                             <span>Totale:</span> <span id="totale_zucca<?php echo $i; ?>"> <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</span>
-                            <div class="row">
-                                <div class="col-6 text-center mt-3">
-                                    <input type="submit" name="delete" value="Elimina il prodotto" class="rounded" />                  
-                                </div>
-                                <div class="col-6 text-center mt-2">
-                                    <label for="quantity<?php echo $i; ?>">Quantità:</label>
-                                   
-                                    <input type="number" id="quantity<?php echo $i; ?>" name="quantity" class="quantity-input"  value="<?php echo $prodotto["quantita"]; ?>" min="1" ><br>
-                                    <span class="error" id="error<?php echo $i; ?>"></span><br>
-                                    <input class="mt-2" type="submit" id="salva_modifiche<?php echo $i; ?>" name="quantityUpdate" value="Salva le modifiche" class="rounded salva">
-                                </div>
+                            <input type="submit" name="delete" value="Elimina il prodotto" class="rounded shopping-cart-input" />
+                            <div class="form-group">
+                                <label class="quantity-label" for="quantity<?php echo $i; ?>">Quantità:</label>
+                                <input type="number" id="quantity<?php echo $i; ?>" name="quantity" class="quantity-input shopping-cart-input"  value="<?php echo $prodotto["quantita"]; ?>" min="1" ><br>
+                                <span class="error" id="error<?php echo $i; ?>"></span><br>
                             </div>
+                            <input type="submit" id="salva_modifiche<?php echo $i; ?>" name="quantityUpdate" value="Salva le modifiche" class="rounded salva shopping-cart-input">              
                         </form>
                     </td>
                     <td class="col-3 p-2">
-                        <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" width="150" alt="" />
+                        <img class="float-end" src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" alt="immagine-prodotto" />
                     </td>
                 </tr>
             <?php endforeach;?>
