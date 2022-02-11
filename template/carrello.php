@@ -80,11 +80,8 @@ if(isset($_POST['delete'])){
                 $("#totale_zucca"+index+"").text($tot + " €");
                 $tot_tutto = parseFloat($totale_tutto)+parseFloat($prezzo_zucca);
                 $("#totale_tutto"+index+"").text($tot_tutto + " €");
-                
-            
     
             } else{
-                
                 $tot = parseFloat($totale_zucca)-parseFloat($prezzo_zucca);
                 $("#totale_zucca"+index+"").text($tot + " €");
                 $tot_tutto = parseFloat($totale_tutto)-parseFloat($prezzo_zucca);

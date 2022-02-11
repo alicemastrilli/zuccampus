@@ -1,6 +1,6 @@
 <?php
 require_once 'bootstrap.php';
-var_dump($_POST);
+
 if($_POST["action"] == 'Inserisci'){
     //Inserisco
     $num_telefono = htmlspecialchars($_POST["num_telefono"]);
@@ -59,7 +59,6 @@ if($_POST["action"] == 'Inserisci'){
 }
 
 if($_POST["action"] == 'Modifica' || $_GET["action"]){
-    var_dump("ci");
     $num_telefono = htmlspecialchars($_POST["num_telefono"]);
     $email = htmlspecialchars($_POST["email"]);
     $username = $_SESSION["username"];

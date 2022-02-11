@@ -22,14 +22,14 @@ $isStudente = $templateParams["studente"];
                             <p class="azienda"><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
                         <div class="row">
-                            <div class="col-6 text-center">
+                            <div >
                                
                                 <p>Quantità: <?php echo $prodotto["quantita"];?></p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6 text-center">
-                                <label>Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</label>
+                        
+                            <div class="text-left">
+                                <label class="text-left">Totale: <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</label>
                             </div>
                         </div>
                     </td>
