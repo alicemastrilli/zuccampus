@@ -17,8 +17,8 @@ if (isUserLoggedIn()){
 
 
 //accedo al form tramite 'scopri il venditore"
-if(isset($_GET["id"])){
-        $nome_azienda = $_GET["id"];
+if(isset($_POST["id"])){
+        $nome_azienda = $_POST["id"];
         $templateParams["utente"] = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0];
         $templateParams["azienda_info"] = $dbh -> getAziendaAgrByName($nome_azienda)[0];
 }

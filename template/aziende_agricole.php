@@ -11,7 +11,7 @@
     </div>
 </div>
 <article>
-        <table class="table bordless">
+        <table class="table table-striped">
             <tbody>
                 <?php foreach($templateParams["aziende_agricole"] as $azienda):?>
                 <tr>
@@ -27,8 +27,9 @@
                             </form>
                         </div>  
                         <div class="col-6 text-center">
-                        <form  action="dati_utente.php?id=<?php echo $azienda["nome_azienda"]?>" method="post">
+                        <form  action="dati_utente.php" method="post">
                             <button class="rounded">Scopri il venditore</button>
+                            <input type="hidden" name="id" value="<?php echo $azienda["nome_azienda"]?>"/>
                         </form>
                     </div>
                 </td>
