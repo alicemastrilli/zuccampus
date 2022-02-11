@@ -423,12 +423,9 @@ class DatabaseHelper{
 
     public function updateZucca($immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca, $tipo){
         $query = "UPDATE zucca SET immagine = ?, prezzo = ?,  peso = ?, disponibilita = ?, descrizione_zucca = ? WHERE nome_azienda = ? AND nome_zucca = ? AND tipo = ?";
-        var_dump("ciao");
         $stmt = $this->db->prepare($query);
-        var_dump($stmt);
         if($stmt){
             $stmt->bind_param('sddissss',$immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca, $tipo);
-            var_dump("den");
             return $stmt->execute();
         }
         else{
