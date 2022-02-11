@@ -14,6 +14,7 @@ footer {
 }
 
 button {
+
     background-color: #0C403D;
     font-family: 'Barlow', sans-serif;
     font-size: 19px;
@@ -25,3 +26,9 @@ button {
 button:hover {
     padding: 2% 7% 2% 7%;
 }
+
+.bottoni{
+    display: inline-block;
+    font-family: 'Questrial', sans-serif;
+}
+

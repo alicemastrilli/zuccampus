@@ -11,31 +11,31 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row mt-2">
-            <div class="col-sm-0 text-center">
-                <div class="btn-group">
-                    <button type="button" class="rounded" data-toggle="dropdown">Ordina per</button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item" onclick="ordinaPerPrezzo('ASC');">Prezzo:crescente</li>
-                        <li class="dropdown-item" onclick="ordinaPerPrezzo('DECS');">Prezzo:decrescente</li>
-                    </ul>
-                </div>
-                <div class="btn-group center-button">
-                    <button type="button" class="rounded" data-toggle="dropdown">Produttori</button>
-                    <ul class="dropdown-menu">
-                    <?php foreach($templateParams["agricoltori"] as $agricoltore): ?>
-                        <li class="dropdown-item" onclick="filtra_prodotti_agricoltore('<?php echo $agricoltore["nome_azienda"]; ?>');"><?php echo $agricoltore["nome_azienda"]; ?></li>
-                    <?php endforeach; ?>
-                    </ul>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="rounded" data-toggle="dropdown"> Categoria</button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item" onclick="ordina_categoria('ornamentale');">ornamentale</li>
-                        <li class="dropdown-item" onclick="ordina_categoria('commestibile');">commestibile</li>
-                    </ul>
-                </div>
+        <div class="row text-center mt-3">
+            <div class="col sm-2"></div>
+            <div class="bottoni col-sm-2 ">
+                <button  type="button" class="rounded" data-toggle="dropdown">Ordina per</button>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item" onclick="ordinaPerPrezzo('ASC');">Prezzo:crescente</li>
+                    <li class="dropdown-item" onclick="ordinaPerPrezzo('DECS');">Prezzo:decrescente</li>
+                </ul>
             </div>
+            <div class="col-sm-2 bottoni ">
+                <button  type="button" class="rounded" data-toggle="dropdown">Produttori</button>
+                <ul class="dropdown-menu">
+                <?php foreach($templateParams["agricoltori"] as $agricoltore): ?>
+                    <li class="dropdown-item" onclick="filtra_prodotti_agricoltore('<?php echo $agricoltore["nome_azienda"]; ?>');"><?php echo $agricoltore["nome_azienda"]; ?></li>
+                <?php endforeach; ?>
+                </ul>
+            </div>
+            <div class="col-sm-2 bottoni">
+                <button type="button" class="rounded" data-toggle="dropdown"> Categoria</button>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item" onclick="ordina_categoria('ornamentale');">ornamentale</li>
+                    <li class="dropdown-item" onclick="ordina_categoria('commestibile');">commestibile</li>
+                </ul>
+            </div>
+            <div class="col sm-3"></div>
         </div>
         <div class="row da-sostituire zucca mt-2">
             <div class="col-sm-0">
