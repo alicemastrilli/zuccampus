@@ -17,6 +17,10 @@ if($_POST["action"] == 'Inserisci'){
     if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
         list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
         $immagine = $msg;
+        if(!$result){
+            $immagine = $_POST["oldimg"];
+            $templateParams["errore"] = $msg;
+        }
     }
     else{     
         $immagine = $_POST["oldimg"];
@@ -58,7 +62,7 @@ if($_POST["action"] == 'Inserisci'){
     }
 }
 
-if($_POST["action"] == 'Modifica' || $_GET["action"]){
+if($_POST["action"] == 'Modifica'){
     $num_telefono = htmlspecialchars($_POST["num_telefono"]);
     $email = htmlspecialchars($_POST["email"]);
     $username = $_SESSION["username"];
@@ -70,7 +74,12 @@ if($_POST["action"] == 'Modifica' || $_GET["action"]){
 
     if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
         list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
+   
         $immagine = $msg;
+        if(!$result){
+            $immagine = $_POST["oldimg"];
+            $templateParams["errore"] = $msg;
+        }
     }
     else{
         $immagine = $_POST["oldimg"];
@@ -89,7 +98,7 @@ if($_POST["action"] == 'Modifica' || $_GET["action"]){
     }
     
     $msg = $dbh->updateUser($immagine, $num_telefono, $email, $nome, $cognome,  $username);
-    header("location:dati_utente.php?formmsg=".$msg);
+          require("dati_utente.php");
 
 }
 

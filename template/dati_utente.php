@@ -14,6 +14,11 @@ if(isset($_GET["id"]) || $_SESSION["agricoltore"] == 1){
 ?>
 
 <section>
+   <?php if(isset($templateParams["errore"])):?>
+      <div class="alert alert-warning text-center">      
+         <?php echo $templateParams["errore"];?>
+      <?php endif;?>
+      </div>
    <div class="row">
       <a class="col-3" onclick="goBack()">
          <img class="freccia" src="<?php echo UPLOAD_DIR?>freccia.png" alt="freccia indietro">

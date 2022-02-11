@@ -245,7 +245,7 @@ class DatabaseHelper{
     }
 
     public function updateUser($immagine, $num_telefono, $email, $nome, $cognome,  $username){
-        $query = "UPDATE utente SET immagine = ?, num_telefono = ?, email = ?,nome = ?, cognome = ? WHERE username = ?";
+        $query = "UPDATE utente SET  `immagine` = ?, num_telefono = ?, email = ?,nome = ?, cognome = ? WHERE username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sdssss', $immagine, $num_telefono, $email, $nome, $cognome, $username);
         

@@ -42,7 +42,7 @@ if($bool!=false){
             if($disponibilita <=1){                
                 $_POST["zucca"] = array($nome_zucca, $nome_azienda);
                 $_POST["messaggio_action"] = 4;
-                require "template/invia_messaggio.php";
+                header("Location: template/invia_messaggio.php");
             }
         }else{
             //TODO: messaggio di errore

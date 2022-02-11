@@ -264,7 +264,7 @@ function uploadImage($path, $image){
         }
         else{
             $result = 1;
-            $msg = $imageName;
+            $msg =$image["name"];
         }
     }
     return array($result, $msg);
