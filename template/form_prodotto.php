@@ -31,8 +31,8 @@
                 <div class="col-sm-0">
                     <label for="tipo" class="form-label px-2 ">Tipo zucca:</label>
                     <select name="tipo" id="tipo" <?php if ($azione == 'Modifica') echo "disabled"?>>
-                     <option value="zucca_commestibile">Zucca commestibile</option>
-                     <option value="zucca_ornamentale">Zucca ornamentale</option>
+                     <option value="commestibile">commestibile</option>
+                     <option value="ornamentale">ornamentale</option>
                     </select>
                     
                 </div>

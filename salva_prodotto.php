@@ -16,7 +16,6 @@ if($_POST["action"] == 'Inserisci'){
     $peso = htmlspecialchars($_POST["peso"]);
     $disponibilita = htmlspecialchars($_POST["disponibilita"]);
     $descrizione_zucca = htmlspecialchars($_POST["descrizione_zucca"]); 
-    var_dump($nome_zucca);
     if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
         list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
         $immagine = $msg;
