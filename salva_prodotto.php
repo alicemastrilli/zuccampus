@@ -29,7 +29,18 @@ if($_POST["action"] == 'Inserisci'){
         $msg = 1; 
     }
 
-    $msg = $dbh->insertNewZucca($nome_azienda, $nome_zucca, $tipo, $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
+    if(isset($_POST["nome_zucca"])){
+        if($dbh->checkZucca($_POST["nome_zucca"], $nome_azienda)){
+            $templateParams["errNomeZucca"] = "Zucca già inserita!";
+            $_POST["nome_zucca"]=$nome_zucca;
+            require("info_prodotto_venditore.php");
+        }
+        else{
+            $msg = $dbh->insertNewZucca($nome_azienda, $nome_zucca, $tipo, $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
+
+        }
+    }
+
 
     $msg = "Registrazione avvenuta con successo";
     $_POST["nome_zucca"]=$nome_zucca;

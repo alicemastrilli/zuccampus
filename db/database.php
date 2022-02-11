@@ -642,6 +642,22 @@ class DatabaseHelper{
         else return true;
     }
 
+    public function checkZucca($nome_zucca, $nome_azienda){
+        //Return: true se non posso aggiungerlo
+        //false se posso aggiungerlo
+        $query = "SELECT nome_zucca FROM zucca WHERE nome_zucca = ? AND nome_azienda = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$nome_zucca, $nome_azienda);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $zucca = $result->fetch_all(MYSQLI_ASSOC);
+        if (empty($zucca)){
+            return false;
+        }
+        else return true;
+    }
+
     public function isStudente($username){
         //Return: true se sono uno studente
         //false se non sono uno studente

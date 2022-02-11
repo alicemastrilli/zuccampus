@@ -7,6 +7,11 @@
          <?php echo $templateParams["errore"];?>
       </div>
     <?php endif;?>
+    <?php if(isset($templateParams["errNomeZucca"])):?>
+    <div class="alert alert-warning text-center">
+        <strong>Attenzione!</strong> <?php echo $templateParams["errNomeZucca"]?>
+    </div>
+<?php endif;?>
     <div class="row col-sm-1">
         <div class="col-sm-1">
         <a class="col-3"  onclick="goBack()">
