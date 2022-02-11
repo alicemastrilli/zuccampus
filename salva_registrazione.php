@@ -26,9 +26,11 @@ if($_POST["action"] == 'Inserisci'){
         $immagine = $_POST["oldimg"];
         $msg = 1; 
     }
-
+    
     
     $msg = $dbh->insertNewUser($immagine, $num_telefono, $email,  $username, $password, $nome, $cognome, $cliente, $agricoltore);
+  
+
     if($_SESSION["agricoltore"] == 1){
         $cliente = 0;
         $agricoltore = 1;
@@ -58,8 +60,13 @@ if($_POST["action"] == 'Inserisci'){
     if($msg){  
         $msg = "Registrazione avvenuta con successo";
         $_SESSION["username"] = $username;
+        $_POST["mail"] = $email;
+        $_POST["messaggio_action"]=0;
+        $_POST["password"]=$password;
+        require "template/invia_messaggio.php";
         require("dati_utente.php");
     }
+
 }
 
 if($_POST["action"] == 'Modifica'){

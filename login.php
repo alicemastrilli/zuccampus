@@ -21,12 +21,6 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
     }
 }
 
-if(isset($_GET["formmsg"])){
-    $_POST["mail"] = $templateParams["user"]["email"];
-    $_POST["messaggio_action"]=0;
-    $_POST["password"]=$templateParams["user"]["password"];
-    require "template/invia_messaggio.php";
-}
 
 if(isUserLoggedIn()){
     $login_result = $dbh->checkAgricoltore($_SESSION["username"]);

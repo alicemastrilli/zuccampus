@@ -6,32 +6,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
 </head>
-<script>
-  function setWhenShow(){
-    $(document).ready(function(){
-    $.get("template/header.php",function(){
-      
-      setTimeout(function(){$("#toast2").addClass("show");
-        $("#toast2").fadeOut(10000); }, 3600*100*24*2);
-    }) 
-    })
 
-};
 
-</script>
-<?php if($_POST["messaggio_action"]==2):  ?>
-  <?php
-  echo '<script> type="text/javascript"',
-  'setWhenShow()',
-  '</script>'
-;
-  else:;?>
   <script>
   $("document").ready(function(){
     $(".toast").fadeOut(10000);
   })
 </script>
-<?php endif;?> 
+
 <?php 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -45,17 +27,26 @@ use PHPMailer\PHPMailer\Exception;
 //caso 4: invio notifica all'agricoltore che il prodotto è in esaurimento;
 ?>
 <?php if($_POST["messaggio_action"]==0) {
-$testo = "La registrazione presso Zuccampus è andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
+$testo = "La registrazione presso Zuccampus e' andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
 username: ".$_SESSION["username"] . " password: ".$_POST["password"];
+$testo_messaggio= "Registrazione avvenuta con succeso! Controlla la tua casella di posta per visualizzare le credenziali!";
 }elseif ($_POST["messaggio_action"]==1){
   $msg = setMessageText(1, $_POST["ordine"]);
+  $testo_messaggio = $msg[1]["testo"];
 }elseif ($_POST["messaggio_action"]==2){
   $msg = setMessageText(2, $_POST["ordine"]);
+  $testo_messaggio = $msg[1]["testo"];
+
 } else if($_POST["messaggio_action"]==3){
   $msg = setRecensioneMessageText();
+  $testo_messaggio = $msg[1]["testo"];
+
 } else if($_POST["messaggio_action"] == 4){
   $msg=  setFineProdottoText($_POST["zucca"]);
+  $testo_messaggio = $msg[1]["testo"];
+
 }
+
   ?>
 
 <?php if ($_POST["messaggio_action"]!=2 && $_POST["messaggio_action"]!=4):?>
@@ -67,25 +58,12 @@ username: ".$_SESSION["username"] . " password: ".$_POST["password"];
     <button type="button" class="btn-close float-end text-black " data-bs-dismiss="toast"></button>
   </div>
   <div class="toast-body col-12 text-black">
-  <?php echo $msg[1]["testo"];?>
+  <?php echo $testo_messaggio;?>
   </div>
 </div>
 </div>
-<?php else:;?>
-<div class="toast    col-12 " id="toast2">
-  <div class="toast-header col-12  text-center text-black">
-    Nuovo messaggio
-    <div class="col-6">
-      </div>
-    <button type="button" class="btn-close float-end text-black " data-bs-dismiss="toast"></button>
-    
-  </div>
-  <div class="toast-body col-12 text-black">
-  <?php echo $msg[1]["testo"];?>
-  </div>
-</div>
-</div>
-<?php endif?>
+<?php endif;?>
+
 <div class="col-3"></div>
 <?php
 if($_POST["messaggio_action"]==0) {
@@ -120,6 +98,7 @@ try {
 
 }
 $_POST["info"]=array("testo"=>array(), "agr"=>array());
+if($_POST["messaggio_action"]!=0){
   foreach($msg as $x){
     array_push($_POST["info"]["testo"], $x["testo"]);
     array_push($_POST["info"]["agr"], $x["agr"]);
@@ -149,7 +128,8 @@ $_POST["info"]=array("testo"=>array(), "agr"=>array());
     $_POST["nome_zucca"] = $_POST["zucca"][0];
     $_POST["link"] = "";
 }
+require "processa-messaggio.php";
 
-
-}require "processa-messaggio.php";
+  }
+}
 ?>
