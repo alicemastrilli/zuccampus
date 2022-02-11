@@ -16,21 +16,26 @@ if($_POST["action"] == 'Inserisci'){
     $peso = htmlspecialchars($_POST["peso"]);
     $disponibilita = htmlspecialchars($_POST["disponibilita"]);
     $descrizione_zucca = htmlspecialchars($_POST["descrizione_zucca"]); 
-    list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
-    $immagine = $msg;
-
-    if($result != 0){
-        $msg = $dbh->insertNewZucca($nome_azienda, $nome_zucca, $tipo, $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
-    
-        if($msg){
-            $msg = "Registrazione avvenuta con successo";
-            header("location: info_prodotto_venditore.php?formmsg=".$msg."&id=".$nome_zucca);    
+    var_dump($nome_zucca);
+    if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
+        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
+        $immagine = $msg;
+        if(!$result){
+            $immagine = $_POST["oldimg"];
+            $templateParams["errore"] = $msg;
         }
     }
-    //altrimenti TODO: gestisco l'errore con un messaggio a video
-    else{
-        var_dump($msg);
+    else{     
+        $immagine = $_POST["oldimg"];
+        $msg = 1; 
     }
+
+    $msg = $dbh->insertNewZucca($nome_azienda, $nome_zucca, $tipo, $immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca);
+
+    $msg = "Registrazione avvenuta con successo";
+    $_POST["nome_zucca"]=$nome_zucca;
+    require "info_prodotto_venditore.php"; 
+
 }
 
 if($_POST["action"] == 'Modifica'){
@@ -45,6 +50,10 @@ if($_POST["action"] == 'Modifica'){
     if(isset($_FILES["immagine"]) && strlen($_FILES["immagine"]["name"])>0){
         list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
         $immagine = $msg;
+        if(!$result){
+            $immagine = $_POST["oldimg"];
+            $templateParams["errore"] = $msg;
+        }
     }
     else{
         $immagine = $_POST["oldimg"];
@@ -52,15 +61,10 @@ if($_POST["action"] == 'Modifica'){
     }
 
     $msg = $dbh->updateZucca($immagine, $prezzo, $peso, $disponibilita, $descrizione_zucca, $nome_azienda, $nome_zucca, $tipo);
-    if($msg){
-        $msg = "Modifica avvenuta con successo";
-        $_POST["nome_zucca"]=$nome_zucca;
-        require "info_prodotto_venditore.php";
-    }
-    //TODO: gestisco l'errore con un messaggio a video
-    else{
-        var_dump($msg);
-    }
+    $msg = "Modifica avvenuta con successo";
+    //$_POST["nome_zucca"]=$nome_zucca;
+    require "info_prodotto_venditore.php";
+
 }
 
 ?>

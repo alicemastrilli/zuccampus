@@ -98,7 +98,7 @@ if($_POST["action"] == 'Modifica'){
     }
     
     $msg = $dbh->updateUser($immagine, $num_telefono, $email, $nome, $cognome,  $username);
-          require("dati_utente.php");
+    require("dati_utente.php");
 
 }
 

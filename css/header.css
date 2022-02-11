@@ -166,7 +166,7 @@ input[type=submit]:disabled{
     font-size: 10px;
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 420px) {
     header img {
         width: 30px;
     }
