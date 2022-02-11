@@ -39,15 +39,8 @@ if(isset($_POST["username"])){
 
 }
 
-var_dump("fuori");
 
 if($templateParams["azione"] == 'Modifica') {    
-    var_dump("dentro");
-    var_dump($_GET["action"]);
-    var_dump("POST: ");
-    var_dump($_POST);
-    var_dump("FINE POST: ");
-    var_dump($templateParams["azione"]);
     $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["immagine"] = $templateParams["utente"]["immagine"];
     if(is_null($templateParams["immagine"]) ){

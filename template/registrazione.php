@@ -11,15 +11,12 @@
   <body>
    
 <?php 
-
   $azione = $templateParams["azione"];
   $utente = $templateParams["utente"];
   $immagine = $templateParams["immagine"];
- var_dump($azione);
 ?>
 <form id="form" method="post"  enctype="multipart/form-data"  > 
-<?php if($azione == "Modifica"):
-  var_dump("ciaooo");?>
+<?php if($azione == "Modifica"):?>
   <input type="hidden" name="salva_modifica" value="1"/>
   <?php endif;?>
 <?php if(isset($templateParams["errUsername"])):?>

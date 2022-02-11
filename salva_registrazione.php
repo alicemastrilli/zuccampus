@@ -89,8 +89,7 @@ if($_POST["action"] == 'Modifica' || $_GET["action"]){
 
     }
     
-    $msg = $dbh->updateUser($immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username);
-    var_dump($msg);
+    $msg = $dbh->updateUser($immagine, $num_telefono, $email, $nome, $cognome,  $username);
     header("location:dati_utente.php?formmsg=".$msg);
 
 }
