@@ -1,11 +1,15 @@
 div>img{
     color: black;
+    width:6%;
 }
 
 li{
     border-bottom: 0 0 1px 0;
 }
 
+#freccia{
+    width: 60px;
+}
 h2{
     margin-bottom: 2px;
     font-family: 'Barlow', sans-serif;
