@@ -39,9 +39,8 @@ if(isset($_POST["username"])){
 
 }
 
-var_dump("fuori");
+
 if($templateParams["azione"] == 'Modifica') {    
-    var_dump("dentro");
     $templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"])[0];
     $templateParams["immagine"] = $templateParams["utente"]["immagine"];
     if(is_null($templateParams["immagine"]) ){
@@ -57,7 +56,16 @@ if($templateParams["azione"] == 'Modifica') {
             $templateParams["azienda"] = $dbh -> getAziendaAgrByName($nome_azienda)[0];
         }
     }
+
+    if(isset( $_POST["salva_modifica"]) ){
+        require("salva_registrazione.php");
+    }
+else{
     require("template/base.php");
+
+}
+
+
 
 }  
 

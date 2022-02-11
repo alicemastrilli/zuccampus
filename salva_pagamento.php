@@ -20,14 +20,8 @@ $via = "Via dell'Università";
 $numero_civico = "50";
 $cap = "40013";
 
-//inserisco una nuova row con l'ordine
 list($bool,$id_ordine) = $dbh-> insertNewOrdine($username, $data_ordine, $ora, $via, $numero_civico, $cap);
 
-//decremento i valori delle quantita' delle zucche comprate
-//per ogni prodotto comprato recupero la zucca corrispondente
-//recupero la quantita 
-//decremento la quantita in zucca
-//inserisco comprende
 if($bool!=false){
 
     foreach($_SESSION['product'] as $prodotto){

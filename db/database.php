@@ -244,10 +244,10 @@ class DatabaseHelper{
         return $msg;
     }
 
-    public function updateUser($immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username){
-        $query = "UPDATE utente SET immagine = ?, num_telefono = ?, email = ?, password = ?, nome = ?, cognome = ?, cliente = ?, agricoltore = ? WHERE username = ?";
+    public function updateUser($immagine, $num_telefono, $email, $nome, $cognome,  $username){
+        $query = "UPDATE utente SET immagine = ?, num_telefono = ?, email = ?,nome = ?, cognome = ? WHERE username = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sdsssssss', $immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username);
+        $stmt->bind_param('sdssss', $immagine, $num_telefono, $email, $nome, $cognome, $username);
         
         return $stmt->execute();
     }

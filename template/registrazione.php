@@ -11,13 +11,14 @@
   <body>
    
 <?php 
-
   $azione = $templateParams["azione"];
   $utente = $templateParams["utente"];
   $immagine = $templateParams["immagine"];
- var_dump($azione);
 ?>
 <form id="form" method="post"  enctype="multipart/form-data"  > 
+<?php if($azione == "Modifica"):?>
+  <input type="hidden" name="salva_modifica" value="1"/>
+  <?php endif;?>
 <?php if(isset($templateParams["errUsername"])):?>
                 <div class="alert alert-warning text-center">
                   <strong>Attenzione!</strong> <?php echo $templateParams["errUsername"]?>
@@ -137,6 +138,7 @@
         </div>
     </article>  
       <div class="pb-3 text-center button">
+        
         <input id="submit" type="submit" name="submit" value="<?php echo $azione?>"/>
         <input type="hidden" name="action" value="<?php echo $azione?>"/>
       </div>

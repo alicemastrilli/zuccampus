@@ -58,7 +58,7 @@ if($_POST["action"] == 'Inserisci'){
     }
 }
 
-if($_POST["action"] == 'Modifica'){
+if($_POST["action"] == 'Modifica' || $_GET["action"]){
     var_dump("ci");
     $num_telefono = htmlspecialchars($_POST["num_telefono"]);
     $email = htmlspecialchars($_POST["email"]);
@@ -89,8 +89,7 @@ if($_POST["action"] == 'Modifica'){
 
     }
     
-    $msg = $dbh->updateUser($immagine, $num_telefono, $email, $password, $nome, $cognome, $cliente, $agricoltore, $username);
-    var_dump($msg);
+    $msg = $dbh->updateUser($immagine, $num_telefono, $email, $nome, $cognome,  $username);
     header("location:dati_utente.php?formmsg=".$msg);
 
 }
