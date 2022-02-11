@@ -30,7 +30,7 @@
                         <input type="hidden" name="tipo" value="<?php echo $zucca["tipo"]; ?>">
                         <img src="<?php echo UPLOAD_DIR.$zucca["immagine"]; ?>" width="200" alt="">
                         <input type="hidden" name="immagine" value="<?php echo $zucca["immagine"]; ?>">
-                        <div class="container mb-2 text-center">
+                        <div class="container col-sm-4 mb-2 text-center">
                             <label for="produttori">Produttori:</label>
                             <select class="form-select" name="nome_azienda" id="produttori" onchange="seleziona_fornitore(this.value,'<?php echo $zucca["nome_zucca"]; ?>');" >
                             <?php if(!empty($_SESSION['produttore'])): ?>
@@ -53,7 +53,7 @@
                     <div class="text-center mb-2">
                         <p><?php echo $zucca["descrizione_zucca"]; ?></p>
                     </div>
-                    <p> €<?php echo $zucca["prezzo"]; ?></p>
+                    <p><?php echo $zucca["prezzo"]; ?> €</p>
                     <input type="hidden" name="prezzo" value="<?php echo $zucca["prezzo"]; ?>">
                     <p><?php echo $zucca["peso"]; ?> kg </p>
                     <input type="hidden" name="peso" value="<?php echo $zucca["peso"]; ?>">

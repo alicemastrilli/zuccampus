@@ -147,14 +147,15 @@ if(isset($_SESSION["acquista"]) && $_SESSION["acquista"] == 1 && empty($_SESSION
                             <p class="azienda"><?php echo $prodotto["nome_azienda"]; ?></p>
                             <input type="hidden" name="nome_azienda" value="<?php echo $prodotto["nome_azienda"]; ?>">
                             <input type="hidden" id="prezzo<?php echo $i; ?>" value="<?php echo $prodotto["prezzo"]; ?>">
-                            <span>Totale:</span> <span id="totale_zucca<?php echo $i; ?>"> <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</span>
-                            <input type="submit" name="delete" value="Elimina il prodotto" class="rounded shopping-cart-input" />
+                            <span class="totale">Totale:</span> <span id="totale_zucca<?php echo $i; ?>"> <?php echo $k=floatval($prodotto["quantita"])*floatval($prodotto["prezzo"]); ?> €</span>
+                            
                             <div class="form-group">
                                 <label class="quantity-label" for="quantity<?php echo $i; ?>">Quantità:</label>
                                 <input type="number" id="quantity<?php echo $i; ?>" name="quantity" class="quantity-input shopping-cart-input"  value="<?php echo $prodotto["quantita"]; ?>" min="1" ><br>
                                 <span class="error" id="error<?php echo $i; ?>"></span><br>
                             </div>
                             <input type="submit" id="salva_modifiche<?php echo $i; ?>" name="quantityUpdate" value="Salva le modifiche" class="rounded salva shopping-cart-input">              
+                            <input type="submit" name="delete" value="Elimina il prodotto" class="rounded shopping-cart-input" />
                         </form>
                     </td>
                     <td class="col-3 p-2">
@@ -168,15 +169,18 @@ if(isset($_SESSION["acquista"]) && $_SESSION["acquista"] == 1 && empty($_SESSION
             <span>Totale: </span><span id="totale_tutto<?php echo $i; ?>"> <?php echo $total; ?>€</span>
         </div>       
     </article>
-    <div class="text-center">
-    <div class="text-center">
+    <div class="row text-center">
+        
+        <div class="col sm-2">
             <button type="button" class="rounded" onclick="goBackShopping()">Torna allo shopping</button>
         </div>
-        <div class="text-center">
+        <div class="col sm-6"></div>
+        <div class=" col sm-2 ">
             <form  action="<?php if(!isUserLoggedIn()) echo "login.php"; else echo "gestisci_ordine.php"; ?>" method="post">               
              <button name="procediordine" id="procediordine"class="rounded">Procedi all'ordine</button>           
             </form>  
         </div>
+        
     </div>
 </div>
 <?php endif; ?>
