@@ -128,6 +128,8 @@ function fillOrders($ordine, $campus_info, $isStudente){
         $sconto_stud = "20 %";
         $costo_tot = $costo_tot * 80 /100; 
     }
+    $costo_ordine = round($costo_ordine,2);
+    $costo_tot= round($costo_tot, 2);
     $info=array("Produttore: "=>$ordine["nome_azienda"],"Tipo prodotto: " => $ordine["tipo"],"Quantità: " => $ordine["quantita"],
     "Data dell'ordine: "=> $ordine["data_ordine"],
     "Indirizzo di spedizione: "=> $ordine["via"]." ".$ordine["numero_civico"],

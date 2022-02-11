@@ -58,6 +58,7 @@ $isStudente = $templateParams["studente"];
             $total = $total + $costospedizione;
             $total = $total - (($total / 100) * $sconto);
         }else $total = $total + $costospedizione; ?>
+        <?php $total = round($total, 2);?>
         <label>Totale complessivo: <?php echo $total; ?>€</label>
     </div> 
     <div class="row text-center mb-2">
