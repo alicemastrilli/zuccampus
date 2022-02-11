@@ -65,7 +65,7 @@ create table if not exists `zuccampus`.`azienda_agricola` (
      ENGINE = InnoDB;
 
 create table if not exists `zuccampus`.`utente` (
-     `immagine` varchar(30),
+     `immagine` varchar(50),
      `num_telefono` numeric(14) not null,
      `email` char(40) not null,
      `username` varchar(30) not null,
