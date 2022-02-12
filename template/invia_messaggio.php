@@ -107,11 +107,16 @@ try {
 }
 $_POST["info"]=array("testo"=>array(), "agr"=>array());
 if($_POST["messaggio_action"]!=0){
-  foreach($msg as $x){
-    array_push($_POST["info"]["testo"], $x["testo"]);
-    array_push($_POST["info"]["agr"], $x["agr"]);
+  array_push($_POST["info"]["testo"], $msg[0]["testo"]);
+  array_push($_POST["info"]["agr"], 1);
+  if(count($msg)>1){
+  array_push($_POST["info"]["testo"], $msg[1]["testo"]);
+  array_push($_POST["info"]["agr"], 0);
+  }
+    
+   
     if($_POST["messaggio_action"] ==1){
-       $ordine = $_POST["ordine"];
+    $ordine = $_POST["ordine"];
     $_POST["data"] = $ordine["data_ordine"]; 
     $_POST["ora"] = $ordine["ora"];
     $_POST["link"] = "ordine.php?id=". $ordine["id_ordine"];
@@ -138,6 +143,6 @@ if($_POST["messaggio_action"]!=0){
 }
 require "processa-messaggio.php";
 
-  }
+  
 }
 ?>
