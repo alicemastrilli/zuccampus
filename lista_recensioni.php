@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
     $dbh->insertNewRecensione($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
     $_POST["recensione"] = array($descrizione_zucca,$punteggio,$nome_azienda, $nome_zucca,$_SESSION["username"],$data);
     $_POST["messaggio_action"]=3;
-    require "template/invia_messaggio.php";
+    require "invia_messaggio.php";
 }
 
 

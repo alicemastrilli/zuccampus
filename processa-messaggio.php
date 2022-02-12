@@ -35,6 +35,6 @@ if(count($messaggio) == 0){
 if($_POST["messaggio_action"]==1){
     $_POST["messaggio_action"]=2;
   
-    require "template/invia_messaggio.php";
+    require "invia_messaggio.php";
 }
 ?>
