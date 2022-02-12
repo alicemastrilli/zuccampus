@@ -68,7 +68,7 @@ if($_POST["action"] == 'Inserisci'){
         $_POST["mail"] = $email;
         $_POST["messaggio_action"]=0;
         $_POST["password"]=$password;
-        require "template/invia_messaggio.php";
+        require "invia_messaggio.php";
         require("dati_utente.php");
     }
 
