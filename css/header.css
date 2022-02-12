@@ -134,6 +134,10 @@ header img {
     margin: 0 4px 0 4px ;
 }
 
+.iconalogin{
+    width: 70px;
+    clip-path: circle();
+}
 
 
 header img:hover {

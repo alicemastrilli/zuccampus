@@ -32,7 +32,7 @@
             <div class="offcanvas offcanvas-end" id="offcanvas">
                 <div class="offcanvas-header ">
                     <?php if(!empty($templateParams["user"])): ?>
-                        <img src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="foto profilo utente">
+                        <img class="iconalogin" src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="foto profilo utente">
                     <?php endif; ?>
                     <h2 class="offcanvas-title p-2"><?php echo $templateParams["user"]["nome"]?> <?php echo $templateParams["user"]["cognome"]?></h2>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
@@ -61,7 +61,7 @@
       		<img src="<?php echo UPLOAD_DIR.'posta.jpg'?>"  alt="casella di posta" />
 		    </a>
 	        </div>
-            <img class="iconalogin" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" 
+            <img data-bs-toggle="offcanvas" data-bs-target="#offcanvas" 
              src="<?php echo UPLOAD_DIR.getImageOfUser($templateParams["user"]["immagine"])?>" alt="">
         <?php endif; ?>
     </div>
