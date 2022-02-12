@@ -29,5 +29,9 @@ input[type=submit]{
 
 span{
     font-family: 'Questrial', sans-serif;
-
+    font-size: 21px;
+}
+span>a{
+    font-family: 'Questrial', sans-serif;
+    font-size: 21px !important;
 }

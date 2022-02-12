@@ -139,7 +139,7 @@
     </article>  
       <div class="pb-3 text-center button">
         
-        <input id="submit" type="submit" name="submit" value="<?php echo $azione?>"/>
+        <input id="submit" type="submit" name="submit" value="Salva"/>
         <input type="hidden" name="action" value="<?php echo $azione?>"/>
       </div>
   <input type="hidden" name="oldimg" value="<?php echo $immagine?>" />

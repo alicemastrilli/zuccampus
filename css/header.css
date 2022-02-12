@@ -134,6 +134,10 @@ header img {
     margin: 0 4px 0 4px ;
 }
 
+.iconalogin{
+    width: 70px;
+    clip-path: circle();
+}
 
 
 header img:hover {
@@ -164,6 +168,11 @@ input[type=submit]:disabled{
     color: white;
     padding: 5px 10px;
     font-size: 10px;
+}
+
+.nascosto{
+    margin: 0;
+    padding: 0;
 }
 
 @media screen and (max-width: 420px) {
