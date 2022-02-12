@@ -129,8 +129,17 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssssi',$username, $testo, $data, $ora, $link, $tag_letto);
         $stmt->execute();
+        $ris=$stmt->execute();
         
-        return $stmt->insert_id;
+        if($ris){
+            $msg = 1;
+        }
+        else {
+            $msg = $stmt->error;
+        }
+        return $msg;
+    
+
     }
     public function updateMessageAsRead($id_messaggio){
         $query = "UPDATE messaggio SET tag_letto = 1 WHERE id_messaggio = ?";
@@ -367,6 +376,19 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getComprendeById($id_ordine){
+        $query = "select a.username from agricoltore a, comprende c where c.id_ordine=? and c.nome_azienda=a.nome_azienda ";
+         $stmt = $this->db->prepare($query);
+
+        $stmt->bind_param('i',$id_ordine);
+      
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+      
+    }    
 
     public function getAllComprende($id_ordine){
         $query = "select c.nome_zucca,c.nome_azienda, o.data_ordine,o.via,o.numero_civico,o.cap, c.id_ordine, c.quantita, z.prezzo,z.tipo,u.nome,u.cognome,z.immagine from comprende c, zucca z, utente u, ordine o
