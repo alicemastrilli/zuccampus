@@ -53,7 +53,7 @@
     </div>
    
     <article class="rounded mx-2">
-      <h2 class="pt-2 px-2 col-12 text-center">Informazioni di base</h2>
+      <h2 class="registrazione pt-2 px-2 col-12 text-center">Informazioni di base</h2>
         <div class="mb-3 mt-3">
         
         <?php foreach(fillForm() as $field):?>
@@ -116,7 +116,7 @@
   
       
       <article class="rounded mx-2 mt-3">
-        <h2 class="pt-2 px-2 col-12 text-center">Informazioni di contatto</h2>
+        <h2 id="registrazione" class="pt-2 px-2 col-12 text-center">Informazioni di contatto</h2>
         <div class="mb-3 mt-3">
           <?php foreach(contattoForm() as $field):?>
           <label for=<?php echo str_replace(' ', '',  $field["text"]);?> class="form-label px-2"><?php echo ucwords($field["text"])?>:</label>
