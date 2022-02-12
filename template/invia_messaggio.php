@@ -31,6 +31,8 @@ $testo = "La registrazione presso Zuccampus e' andata a buon fine, benvenuto mel
 username: ".$_SESSION["username"] . " password: ".$_POST["password"];
 $testo_messaggio= "Registrazione avvenuta con succeso! Controlla la tua casella di posta per visualizzare le credenziali!";
 $username=$_SESSION["username"];
+$mail =$_POST["mail"];
+$subject = 'Benvenuto in Zuccampus!';
 }elseif ($_POST["messaggio_action"]==1){
   $msg = setMessageText(1, $_POST["ordine"]);
   $testo_messaggio = $msg[1]["testo"];
@@ -44,10 +46,11 @@ $username=$_SESSION["username"];
 
 } else if($_POST["messaggio_action"] == 4){
   $msg=  setFineProdottoText($_POST["zucca"]);
-  $testo_messaggio = $msg[1]["testo"];
+  $testo_messaggio = $msg[0]["testo"];
+  $email = $dbh->getAgricoltoreOfAzienda($_POST["zucca"][1])[0]["email"];
   $username = $dbh->getAgricoltoreOfAzienda($_POST["zucca"][1])[0]["username"];
+  $subject='Prodotto in esaurimento!';
 
-  $mail = $dbh->getMailByUsername($username);
   $testo = $testo_messaggio;
 
 }
@@ -91,11 +94,11 @@ try {
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     //Recipients
     $mail->setFrom('zuccampusspa@gmail.com', 'Zuccampus');
-    $mail->addAddress($_POST["mail"], $username);     //Add a recipient
+    $mail->addAddress($email, $username);     //Add a recipient
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Benvenuto in Zuccampus!';
-    $mail->Body    = $_POST["testo"];
+    $mail->Subject = $subject;
+    $mail->Body    = $testo;
     $mail->send();
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
