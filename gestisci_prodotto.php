@@ -28,7 +28,7 @@ if($templateParams["azione"] == 'Cancella'){
     header("location: agricoltore_prodotti.php?formmsg=".$msg);
 }
 
-$templateParams["titolo"] = "Zuccampus- Registrati";
+$templateParams["titolo"] = "Zuccampus- Inserisci prodotto";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
 $templateParams["main"] = "form_prodotto.php";

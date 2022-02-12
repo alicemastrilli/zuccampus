@@ -43,7 +43,15 @@ input.input-box, textarea {
   border-color:#8DC7A3;
   }
 
-h2{
+.registrazione{
+    width: 23%;
+    font-size: 18px;
+    background-color:#8DC7A3 ;
+    border-radius: 25px;
+    padding: 3px 0 5px 8px;
+    margin-bottom: 0%;
+}
+h4{
     width: 23%;
     font-size: 18px;
     background-color:#8DC7A3 ;

@@ -38,7 +38,7 @@ $(document).ready(function(){
   num_carta = document.getElementById('numero_carta');
   num_cartaError = document.querySelector('#numero_carta + span.error');
   num_carta.addEventListener('input', function (event) {
-    num_carta.maxLength=16;
+   
     if (num_carta.value.length !=16) {
       num_cartaError.textContent = 'Carta di credito non valida! Inserire 16 cifre '; 
       document.getElementById('btn').disabled = true;
@@ -52,7 +52,7 @@ $(document).ready(function(){
   cvv = document.getElementById('cvv');
   cvvError = document.querySelector('#cvv + span.error');
   cvv.addEventListener('input', function (event) {
-    cvv.maxLength =3;
+  
     if (cvv.value.length !=3) {
       document.getElementById('btn').disabled = true;
 

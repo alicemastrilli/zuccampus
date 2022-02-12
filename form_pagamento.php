@@ -1,7 +1,7 @@
 <?php
 require_once("bootstrap.php");
 
-$templateParams["titolo"] = "Zuccampus-Prodotti Agricoltore";
+$templateParams["titolo"] = "Zuccampus-Form pagamento";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
 $templateParams["main"] = "form_pagamento2.php";

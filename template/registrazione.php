@@ -53,7 +53,7 @@
     </div>
    
     <article class="rounded mx-2">
-      <h2 class="pt-2 px-2 col-12 text-center">Informazioni di base</h2>
+      <h2 class="registrazione pt-2 px-2 col-12 text-center">Informazioni di base</h2>
         <div class="mb-3 mt-3">
         
         <?php foreach(fillForm() as $field):?>
@@ -74,7 +74,7 @@
 
           <label <?php if(isUserLoggedIn()){ echo "hidden";}else{ echo "for=".  str_replace(' ', '',  $field["text"]);};?> class="form-label px-2"><?php echo ucwords($field["text"])?> :</label>
             <div class="mx-2 pb-3">
-              <input class="form-control" type="<?php if(isUserLoggedIn()){ echo "hidden";} else{echo $field["type"]." "."required";};?>" id="<?php echo str_replace(' ', '',  $field["text"]);?>" name="<?php echo $field["text"];?>"/>
+              <input class="form-control" type="<?php if(isUserLoggedIn()){ echo "hidden";} else{echo $field["type"];}?>" <?php if(!isUserLoggedIn()){echo "required";};?> id="<?php echo str_replace(' ', '',  $field["text"]);?>" name="<?php echo $field["text"];?>"/>
                 <span class="error" aria-live="polite"></span>
 
             </div>
@@ -109,14 +109,14 @@
       </article>
       
         <?php if($_SESSION["agricoltore"] == 1):?>
-          <h3> </h3>
+          
           <?php    require($templateParams["registrazione_agricoltore"]); ?>
             
         <?php endif; ?>
   
       
       <article class="rounded mx-2 mt-3">
-        <h2 class="pt-2 px-2 col-12 text-center">Informazioni di contatto</h2>
+        <h2 id="registrazione" class="pt-2 px-2 col-12 text-center">Informazioni di contatto</h2>
         <div class="mb-3 mt-3">
           <?php foreach(contattoForm() as $field):?>
           <label for=<?php echo str_replace(' ', '',  $field["text"]);?> class="form-label px-2"><?php echo ucwords($field["text"])?>:</label>

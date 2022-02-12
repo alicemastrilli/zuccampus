@@ -23,7 +23,7 @@ else{
 $testo = htmlspecialchars($_POST["info"]["testo"][$i]);
 $data = htmlspecialchars($_POST["data"]);
 $ora = htmlspecialchars($_POST["ora"]);
-
+$link = htmlspecialchars($_POST["link"]);
 
 $messaggio = $dbh->checkMessage($username, $data, $ora,$testo);
 if(count($messaggio) == 0){
