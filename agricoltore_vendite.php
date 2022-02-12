@@ -28,8 +28,7 @@ $templateParams["comprende"] = array();
 foreach($templateParams["ordini"] as $ord){
     array_push($templateParams["comprende"], $dbh->getAllComprende($ord["id_ordine"]));
 }
-//per ogni ordine posso avere più voci comprende--> in quel caso nel "riassunto ordine"
-//si dovrà calcolare la somma totale dei comprende e mettere tutti i nomi delle zucche 
+
 $templateParams["guadagno"] =0;
 foreach($templateParams["ordini"] as $ordine){
     $comprende = $dbh->getAllComprende($ordine["id_ordine"]);
