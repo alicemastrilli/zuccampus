@@ -56,7 +56,8 @@ INSERT INTO `recensione` (`idRecensione`, `descrizione`, `punteggio`, `nome_azie
 (3, 'Molto buona! Complimenti Gigi, la passione che hai nei confronti delle zucche è insuperabile!',4,'Gigi e le sue zucche', 'Zucca Delica','GentiAle','2022-02-12'),
 (4, 'Azienda di fiducia, ottima anche per le zucche, questa poi mi ha stupito!', 5, 'Az. Agr. Poli', 'Zucca Mantovana','ProfCarletti','2022-02-11'),
 (5, 'ho trovato un po'' difficoltoso pulirla...', 3, 'Az. Agr. Poli', 'Zucca di Chioggia','ProfCarletti','2022-02-10'),
-(6, 'Non sapevo proprio cosa regalare alla mia ragazza per San Valentino, poi ho scoperto Mario e la mia giornata è svoltata!',5,'La fattoria di Mario', 'Zucca di Chioggia','ProfCarletti','2022-02-12');
+(6, 'Non sapevo proprio cosa regalare alla mia ragazza per San Valentino, poi ho scoperto Mario e la mia giornata è svoltata!',5,'La fattoria di Mario', 'Zucca di Chioggia','ProfCarletti','2022-02-12'),
+(7, 'Comprata per la recita scolastica di mio nipote, quando è arrivata ho scoperto che non suonava, grande delusione...',1,'Az. Agr. Poli','Zucca Tromboncino','GentiAle','2022-01-12');
 
 
 INSERT INTO `ordine` (`id_ordine`,`username`, `data_ordine`, `ora`, `via`, `numero_civico`, `cap`) VALUES 
