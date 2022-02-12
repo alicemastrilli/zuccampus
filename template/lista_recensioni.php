@@ -21,7 +21,7 @@
     <li class="list-group-item border-0">
     <div class="row">
         <div class="col sm-0">
-			<div class="star-rating text-center" id="div-star">
+			<div class="star-rating text-center div-star" >
                 <p class="text-center fw-bold"><?php echo $recensione["data"]; ?></p>
                 <?php for($k=0;$k<intval($recensione["punteggio"]);$k++):?>
                     <img class="rounded" src="<?php echo UPLOAD_DIR?>stella_piena.png"  alt="" />

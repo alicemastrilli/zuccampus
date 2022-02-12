@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php 
 $total = 0; 
 $costospedizione = 2; 
