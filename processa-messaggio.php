@@ -54,15 +54,15 @@ else{
         $messaggio = $dbh->checkMessage($username, $data, $ora,$testo);
         var_dump("entro nell'if");
         if(count($messaggio) == 0 ){
-        $dbh->insertMessage($username, $testo, $data, $ora, $link, 0);
+            $dbh->insertMessage($username, $testo, $data, $ora, $link, 0);
         }
     } else{
         foreach($arr_username as $user){
-            
+
             $messaggio = $dbh->checkMessage($user["username"], $data, $ora,$testo);
 
             if(count($messaggio) == 0){
-            $msg=$dbh->insertMessage($user["username"], $testo, $data, $ora, $link, 0);
+            $dbh->insertMessage($user["username"], $testo, $data, $ora, $link, 0);
             }
         }
     }
@@ -72,7 +72,7 @@ if($_POST["messaggio_action"]==1){
     $_POST["info"]="";
     $_POST["messaggio_action"]=2;
   
-  //  require "invia_messaggio.php";
+    require "invia_messaggio.php";
 }
 
 ?>

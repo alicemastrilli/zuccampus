@@ -129,16 +129,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssssi',$username, $testo, $data, $ora, $link, $tag_letto);
         $stmt->execute();
-        $ris=$stmt->execute();
         
-        if($ris){
-            $msg = 1;
-        }
-        else {
-            $msg = $stmt->error;
-        }
-        return $msg;
-    
 
     }
     public function updateMessageAsRead($id_messaggio){
