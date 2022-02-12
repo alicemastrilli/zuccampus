@@ -42,7 +42,7 @@ if($bool!=false){
             if($disponibilita <=1){                
                 $_POST["zucca"] = array($nome_zucca, $nome_azienda);
                 $_POST["messaggio_action"] = 4;
-                require_once("invia_messaggio.php");
+                require("invia_messaggio.php");
             }
         }else{
             //TODO: messaggio di errore
@@ -57,7 +57,7 @@ if($bool!=false){
 $_POST["messaggio_action"]=1;
 $_POST["ordine"] =  $dbh->getUserOrders($_SESSION["username"],1)[0];
 
-require_once("invia_messaggio.php");
+require("invia_messaggio.php");
 
 $ordine = $_POST["ordine"]["id_ordine"];
 //$templateParams["main"] = "lista_ordini.php";
