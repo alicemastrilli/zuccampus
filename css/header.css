@@ -170,10 +170,6 @@ input[type=submit]:disabled{
     font-size: 10px;
 }
 
-.nascosto{
-    margin: 0;
-    padding: 0;
-}
 
 @media screen and (max-width: 420px) {
     header img {
