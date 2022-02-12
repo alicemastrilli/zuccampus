@@ -61,7 +61,7 @@
 
      
 <?php else: ?>
-<input type="hidden" id="submit" name="nome_azienda" value="<?php echo $azienda["nome_azienda"]?>" />
+<input type="hidden"  name="nome_azienda" value="<?php echo $azienda["nome_azienda"]?>" />
 <?php endif; ?>
 
 </body>
