@@ -40,7 +40,7 @@
       document.getElementById('username').disabled = true;    
     }
   </script>
-  <section>
+
     
     <div class="row">
       <div class="col-12 p-3 text-center ">
@@ -53,7 +53,7 @@
     </div>
    
     <article class="rounded mx-2">
-      <h4 class="pt-2 px-2 col-12 text-center">Informazioni di base</h4>
+      <h2 class="pt-2 px-2 col-12 text-center">Informazioni di base</h2>
         <div class="mb-3 mt-3">
         
         <?php foreach(fillForm() as $field):?>
@@ -107,16 +107,16 @@
             <?php endif;?>
         </div>
       </article>
-      <article class="rounded mx-2">
+      
         <?php if($_SESSION["agricoltore"] == 1):?>
           <h3> </h3>
           <?php    require($templateParams["registrazione_agricoltore"]); ?>
             
         <?php endif; ?>
-      </article>
+  
       
       <article class="rounded mx-2 mt-3">
-        <h4 class="pt-2 px-2 col-12 text-center">Informazioni di contatto</h4>
+        <h2 class="pt-2 px-2 col-12 text-center">Informazioni di contatto</h2>
         <div class="mb-3 mt-3">
           <?php foreach(contattoForm() as $field):?>
           <label for=<?php echo str_replace(' ', '',  $field["text"]);?> class="form-label px-2"><?php echo ucwords($field["text"])?>:</label>
@@ -128,7 +128,7 @@
             </div>
           <?php endforeach;?>  
           
-          <label for="num_telefono" class="form-label px-2">Numero di telefono:</label>
+          <label for="numeroditelefono" class="form-label px-2">Numero di telefono:</label>
             <div class="mx-2 pb-3">
               <input class="form-control" type="number" id="numeroditelefono" name="num_telefono" required
               <?php if($azione=="Modifica"):?> value="<?php echo $utente["num_telefono"]; ?>" <?php endif;?> />
@@ -144,6 +144,7 @@
       </div>
   <input type="hidden" name="oldimg" value="<?php echo $immagine?>" />
 </form>
-</section>
+
+
 </body>
 </html>
