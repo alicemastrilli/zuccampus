@@ -18,10 +18,11 @@ $data_ordine = date("Y-m-d");
 $ora = date("H:i:sa", $t);
 $via = "Via dell'Università";
 $numero_civico = "50";
-$cap = "40013";
+$cap = "47521";
 
 list($bool,$id_ordine) = $dbh-> insertNewOrdine($username, $data_ordine, $ora, $via, $numero_civico, $cap);
-
+var_dump($bool);
+var_dump($id_ordine);
 if($bool!=false){
 
     foreach($_SESSION['product'] as $prodotto){
