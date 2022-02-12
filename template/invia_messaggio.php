@@ -26,6 +26,7 @@ use PHPMailer\PHPMailer\Exception;
 //caso 3: è stata fatta una recensione
 //caso 4: invio notifica all'agricoltore che il prodotto è in esaurimento;
 ?>
+<?php var_dump("sono richiamata");?>
 <?php if($_POST["messaggio_action"]==0) {
 $testo = "La registrazione presso Zuccampus e' andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
 username: ".$_SESSION["username"] . " password: ".$_POST["password"];

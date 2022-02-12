@@ -4,10 +4,12 @@ require_once("bootstrap.php");
 //caso 1: viene mandato un messaggio per informare che un ordine è stato inviato/ricevuto
 //caso 2: ordine è arrivato
 //caso 3: è stata fatta una recensione
-
+var_dump("sono processa e sono richiamat");
 $_POST["campus_info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 
 for($i =0; $i<count($_POST["info"]["agr"]); $i++){
+    var_dump("AAAAA".$i);
+    var_dump(count($_POST["info"]["agr"]));
 //al primo posto ci sono gli agricoltori, cioe in posto 0. In posto 1 utente
 //controllo se messaggio è diretto a persona
 $arr_username=array();
@@ -50,17 +52,17 @@ else{
 
     if( count($arr_username)==0){
         $messaggio = $dbh->checkMessage($username, $data, $ora,$testo);
-
+        var_dump("entro nell'if");
         if(count($messaggio) == 0 ){
         $dbh->insertMessage($username, $testo, $data, $ora, $link, 0);
         }
-    } elseif( count($arr_username)>0){
+    } else{
         foreach($arr_username as $user){
+            
             $messaggio = $dbh->checkMessage($user["username"], $data, $ora,$testo);
 
             if(count($messaggio) == 0){
             $msg=$dbh->insertMessage($user["username"], $testo, $data, $ora, $link, 0);
-            var_dump($msg);
             }
         }
     }
@@ -70,7 +72,7 @@ if($_POST["messaggio_action"]==1){
     $_POST["info"]="";
     $_POST["messaggio_action"]=2;
   
-    require "invia_messaggio.php";
+  //  require "invia_messaggio.php";
 }
 
 ?>

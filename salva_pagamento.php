@@ -21,8 +21,7 @@ $numero_civico = "50";
 $cap = "47521";
 
 list($bool,$id_ordine) = $dbh-> insertNewOrdine($username, $data_ordine, $ora, $via, $numero_civico, $cap);
-var_dump($bool);
-var_dump($id_ordine);
+
 if($bool!=false){
 
     foreach($_SESSION['product'] as $prodotto){
@@ -58,7 +57,7 @@ if($bool!=false){
 $_POST["messaggio_action"]=1;
 $_POST["ordine"] =  $dbh->getUserOrders($_SESSION["username"],1)[0];
 
-require("invia_messaggio.php");
+require_once("invia_messaggio.php");
 
 $ordine = $_POST["ordine"]["id_ordine"];
 //$templateParams["main"] = "lista_ordini.php";
