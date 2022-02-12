@@ -25,7 +25,7 @@
 
 <label for="descrizione" class="form-label px-2">Descrizione</label><br>
       <div class="mx-2 pb-3">
-            <input class="form-control" type="text" id="descrzione" name="descrizione"  <?php if($azione=="Modifica"):?> value="<?php echo $azienda["descrizione"]; ?>" <?php endif;?> />
+            <input class="form-control" type="text" id="descrizione" name="descrizione"  <?php if($azione=="Modifica"):?> value="<?php echo $azienda["descrizione"]; ?>" <?php endif;?> />
                   <span class="error" aria-live="polite"></span>
 
             </div>
@@ -40,7 +40,7 @@
 
 <label for="numero_civico" class="form-label px-2">Numero Civico</label><br>
       <div class="mx-2 pb-3">
-            <input class="form-control" type="number" id="numero_civico" name="numero_civico" size="3" required <?php if($azione=="Modifica"):?> value="<?php echo $utente["numero_civico"]; ?>" <?php endif;?> />
+            <input class="form-control" type="number" id="numero_civico" name="numero_civico" required <?php if($azione=="Modifica"):?> value="<?php echo $utente["numero_civico"]; ?>" <?php endif;?> />
             <span class="error" aria-live="polite"></span>
 
       </div>

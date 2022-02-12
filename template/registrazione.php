@@ -74,7 +74,7 @@
 
           <label <?php if(isUserLoggedIn()){ echo "hidden";}else{ echo "for=".  str_replace(' ', '',  $field["text"]);};?> class="form-label px-2"><?php echo ucwords($field["text"])?> :</label>
             <div class="mx-2 pb-3">
-              <input class="form-control" type="<?php if(isUserLoggedIn()){ echo "hidden";} else{echo $field["type"]." "."required";};?>" id="<?php echo str_replace(' ', '',  $field["text"]);?>" name="<?php echo $field["text"];?>"/>
+              <input class="form-control" type="<?php if(isUserLoggedIn()){ echo "hidden";} else{echo $field["type"];}?>" <?php if(!isUserLoggedIn()){echo "required";};?> id="<?php echo str_replace(' ', '',  $field["text"]);?>" name="<?php echo $field["text"];?>"/>
                 <span class="error" aria-live="polite"></span>
 
             </div>
@@ -109,7 +109,7 @@
       </article>
       
         <?php if($_SESSION["agricoltore"] == 1):?>
-          <h3> </h3>
+          
           <?php    require($templateParams["registrazione_agricoltore"]); ?>
             
         <?php endif; ?>
