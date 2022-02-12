@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-sm ">
-                <img class="img-container" src="./icons/contadino.jpeg" onclick="window.location.href='./aziende_agricole.php'" alt="produttori" />
+                <img class="img-container" src="./icons/scopriAgr.jpeg" onclick="window.location.href='./aziende_agricole.php'" alt="produttori" />
             </div>
         </div> 
     </div>

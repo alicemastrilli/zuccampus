@@ -4,6 +4,8 @@ INSERT INTO `indirizzo` (`via`, `numero_civico`, `citta`, `cap`) VALUES
 ('via del Campo', '14', 'Cesena', '47521'),
 ('via dell''Università', '50', 'Cesena', '47521');
 
+INSERT INTO `indirizzo` (`via`, `numero_civico`, `citta`, `cap`) VALUES ('via del Porto', '12', 'Cesena', '40013');
+
 INSERT INTO `azienda` (`via`, `numero_civico`, `cap`, `nome_app`, `nome_azienda`, `email`, `descrizione_azienda`, `qualita`) VALUES 
 ('via dell\'Università', '50', '47521', 'Zuccampus', 'zuccampus.srl', 'zuccampus@gmail.com', 'Zuccampus è l\'app che cerchi per i tuoi ordini! ', 'Massima qualità!');
 
@@ -12,10 +14,14 @@ INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `
 ('Gigi e le sue zucche', 'via dei Fiori', '45', '47521', 'Gigi ha un unico grande amore: le sue zucche!\r\n\Talmente grande che fa ingelosire la moglie, e tutti i vicini!\r\nNel gusto troverai la sua passione'),
 ('La gioia di Marta', 'via del Campo', '14', '47521', 'Marta cura le sue zucche come se fossero sue figlie!\r\nAssapora l''amore!');
 
+INSERT INTO `azienda_agricola` (`nome_azienda`, `via`, `numero_civico`, `cap`, `descrizione`) VALUES ('Az. Agr. Poli', 'via del Porto', '12', '40013', 'Azienda Agricola rinomata in tutta la provincia, si dedica a questo nuovo prodotto adorato da tutti.');
+
 INSERT INTO `utente` (`immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`,`CLIENTE`,`AGRICOLTORE`) VALUES 
 ('mario.png', '3333208475', 'mario@gmail.com', 'MarioRossi', 'mario_71', 'Mario', 'Rossi',0,1),
 ('marta.jpeg', '3457859375', 'marta@gmail.com', 'MartaGioia', 'Marta_81', 'Marta', 'Creti',0,1),
 ('gigi.jpeg', '3204558694', 'gigi@gmail.com', 'Gigiiii', 'Gigetto', 'Gigi', 'Carlino',0,1);
+
+INSERT INTO `utente` (`immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`, `CLIENTE`, `AGRICOLTORE`) VALUES ('agricoltore-anziano.jpg', '3456782837', 'george@libero.it', 'george', 'george', 'Giorgio', 'Poli', '0', '1');
 
 INSERT INTO `utente` (`immagine`, `num_telefono`, `email`, `username`, `password`, `nome`, `cognome`,`CLIENTE`,`AGRICOLTORE`) VALUES
 ('Alessia.jpg', '3903208899', 'alessia.gentili@studio.unibo.it', 'GentiAle', 'GentiAle', 'Alessia', 'Gentili',1,0),
@@ -39,11 +45,18 @@ INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`,
 
 INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES ('La fattoria di Mario', 'Zucca Cigno', 'ornamentale', 'zuccaCigno.jpg', '7', '1,5', '9', 'Ottima zucca per decorare e abbellire i vostri pranzi autunnali!');
 INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES ('Gigi e le sue zucche', 'Zucca Birillo', 'ornamentale', 'zuccaBirillo.jpg', '6.90', '2', '8', "Aggiungi un po\' di vibe autunnale alla tua casa con queste originali zucche!");
+
+INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES ('Az. Agr. Poli', 'Zucca Birillo', 'ornamentale', 'zuccaBirillo.jpg', '1,50', '1', '20', 'Aggiungi un po'' di vibe autunnale alla tua casa con queste originali zucche!'), ('Az. Agr. Poli', 'Zucca Mantovana', 'commestibile', 'zuccaMantovana.jpg', '5', '4', '7', 'Zucca caratteristica per la sua buccia scura, ma ottima per preparare risotti e sughi per la pasta.');
+INSERT INTO `zucca` (`nome_azienda`, `nome_zucca`, `tipo`, `immagine`, `prezzo`, `peso`, `disponibilita`, `descrizione_zucca`) VALUES ('Az. Agr. Poli', 'Zucca di Chioggia', 'commestibile', 'zuccadiChioggia.png', '6.60', '4', '9', 'Inconfondibile per la sua scorza bitorzoluta, dal verde scuro al verde ramato e per la forma particolarmente schiacchiata. Ha una polpa molto saporita e adatta alla preparazione di gnocchi, ripieni e risotti'), ('Az. Agr. Poli', 'Zucca Tromboncino', 'commestibile', 'zuccaTromboncino.jpg', '2', '1', '7', 'Zucca di colore arancione chiara, di forma allungata e non troppo comoda da pelare, ma dolcezza assicurata!');
+
+
 INSERT INTO `recensione` (`idRecensione`, `descrizione`, `punteggio`, `nome_azienda`, `nome_zucca`, `username`,`data`) VALUES 
 (1, 'Buonissima!', '5', 'Gigi e le sue zucche', 'Zucca Delica', 'GentiAle', '2021-12-12'),
 (2, 'Meglio mangiarla cotta!', '4', 'La fattoria di Mario', 'Zucca di Chioggia', 'Verdi','2022-01-14'),
 (3, 'Molto buona! Complimenti Gigi, la passione che hai nei confronti delle zucche è insuperabile!',4,'Gigi e le sue zucche', 'Zucca Delica','GentiAle','2022-02-12'),
-(4, 'Non sapevo proprio cosa regalare alla mia ragazza per San Valentino, poi ho scoperto Mario e la mia giornata è svoltata!',5,'La fattoria di Mario', 'Zucca di Chioggia','ProfCarletti','2022-02-12');
+(4, 'Azienda di fiducia, ottima anche per le zucche, questa poi mi ha stupito!', 5, 'Az. Agr. Poli', 'Zucca Mantovana','ProfCarletti','2022-02-11'),
+(5, 'ho trovato un po'' difficoltoso pulirla...', 3, 'Az. Agr. Poli', 'Zucca di Chioggia','ProfCarletti','2022-02-10'),
+(6, 'Non sapevo proprio cosa regalare alla mia ragazza per San Valentino, poi ho scoperto Mario e la mia giornata è svoltata!',5,'La fattoria di Mario', 'Zucca di Chioggia','ProfCarletti','2022-02-12');
 
 
 INSERT INTO `ordine` (`id_ordine`,`username`, `data_ordine`, `ora`, `via`, `numero_civico`, `cap`) VALUES 
@@ -98,4 +111,10 @@ INSERT INTO `comprende` (`id_ordine`, `nome_azienda`, `nome_zucca`, `quantita`) 
 INSERT INTO `agricoltore` (`username`, `nome_azienda`) VALUES 
 ('MarioRossi', 'La fattoria di Mario'),
 ('MartaGioia', 'La gioia di Marta'),
+('george', 'Az. Agr. Poli'),
 ('Gigiiii', 'Gigi e le sue zucche');
+
+
+
+
+
