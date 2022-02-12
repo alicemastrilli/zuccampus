@@ -11,7 +11,7 @@ Ogni user può registrarsi al sito e creare un profilo personale per tenere trac
 
 ## Linguaggi utilizzati 
 - **lato server:** php
-- **lato cliente:** jQuery
+- **lato client:** jQuery/javaScript
 - CSS e Bootstrap
 
 ## Come utilizzarlo
