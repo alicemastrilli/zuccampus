@@ -14,14 +14,17 @@ if($_POST["info"]["agr"][$i] == 0 ){
 }
 //messaggio è diretto all'agricoltore
 else{
-    if(isset($_POST["zucca"])){
-        $zucca=$_POST["zucca"];
-        $username = $dbh->getAgricoltoreOfAzienda($_POST["produttori"])[0]["username"];
-       
-    } else if(isset($_POST["nome_azienda"])){
+    
+   if(isset($_POST["nome_azienda"])){
         $nome_azienda =$_POST["nome_azienda"];
         $username = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]["username"];
-    } else{
+    }
+    //settata nel caso in cui si deve inviare il messaggio di prodotto in esaurimento
+     else if(isset($_POST["zucca"])){
+        $zucca=$_POST["zucca"];
+      
+        $username = $dbh->getAgricoltoreOfAzienda($_POST["zucca"][1])[0]["username"];
+    }else{
     $nome_azienda =$dbh->getOrderById($_POST["ordine"]["id_ordine"])[0]["nome_azienda"];
     $username = $dbh->getAgricoltoreOfAzienda($nome_azienda)[0]["username"];
     }
