@@ -9,8 +9,14 @@ if($_POST["action"] == 'Inserisci'){
     $password = htmlspecialchars($_POST["password"]);
     $nome = htmlspecialchars($_POST["nome"]);
     $cognome = htmlspecialchars($_POST["cognome"]);
-    $cliente = 1;
-    $agricoltore = 0;
+    if(!$_SESSION["agricoltore"]){
+        $cliente = 1;
+        $agricoltore = 0;
+    } else {
+        $cliente =0;
+        $agricoltore=1;
+    }
+    
     unset($_SESSION["registrazione"]);
 
 
@@ -46,8 +52,7 @@ if($_POST["action"] == 'Inserisci'){
         
     }
     //registrazione per cliente
-    else $_SESSION["agricoltore"] = 0;
-
+    
     if(isset($_POST["tipo_cliente"])){
         if ($_POST["tipo_cliente"] == "studente"){
             $matricola = htmlspecialchars($_POST["matricola"]);

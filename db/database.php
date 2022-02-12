@@ -65,6 +65,14 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    public function getMailByUsername($username){
+        $stmt = $this->db->prepare("SELECT email  from utente where username =?");
+        $stmt->bind_param("s",$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
    public function getAgricoltoreOfAzienda($nomeAzienda) {
     $stmt = $this->db->prepare("SELECT u.username,u.immagine, u.num_telefono, u.email, u.nome, u.cognome from utente u, agricoltore a
@@ -252,7 +260,7 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
-    public function insertNewAgricoltore($username = null, $nome_azienda = null){
+    public function insertNewAgricoltore($username, $nome_azienda){
         $query = "INSERT INTO agricoltore (username, nome_azienda) VALUES  (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $nome_azienda);
@@ -260,7 +268,6 @@ class DatabaseHelper{
         
         if($ris) $msg = 1;
         else $msg = $stmt->error;
-    
         return $msg;
     }
     public function updateAgricoltore($nome_azienda, $username){

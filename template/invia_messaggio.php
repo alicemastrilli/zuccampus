@@ -30,6 +30,7 @@ use PHPMailer\PHPMailer\Exception;
 $testo = "La registrazione presso Zuccampus e' andata a buon fine, benvenuto mel mondo delle zucche! Ecco le tue credenziali per accedere a Zuccampus: 
 username: ".$_SESSION["username"] . " password: ".$_POST["password"];
 $testo_messaggio= "Registrazione avvenuta con succeso! Controlla la tua casella di posta per visualizzare le credenziali!";
+$username=$_SESSION["username"];
 }elseif ($_POST["messaggio_action"]==1){
   $msg = setMessageText(1, $_POST["ordine"]);
   $testo_messaggio = $msg[1]["testo"];
@@ -44,6 +45,10 @@ $testo_messaggio= "Registrazione avvenuta con succeso! Controlla la tua casella 
 } else if($_POST["messaggio_action"] == 4){
   $msg=  setFineProdottoText($_POST["zucca"]);
   $testo_messaggio = $msg[1]["testo"];
+  $username = $dbh->getAgricoltoreOfAzienda($_POST["zucca"][1])[0]["username"];
+
+  $mail = $dbh->getMailByUsername($username);
+  $testo = $testo_messaggio;
 
 }
 
@@ -66,7 +71,7 @@ $testo_messaggio= "Registrazione avvenuta con succeso! Controlla la tua casella 
 
 <div class="col-3"></div>
 <?php
-if($_POST["messaggio_action"]==0) {
+if($_POST["messaggio_action"]==0 || $_POST["messaggio_action"]==4) {
   $_POST["testo"] =$testo;
 //Load Composer's autoloader
 require 'composer/vendor/autoload.php';
@@ -86,7 +91,7 @@ try {
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     //Recipients
     $mail->setFrom('zuccampusspa@gmail.com', 'Zuccampus');
-    $mail->addAddress($_POST["mail"], $_SESSION["username"]);     //Add a recipient
+    $mail->addAddress($_POST["mail"], $username);     //Add a recipient
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Benvenuto in Zuccampus!';
