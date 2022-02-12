@@ -8,7 +8,7 @@ if(isUserLoggedIn()){
 $templateParams["titolo"] = $dbh->getNomeApp()[0]["nome_app"]."-Lista recensione";
 $templateParams["header"] = "header.php";
 $templateParams["footer"] = "footer.php";
-$templateParams["main"] = "lista_recensioni.php";
+
 $templateParams["nome"] = $dbh->getNomeApp()[0]["nome_app"];
 $templateParams["info"] = $dbh->getAppInfo($templateParams["nome"])[0];
 $templateParams["links"] = $dbh->getLink($templateParams["nome"]);
@@ -32,5 +32,6 @@ if($_SESSION["agricoltore"]==1){
 } else{
     $templateParams["recensioni"] = $dbh->getRecensioneFromCliente($_SESSION["username"]);
 }
+$templateParams["main"] = "lista_recensioni.php";
 require("template/base.php");
 ?>
